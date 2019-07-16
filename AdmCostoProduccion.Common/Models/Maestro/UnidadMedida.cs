@@ -1,0 +1,62 @@
+﻿using AdmCostoProduccion.Common.Classes;
+using AdmCostoProduccion.Common.Models.Almacen;
+using AdmCostoProduccion.Common.Models.Produccion;
+
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace AdmCostoProduccion.Common.Models.Maestro
+{
+    public class UnidadMedida : EntityBase
+    {
+        #region Constructor
+        public UnidadMedida() : base()
+        {
+        }
+        #endregion
+
+        #region Propiedades
+        [Key]
+        public int UnidadMedidaId { get; set; }
+
+        public string Codigo { get; set; }
+
+        public string Nombre { get; set; }
+
+        public string Descripcion { get; set; }
+
+        public string Simbolo { get; set; }
+
+        #endregion
+
+        #region Foraneas
+        #endregion
+
+        #region Relacionales
+
+        
+        public virtual ICollection<ProcedimientoProduccion> ProcedimientoProduccions { get; set; }
+
+        
+        public virtual ICollection<ProcedimientoProduccionInsumo> ProcedimientoProduccionInsumos { get; set; }
+
+        
+        public virtual ICollection<OrdenProduccion> OrdenProduccions { get; set; }
+
+        
+        public virtual ICollection<OrdenProduccionInsumo> OrdenProduccionInsumos { get; set; }
+
+        
+        public virtual ICollection<RecepcionDetalle> RecepcionDetalles { get; set; }
+
+        
+        public virtual ICollection<DespachoDetalle> DespachoDetalles { get; set; }
+
+        
+        public virtual ICollection<KardexMovimiento> KardexMovimientos { get; set; }
+
+        #endregion
+    }
+}
