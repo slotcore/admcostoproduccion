@@ -61,7 +61,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
     <Compile Include="Classes\EntityBase.cs" />
     <Compile Include="Classes\ObjectBase.cs" />
     <Compile Include="Classes\ObservableListSource.cs" />
@@ -123,6 +122,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\Contabilidad\" />
+    <Folder Include="Properties\DataSources\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Forms\LstBaseForm.resx">

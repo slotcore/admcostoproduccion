@@ -69,7 +69,7 @@
     <AssemblyOriginatorKeyFile>AdmCostoProduccion.Windows.pfx</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>0765162D166AC4DD254DADFB0D115770FFCD1A09</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>7C535DA21A35BBBF33EFFCB03D1B446E6172D4DD</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestKeyFile>AdmCostoProduccion.Windows.pfx</ManifestKeyFile>
@@ -146,11 +146,11 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Maestro\Almacen\LstAlmacenForm.resx">
-      <DependentUpon>LstAlmacenForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Maestro\CentroLogistico\LstCentroLogisticoForm.resx">
       <DependentUpon>LstCentroLogisticoForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Maestro\CentroLogistico\MntCentroLogisticoForm.resx">
+      <DependentUpon>MntCentroLogisticoForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
@@ -168,6 +168,7 @@
     <None Include="AdmCostoProduccion.Windows.pfx" />
     <None Include="packages.config" />
     <None Include="Properties\app.manifest" />
+    <None Include="Properties\DataSources\AdmCostoProduccion.Common.ViewModels.Maestro.CentroLogisticoViewModel.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -193,6 +194,33 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\outbox_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Maestro\PlantaFabricacion\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\add_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\edit_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\trash_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\refresh2_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\exporttoxls_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\save_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cancel_16x16.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

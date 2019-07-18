@@ -79,5 +79,20 @@ namespace AdmCostoProduccion.Windows
             };
             form.Show();
         }
+
+        private void SalirMenuItem_Click(object sender, EventArgs e)
+        {
+            Salir();
+        }
+
+        private void SalirButton_Click(object sender, EventArgs e)
+        {
+            Salir();
+        }
+
+        private void Salir()
+        {
+            this.Close();
+        }
     }
 }
