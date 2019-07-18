@@ -30,6 +30,12 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>AdmCostoProduccion.Common.pfx</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="ComponentFactory.Krypton.Toolkit, Version=4.6.0.0, Culture=neutral, PublicKeyToken=a87e673e9ecb6e8e, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -65,12 +71,6 @@
     </Compile>
     <Compile Include="Forms\LstBaseForm.Designer.cs">
       <DependentUpon>LstBaseForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\MainBaseForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\MainBaseForm.Designer.cs">
-      <DependentUpon>MainBaseForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\MntBaseForm.cs">
       <SubType>Form</SubType>
@@ -117,6 +117,7 @@
     <Compile Include="ViewModels\Maestro\CentroLogisticoViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="AdmCostoProduccion.Common.pfx" />
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
@@ -126,9 +127,6 @@
   <ItemGroup>
     <EmbeddedResource Include="Forms\LstBaseForm.resx">
       <DependentUpon>LstBaseForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\MainBaseForm.resx">
-      <DependentUpon>MainBaseForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MntBaseForm.resx">
       <DependentUpon>MntBaseForm.cs</DependentUpon>
@@ -149,6 +147,36 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\refresh-page-option.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\addfile_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\edit_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\trash_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\refresh_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\refresh2_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\add_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\edit_16x161.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\exporttoxls_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\save_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cancel_16x16.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
