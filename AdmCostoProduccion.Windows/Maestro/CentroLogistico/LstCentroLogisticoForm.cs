@@ -22,12 +22,12 @@ namespace AdmCostoProduccion.Windows.Maestro.CentroLogistico
         {
             InitializeComponent();
 
-            var centroLogisticos = new ApplicationDbContext().CentroLogisticos.ToList();
+            //var centroLogisticos = new ApplicationDbContext().CentroLogisticos.ToList();
             _CentroLogisticoViewModels = new ObservableListSource<CentroLogisticoViewModel>();
-            foreach (var centroLogistico in centroLogisticos)
-            {
-                _CentroLogisticoViewModels.Add(new CentroLogisticoViewModel(centroLogistico));
-            }
+            //foreach (var centroLogistico in centroLogisticos)
+            //{
+            //    _CentroLogisticoViewModels.Add(new CentroLogisticoViewModel(centroLogistico));
+            //}
 
             centroLogisticoViewModelBindingSource.DataSource = _CentroLogisticoViewModels;
         }
@@ -57,6 +57,52 @@ namespace AdmCostoProduccion.Windows.Maestro.CentroLogistico
             foreach (var centroLogistico in centroLogisticos)
             {
                 _CentroLogisticoViewModels.Add(new CentroLogisticoViewModel(centroLogistico));
+            }
+        }
+
+        private void Buscar()
+        {
+            try
+            {
+                Cursor = Cursors.WaitCursor;
+                var cadenaBusqueda = BusquedaTextBox.Text.Trim().ToUpper();
+                var centroLogisticos = new ApplicationDbContext().CentroLogisticos.Where(o =>
+                                o.Codigo.ToUpper().Contains(cadenaBusqueda) ||
+                                o.Nombre.ToUpper().Contains(cadenaBusqueda) ||
+                                o.Descripcion.ToUpper().Contains(cadenaBusqueda)).ToList();
+
+                _CentroLogisticoViewModels.Clear();
+                foreach (var centroLogistico in centroLogisticos)
+                {
+                    _CentroLogisticoViewModels.Add(new CentroLogisticoViewModel(centroLogistico));
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(string.Format("Ocurrió un error al buscar, mensaje de error: {0}", ex.Message)
+                    , "Buscar", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                Cursor = Cursors.Default;
+            }
+        }
+
+        private void BuscarButton_Click(object sender, EventArgs e)
+        {
+            Buscar();
+        }
+
+        private void ClearButton_Click(object sender, EventArgs e)
+        {
+            BusquedaTextBox.Clear();
+        }
+
+        private void BusquedaTextBox_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                Buscar();
             }
         }
     }

@@ -37,12 +37,16 @@
             this.CargarExcelButton = new System.Windows.Forms.ToolStripButton();
             this.BaseFormHeaderGroup = new ComponentFactory.Krypton.Toolkit.KryptonHeaderGroup();
             this.kryptonPanel1 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
+            this.BusquedaGroupBox = new ComponentFactory.Krypton.Toolkit.KryptonGroupBox();
+            this.BuscarButton = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.BusquedaTextBox = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
+            this.ClearButton = new ComponentFactory.Krypton.Toolkit.ButtonSpecAny();
             this.GridHeaderGroup = new ComponentFactory.Krypton.Toolkit.KryptonHeaderGroup();
             this.CentroLogisticoDataGridView = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
-            this.centroLogisticoViewModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.codigoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nombreDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.descripcionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.centroLogisticoViewModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.BaseFormToolStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.BaseFormHeaderGroup)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BaseFormHeaderGroup.Panel)).BeginInit();
@@ -50,6 +54,10 @@
             this.BaseFormHeaderGroup.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.BusquedaGroupBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BusquedaGroupBox.Panel)).BeginInit();
+            this.BusquedaGroupBox.Panel.SuspendLayout();
+            this.BusquedaGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GridHeaderGroup)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GridHeaderGroup.Panel)).BeginInit();
             this.GridHeaderGroup.Panel.SuspendLayout();
@@ -135,7 +143,6 @@
             this.BaseFormHeaderGroup.Size = new System.Drawing.Size(1056, 583);
             this.BaseFormHeaderGroup.StateNormal.HeaderPrimary.Border.Color1 = System.Drawing.SystemColors.ControlDarkDark;
             this.BaseFormHeaderGroup.StateNormal.HeaderPrimary.Border.DrawBorders = ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom;
-            this.BaseFormHeaderGroup.StateNormal.HeaderPrimary.Border.ImageStyle = ComponentFactory.Krypton.Toolkit.PaletteImageStyle.Inherit;
             this.BaseFormHeaderGroup.StateNormal.HeaderPrimary.Border.Width = 1;
             this.BaseFormHeaderGroup.TabIndex = 2;
             this.BaseFormHeaderGroup.ValuesPrimary.Heading = "Centro Logístico";
@@ -143,12 +150,55 @@
             // 
             // kryptonPanel1
             // 
+            this.kryptonPanel1.Controls.Add(this.BusquedaGroupBox);
             this.kryptonPanel1.Controls.Add(this.GridHeaderGroup);
             this.kryptonPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonPanel1.Location = new System.Drawing.Point(0, 0);
             this.kryptonPanel1.Name = "kryptonPanel1";
             this.kryptonPanel1.Size = new System.Drawing.Size(1054, 555);
             this.kryptonPanel1.TabIndex = 0;
+            // 
+            // BusquedaGroupBox
+            // 
+            this.BusquedaGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.BusquedaGroupBox.Location = new System.Drawing.Point(4, 3);
+            this.BusquedaGroupBox.Name = "BusquedaGroupBox";
+            // 
+            // BusquedaGroupBox.Panel
+            // 
+            this.BusquedaGroupBox.Panel.Controls.Add(this.BuscarButton);
+            this.BusquedaGroupBox.Panel.Controls.Add(this.BusquedaTextBox);
+            this.BusquedaGroupBox.Size = new System.Drawing.Size(1046, 136);
+            this.BusquedaGroupBox.TabIndex = 2;
+            this.BusquedaGroupBox.Values.Heading = "Busqueda";
+            // 
+            // BuscarButton
+            // 
+            this.BuscarButton.AutoSize = true;
+            this.BuscarButton.Location = new System.Drawing.Point(538, 39);
+            this.BuscarButton.Name = "BuscarButton";
+            this.BuscarButton.Size = new System.Drawing.Size(90, 28);
+            this.BuscarButton.TabIndex = 3;
+            this.BuscarButton.Values.Text = "Buscar";
+            this.BuscarButton.Click += new System.EventHandler(this.BuscarButton_Click);
+            // 
+            // BusquedaTextBox
+            // 
+            this.BusquedaTextBox.ButtonSpecs.AddRange(new ComponentFactory.Krypton.Toolkit.ButtonSpecAny[] {
+            this.ClearButton});
+            this.BusquedaTextBox.InputControlStyle = ComponentFactory.Krypton.Toolkit.InputControlStyle.Ribbon;
+            this.BusquedaTextBox.Location = new System.Drawing.Point(23, 40);
+            this.BusquedaTextBox.Name = "BusquedaTextBox";
+            this.BusquedaTextBox.Size = new System.Drawing.Size(509, 27);
+            this.BusquedaTextBox.TabIndex = 2;
+            this.BusquedaTextBox.KeyUp += new System.Windows.Forms.KeyEventHandler(this.BusquedaTextBox_KeyUp);
+            // 
+            // ClearButton
+            // 
+            this.ClearButton.Type = ComponentFactory.Krypton.Toolkit.PaletteButtonSpecStyle.Close;
+            this.ClearButton.UniqueName = "1108868230D14A995A9EC71B7814ACBA";
+            this.ClearButton.Click += new System.EventHandler(this.ClearButton_Click);
             // 
             // GridHeaderGroup
             // 
@@ -194,10 +244,6 @@
             this.CentroLogisticoDataGridView.Size = new System.Drawing.Size(1046, 379);
             this.CentroLogisticoDataGridView.TabIndex = 0;
             // 
-            // centroLogisticoViewModelBindingSource
-            // 
-            this.centroLogisticoViewModelBindingSource.DataSource = typeof(AdmCostoProduccion.Common.ViewModels.Maestro.CentroLogisticoViewModel);
-            // 
             // codigoDataGridViewTextBoxColumn
             // 
             this.codigoDataGridViewTextBoxColumn.DataPropertyName = "Codigo";
@@ -225,6 +271,10 @@
             this.descripcionDataGridViewTextBoxColumn.ReadOnly = true;
             this.descripcionDataGridViewTextBoxColumn.Width = 125;
             // 
+            // centroLogisticoViewModelBindingSource
+            // 
+            this.centroLogisticoViewModelBindingSource.DataSource = typeof(AdmCostoProduccion.Common.ViewModels.Maestro.CentroLogisticoViewModel);
+            // 
             // LstCentroLogisticoForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -242,6 +292,11 @@
             this.BaseFormHeaderGroup.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
             this.kryptonPanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.BusquedaGroupBox.Panel)).EndInit();
+            this.BusquedaGroupBox.Panel.ResumeLayout(false);
+            this.BusquedaGroupBox.Panel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.BusquedaGroupBox)).EndInit();
+            this.BusquedaGroupBox.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.GridHeaderGroup.Panel)).EndInit();
             this.GridHeaderGroup.Panel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.GridHeaderGroup)).EndInit();
@@ -269,5 +324,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn codigoDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn nombreDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn descripcionDataGridViewTextBoxColumn;
+        private ComponentFactory.Krypton.Toolkit.KryptonGroupBox BusquedaGroupBox;
+        private ComponentFactory.Krypton.Toolkit.KryptonTextBox BusquedaTextBox;
+        private ComponentFactory.Krypton.Toolkit.ButtonSpecAny ClearButton;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton BuscarButton;
     }
 }

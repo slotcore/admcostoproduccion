@@ -69,7 +69,7 @@
             // 
             descripcionLabel.AutoSize = true;
             descripcionLabel.BackColor = System.Drawing.Color.Transparent;
-            descripcionLabel.Location = new System.Drawing.Point(246, 221);
+            descripcionLabel.Location = new System.Drawing.Point(246, 249);
             descripcionLabel.Name = "descripcionLabel";
             descripcionLabel.Size = new System.Drawing.Size(86, 17);
             descripcionLabel.TabIndex = 2;
@@ -79,7 +79,7 @@
             // 
             nombreLabel.AutoSize = true;
             nombreLabel.BackColor = System.Drawing.Color.Transparent;
-            nombreLabel.Location = new System.Drawing.Point(246, 249);
+            nombreLabel.Location = new System.Drawing.Point(246, 221);
             nombreLabel.Name = "nombreLabel";
             nombreLabel.Size = new System.Drawing.Size(62, 17);
             nombreLabel.TabIndex = 4;
@@ -116,6 +116,7 @@
             this.CancelarButton.Name = "CancelarButton";
             this.CancelarButton.Size = new System.Drawing.Size(90, 24);
             this.CancelarButton.Text = "Cancelar";
+            this.CancelarButton.Click += new System.EventHandler(this.CancelarButton_Click);
             // 
             // BaseFormHeaderGroup
             // 
@@ -133,7 +134,6 @@
             this.BaseFormHeaderGroup.StateNormal.HeaderPrimary.Border.Color1 = System.Drawing.SystemColors.ControlDarkDark;
             this.BaseFormHeaderGroup.StateNormal.HeaderPrimary.Border.Draw = ComponentFactory.Krypton.Toolkit.InheritBool.True;
             this.BaseFormHeaderGroup.StateNormal.HeaderPrimary.Border.DrawBorders = ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom;
-            this.BaseFormHeaderGroup.StateNormal.HeaderPrimary.Border.ImageStyle = ComponentFactory.Krypton.Toolkit.PaletteImageStyle.Inherit;
             this.BaseFormHeaderGroup.StateNormal.HeaderPrimary.Border.Width = 1;
             this.BaseFormHeaderGroup.TabIndex = 3;
             this.BaseFormHeaderGroup.ValuesPrimary.Heading = "Centro Logístico";
@@ -168,7 +168,7 @@
             // descripcionTextBox
             // 
             this.descripcionTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.centroLogisticoViewModelBindingSource, "Descripcion", true));
-            this.descripcionTextBox.Location = new System.Drawing.Point(338, 218);
+            this.descripcionTextBox.Location = new System.Drawing.Point(338, 246);
             this.descripcionTextBox.Name = "descripcionTextBox";
             this.descripcionTextBox.Size = new System.Drawing.Size(461, 22);
             this.descripcionTextBox.TabIndex = 3;
@@ -176,7 +176,7 @@
             // nombreTextBox
             // 
             this.nombreTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.centroLogisticoViewModelBindingSource, "Nombre", true));
-            this.nombreTextBox.Location = new System.Drawing.Point(338, 246);
+            this.nombreTextBox.Location = new System.Drawing.Point(338, 218);
             this.nombreTextBox.Name = "nombreTextBox";
             this.nombreTextBox.Size = new System.Drawing.Size(461, 22);
             this.nombreTextBox.TabIndex = 5;

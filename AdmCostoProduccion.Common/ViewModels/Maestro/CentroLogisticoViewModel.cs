@@ -25,6 +25,14 @@ namespace AdmCostoProduccion.Common.ViewModels.Maestro
                 Almacens.Add(new AlmacenViewModel(almacen));
             }
         }
+        public CentroLogisticoViewModel(CentroLogisticoViewModel viewModel)
+        {
+            CentroLogisticoId = viewModel.CentroLogisticoId;
+            Codigo = viewModel.Codigo;
+            Nombre = viewModel.Nombre;
+            Descripcion = viewModel.Descripcion;
+            _Almacens = viewModel.Almacens;
+        }
 
         #endregion
 

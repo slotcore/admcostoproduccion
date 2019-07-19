@@ -130,27 +130,12 @@
             // 
             // MainFormKryptonDockableNavigator
             // 
-            this.MainFormKryptonDockableNavigator.Bar.BarMapExtraText = ComponentFactory.Krypton.Navigator.MapKryptonPageText.None;
-            this.MainFormKryptonDockableNavigator.Bar.BarMapImage = ComponentFactory.Krypton.Navigator.MapKryptonPageImage.Small;
-            this.MainFormKryptonDockableNavigator.Bar.BarMapText = ComponentFactory.Krypton.Navigator.MapKryptonPageText.TextTitle;
             this.MainFormKryptonDockableNavigator.Bar.ItemSizing = ComponentFactory.Krypton.Navigator.BarItemSizing.Individual;
             this.MainFormKryptonDockableNavigator.Bar.TabStyle = ComponentFactory.Krypton.Toolkit.TabStyle.Dock;
-            this.MainFormKryptonDockableNavigator.Button.ButtonDisplayLogic = ComponentFactory.Krypton.Navigator.ButtonDisplayLogic.Context;
-            this.MainFormKryptonDockableNavigator.Button.CloseButtonAction = ComponentFactory.Krypton.Navigator.CloseButtonAction.RemovePageAndDispose;
-            this.MainFormKryptonDockableNavigator.Button.CloseButtonDisplay = ComponentFactory.Krypton.Navigator.ButtonDisplay.Logic;
-            this.MainFormKryptonDockableNavigator.Button.ContextButtonAction = ComponentFactory.Krypton.Navigator.ContextButtonAction.SelectPage;
-            this.MainFormKryptonDockableNavigator.Button.ContextButtonDisplay = ComponentFactory.Krypton.Navigator.ButtonDisplay.Logic;
-            this.MainFormKryptonDockableNavigator.Button.ContextMenuMapImage = ComponentFactory.Krypton.Navigator.MapKryptonPageImage.Small;
-            this.MainFormKryptonDockableNavigator.Button.ContextMenuMapText = ComponentFactory.Krypton.Navigator.MapKryptonPageText.TextTitle;
-            this.MainFormKryptonDockableNavigator.Button.NextButtonAction = ComponentFactory.Krypton.Navigator.DirectionButtonAction.ModeAppropriateAction;
-            this.MainFormKryptonDockableNavigator.Button.NextButtonDisplay = ComponentFactory.Krypton.Navigator.ButtonDisplay.Logic;
-            this.MainFormKryptonDockableNavigator.Button.PreviousButtonAction = ComponentFactory.Krypton.Navigator.DirectionButtonAction.ModeAppropriateAction;
-            this.MainFormKryptonDockableNavigator.Button.PreviousButtonDisplay = ComponentFactory.Krypton.Navigator.ButtonDisplay.Logic;
             this.MainFormKryptonDockableNavigator.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MainFormKryptonDockableNavigator.Location = new System.Drawing.Point(0, 57);
             this.MainFormKryptonDockableNavigator.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MainFormKryptonDockableNavigator.Name = "MainFormKryptonDockableNavigator";
-            this.MainFormKryptonDockableNavigator.NavigatorMode = ComponentFactory.Krypton.Navigator.NavigatorMode.BarTabGroup;
             this.MainFormKryptonDockableNavigator.Size = new System.Drawing.Size(1150, 585);
             this.MainFormKryptonDockableNavigator.TabIndex = 9;
             this.MainFormKryptonDockableNavigator.Text = "kryptonDockableNavigator1";
@@ -183,7 +168,6 @@
             this.MainMenuStrip = this.PrincipalMenuStrip;
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "MainForm";
-            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Administración de Costo de Producción";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
