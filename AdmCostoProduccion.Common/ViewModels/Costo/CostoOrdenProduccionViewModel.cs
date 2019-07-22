@@ -1,5 +1,5 @@
 ﻿using AdmCostoProduccion.Common.Classes;
-using AdmCostoProduccion.Common.Models.Costo;
+using AdmCostoProduccion.Common.Models.Contabilidad;
 using System;
 using System.Linq;
 using System.Text;

@@ -87,19 +87,17 @@
     <Compile Include="Models\Almacen\TipoDespacho.cs" />
     <Compile Include="Models\Almacen\TipoMovimiento.cs" />
     <Compile Include="Models\Almacen\TipoRecepcion.cs" />
-    <Compile Include="Models\Costo\ConfiguracionValorizacion.cs" />
-    <Compile Include="Models\Costo\CostoOrdenProduccion.cs" />
-    <Compile Include="Models\Costo\CostoProduccion.cs" />
-    <Compile Include="Models\Costo\DistribucionValorizacion.cs" />
-    <Compile Include="Models\Costo\MetodoValorizacion.cs" />
+    <Compile Include="Models\Contabilidad\ConfiguracionValorizacion.cs" />
+    <Compile Include="Models\Contabilidad\CostoOrdenProduccion.cs" />
+    <Compile Include="Models\Contabilidad\CostoProduccion.cs" />
+    <Compile Include="Models\Contabilidad\DistribucionValorizacion.cs" />
+    <Compile Include="Models\Contabilidad\MetodoValorizacion.cs" />
     <Compile Include="Models\Maestro\Almacen.cs" />
     <Compile Include="Models\Maestro\CentroLogistico.cs" />
-    <Compile Include="Models\Maestro\Mercaderia.cs" />
-    <Compile Include="Models\Maestro\Mes.cs" />
-    <Compile Include="Models\Maestro\MetodoValorizacion.cs" />
+    <Compile Include="Models\Inventario\Mercaderia.cs" />
     <Compile Include="Models\Maestro\PlantaFabricacion.cs" />
-    <Compile Include="Models\Maestro\TipoMercaderia.cs" />
-    <Compile Include="Models\Maestro\UnidadMedida.cs" />
+    <Compile Include="Models\Inventario\TipoMercaderia.cs" />
+    <Compile Include="Models\Inventario\UnidadMedida.cs" />
     <Compile Include="Models\Produccion\OrdenProduccion.cs" />
     <Compile Include="Models\Produccion\OrdenProduccionInsumo.cs" />
     <Compile Include="Models\Produccion\ProcedimientoProduccion.cs" />
@@ -112,6 +110,12 @@
     </Compile>
     <Compile Include="ViewModels\Costo\CostoOrdenProduccionViewModel.cs" />
     <Compile Include="ViewModels\Costo\CostoProduccionViewModel.cs" />
+    <Compile Include="ViewModels\Inventario\MercaderiaViewModel.cs" />
+    <Compile Include="ViewModels\Inventario\TipoDespachoViewModel.cs" />
+    <Compile Include="ViewModels\Inventario\TipoMercaderiaViewModel.cs" />
+    <Compile Include="ViewModels\Inventario\TipoMovimientoViewModel.cs" />
+    <Compile Include="ViewModels\Inventario\TipoRecepcionViewModel.cs" />
+    <Compile Include="ViewModels\Inventario\UnidadMedidaViewModel.cs" />
     <Compile Include="ViewModels\Maestro\AlmacenViewModel.cs" />
     <Compile Include="ViewModels\Maestro\CentroLogisticoViewModel.cs" />
     <Compile Include="ViewModels\Maestro\PlantaFabricacionViewModel.cs" />
@@ -122,7 +126,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Models\Contabilidad\" />
     <Folder Include="Properties\DataSources\" />
   </ItemGroup>
   <ItemGroup>

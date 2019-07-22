@@ -156,6 +156,78 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Mantenimiento\Inventario\Mercaderia\LstMercaderiaForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Mantenimiento\Inventario\Mercaderia\LstMercaderiaForm.Designer.cs">
+      <DependentUpon>LstMercaderiaForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mantenimiento\Inventario\Mercaderia\MntMercaderiaForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Mantenimiento\Inventario\Mercaderia\MntMercaderiaForm.Designer.cs">
+      <DependentUpon>MntMercaderiaForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mantenimiento\Inventario\TipoDespacho\LstTipoDespachoForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Mantenimiento\Inventario\TipoDespacho\LstTipoDespachoForm.Designer.cs">
+      <DependentUpon>LstTipoDespachoForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mantenimiento\Inventario\TipoDespacho\MntTipoDespachoForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Mantenimiento\Inventario\TipoDespacho\MntTipoDespachoForm.Designer.cs">
+      <DependentUpon>MntTipoDespachoForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mantenimiento\Inventario\TipoMercaderia\LstTipoMercaderiaForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Mantenimiento\Inventario\TipoMercaderia\LstTipoMercaderiaForm.Designer.cs">
+      <DependentUpon>LstTipoMercaderiaForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mantenimiento\Inventario\TipoMercaderia\MntTipoMercaderiaForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Mantenimiento\Inventario\TipoMercaderia\MntTipoMercaderiaForm.Designer.cs">
+      <DependentUpon>MntTipoMercaderiaForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mantenimiento\Inventario\TipoMovimiento\LstTipoMovimientoForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Mantenimiento\Inventario\TipoMovimiento\LstTipoMovimientoForm.Designer.cs">
+      <DependentUpon>LstTipoMovimientoForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mantenimiento\Inventario\TipoMovimiento\MntTipoMovimientoForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Mantenimiento\Inventario\TipoMovimiento\MntTipoMovimientoForm.Designer.cs">
+      <DependentUpon>MntTipoMovimientoForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mantenimiento\Inventario\TipoRecepcion\LstTipoRecepcionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Mantenimiento\Inventario\TipoRecepcion\LstTipoRecepcionForm.Designer.cs">
+      <DependentUpon>LstTipoRecepcionForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mantenimiento\Inventario\TipoRecepcion\MntTipoRecepcionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Mantenimiento\Inventario\TipoRecepcion\MntTipoRecepcionForm.Designer.cs">
+      <DependentUpon>MntTipoRecepcionForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mantenimiento\Inventario\UnidadMedida\LstUnidadMedidaForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Mantenimiento\Inventario\UnidadMedida\LstUnidadMedidaForm.Designer.cs">
+      <DependentUpon>LstUnidadMedidaForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mantenimiento\Inventario\UnidadMedida\MntUnidadMedidaForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Mantenimiento\Inventario\UnidadMedida\MntUnidadMedidaForm.Designer.cs">
+      <DependentUpon>MntUnidadMedidaForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Maestro\Almacen\LstAlmacenForm.resx">
@@ -179,6 +251,30 @@
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Mantenimiento\Inventario\Mercaderia\LstMercaderiaForm.resx">
+      <DependentUpon>LstMercaderiaForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mantenimiento\Inventario\Mercaderia\MntMercaderiaForm.resx">
+      <DependentUpon>MntMercaderiaForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mantenimiento\Inventario\TipoDespacho\LstTipoDespachoForm.resx">
+      <DependentUpon>LstTipoDespachoForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mantenimiento\Inventario\TipoDespacho\MntTipoDespachoForm.resx">
+      <DependentUpon>MntTipoDespachoForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mantenimiento\Inventario\TipoMercaderia\LstTipoMercaderiaForm.resx">
+      <DependentUpon>LstTipoMercaderiaForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mantenimiento\Inventario\TipoMercaderia\MntTipoMercaderiaForm.resx">
+      <DependentUpon>MntTipoMercaderiaForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mantenimiento\Inventario\UnidadMedida\LstUnidadMedidaForm.resx">
+      <DependentUpon>LstUnidadMedidaForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mantenimiento\Inventario\UnidadMedida\MntUnidadMedidaForm.resx">
+      <DependentUpon>MntUnidadMedidaForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -193,6 +289,10 @@
     <None Include="packages.config" />
     <None Include="Properties\app.manifest" />
     <None Include="Properties\DataSources\AdmCostoProduccion.Common.Models.Maestro.CentroLogistico.datasource" />
+    <None Include="Properties\DataSources\AdmCostoProduccion.Common.ViewModels.Inventario.MercaderiaViewModel.datasource" />
+    <None Include="Properties\DataSources\AdmCostoProduccion.Common.ViewModels.Inventario.TipoDespachoViewModel.datasource" />
+    <None Include="Properties\DataSources\AdmCostoProduccion.Common.ViewModels.Inventario.TipoMercaderiaViewModel.datasource" />
+    <None Include="Properties\DataSources\AdmCostoProduccion.Common.ViewModels.Inventario.UnidadMedidaViewModel.datasource" />
     <None Include="Properties\DataSources\AdmCostoProduccion.Common.ViewModels.Maestro.AlmacenViewModel.datasource" />
     <None Include="Properties\DataSources\AdmCostoProduccion.Common.ViewModels.Maestro.CentroLogisticoViewModel.datasource" />
     <None Include="Properties\DataSources\AdmCostoProduccion.Common.ViewModels.Maestro.PlantaFabricacionViewModel.datasource" />

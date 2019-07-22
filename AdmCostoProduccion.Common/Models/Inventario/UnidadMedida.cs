@@ -7,34 +7,31 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace AdmCostoProduccion.Common.Models.Maestro
+namespace AdmCostoProduccion.Common.Models.Inventario
 {
-    public class Mercaderia : EntityBase
+    public class UnidadMedida : EntityBase
     {
         #region Constructor
-        public Mercaderia() : base()
+        public UnidadMedida() : base()
         {
         }
         #endregion
 
         #region Propiedades
         [Key]
-        public int MercaderiaId { get; set; }
+        public int UnidadMedidaId { get; set; }
 
         public string Codigo { get; set; }
 
         public string Nombre { get; set; }
 
         public string Descripcion { get; set; }
+
+        public string Simbolo { get; set; }
+
         #endregion
 
         #region Foraneas
-
-        public int TipoMercaderiaId { get; set; }
-
-        
-        public virtual TipoMercaderia TipoMercaderia { get; set; }
-
         #endregion
 
         #region Relacionales
@@ -50,9 +47,6 @@ namespace AdmCostoProduccion.Common.Models.Maestro
 
         
         public virtual ICollection<OrdenProduccionInsumo> OrdenProduccionInsumos { get; set; }
-
-        
-        public virtual ICollection<OrdenServicio> OrdenServicios { get; set; }
 
         
         public virtual ICollection<RecepcionDetalle> RecepcionDetalles { get; set; }

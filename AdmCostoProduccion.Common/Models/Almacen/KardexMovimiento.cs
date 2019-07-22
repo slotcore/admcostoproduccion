@@ -1,6 +1,6 @@
 ﻿using AdmCostoProduccion.Common.Classes;
-using AdmCostoProduccion.Common.Models.Costo;
-using AdmCostoProduccion.Common.Models.Maestro;
+using AdmCostoProduccion.Common.Models.Contabilidad;
+using AdmCostoProduccion.Common.Models.Inventario;
 
 using System;
 using System.Collections.Generic;

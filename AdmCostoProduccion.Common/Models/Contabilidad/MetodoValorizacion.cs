@@ -5,19 +5,19 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace AdmCostoProduccion.Common.Models.Costo
+namespace AdmCostoProduccion.Common.Models.Contabilidad
 {
-    public class DistribucionValorizacion : EntityBase
+    public class MetodoValorizacion : EntityBase
     {
         #region Constructor
-        public DistribucionValorizacion() : base()
+        public MetodoValorizacion() : base()
         {
         }
         #endregion
 
         #region Propiedades
         [Key]
-        public int DistribucionValorizacionId { get; set; }
+        public int MetodoValorizacionId { get; set; }
 
         public string Codigo { get; set; }
 

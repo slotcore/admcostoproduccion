@@ -20,6 +20,8 @@ namespace AdmCostoProduccion.Common.ViewModels.Maestro
             _Codigo = model.Codigo;
             _Nombre = model.Nombre;
             _Descripcion = model.Descripcion;
+            _CentroLogisticoId = model.CentroLogisticoId;
+            _CentroLogistico = model.CentroLogistico.Nombre;
         }
 
         #endregion

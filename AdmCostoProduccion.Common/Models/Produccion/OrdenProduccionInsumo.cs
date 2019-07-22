@@ -1,6 +1,6 @@
 ﻿using AdmCostoProduccion.Common.Classes;
 using AdmCostoProduccion.Common.Models.Almacen;
-using AdmCostoProduccion.Common.Models.Maestro;
+using AdmCostoProduccion.Common.Models.Inventario;
 
 using System;
 using System.Collections.Generic;

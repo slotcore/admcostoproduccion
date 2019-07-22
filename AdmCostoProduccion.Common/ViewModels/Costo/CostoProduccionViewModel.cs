@@ -1,5 +1,5 @@
 ﻿using AdmCostoProduccion.Common.Classes;
-using AdmCostoProduccion.Common.Models.Costo;
+using AdmCostoProduccion.Common.Models.Contabilidad;
 using System;
 
 namespace AdmCostoProduccion.Common.ViewModels.Costo
@@ -13,7 +13,7 @@ namespace AdmCostoProduccion.Common.ViewModels.Costo
         {
         }
 
-        public CostoProduccionViewModel(Models.Costo.CostoProduccion model)
+        public CostoProduccionViewModel(CostoProduccion model)
         {
             _AlmacenId = model.AlmacenId;
             _ConfiguracionValorizacionId = model.ConfiguracionValorizacionId;

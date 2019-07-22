@@ -12,6 +12,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using AdmCostoProduccion.Windows.Maestro.PlantaFabricacion;
+using AdmCostoProduccion.Windows.Mantenimiento.Inventario.UnidadMedida;
+using AdmCostoProduccion.Windows.Mantenimiento.Inventario.TipoMercaderia;
+using AdmCostoProduccion.Windows.Mantenimiento.Inventario.Mercaderia;
+using AdmCostoProduccion.Windows.Mantenimiento.Inventario.TipoMovimiento;
+using AdmCostoProduccion.Windows.Mantenimiento.Inventario.TipoRecepcion;
+using AdmCostoProduccion.Windows.Mantenimiento.Inventario.TipoDespacho;
 
 namespace AdmCostoProduccion.Windows
 {
@@ -90,6 +96,24 @@ namespace AdmCostoProduccion.Windows
             form.Show();
         }
 
+        private void TipoMercaderiaMenuItem_Click(object sender, EventArgs e)
+        {
+            var form = new LstTipoMercaderiaForm
+            {
+                MdiParent = this
+            };
+            form.Show();
+        }
+
+        private void UnidadMedidaMenuItem_Click(object sender, EventArgs e)
+        {
+            var form = new LstUnidadMedidaForm
+            {
+                MdiParent = this
+            };
+            form.Show();
+        }
+
         private void SalirMenuItem_Click(object sender, EventArgs e)
         {
             Salir();
@@ -103,6 +127,42 @@ namespace AdmCostoProduccion.Windows
         private void Salir()
         {
             this.Close();
+        }
+
+        private void MercaderíaMenuItem_Click(object sender, EventArgs e)
+        {
+            var form = new LstMercaderiaForm
+            {
+                MdiParent = this
+            };
+            form.Show();
+        }
+
+        private void TipoMovimientoMenuItem_Click(object sender, EventArgs e)
+        {
+            var form = new LstTipoMovimientoForm
+            {
+                MdiParent = this
+            };
+            form.Show();
+        }
+
+        private void TipoRecepcionMenuItem_Click(object sender, EventArgs e)
+        {
+            var form = new LstTipoRecepcionForm
+            {
+                MdiParent = this
+            };
+            form.Show();
+        }
+
+        private void TipoDespachoMenuItem_Click(object sender, EventArgs e)
+        {
+            var form = new LstTipoDespachoForm
+            {
+                MdiParent = this
+            };
+            form.Show();
         }
     }
 }

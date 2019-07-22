@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace AdmCostoProduccion.Common.Models.Costo
+namespace AdmCostoProduccion.Common.Models.Contabilidad
 {
     public class CostoProduccion : EntityBase
     {

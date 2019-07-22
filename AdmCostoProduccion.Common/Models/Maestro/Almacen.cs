@@ -1,6 +1,6 @@
 ﻿using AdmCostoProduccion.Common.Classes;
 using AdmCostoProduccion.Common.Models.Almacen;
-
+using AdmCostoProduccion.Common.Models.Contabilidad;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -38,7 +38,7 @@ namespace AdmCostoProduccion.Common.Models.Maestro
         #region Relacionales
 
         
-        public virtual ICollection<Models.Costo.CostoProduccion> CostoProduccions { get; set; }
+        public virtual ICollection<CostoProduccion> CostoProduccions { get; set; }
 
         
         public virtual ICollection<Kardex> Kardexs { get; set; }

@@ -74,9 +74,9 @@ namespace $LibraryName$.ViewModels.$EsquemaName$
         public $Model$ViewModel($Model$ model)
         {
             $Model$Id = model.$Model$Id;
-            _$Propiedad1$ = model.$Propiedad1$;
-            _$Propiedad2$ = model.$Propiedad2$;
-            _$Propiedad3$ = model.$Propiedad3$;
+            $Propiedad1$ = model.$Propiedad1$;
+            $Propiedad2$ = model.$Propiedad2$;
+            $Propiedad3$ = model.$Propiedad3$;
         }
         
         #endregion
@@ -167,17 +167,12 @@ namespace $LibraryName$.ViewModels.$EsquemaName$
 
         #region Metodos Publicos
 
-        public $Model$ViewModel GetCopy()
+        public void CopyTo(ref $Model$ViewModel viewModel)
         {
-            $Model$ViewModel viewModel = new $Model$ViewModel
-            {
-                $Model$Id = _$Model$Id,
-                $Propiedad1$ = _$Propiedad1$,
-                $Propiedad2$ = _$Propiedad2$,
-                $Propiedad3$ = _$Propiedad3$
-            };
-
-            return viewModel;
+            viewModel.$Model$Id = _$Model$Id;
+            viewModel.$Propiedad1$ = _$Propiedad1$;
+            viewModel.$Propiedad2$ = _$Propiedad2$;
+            viewModel.$Propiedad3$ = _$Propiedad3$;
         }
 
         public $Model$ ToModel()

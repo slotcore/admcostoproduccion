@@ -1,0 +1,141 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>FormMantenimiento</Title>
+      <Author>Jose Chacon</Author>
+      <Description>Define un Modelo con EntityFramework</Description>
+      <Shortcut>cstprdformmnt</Shortcut>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal>
+          <ID>Model</ID>
+          <ToolTip>Reemplazar por el Nombre del modelo</ToolTip>
+          <Default>Model</Default>
+        </Literal>
+        <Literal>
+          <ID>DataSourceName</ID>
+          <ToolTip>Reemplazar por el Nombre del modelo</ToolTip>
+          <Default>DataSourceName</Default>
+        </Literal>
+        <Literal>
+          <ID>LibraryName</ID>
+          <ToolTip>Nombre del esquema</ToolTip>
+          <Default>AdmCostoProduccion.Common</Default>
+        </Literal>
+        <Literal>
+          <ID>EsquemaName</ID>
+          <ToolTip>Nombre del esquema</ToolTip>
+          <Default>Costo</Default>
+        </Literal>
+      </Declarations>
+      <Code Language="csharp">
+        <![CDATA[using $LibraryName$.Classes;
+using $LibraryName$.Data;
+using $LibraryName$.ViewModels.$EsquemaName$;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Data.Entity;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace AdmCostoProduccion.Windows.Mantenimiento.$EsquemaName$.$Model$
+{
+    public partial class Mnt$Model$Form : Form
+    {
+        private readonly ApplicationDbContext Context = new ApplicationDbContext();
+        private $Model$ViewModel ViewModel = new $Model$ViewModel();
+
+        #region Propiedades
+        public bool IsNew { get; set; }
+        public ObservableListSource<$Model$ViewModel> ViewModelList { get; set; }
+        #endregion
+
+        #region Constructor
+        public Mnt$Model$Form($Model$ViewModel viewModel
+            , ObservableListSource<$Model$ViewModel> viewModelList)
+        {
+            InitializeComponent();
+            IsNew = false;
+            viewModel.CopyTo(ref ViewModel);
+            ViewModelList = viewModelList;
+            $DataSourceName$BindingSource.DataSource = ViewModel;
+        }
+
+        public Mnt$Model$Form(ObservableListSource<$Model$ViewModel> viewModelList)
+        {
+            InitializeComponent();
+            IsNew = true;
+            ViewModelList = viewModelList;
+            $DataSourceName$BindingSource.DataSource = ViewModel;
+        }
+        #endregion
+
+        #region Eventos de Formulario
+        private void GrabarButton_Click(object sender, EventArgs e)
+        {
+            Grabar();
+        }
+
+        private void CancelarButton_Click(object sender, EventArgs e)
+        {
+            $DataSourceName$BindingSource.CancelEdit();
+            this.Close();
+        }
+        #endregion
+
+        #region Eventos Privados
+
+        private void Grabar()
+        {
+            try
+            {
+                Cursor = Cursors.WaitCursor;
+                $DataSourceName$BindingSource.EndEdit();
+
+                var model = ViewModel.ToModel();
+                if (IsNew)
+                {
+                    Context.$Model$s.Add(model);
+                    Context.SaveChanges();
+                    //
+                    ViewModel.$Model$Id = model.$Model$Id;
+                    ViewModelList.Add(ViewModel);
+                }
+                else
+                {
+                    Context.Entry(model).State = EntityState.Modified;
+                    Context.SaveChanges();
+                    //
+                    var viewModel = ViewModelList
+                        .Where(o => o.$Model$Id == ViewModel.$Model$Id)
+                        .FirstOrDefault();
+                    ViewModel.CopyTo(ref viewModel);
+                }
+                this.Close();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(string.Format("Ocurrió un error al grabar, mensaje de error: {0}", ex.Message)
+                    , "Grabar", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                Cursor = Cursors.Default;
+            }
+        }
+        #endregion
+    }
+}
+]]>
+      </Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

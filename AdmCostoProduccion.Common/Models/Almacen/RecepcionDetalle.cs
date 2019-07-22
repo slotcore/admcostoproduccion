@@ -1,5 +1,5 @@
 ﻿using AdmCostoProduccion.Common.Classes;
-using AdmCostoProduccion.Common.Models.Maestro;
+using AdmCostoProduccion.Common.Models.Inventario;
 using AdmCostoProduccion.Common.Models.Produccion;
 
 using System;

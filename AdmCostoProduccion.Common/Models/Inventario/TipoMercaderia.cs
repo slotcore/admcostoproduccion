@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace AdmCostoProduccion.Common.Models.Maestro
+namespace AdmCostoProduccion.Common.Models.Inventario
 {
     public class TipoMercaderia : EntityBase
     {
