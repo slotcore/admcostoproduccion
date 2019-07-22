@@ -1,7 +1,6 @@
 ﻿using AdmCostoProduccion.Common.Classes;
 using AdmCostoProduccion.Common.Data;
 using AdmCostoProduccion.Common.ViewModels.Maestro;
-using ComponentFactory.Krypton.Toolkit;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,19 +11,19 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace AdmCostoProduccion.Windows.Maestro.CentroLogistico
+namespace AdmCostoProduccion.Windows.Maestro.PlantaFabricacion
 {
-    public partial class LstCentroLogisticoForm : Form
+    public partial class LstPlantaFabricacionForm : Form
     {
-        private ObservableListSource<CentroLogisticoViewModel> _CentroLogisticoViewModels = new ObservableListSource<CentroLogisticoViewModel>();
+        private ObservableListSource<PlantaFabricacionViewModel> _PlantaFabricacionViewModels = new ObservableListSource<PlantaFabricacionViewModel>();
 
         #region Constructor
-        public LstCentroLogisticoForm()
+        public LstPlantaFabricacionForm()
         {
             InitializeComponent();
 
-            _CentroLogisticoViewModels = new ObservableListSource<CentroLogisticoViewModel>();
-            centroLogisticoViewModelBindingSource.DataSource = _CentroLogisticoViewModels;
+            _PlantaFabricacionViewModels = new ObservableListSource<PlantaFabricacionViewModel>();
+            plantaFabricacionViewModelBindingSource.DataSource = _PlantaFabricacionViewModels;
         }
         #endregion
 
@@ -65,7 +64,7 @@ namespace AdmCostoProduccion.Windows.Maestro.CentroLogistico
             {
                 Buscar();
             }
-        } 
+        }
         #endregion
 
         #region Eventos Privados
@@ -73,7 +72,7 @@ namespace AdmCostoProduccion.Windows.Maestro.CentroLogistico
         {
             try
             {
-                var frm = new MntCentroLogisticoForm(_CentroLogisticoViewModels);
+                var frm = new MntPlantaFabricacionForm(_PlantaFabricacionViewModels);
                 frm.ShowDialog();
             }
             catch (Exception ex)
@@ -87,8 +86,8 @@ namespace AdmCostoProduccion.Windows.Maestro.CentroLogistico
         {
             try
             {
-                var _CentroLogistico = (CentroLogisticoViewModel)centroLogisticoViewModelBindingSource.Current;
-                var frm = new MntCentroLogisticoForm(_CentroLogistico, _CentroLogisticoViewModels);
+                var _PlantaFabricacion = (PlantaFabricacionViewModel)plantaFabricacionViewModelBindingSource.Current;
+                var frm = new MntPlantaFabricacionForm(_PlantaFabricacion, _PlantaFabricacionViewModels);
                 frm.ShowDialog();
             }
             catch (Exception ex)
@@ -106,13 +105,13 @@ namespace AdmCostoProduccion.Windows.Maestro.CentroLogistico
                 {
                     Cursor = Cursors.WaitCursor;
                     var _context = new ApplicationDbContext();
-                    var _CentroLogisticoViewModel = (CentroLogisticoViewModel)centroLogisticoViewModelBindingSource.Current;
-                    var _CentroLogistico = _context.CentroLogisticos
-                        .Where(o => o.CentroLogisticoId == _CentroLogisticoViewModel.CentroLogisticoId)
+                    var _PlantaFabricacionViewModel = (PlantaFabricacionViewModel)plantaFabricacionViewModelBindingSource.Current;
+                    var _PlantaFabricacion = _context.PlantaFabricacions
+                        .Where(o => o.PlantaFabricacionId == _PlantaFabricacionViewModel.PlantaFabricacionId)
                         .FirstOrDefault();
-                    _context.CentroLogisticos.Remove(_CentroLogistico);
+                    _context.PlantaFabricacions.Remove(_PlantaFabricacion);
                     _context.SaveChanges();
-                    _CentroLogisticoViewModels.Remove(_CentroLogisticoViewModel);
+                    _PlantaFabricacionViewModels.Remove(_PlantaFabricacionViewModel);
                 }
             }
             catch (Exception ex)
@@ -131,11 +130,11 @@ namespace AdmCostoProduccion.Windows.Maestro.CentroLogistico
             try
             {
                 Cursor = Cursors.WaitCursor;
-                var centroLogisticos = new ApplicationDbContext().CentroLogisticos.ToList();
-                _CentroLogisticoViewModels.Clear();
-                foreach (var centroLogistico in centroLogisticos)
+                var plantaFabricacions = new ApplicationDbContext().PlantaFabricacions.ToList();
+                _PlantaFabricacionViewModels.Clear();
+                foreach (var plantaFabricacion in plantaFabricacions)
                 {
-                    _CentroLogisticoViewModels.Add(new CentroLogisticoViewModel(centroLogistico));
+                    _PlantaFabricacionViewModels.Add(new PlantaFabricacionViewModel(plantaFabricacion));
                 }
             }
             catch (Exception ex)
@@ -155,15 +154,15 @@ namespace AdmCostoProduccion.Windows.Maestro.CentroLogistico
             {
                 Cursor = Cursors.WaitCursor;
                 var cadenaBusqueda = BusquedaTextBox.Text.Trim().ToUpper();
-                var centroLogisticos = new ApplicationDbContext().CentroLogisticos.Where(o =>
+                var plantaFabricacions = new ApplicationDbContext().PlantaFabricacions.Where(o =>
                                 o.Codigo.ToUpper().Contains(cadenaBusqueda) ||
                                 o.Nombre.ToUpper().Contains(cadenaBusqueda) ||
                                 o.Descripcion.ToUpper().Contains(cadenaBusqueda)).ToList();
 
-                _CentroLogisticoViewModels.Clear();
-                foreach (var centroLogistico in centroLogisticos)
+                _PlantaFabricacionViewModels.Clear();
+                foreach (var plantaFabricacion in plantaFabricacions)
                 {
-                    _CentroLogisticoViewModels.Add(new CentroLogisticoViewModel(centroLogistico));
+                    _PlantaFabricacionViewModels.Add(new PlantaFabricacionViewModel(plantaFabricacion));
                 }
             }
             catch (Exception ex)
@@ -175,7 +174,7 @@ namespace AdmCostoProduccion.Windows.Maestro.CentroLogistico
             {
                 Cursor = Cursors.Default;
             }
-        } 
+        }
         #endregion
     }
 }

@@ -18,19 +18,21 @@ namespace AdmCostoProduccion.Windows.Maestro.CentroLogistico
 {
     public partial class MntCentroLogisticoForm : KryptonForm
     {
-        private ApplicationDbContext Context = new ApplicationDbContext();
+        private readonly ApplicationDbContext Context = new ApplicationDbContext();
+        
+        #region Propiedades
         public bool IsNew { get; set; }
         public CentroLogisticoViewModel CentroLogisticoViewModel { get; set; }
         public ObservableListSource<CentroLogisticoViewModel> CentroLogisticoViewModels { get; set; }
-        public CentroLogisticoViewModel OldCentroLogisticoViewModel { get; set; }
+        #endregion
 
+        #region Constructor
         public MntCentroLogisticoForm(CentroLogisticoViewModel CentroLogisticoViewModel
             , ObservableListSource<CentroLogisticoViewModel> CentroLogisticoViewModels)
         {
             InitializeComponent();
             IsNew = false;
-            this.CentroLogisticoViewModel = new CentroLogisticoViewModel(CentroLogisticoViewModel);
-            this.OldCentroLogisticoViewModel = CentroLogisticoViewModel;
+            this.CentroLogisticoViewModel = CentroLogisticoViewModel.GetCopy();
             this.CentroLogisticoViewModels = CentroLogisticoViewModels;
             centroLogisticoViewModelBindingSource.DataSource = this.CentroLogisticoViewModel;
         }
@@ -43,8 +45,23 @@ namespace AdmCostoProduccion.Windows.Maestro.CentroLogistico
             this.CentroLogisticoViewModels = CentroLogisticoViewModels;
             centroLogisticoViewModelBindingSource.DataSource = CentroLogisticoViewModel;
         }
+        #endregion
 
+        #region Eventos de Formulario
         private void GrabarButton_Click(object sender, EventArgs e)
+        {
+            Grabar();
+        }
+
+        private void CancelarButton_Click(object sender, EventArgs e)
+        {
+            centroLogisticoViewModelBindingSource.CancelEdit();
+            this.Close();
+        }
+        #endregion
+
+        #region Eventos Privados
+        private void Grabar()
         {
             try
             {
@@ -58,18 +75,23 @@ namespace AdmCostoProduccion.Windows.Maestro.CentroLogistico
                 };
                 if (IsNew)
                 {
-                    CentroLogisticoViewModels.Add(CentroLogisticoViewModel);
                     Context.CentroLogisticos.Add(centroLogistico);
+                    Context.SaveChanges();
+                    //
+                    CentroLogisticoViewModels.Add(CentroLogisticoViewModel);
                 }
                 else
                 {
-                    OldCentroLogisticoViewModel.Codigo = CentroLogisticoViewModel.Codigo;
-                    OldCentroLogisticoViewModel.Nombre = CentroLogisticoViewModel.Nombre;
-                    OldCentroLogisticoViewModel.Descripcion = CentroLogisticoViewModel.Descripcion;
                     Context.Entry(centroLogistico).State = EntityState.Modified;
+                    Context.SaveChanges();
+                    //
+                    var _CentroLogisticoViewModel = CentroLogisticoViewModels
+                        .Where(o => o.CentroLogisticoId == CentroLogisticoViewModel.CentroLogisticoId)
+                        .FirstOrDefault();
+                    _CentroLogisticoViewModel.Codigo = CentroLogisticoViewModel.Codigo;
+                    _CentroLogisticoViewModel.Nombre = CentroLogisticoViewModel.Nombre;
+                    _CentroLogisticoViewModel.Descripcion = CentroLogisticoViewModel.Descripcion;
                 }
-                Context.SaveChanges();
-                MessageBox.Show("Se grabó el registro correctamente", "Grabar", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Close();
 
             }
@@ -78,12 +100,7 @@ namespace AdmCostoProduccion.Windows.Maestro.CentroLogistico
                 MessageBox.Show(string.Format("Ocurrió un error al grabar, mensaje de error: {0}", ex.Message)
                     , "Grabar", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
-
-        private void CancelarButton_Click(object sender, EventArgs e)
-        {
-            centroLogisticoViewModelBindingSource.CancelEdit();
-            this.Close();
-        }
+        } 
+        #endregion
     }
 }

@@ -11,6 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using AdmCostoProduccion.Windows.Maestro.PlantaFabricacion;
 
 namespace AdmCostoProduccion.Windows
 {
@@ -74,6 +75,15 @@ namespace AdmCostoProduccion.Windows
         private void AlmacenMenuItem_Click(object sender, EventArgs e)
         {
             var form = new LstAlmacenForm
+            {
+                MdiParent = this
+            };
+            form.Show();
+        }
+
+        private void PlantaFabricacionMenuItem_Click(object sender, EventArgs e)
+        {
+            var form = new LstPlantaFabricacionForm
             {
                 MdiParent = this
             };

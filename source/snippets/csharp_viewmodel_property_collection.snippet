@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>ViewModelPropertyCollection</Title>
+      <Author>Jose Chacon</Author>
+      <Description>Define una Propiedad coleccion para un objeto.</Description>
+      <Shortcut>cstprdvwmdlpropertycllctn</Shortcut>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal>
+          <ID>EntityName</ID>
+          <ToolTip>Reemplazar por el Nombre de la propiedad</ToolTip>
+          <Default>EntityName</Default>
+        </Literal>
+      </Declarations>
+      <Code Language="csharp">
+        <![CDATA[   
+        private ObservableListSource<$EntityName$> _$EntityName$s = new ObservableListSource<$EntityName$>();
+        
+        public virtual ObservableListSource<$EntityName$> $EntityName$s 
+        { 
+            get 
+            { 
+                return _$EntityName$s; 
+            } 
+        }]]>
+      </Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

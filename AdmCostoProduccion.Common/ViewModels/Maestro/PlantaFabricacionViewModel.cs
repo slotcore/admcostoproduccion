@@ -6,29 +6,27 @@ using System.Text;
 
 namespace AdmCostoProduccion.Common.ViewModels.Maestro
 {
-    public class CentroLogisticoViewModel : ObjectBase
+    public class PlantaFabricacionViewModel : ObjectBase
     {
         #region Constructor
 
-        public CentroLogisticoViewModel()
+        public PlantaFabricacionViewModel()
         {
-
         }
-        public CentroLogisticoViewModel(CentroLogistico model)
+
+        public PlantaFabricacionViewModel(PlantaFabricacion model)
         {
-            CentroLogisticoId = model.CentroLogisticoId;
-            Codigo = model.Codigo;
-            Nombre = model.Nombre;
-            Descripcion = model.Descripcion;
-            foreach (var almacen in model.Almacens)
-            {
-                Almacens.Add(new AlmacenViewModel(almacen));
-            }
+            _PlantaFabricacionId = model.PlantaFabricacionId;
+            _Codigo = model.Codigo;
+            _Nombre = model.Nombre;
+            _Descripcion = model.Descripcion;
         }
 
         #endregion
 
         #region Propiedades privadas
+
+        private int _PlantaFabricacionId;
 
         private int _CentroLogisticoId;
 
@@ -38,11 +36,28 @@ namespace AdmCostoProduccion.Common.ViewModels.Maestro
 
         private string _Descripcion;
 
-        private ObservableListSource<AlmacenViewModel> _Almacens = new ObservableListSource<AlmacenViewModel>();
+        private string _CentroLogistico;
 
         #endregion
 
         #region Propiedades publicas
+
+        public int PlantaFabricacionId
+        {
+            get
+            {
+                return _PlantaFabricacionId;
+            }
+
+            set
+            {
+                if (value != _PlantaFabricacionId)
+                {
+                    _PlantaFabricacionId = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
 
         public int CentroLogisticoId
         {
@@ -112,17 +127,18 @@ namespace AdmCostoProduccion.Common.ViewModels.Maestro
             }
         }
 
-        public virtual ObservableListSource<AlmacenViewModel> Almacens {
+        public string CentroLogistico
+        {
             get
             {
-                return _Almacens;
+                return _CentroLogistico;
             }
 
             set
             {
-                if (value != _Almacens)
+                if (value != _CentroLogistico)
                 {
-                    _Almacens = value;
+                    _CentroLogistico = value;
                     NotifyPropertyChanged();
                 }
             }
@@ -130,33 +146,30 @@ namespace AdmCostoProduccion.Common.ViewModels.Maestro
 
         #endregion
 
-        #region Metodos
+        #region Metodos Publicos
 
-        public CentroLogisticoViewModel GetCopy()
+        public void CopyTo(ref PlantaFabricacionViewModel viewModel)
         {
-            CentroLogisticoViewModel viewModel = new CentroLogisticoViewModel
+            viewModel.PlantaFabricacionId = _PlantaFabricacionId;
+            viewModel.Codigo = _Codigo;
+            viewModel.Nombre = _Nombre;
+            viewModel.Descripcion = _Descripcion;
+            viewModel.CentroLogistico = _CentroLogistico;
+            viewModel.CentroLogisticoId = _CentroLogisticoId;
+        }
+
+        public PlantaFabricacion ToModel()
+        {
+            PlantaFabricacion model = new PlantaFabricacion
             {
-                CentroLogisticoId = _CentroLogisticoId,
+                PlantaFabricacionId = _PlantaFabricacionId,
                 Codigo = _Codigo,
                 Nombre = _Nombre,
                 Descripcion = _Descripcion,
-                Almacens = _Almacens
+                CentroLogisticoId = _CentroLogisticoId
             };
 
-            return viewModel;
-        }
-
-        public CentroLogistico ToModel()
-        {
-            CentroLogistico centroLogistico = new CentroLogistico
-            {
-                CentroLogisticoId = _CentroLogisticoId,
-                Codigo = _Codigo,
-                Nombre = _Nombre,
-                Descripcion = _Descripcion
-            };
-
-            return centroLogistico;
+            return model;
         }
 
         #endregion

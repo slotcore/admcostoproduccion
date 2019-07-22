@@ -30,5 +30,6 @@ namespace AdmCostoProduccion.Common.Data
 
         public DbSet<CentroLogistico> CentroLogisticos { get; set; }
         public DbSet<Almacen> Almacens { get; set; }
+        public DbSet<PlantaFabricacion> PlantaFabricacions { get; set; }
     }
 }

@@ -138,6 +138,18 @@
     <Compile Include="Maestro\CentroLogistico\MntCentroLogisticoForm.Designer.cs">
       <DependentUpon>MntCentroLogisticoForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Maestro\PlantaFabricacion\LstPlantaFabricacionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Maestro\PlantaFabricacion\LstPlantaFabricacionForm.Designer.cs">
+      <DependentUpon>LstPlantaFabricacionForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Maestro\PlantaFabricacion\MntPlantaFabricacionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Maestro\PlantaFabricacion\MntPlantaFabricacionForm.Designer.cs">
+      <DependentUpon>MntPlantaFabricacionForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -146,11 +158,23 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Maestro\Almacen\LstAlmacenForm.resx">
+      <DependentUpon>LstAlmacenForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Maestro\Almacen\MntAlmacenForm.resx">
+      <DependentUpon>MntAlmacenForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Maestro\CentroLogistico\LstCentroLogisticoForm.resx">
       <DependentUpon>LstCentroLogisticoForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Maestro\CentroLogistico\MntCentroLogisticoForm.resx">
       <DependentUpon>MntCentroLogisticoForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Maestro\PlantaFabricacion\LstPlantaFabricacionForm.resx">
+      <DependentUpon>LstPlantaFabricacionForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Maestro\PlantaFabricacion\MntPlantaFabricacionForm.resx">
+      <DependentUpon>MntPlantaFabricacionForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
@@ -168,7 +192,10 @@
     <None Include="AdmCostoProduccion.Windows.pfx" />
     <None Include="packages.config" />
     <None Include="Properties\app.manifest" />
+    <None Include="Properties\DataSources\AdmCostoProduccion.Common.Models.Maestro.CentroLogistico.datasource" />
+    <None Include="Properties\DataSources\AdmCostoProduccion.Common.ViewModels.Maestro.AlmacenViewModel.datasource" />
     <None Include="Properties\DataSources\AdmCostoProduccion.Common.ViewModels.Maestro.CentroLogisticoViewModel.datasource" />
+    <None Include="Properties\DataSources\AdmCostoProduccion.Common.ViewModels.Maestro.PlantaFabricacionViewModel.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -198,9 +225,7 @@
   <ItemGroup>
     <None Include="Resources\outbox_16x16.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Maestro\PlantaFabricacion\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="Resources\add_16x16.png" />
   </ItemGroup>
@@ -221,6 +246,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\cancel_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lookup&amp;reference_16x16.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

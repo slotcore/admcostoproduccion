@@ -59,9 +59,10 @@
             // 
             codigoLabel.AutoSize = true;
             codigoLabel.BackColor = System.Drawing.Color.Transparent;
-            codigoLabel.Location = new System.Drawing.Point(246, 193);
+            codigoLabel.Location = new System.Drawing.Point(184, 157);
+            codigoLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             codigoLabel.Name = "codigoLabel";
-            codigoLabel.Size = new System.Drawing.Size(56, 17);
+            codigoLabel.Size = new System.Drawing.Size(43, 13);
             codigoLabel.TabIndex = 0;
             codigoLabel.Text = "Codigo:";
             // 
@@ -69,9 +70,10 @@
             // 
             descripcionLabel.AutoSize = true;
             descripcionLabel.BackColor = System.Drawing.Color.Transparent;
-            descripcionLabel.Location = new System.Drawing.Point(246, 249);
+            descripcionLabel.Location = new System.Drawing.Point(184, 202);
+            descripcionLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             descripcionLabel.Name = "descripcionLabel";
-            descripcionLabel.Size = new System.Drawing.Size(86, 17);
+            descripcionLabel.Size = new System.Drawing.Size(66, 13);
             descripcionLabel.TabIndex = 2;
             descripcionLabel.Text = "Descripcion:";
             // 
@@ -79,9 +81,10 @@
             // 
             nombreLabel.AutoSize = true;
             nombreLabel.BackColor = System.Drawing.Color.Transparent;
-            nombreLabel.Location = new System.Drawing.Point(246, 221);
+            nombreLabel.Location = new System.Drawing.Point(184, 180);
+            nombreLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             nombreLabel.Name = "nombreLabel";
-            nombreLabel.Size = new System.Drawing.Size(62, 17);
+            nombreLabel.Size = new System.Drawing.Size(47, 13);
             nombreLabel.TabIndex = 4;
             nombreLabel.Text = "Nombre:";
             // 
@@ -96,7 +99,7 @@
             this.BaseFormToolStrip.Location = new System.Drawing.Point(0, 0);
             this.BaseFormToolStrip.Name = "BaseFormToolStrip";
             this.BaseFormToolStrip.Padding = new System.Windows.Forms.Padding(2);
-            this.BaseFormToolStrip.Size = new System.Drawing.Size(1080, 31);
+            this.BaseFormToolStrip.Size = new System.Drawing.Size(810, 31);
             this.BaseFormToolStrip.TabIndex = 2;
             this.BaseFormToolStrip.Text = "BaseFormToolStrip";
             // 
@@ -105,7 +108,7 @@
             this.GrabarButton.Image = global::AdmCostoProduccion.Windows.Properties.Resources.save_16x16;
             this.GrabarButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.GrabarButton.Name = "GrabarButton";
-            this.GrabarButton.Size = new System.Drawing.Size(78, 24);
+            this.GrabarButton.Size = new System.Drawing.Size(66, 24);
             this.GrabarButton.Text = "Grabar";
             this.GrabarButton.Click += new System.EventHandler(this.GrabarButton_Click);
             // 
@@ -114,7 +117,7 @@
             this.CancelarButton.Image = global::AdmCostoProduccion.Windows.Properties.Resources.cancel_16x16;
             this.CancelarButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.CancelarButton.Name = "CancelarButton";
-            this.CancelarButton.Size = new System.Drawing.Size(90, 24);
+            this.CancelarButton.Size = new System.Drawing.Size(77, 24);
             this.CancelarButton.Text = "Cancelar";
             this.CancelarButton.Click += new System.EventHandler(this.CancelarButton_Click);
             // 
@@ -125,12 +128,13 @@
             this.BaseFormHeaderGroup.HeaderStyleSecondary = ComponentFactory.Krypton.Toolkit.HeaderStyle.Form;
             this.BaseFormHeaderGroup.HeaderVisibleSecondary = false;
             this.BaseFormHeaderGroup.Location = new System.Drawing.Point(0, 31);
+            this.BaseFormHeaderGroup.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.BaseFormHeaderGroup.Name = "BaseFormHeaderGroup";
             // 
             // BaseFormHeaderGroup.Panel
             // 
             this.BaseFormHeaderGroup.Panel.Controls.Add(this.kryptonPanel1);
-            this.BaseFormHeaderGroup.Size = new System.Drawing.Size(1080, 600);
+            this.BaseFormHeaderGroup.Size = new System.Drawing.Size(810, 482);
             this.BaseFormHeaderGroup.StateNormal.HeaderPrimary.Border.Color1 = System.Drawing.SystemColors.ControlDarkDark;
             this.BaseFormHeaderGroup.StateNormal.HeaderPrimary.Border.Draw = ComponentFactory.Krypton.Toolkit.InheritBool.True;
             this.BaseFormHeaderGroup.StateNormal.HeaderPrimary.Border.DrawBorders = ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom;
@@ -149,16 +153,18 @@
             this.kryptonPanel1.Controls.Add(this.nombreTextBox);
             this.kryptonPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonPanel1.Location = new System.Drawing.Point(0, 0);
+            this.kryptonPanel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.kryptonPanel1.Name = "kryptonPanel1";
-            this.kryptonPanel1.Size = new System.Drawing.Size(1078, 572);
+            this.kryptonPanel1.Size = new System.Drawing.Size(808, 458);
             this.kryptonPanel1.TabIndex = 0;
             // 
             // codigoTextBox
             // 
             this.codigoTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.centroLogisticoViewModelBindingSource, "Codigo", true));
-            this.codigoTextBox.Location = new System.Drawing.Point(338, 190);
+            this.codigoTextBox.Location = new System.Drawing.Point(254, 154);
+            this.codigoTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.codigoTextBox.Name = "codigoTextBox";
-            this.codigoTextBox.Size = new System.Drawing.Size(461, 22);
+            this.codigoTextBox.Size = new System.Drawing.Size(347, 20);
             this.codigoTextBox.TabIndex = 1;
             // 
             // centroLogisticoViewModelBindingSource
@@ -168,39 +174,43 @@
             // descripcionTextBox
             // 
             this.descripcionTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.centroLogisticoViewModelBindingSource, "Descripcion", true));
-            this.descripcionTextBox.Location = new System.Drawing.Point(338, 246);
+            this.descripcionTextBox.Location = new System.Drawing.Point(254, 200);
+            this.descripcionTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.descripcionTextBox.Name = "descripcionTextBox";
-            this.descripcionTextBox.Size = new System.Drawing.Size(461, 22);
+            this.descripcionTextBox.Size = new System.Drawing.Size(347, 20);
             this.descripcionTextBox.TabIndex = 3;
             // 
             // nombreTextBox
             // 
             this.nombreTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.centroLogisticoViewModelBindingSource, "Nombre", true));
-            this.nombreTextBox.Location = new System.Drawing.Point(338, 218);
+            this.nombreTextBox.Location = new System.Drawing.Point(254, 177);
+            this.nombreTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.nombreTextBox.Name = "nombreTextBox";
-            this.nombreTextBox.Size = new System.Drawing.Size(461, 22);
-            this.nombreTextBox.TabIndex = 5;
+            this.nombreTextBox.Size = new System.Drawing.Size(347, 20);
+            this.nombreTextBox.TabIndex = 2;
             // 
             // statusStrip1
             // 
             this.statusStrip1.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.statusStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.statusStrip1.Location = new System.Drawing.Point(0, 609);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 491);
             this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Padding = new System.Windows.Forms.Padding(1, 0, 10, 0);
             this.statusStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.ManagerRenderMode;
-            this.statusStrip1.Size = new System.Drawing.Size(1080, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(810, 22);
             this.statusStrip1.TabIndex = 4;
             this.statusStrip1.Text = "statusStrip1";
             // 
             // MntCentroLogisticoForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1080, 631);
+            this.ClientSize = new System.Drawing.Size(810, 513);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.BaseFormHeaderGroup);
             this.Controls.Add(this.BaseFormToolStrip);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "MntCentroLogisticoForm";
             this.Text = "Mantenimiento Centro Logístico";
             this.BaseFormToolStrip.ResumeLayout(false);

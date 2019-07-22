@@ -148,18 +148,29 @@ namespace AdmCostoProduccion.Common.ViewModels.Maestro
 
         #endregion
 
-        #region Metodos
+        #region Metodos Publicos
+
+        public void CopyTo(ref AlmacenViewModel viewModel)
+        {
+            viewModel.AlmacenId = _AlmacenId;
+            viewModel.CentroLogisticoId = _CentroLogisticoId;
+            viewModel.Codigo = _Codigo;
+            viewModel.Nombre = _Nombre;
+            viewModel.Descripcion = _Descripcion;
+        }
 
         public Almacen ToModel()
         {
-            Almacen almacen = new Almacen();
-            almacen.AlmacenId = AlmacenId;
-            almacen.CentroLogisticoId = CentroLogisticoId;
-            almacen.Codigo = Codigo;
-            almacen.Nombre = Nombre;
-            almacen.Descripcion = Descripcion;
+            Almacen model = new Almacen
+            {
+                AlmacenId = _AlmacenId,
+                CentroLogisticoId = _CentroLogisticoId,
+                Codigo = _Codigo,
+                Nombre = _Nombre,
+                Descripcion = _Descripcion
+            };
 
-            return almacen;
+            return model;
         }
 
         #endregion

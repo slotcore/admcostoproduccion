@@ -1,6 +1,6 @@
-﻿namespace AdmCostoProduccion.Windows.Maestro.Almacen
+﻿namespace AdmCostoProduccion.Windows.Maestro.PlantaFabricacion
 {
-    partial class MntAlmacenForm
+    partial class MntPlantaFabricacionForm
     {
         /// <summary>
         /// Required designer variable.
@@ -36,14 +36,14 @@
             this.BaseFormHeaderGroup = new ComponentFactory.Krypton.Toolkit.KryptonHeaderGroup();
             this.kryptonPanel1 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.centroLogisticoIdComboBox = new System.Windows.Forms.ComboBox();
-            this.almacenViewModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.plantaFabricacionViewModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.centroLogisticoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.codigoTextBox = new System.Windows.Forms.TextBox();
             this.descripcionTextBox = new System.Windows.Forms.TextBox();
             this.nombreTextBox = new System.Windows.Forms.TextBox();
             this.BaseFormToolStrip = new System.Windows.Forms.ToolStrip();
             this.GrabarButton = new System.Windows.Forms.ToolStripButton();
             this.CancelarButton = new System.Windows.Forms.ToolStripButton();
-            this.centroLogisticoViewModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             centroLogisticoIdLabel = new System.Windows.Forms.Label();
             codigoLabel = new System.Windows.Forms.Label();
             descripcionLabel = new System.Windows.Forms.Label();
@@ -54,26 +54,26 @@
             this.BaseFormHeaderGroup.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.almacenViewModelBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.plantaFabricacionViewModelBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.centroLogisticoBindingSource)).BeginInit();
             this.BaseFormToolStrip.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.centroLogisticoViewModelBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // centroLogisticoIdLabel
             // 
             centroLogisticoIdLabel.AutoSize = true;
             centroLogisticoIdLabel.BackColor = System.Drawing.Color.Transparent;
-            centroLogisticoIdLabel.Location = new System.Drawing.Point(180, 117);
+            centroLogisticoIdLabel.Location = new System.Drawing.Point(202, 127);
             centroLogisticoIdLabel.Name = "centroLogisticoIdLabel";
-            centroLogisticoIdLabel.Size = new System.Drawing.Size(86, 13);
+            centroLogisticoIdLabel.Size = new System.Drawing.Size(88, 13);
             centroLogisticoIdLabel.TabIndex = 0;
-            centroLogisticoIdLabel.Text = "Centro Logistico:";
+            centroLogisticoIdLabel.Text = "Centro Logístico:";
             // 
             // codigoLabel
             // 
             codigoLabel.AutoSize = true;
             codigoLabel.BackColor = System.Drawing.Color.Transparent;
-            codigoLabel.Location = new System.Drawing.Point(180, 144);
+            codigoLabel.Location = new System.Drawing.Point(202, 154);
             codigoLabel.Name = "codigoLabel";
             codigoLabel.Size = new System.Drawing.Size(43, 13);
             codigoLabel.TabIndex = 2;
@@ -83,20 +83,20 @@
             // 
             descripcionLabel.AutoSize = true;
             descripcionLabel.BackColor = System.Drawing.Color.Transparent;
-            descripcionLabel.Location = new System.Drawing.Point(180, 170);
+            descripcionLabel.Location = new System.Drawing.Point(202, 206);
             descripcionLabel.Name = "descripcionLabel";
             descripcionLabel.Size = new System.Drawing.Size(66, 13);
-            descripcionLabel.TabIndex = 4;
+            descripcionLabel.TabIndex = 6;
             descripcionLabel.Text = "Descripcion:";
             // 
             // nombreLabel
             // 
             nombreLabel.AutoSize = true;
             nombreLabel.BackColor = System.Drawing.Color.Transparent;
-            nombreLabel.Location = new System.Drawing.Point(180, 196);
+            nombreLabel.Location = new System.Drawing.Point(202, 180);
             nombreLabel.Name = "nombreLabel";
             nombreLabel.Size = new System.Drawing.Size(47, 13);
-            nombreLabel.TabIndex = 6;
+            nombreLabel.TabIndex = 4;
             nombreLabel.Text = "Nombre:";
             // 
             // BaseFormHeaderGroup
@@ -117,8 +117,8 @@
             this.BaseFormHeaderGroup.StateNormal.HeaderPrimary.Border.Draw = ComponentFactory.Krypton.Toolkit.InheritBool.True;
             this.BaseFormHeaderGroup.StateNormal.HeaderPrimary.Border.DrawBorders = ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom;
             this.BaseFormHeaderGroup.StateNormal.HeaderPrimary.Border.Width = 1;
-            this.BaseFormHeaderGroup.TabIndex = 5;
-            this.BaseFormHeaderGroup.ValuesPrimary.Heading = "Almacén";
+            this.BaseFormHeaderGroup.TabIndex = 7;
+            this.BaseFormHeaderGroup.ValuesPrimary.Heading = "Planta de Fabricación";
             this.BaseFormHeaderGroup.ValuesPrimary.Image = null;
             // 
             // kryptonPanel1
@@ -141,44 +141,48 @@
             // centroLogisticoIdComboBox
             // 
             this.centroLogisticoIdComboBox.CausesValidation = false;
-            this.centroLogisticoIdComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.almacenViewModelBindingSource, "CentroLogisticoId", true));
-            this.centroLogisticoIdComboBox.DataSource = this.centroLogisticoViewModelBindingSource;
+            this.centroLogisticoIdComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.plantaFabricacionViewModelBindingSource, "CentroLogisticoId", true));
+            this.centroLogisticoIdComboBox.DataSource = this.centroLogisticoBindingSource;
             this.centroLogisticoIdComboBox.DisplayMember = "Nombre";
             this.centroLogisticoIdComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.centroLogisticoIdComboBox.FormattingEnabled = true;
-            this.centroLogisticoIdComboBox.Location = new System.Drawing.Point(284, 114);
+            this.centroLogisticoIdComboBox.Location = new System.Drawing.Point(306, 124);
             this.centroLogisticoIdComboBox.Name = "centroLogisticoIdComboBox";
-            this.centroLogisticoIdComboBox.Size = new System.Drawing.Size(357, 21);
+            this.centroLogisticoIdComboBox.Size = new System.Drawing.Size(291, 21);
             this.centroLogisticoIdComboBox.TabIndex = 1;
             this.centroLogisticoIdComboBox.ValueMember = "CentroLogisticoId";
             // 
-            // almacenViewModelBindingSource
+            // plantaFabricacionViewModelBindingSource
             // 
-            this.almacenViewModelBindingSource.DataSource = typeof(AdmCostoProduccion.Common.ViewModels.Maestro.AlmacenViewModel);
+            this.plantaFabricacionViewModelBindingSource.DataSource = typeof(AdmCostoProduccion.Common.ViewModels.Maestro.PlantaFabricacionViewModel);
+            // 
+            // centroLogisticoBindingSource
+            // 
+            this.centroLogisticoBindingSource.DataSource = typeof(AdmCostoProduccion.Common.Models.Maestro.CentroLogistico);
             // 
             // codigoTextBox
             // 
-            this.codigoTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.almacenViewModelBindingSource, "Codigo", true));
-            this.codigoTextBox.Location = new System.Drawing.Point(284, 141);
+            this.codigoTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.plantaFabricacionViewModelBindingSource, "Codigo", true));
+            this.codigoTextBox.Location = new System.Drawing.Point(306, 151);
             this.codigoTextBox.Name = "codigoTextBox";
-            this.codigoTextBox.Size = new System.Drawing.Size(357, 20);
+            this.codigoTextBox.Size = new System.Drawing.Size(291, 20);
             this.codigoTextBox.TabIndex = 3;
             // 
             // descripcionTextBox
             // 
-            this.descripcionTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.almacenViewModelBindingSource, "Descripcion", true));
-            this.descripcionTextBox.Location = new System.Drawing.Point(284, 167);
+            this.descripcionTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.plantaFabricacionViewModelBindingSource, "Descripcion", true));
+            this.descripcionTextBox.Location = new System.Drawing.Point(306, 203);
             this.descripcionTextBox.Name = "descripcionTextBox";
-            this.descripcionTextBox.Size = new System.Drawing.Size(357, 20);
-            this.descripcionTextBox.TabIndex = 5;
+            this.descripcionTextBox.Size = new System.Drawing.Size(291, 20);
+            this.descripcionTextBox.TabIndex = 7;
             // 
             // nombreTextBox
             // 
-            this.nombreTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.almacenViewModelBindingSource, "Nombre", true));
-            this.nombreTextBox.Location = new System.Drawing.Point(284, 193);
+            this.nombreTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.plantaFabricacionViewModelBindingSource, "Nombre", true));
+            this.nombreTextBox.Location = new System.Drawing.Point(306, 177);
             this.nombreTextBox.Name = "nombreTextBox";
-            this.nombreTextBox.Size = new System.Drawing.Size(357, 20);
-            this.nombreTextBox.TabIndex = 7;
+            this.nombreTextBox.Size = new System.Drawing.Size(291, 20);
+            this.nombreTextBox.TabIndex = 5;
             // 
             // BaseFormToolStrip
             // 
@@ -192,7 +196,7 @@
             this.BaseFormToolStrip.Name = "BaseFormToolStrip";
             this.BaseFormToolStrip.Padding = new System.Windows.Forms.Padding(2);
             this.BaseFormToolStrip.Size = new System.Drawing.Size(800, 31);
-            this.BaseFormToolStrip.TabIndex = 4;
+            this.BaseFormToolStrip.TabIndex = 6;
             this.BaseFormToolStrip.Text = "BaseFormToolStrip";
             // 
             // GrabarButton
@@ -213,19 +217,15 @@
             this.CancelarButton.Text = "Cancelar";
             this.CancelarButton.Click += new System.EventHandler(this.CancelarButton_Click);
             // 
-            // centroLogisticoViewModelBindingSource
-            // 
-            this.centroLogisticoViewModelBindingSource.DataSource = typeof(AdmCostoProduccion.Common.ViewModels.Maestro.CentroLogisticoViewModel);
-            // 
-            // MntAlmacenForm
+            // MntPlantaFabricacionForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.BaseFormHeaderGroup);
             this.Controls.Add(this.BaseFormToolStrip);
-            this.Name = "MntAlmacenForm";
-            this.Text = "Mantenimiento Almacén";
+            this.Name = "MntPlantaFabricacionForm";
+            this.Text = "Mantenimiento Planta de Fabricación";
             ((System.ComponentModel.ISupportInitialize)(this.BaseFormHeaderGroup.Panel)).EndInit();
             this.BaseFormHeaderGroup.Panel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.BaseFormHeaderGroup)).EndInit();
@@ -233,10 +233,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
             this.kryptonPanel1.ResumeLayout(false);
             this.kryptonPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.almacenViewModelBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.plantaFabricacionViewModelBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.centroLogisticoBindingSource)).EndInit();
             this.BaseFormToolStrip.ResumeLayout(false);
             this.BaseFormToolStrip.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.centroLogisticoViewModelBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -249,11 +249,11 @@
         protected System.Windows.Forms.ToolStrip BaseFormToolStrip;
         private System.Windows.Forms.ToolStripButton GrabarButton;
         private System.Windows.Forms.ToolStripButton CancelarButton;
-        private System.Windows.Forms.BindingSource almacenViewModelBindingSource;
         private System.Windows.Forms.ComboBox centroLogisticoIdComboBox;
+        private System.Windows.Forms.BindingSource plantaFabricacionViewModelBindingSource;
         private System.Windows.Forms.TextBox codigoTextBox;
         private System.Windows.Forms.TextBox descripcionTextBox;
         private System.Windows.Forms.TextBox nombreTextBox;
-        private System.Windows.Forms.BindingSource centroLogisticoViewModelBindingSource;
+        private System.Windows.Forms.BindingSource centroLogisticoBindingSource;
     }
 }

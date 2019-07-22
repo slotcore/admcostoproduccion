@@ -1,0 +1,203 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>ViewModelCreate</Title>
+      <Author>Jose Chacon</Author>
+      <Description>Define un Modelo con EntityFramework</Description>
+      <Shortcut>cstprdvwmdlcreate</Shortcut>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal>
+          <ID>Model</ID>
+          <ToolTip>Reemplazar por el Nombre del modelo</ToolTip>
+          <Default>Model</Default>
+        </Literal>
+        <Literal>
+          <ID>TipoDato1</ID>
+          <ToolTip>Reemplazar por el Tipo de Dato1</ToolTip>
+          <Default>string</Default>
+        </Literal>
+        <Literal>
+          <ID>Propiedad1</ID>
+          <ToolTip>Reemplazar por el Nombre de la Propiedad1</ToolTip>
+          <Default>Codigo</Default>
+        </Literal>
+        <Literal>
+          <ID>TipoDato2</ID>
+          <ToolTip>Reemplazar por el Tipo de Dato2</ToolTip>
+          <Default>string</Default>
+        </Literal>
+        <Literal>
+          <ID>Propiedad2</ID>
+          <ToolTip>Reemplazar por el Nombre de la Propiedad2</ToolTip>
+          <Default>Nombre</Default>
+        </Literal>
+        <Literal>
+          <ID>TipoDato3</ID>
+          <ToolTip>Reemplazar por el Tipo de Dato3</ToolTip>
+          <Default>string</Default>
+        </Literal>
+        <Literal>
+          <ID>Propiedad3</ID>
+          <ToolTip>Reemplazar por el Nombre de la Propiedad3</ToolTip>
+          <Default>Descripcion</Default>
+        </Literal>
+        <Literal>
+          <ID>LibraryName</ID>
+          <ToolTip>Nombre del esquema</ToolTip>
+          <Default>AdmCostoProduccion.Common</Default>
+        </Literal>
+        <Literal>
+          <ID>EsquemaName</ID>
+          <ToolTip>Nombre del esquema</ToolTip>
+          <Default>Costo</Default>
+        </Literal>
+      </Declarations>
+      <Code Language="csharp">
+        <![CDATA[using $LibraryName$.Classes;
+using System;
+using System.Linq;
+using System.Text;
+
+namespace $LibraryName$.ViewModels.$EsquemaName$
+{
+    public class $Model$ViewModel : ObjectBase
+    {
+        #region Constructor
+        
+        public $Model$ViewModel()
+        {
+        }
+        
+        public $Model$ViewModel($Model$ model)
+        {
+            $Model$Id = model.$Model$Id;
+            _$Propiedad1$ = model.$Propiedad1$;
+            _$Propiedad2$ = model.$Propiedad2$;
+            _$Propiedad3$ = model.$Propiedad3$;
+        }
+        
+        #endregion
+
+        #region Propiedades privadas
+
+        private int _$Model$Id;
+
+        private $TipoDato1$ _$Propiedad1$;
+
+        private $TipoDato2$ _$Propiedad2$;
+
+        private $TipoDato3$ _$Propiedad3$;
+
+        #endregion
+
+        #region Propiedades publicas
+
+        public int $Model$Id
+        {
+            get
+            {
+                return _$Model$Id;
+            }
+
+            set
+            {
+                if (value != _$Model$Id)
+                {
+                    _$Model$Id = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
+        public $TipoDato1$ $Propiedad1$
+        {
+            get
+            {
+                return _$Propiedad1$;
+            }
+
+            set
+            {
+                if (value != _$Propiedad1$)
+                {
+                    _$Propiedad1$ = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
+        public $TipoDato2$ $Propiedad2$
+        {
+            get
+            {
+                return _$Propiedad2$;
+            }
+
+            set
+            {
+                if (value != _$Propiedad2$)
+                {
+                    _$Propiedad2$ = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
+        public $TipoDato3$ $Propiedad3$
+        {
+            get
+            {
+                return _$Propiedad3$;
+            }
+
+            set
+            {
+                if (value != _$Propiedad3$)
+                {
+                    _$Propiedad3$ = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
+        #endregion
+
+        #region Metodos Publicos
+
+        public $Model$ViewModel GetCopy()
+        {
+            $Model$ViewModel viewModel = new $Model$ViewModel
+            {
+                $Model$Id = _$Model$Id,
+                $Propiedad1$ = _$Propiedad1$,
+                $Propiedad2$ = _$Propiedad2$,
+                $Propiedad3$ = _$Propiedad3$
+            };
+
+            return viewModel;
+        }
+
+        public $Model$ ToModel()
+        {
+            $Model$ model = new $Model$
+            {
+                $Model$Id = _$Model$Id,
+                $Propiedad1$ = _$Propiedad1$,
+                $Propiedad2$ = _$Propiedad2$,
+                $Propiedad3$ = _$Propiedad3$
+            };
+
+            return model;
+        }
+
+        #endregion
+    }
+}
+]]>
+      </Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

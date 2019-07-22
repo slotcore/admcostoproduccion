@@ -114,6 +114,7 @@
     <Compile Include="ViewModels\Costo\CostoProduccionViewModel.cs" />
     <Compile Include="ViewModels\Maestro\AlmacenViewModel.cs" />
     <Compile Include="ViewModels\Maestro\CentroLogisticoViewModel.cs" />
+    <Compile Include="ViewModels\Maestro\PlantaFabricacionViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="AdmCostoProduccion.Common.pfx" />
