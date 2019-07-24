@@ -1,11 +1,12 @@
 ﻿using AdmCostoProduccion.Common.Classes;
+using AdmCostoProduccion.Common.Models.CompraVenta;
 using AdmCostoProduccion.Common.Models.Produccion;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace AdmCostoProduccion.Common.Models.Almacen
+namespace AdmCostoProduccion.Common.Models.Inventario
 {
     public class Despacho : EntityBase
     {
@@ -39,6 +40,10 @@ namespace AdmCostoProduccion.Common.Models.Almacen
         public int OrdenProduccionId { get; set; }
 
         public virtual OrdenProduccion OrdenProduccion { get; set; }
+
+        public int VentaId { get; set; }
+
+        public virtual Venta Venta { get; set; }
 
         #endregion
 

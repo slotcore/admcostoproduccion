@@ -247,6 +247,42 @@
     <Compile Include="Mantenimiento\Produccion\ProcedimientoProduccion\MntProcedimientoProduccionInsumoForm.Designer.cs">
       <DependentUpon>MntProcedimientoProduccionInsumoForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Procesos\Inventario\Despacho\LstDespachoForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Procesos\Inventario\Despacho\LstDespachoForm.Designer.cs">
+      <DependentUpon>LstDespachoForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Procesos\Inventario\Despacho\MntDespachoDetalleForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Procesos\Inventario\Despacho\MntDespachoDetalleForm.Designer.cs">
+      <DependentUpon>MntDespachoDetalleForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Procesos\Inventario\Despacho\MntDespachoForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Procesos\Inventario\Despacho\MntDespachoForm.Designer.cs">
+      <DependentUpon>MntDespachoForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Procesos\Inventario\Recepcion\LstRecepcionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Procesos\Inventario\Recepcion\LstRecepcionForm.Designer.cs">
+      <DependentUpon>LstRecepcionForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Procesos\Inventario\Recepcion\MntRecepcionDetalleForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Procesos\Inventario\Recepcion\MntRecepcionDetalleForm.Designer.cs">
+      <DependentUpon>MntRecepcionDetalleForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Procesos\Inventario\Recepcion\MntRecepcionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Procesos\Inventario\Recepcion\MntRecepcionForm.Designer.cs">
+      <DependentUpon>MntRecepcionForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Prompt\MercaderiaPromptForm.cs">
       <SubType>Form</SubType>
@@ -321,6 +357,24 @@
     <EmbeddedResource Include="Mantenimiento\Produccion\ProcedimientoProduccion\MntProcedimientoProduccionInsumoForm.resx">
       <DependentUpon>MntProcedimientoProduccionInsumoForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Procesos\Inventario\Despacho\LstDespachoForm.resx">
+      <DependentUpon>LstDespachoForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Procesos\Inventario\Despacho\MntDespachoDetalleForm.resx">
+      <DependentUpon>MntDespachoDetalleForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Procesos\Inventario\Despacho\MntDespachoForm.resx">
+      <DependentUpon>MntDespachoForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Procesos\Inventario\Recepcion\LstRecepcionForm.resx">
+      <DependentUpon>LstRecepcionForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Procesos\Inventario\Recepcion\MntRecepcionDetalleForm.resx">
+      <DependentUpon>MntRecepcionDetalleForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Procesos\Inventario\Recepcion\MntRecepcionForm.resx">
+      <DependentUpon>MntRecepcionForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Prompt\MercaderiaPromptForm.resx">
       <DependentUpon>MercaderiaPromptForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -338,7 +392,11 @@
     <None Include="packages.config" />
     <None Include="Properties\app.manifest" />
     <None Include="Properties\DataSources\AdmCostoProduccion.Common.Models.Maestro.CentroLogistico.datasource" />
+    <None Include="Properties\DataSources\AdmCostoProduccion.Common.ViewModels.Inventario.DespachoDetalleViewModel.datasource" />
+    <None Include="Properties\DataSources\AdmCostoProduccion.Common.ViewModels.Inventario.DespachoViewModel.datasource" />
     <None Include="Properties\DataSources\AdmCostoProduccion.Common.ViewModels.Inventario.MercaderiaViewModel.datasource" />
+    <None Include="Properties\DataSources\AdmCostoProduccion.Common.ViewModels.Inventario.RecepcionDetalleViewModel.datasource" />
+    <None Include="Properties\DataSources\AdmCostoProduccion.Common.ViewModels.Inventario.RecepcionViewModel.datasource" />
     <None Include="Properties\DataSources\AdmCostoProduccion.Common.ViewModels.Inventario.TipoDespachoViewModel.datasource" />
     <None Include="Properties\DataSources\AdmCostoProduccion.Common.ViewModels.Inventario.TipoMercaderiaViewModel.datasource" />
     <None Include="Properties\DataSources\AdmCostoProduccion.Common.ViewModels.Inventario.TipoMovimientoViewModel.datasource" />

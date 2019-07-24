@@ -1,6 +1,7 @@
 ﻿using AdmCostoProduccion.Common.Classes;
 using AdmCostoProduccion.Common.Data;
 using AdmCostoProduccion.Common.ViewModels.Inventario;
+using ComponentFactory.Krypton.Toolkit;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,7 +14,7 @@ using System.Windows.Forms;
 
 namespace AdmCostoProduccion.Windows.Prompt
 {
-    public partial class MercaderiaPromptForm : Form
+    public partial class MercaderiaPromptForm : KryptonForm
     {
         private ObservableListSource<MercaderiaViewModel> ViewModelList = new ObservableListSource<MercaderiaViewModel>();
         private MercaderiaViewModel _MercaderiaViewModel = new MercaderiaViewModel();
@@ -44,8 +45,11 @@ namespace AdmCostoProduccion.Windows.Prompt
 
             ViewModelList = new ObservableListSource<MercaderiaViewModel>();
             mercaderiaViewModelBindingSource.DataSource = ViewModelList;
-            BusquedaTextBox.Text = filtro;
-            Buscar();
+            if (!string.IsNullOrEmpty(filtro))
+            {
+                BusquedaTextBox.Text = filtro;
+                Buscar();
+            }
         }
         #endregion
 
@@ -77,6 +81,11 @@ namespace AdmCostoProduccion.Windows.Prompt
             {
                 Buscar();
             }
+        }
+
+        private void DetalleDataGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            Aceptar();
         }
         #endregion
 

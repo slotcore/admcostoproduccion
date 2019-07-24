@@ -1,4 +1,6 @@
 ﻿using AdmCostoProduccion.Common.Classes;
+using AdmCostoProduccion.Common.Models.Almacen;
+using AdmCostoProduccion.Common.Models.CompraVenta;
 using AdmCostoProduccion.Common.Models.Inventario;
 using AdmCostoProduccion.Common.Models.Produccion;
 
@@ -7,34 +9,31 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace AdmCostoProduccion.Common.Models.Almacen
+namespace AdmCostoProduccion.Common.Models.Inventario
 {
-    public class RecepcionDetalle : EntityBase
+    public class DespachoDetalle : EntityBase
     {
         #region Constructor
-        public RecepcionDetalle() : base()
+        public DespachoDetalle() : base()
         {
         }
         #endregion
 
         #region Propiedades
+
         [Key]
-        public int RecepcionDetalleId { get; set; }
+        public int DespachoDetalleId { get; set; }
 
         public double Cantidad { get; set; }
+
         #endregion
 
         #region Foraneas
 
-        public int RecepcionId { get; set; }
+        public int DespachoId { get; set; }
 
         
-        public virtual Recepcion Recepcion { get; set; }
-
-        public int OrdenProduccionInsumoId { get; set; }
-
-        
-        public virtual OrdenProduccionInsumo OrdenProduccionInsumo { get; set; }
+        public virtual Despacho Despacho { get; set; }
 
         public int MercaderiaId { get; set; }
 
@@ -46,11 +45,18 @@ namespace AdmCostoProduccion.Common.Models.Almacen
         
         public virtual UnidadMedida UnidadMedida { get; set; }
 
+        public int OrdenProduccionInsumoId { get; set; }
+
+        public virtual OrdenProduccionInsumo OrdenProduccionInsumo { get; set; }
+
+        public int VentaDetalleId { get; set; }
+
+        public virtual VentaDetalle VentaDetalle { get; set; }
+
         #endregion
 
         #region Relacionales
 
-        
         public virtual ICollection<KardexMovimiento> KardexMovimientos { get; set; }
 
         #endregion

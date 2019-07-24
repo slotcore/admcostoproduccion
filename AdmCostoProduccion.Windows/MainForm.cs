@@ -19,6 +19,8 @@ using AdmCostoProduccion.Windows.Mantenimiento.Inventario.TipoMovimiento;
 using AdmCostoProduccion.Windows.Mantenimiento.Inventario.TipoRecepcion;
 using AdmCostoProduccion.Windows.Mantenimiento.Inventario.TipoDespacho;
 using AdmCostoProduccion.Windows.Mantenimiento.Produccion.ProcedimientoProduccion;
+using AdmCostoProduccion.Windows.Procesos.Inventario.Recepcion;
+using AdmCostoProduccion.Windows.Procesos.Inventario.Despacho;
 
 namespace AdmCostoProduccion.Windows
 {
@@ -169,6 +171,24 @@ namespace AdmCostoProduccion.Windows
         private void ProcedimientoProduccionMenuItem_Click(object sender, EventArgs e)
         {
             var form = new LstProcedimientoProduccionForm
+            {
+                MdiParent = this
+            };
+            form.Show();
+        }
+
+        private void RecepcionMenuItem_Click(object sender, EventArgs e)
+        {
+            var form = new LstRecepcionForm
+            {
+                MdiParent = this
+            };
+            form.Show();
+        }
+
+        private void DespachoMenuItem_Click(object sender, EventArgs e)
+        {
+            var form = new LstDespachoForm
             {
                 MdiParent = this
             };

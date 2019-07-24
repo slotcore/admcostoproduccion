@@ -149,7 +149,7 @@ namespace AdmCostoProduccion.Windows.Mantenimiento.Produccion.ProcedimientoProdu
                 {
                     var mercaderiaViewModel = formprompt.MercaderiaViewModel;
                     mercaderiaTextBox.Tag = mercaderiaViewModel;
-                    mercaderiaTextBox.Text = string.Format("{0} - {1}", mercaderiaViewModel.Codigo, mercaderiaViewModel.Nombre);
+                    mercaderiaTextBox.Text = mercaderiaViewModel.Nombre;
                 }
                 else
                 {

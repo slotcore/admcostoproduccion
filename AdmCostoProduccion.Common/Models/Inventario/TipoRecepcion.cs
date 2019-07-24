@@ -5,19 +5,19 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace AdmCostoProduccion.Common.Models.Almacen
+namespace AdmCostoProduccion.Common.Models.Inventario
 {
-    public class TipoMovimiento : EntityBase
+    public class TipoRecepcion : EntityBase
     {
         #region Constructor
-        public TipoMovimiento() : base()
+        public TipoRecepcion() : base()
         {
         }
         #endregion
 
         #region Propiedades
         [Key]
-        public int TipoMovimientoId { get; set; }
+        public int TipoRecepcionId { get; set; }
 
         public string Codigo { get; set; }
 
@@ -32,7 +32,7 @@ namespace AdmCostoProduccion.Common.Models.Almacen
         #region Relacionales
 
         
-        public virtual ICollection<KardexMovimiento> KardexMovimientos { get; set; }
+        public virtual ICollection<TipoRecepcion> TipoRecepcions { get; set; }
 
         #endregion
     }

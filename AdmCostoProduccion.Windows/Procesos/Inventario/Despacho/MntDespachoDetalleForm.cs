@@ -1,7 +1,6 @@
 ﻿using AdmCostoProduccion.Common.Classes;
 using AdmCostoProduccion.Common.Data;
 using AdmCostoProduccion.Common.ViewModels.Inventario;
-using AdmCostoProduccion.Common.ViewModels.Produccion;
 using AdmCostoProduccion.Windows.Prompt;
 using ComponentFactory.Krypton.Toolkit;
 using System;
@@ -15,38 +14,38 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace AdmCostoProduccion.Windows.Mantenimiento.Produccion.ProcedimientoProduccionInsumo
+namespace AdmCostoProduccion.Windows.Mantenimiento.Inventario.DespachoDetalle
 {
-    public partial class MntProcedimientoProduccionInsumoForm : KryptonForm
+    public partial class MntDespachoDetalleForm : KryptonForm
     {
         private readonly ApplicationDbContext Context = new ApplicationDbContext();
-        private ProcedimientoProduccionInsumoViewModel ViewModel = new ProcedimientoProduccionInsumoViewModel();
+        private DespachoDetalleViewModel ViewModel = new DespachoDetalleViewModel();
         private List<UnidadMedidaViewModel> unidadMedidaViewModels = new List<UnidadMedidaViewModel>();
 
         #region Propiedades
         public bool IsNew { get; set; }
-        public ObservableListSource<ProcedimientoProduccionInsumoViewModel> ViewModelList { get; set; }
+        public ObservableListSource<DespachoDetalleViewModel> ViewModelList { get; set; }
         #endregion
 
         #region Constructor
-        public MntProcedimientoProduccionInsumoForm(ProcedimientoProduccionInsumoViewModel viewModel
-            , ObservableListSource<ProcedimientoProduccionInsumoViewModel> viewModelList)
+        public MntDespachoDetalleForm(DespachoDetalleViewModel viewModel
+            , ObservableListSource<DespachoDetalleViewModel> viewModelList)
         {
             InitializeComponent();
             IsNew = false;
             viewModel.CopyTo(ref ViewModel);
             ViewModelList = viewModelList;
-            procedimientoProduccionInsumoViewModelBindingSource.DataSource = ViewModel;
+            despachoDetalleViewModelBindingSource.DataSource = ViewModel;
             //
             CargarCombos();
         }
 
-        public MntProcedimientoProduccionInsumoForm(ObservableListSource<ProcedimientoProduccionInsumoViewModel> viewModelList)
+        public MntDespachoDetalleForm(ObservableListSource<DespachoDetalleViewModel> viewModelList)
         {
             InitializeComponent();
             IsNew = true;
             ViewModelList = viewModelList;
-            procedimientoProduccionInsumoViewModelBindingSource.DataSource = ViewModel;
+            despachoDetalleViewModelBindingSource.DataSource = ViewModel;
             //
             CargarCombos();
         }
@@ -60,7 +59,7 @@ namespace AdmCostoProduccion.Windows.Mantenimiento.Produccion.ProcedimientoProdu
 
         private void CancelarButton_Click(object sender, EventArgs e)
         {
-            procedimientoProduccionInsumoViewModelBindingSource.CancelEdit();
+            despachoDetalleViewModelBindingSource.CancelEdit();
             this.Close();
         }
 
@@ -77,27 +76,15 @@ namespace AdmCostoProduccion.Windows.Mantenimiento.Produccion.ProcedimientoProdu
             try
             {
                 Cursor = Cursors.WaitCursor;
-                procedimientoProduccionInsumoViewModelBindingSource.EndEdit();
-
-                var unidadMedidaViewModel = (UnidadMedidaViewModel)unidadMedidaViewModelBindingSource.Current;
-                var mercaderiaViewModel = (MercaderiaViewModel)mercaderiaTextBox.Tag;
-
-                if (unidadMedidaViewModel == null) throw new Exception("Debe de seleccionar una unidad de medida");
-                if (mercaderiaViewModel == null) throw new Exception("Debe se seleccionar una mercadería");
-
-                ViewModel.UnidadMedidaId = unidadMedidaViewModel.UnidadMedidaId;
-                ViewModel.UnidadMedida = unidadMedidaViewModel.Nombre;
-                ViewModel.MercaderiaId = mercaderiaViewModel.MercaderiaId;
-                ViewModel.CodigoMercaderia = mercaderiaViewModel.Codigo;
-                ViewModel.NombreMercaderia = mercaderiaViewModel.Nombre;
+                despachoDetalleViewModelBindingSource.EndEdit();
 
                 var model = ViewModel.ToModel();
                 if (IsNew)
                 {
-                    //Context.ProcedimientoProduccionInsumos.Add(model);
+                    //Context.DespachoDetalles.Add(model);
                     //Context.SaveChanges();
                     //
-                    ViewModel.ProcedimientoProduccionInsumoId = model.ProcedimientoProduccionInsumoId;
+                    ViewModel.DespachoDetalleId = model.DespachoDetalleId;
                     ViewModelList.Add(ViewModel);
                 }
                 else
@@ -106,7 +93,7 @@ namespace AdmCostoProduccion.Windows.Mantenimiento.Produccion.ProcedimientoProdu
                     //Context.SaveChanges();
                     //
                     var viewModel = ViewModelList
-                        .Where(o => o.ProcedimientoProduccionInsumoId == ViewModel.ProcedimientoProduccionInsumoId)
+                        .Where(o => o.DespachoDetalleId == ViewModel.DespachoDetalleId)
                         .FirstOrDefault();
                     ViewModel.CopyTo(ref viewModel);
                 }

@@ -41,5 +41,9 @@ namespace AdmCostoProduccion.Common.Data
         public DbSet<TipoRecepcion> TipoRecepcions { get; set; }
         public DbSet<ProcedimientoProduccion> ProcedimientoProduccions { get; set; }
         public DbSet<ProcedimientoProduccionInsumo> ProcedimientoProduccionInsumos { get; set; }
+        public DbSet<Despacho> Despachos { get; set; }
+        public DbSet<DespachoDetalle> DespachoDetalles { get; set; }
+        public DbSet<Recepcion> Recepcions { get; set; }
+        public DbSet<RecepcionDetalle> RecepcionDetalles { get; set; }
     }
 }

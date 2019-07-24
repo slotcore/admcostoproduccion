@@ -1,5 +1,6 @@
 ﻿using AdmCostoProduccion.Common.Classes;
 using AdmCostoProduccion.Common.Models.Almacen;
+using AdmCostoProduccion.Common.Models.CompraVenta;
 using AdmCostoProduccion.Common.Models.Produccion;
 
 using System;
@@ -62,6 +63,10 @@ namespace AdmCostoProduccion.Common.Models.Inventario
 
         
         public virtual ICollection<KardexMovimiento> KardexMovimientos { get; set; }
+
+        public virtual ICollection<CompraDetalle> CompraDetalles { get; set; }  
+
+        public virtual ICollection<VentaDetalle> VentaDetalles { get; set; }
 
         #endregion
     }

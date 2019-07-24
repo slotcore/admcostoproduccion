@@ -82,16 +82,20 @@
       <DependentUpon>201907240211160_initial-migration.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\Almacen\Despacho.cs" />
-    <Compile Include="Models\Almacen\DespachoDetalle.cs" />
+    <Compile Include="Models\CompraVenta\Compra.cs" />
+    <Compile Include="Models\CompraVenta\CompraDetalle.cs" />
+    <Compile Include="Models\CompraVenta\Venta.cs" />
+    <Compile Include="Models\CompraVenta\VentaDetalle.cs" />
+    <Compile Include="Models\Inventario\Despacho.cs" />
+    <Compile Include="Models\Inventario\DespachoDetalle.cs" />
     <Compile Include="Models\Almacen\Kardex.cs" />
     <Compile Include="Models\Almacen\KardexMovimiento.cs" />
     <Compile Include="Models\Almacen\OrdenServicio.cs" />
-    <Compile Include="Models\Almacen\Recepcion.cs" />
-    <Compile Include="Models\Almacen\RecepcionDetalle.cs" />
-    <Compile Include="Models\Almacen\TipoDespacho.cs" />
-    <Compile Include="Models\Almacen\TipoMovimiento.cs" />
-    <Compile Include="Models\Almacen\TipoRecepcion.cs" />
+    <Compile Include="Models\Inventario\Recepcion.cs" />
+    <Compile Include="Models\Inventario\RecepcionDetalle.cs" />
+    <Compile Include="Models\Inventario\TipoDespacho.cs" />
+    <Compile Include="Models\Inventario\TipoMovimiento.cs" />
+    <Compile Include="Models\Inventario\TipoRecepcion.cs" />
     <Compile Include="Models\Contabilidad\ConfiguracionValorizacion.cs" />
     <Compile Include="Models\Contabilidad\CostoOrdenProduccion.cs" />
     <Compile Include="Models\Contabilidad\CostoProduccion.cs" />
@@ -115,7 +119,11 @@
     </Compile>
     <Compile Include="ViewModels\Costo\CostoOrdenProduccionViewModel.cs" />
     <Compile Include="ViewModels\Costo\CostoProduccionViewModel.cs" />
+    <Compile Include="ViewModels\Inventario\DespachoDetalleViewModel.cs" />
+    <Compile Include="ViewModels\Inventario\DespachoViewModel.cs" />
     <Compile Include="ViewModels\Inventario\MercaderiaViewModel.cs" />
+    <Compile Include="ViewModels\Inventario\RecepcionDetalleViewModel.cs" />
+    <Compile Include="ViewModels\Inventario\RecepcionViewModel.cs" />
     <Compile Include="ViewModels\Inventario\TipoDespachoViewModel.cs" />
     <Compile Include="ViewModels\Inventario\TipoMercaderiaViewModel.cs" />
     <Compile Include="ViewModels\Inventario\TipoMovimientoViewModel.cs" />

@@ -5,19 +5,19 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace AdmCostoProduccion.Common.Models.Almacen
+namespace AdmCostoProduccion.Common.Models.Inventario
 {
-    public class TipoRecepcion : EntityBase
+    public class TipoDespacho : EntityBase
     {
         #region Constructor
-        public TipoRecepcion() : base()
+        public TipoDespacho() : base()
         {
         }
         #endregion
 
         #region Propiedades
         [Key]
-        public int TipoRecepcionId { get; set; }
+        public int TipoDespachoId { get; set; }
 
         public string Codigo { get; set; }
 
@@ -32,7 +32,7 @@ namespace AdmCostoProduccion.Common.Models.Almacen
         #region Relacionales
 
         
-        public virtual ICollection<TipoRecepcion> TipoRecepcions { get; set; }
+        public virtual ICollection<Despacho> Despachos { get; set; }
 
         #endregion
     }
