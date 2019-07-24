@@ -1,6 +1,7 @@
 ﻿using AdmCostoProduccion.Common.Classes;
 using AdmCostoProduccion.Common.Data;
 using AdmCostoProduccion.Common.ViewModels.Inventario;
+using ComponentFactory.Krypton.Toolkit;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,7 +15,7 @@ using System.Windows.Forms;
 
 namespace AdmCostoProduccion.Windows.Mantenimiento.Inventario.TipoDespacho
 {
-    public partial class MntTipoDespachoForm : Form
+    public partial class MntTipoDespachoForm : KryptonForm
     {
         private readonly ApplicationDbContext Context = new ApplicationDbContext();
         private TipoDespachoViewModel ViewModel = new TipoDespachoViewModel();

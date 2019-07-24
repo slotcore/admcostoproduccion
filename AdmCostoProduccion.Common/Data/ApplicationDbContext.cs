@@ -1,6 +1,7 @@
 ﻿using AdmCostoProduccion.Common.Models.Almacen;
 using AdmCostoProduccion.Common.Models.Inventario;
 using AdmCostoProduccion.Common.Models.Maestro;
+using AdmCostoProduccion.Common.Models.Produccion;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -36,5 +37,9 @@ namespace AdmCostoProduccion.Common.Data
         public DbSet<TipoMercaderia> TipoMercaderias { get; set; }
         public DbSet<Mercaderia> Mercaderias { get; set; }
         public DbSet<TipoDespacho> TipoDespachos { get; set; }
+        public DbSet<TipoMovimiento> TipoMovimientos { get; set; }
+        public DbSet<TipoRecepcion> TipoRecepcions { get; set; }
+        public DbSet<ProcedimientoProduccion> ProcedimientoProduccions { get; set; }
+        public DbSet<ProcedimientoProduccionInsumo> ProcedimientoProduccionInsumos { get; set; }
     }
 }

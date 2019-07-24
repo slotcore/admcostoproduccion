@@ -1,6 +1,6 @@
-﻿namespace AdmCostoProduccion.Windows.Mantenimiento.Inventario.TipoMercaderia
+﻿namespace AdmCostoProduccion.Windows.Mantenimiento.Produccion.ProcedimientoProduccion
 {
-    partial class LstTipoMercaderiaForm
+    partial class LstProcedimientoProduccionForm
     {
         /// <summary>
         /// Required designer variable.
@@ -37,16 +37,20 @@
             this.ClearButton = new ComponentFactory.Krypton.Toolkit.ButtonSpecAny();
             this.GridHeaderGroup = new ComponentFactory.Krypton.Toolkit.KryptonHeaderGroup();
             this.AlmacenDataGridView = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
-            this.codigoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nombreDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.descripcionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tipoMercaderiaViewModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.BaseFormToolStrip = new System.Windows.Forms.ToolStrip();
             this.AgregarButton = new System.Windows.Forms.ToolStripButton();
             this.ModificarButton = new System.Windows.Forms.ToolStripButton();
             this.EliminarButton = new System.Windows.Forms.ToolStripButton();
             this.ActualizarButton = new System.Windows.Forms.ToolStripButton();
             this.CargarExcelButton = new System.Windows.Forms.ToolStripButton();
+            this.procedimientoProduccionViewModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.codigoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nombreDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.descripcionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.codigoMercaderiaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nombreMercaderiaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.unidadMedidaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cantidadDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.BaseFormHeaderGroup)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BaseFormHeaderGroup.Panel)).BeginInit();
             this.BaseFormHeaderGroup.Panel.SuspendLayout();
@@ -62,8 +66,8 @@
             this.GridHeaderGroup.Panel.SuspendLayout();
             this.GridHeaderGroup.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AlmacenDataGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tipoMercaderiaViewModelBindingSource)).BeginInit();
             this.BaseFormToolStrip.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.procedimientoProduccionViewModelBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // BaseFormHeaderGroup
@@ -73,19 +77,18 @@
             this.BaseFormHeaderGroup.HeaderStyleSecondary = ComponentFactory.Krypton.Toolkit.HeaderStyle.Form;
             this.BaseFormHeaderGroup.HeaderVisibleSecondary = false;
             this.BaseFormHeaderGroup.Location = new System.Drawing.Point(0, 29);
-            this.BaseFormHeaderGroup.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.BaseFormHeaderGroup.Margin = new System.Windows.Forms.Padding(2);
             this.BaseFormHeaderGroup.Name = "BaseFormHeaderGroup";
             // 
             // BaseFormHeaderGroup.Panel
             // 
             this.BaseFormHeaderGroup.Panel.Controls.Add(this.kryptonPanel1);
-            this.BaseFormHeaderGroup.Size = new System.Drawing.Size(754, 397);
+            this.BaseFormHeaderGroup.Size = new System.Drawing.Size(800, 421);
             this.BaseFormHeaderGroup.StateNormal.HeaderPrimary.Border.Color1 = System.Drawing.SystemColors.ControlDarkDark;
             this.BaseFormHeaderGroup.StateNormal.HeaderPrimary.Border.DrawBorders = ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom;
-            this.BaseFormHeaderGroup.StateNormal.HeaderPrimary.Border.ImageStyle = ComponentFactory.Krypton.Toolkit.PaletteImageStyle.Inherit;
             this.BaseFormHeaderGroup.StateNormal.HeaderPrimary.Border.Width = 1;
-            this.BaseFormHeaderGroup.TabIndex = 10;
-            this.BaseFormHeaderGroup.ValuesPrimary.Heading = "Tipo de Mercadería";
+            this.BaseFormHeaderGroup.TabIndex = 12;
+            this.BaseFormHeaderGroup.ValuesPrimary.Heading = "Procedimiento de Producción";
             this.BaseFormHeaderGroup.ValuesPrimary.Image = null;
             // 
             // kryptonPanel1
@@ -94,27 +97,24 @@
             this.kryptonPanel1.Controls.Add(this.GridHeaderGroup);
             this.kryptonPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonPanel1.Location = new System.Drawing.Point(0, 0);
-            this.kryptonPanel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.kryptonPanel1.Margin = new System.Windows.Forms.Padding(2);
             this.kryptonPanel1.Name = "kryptonPanel1";
-            this.kryptonPanel1.Size = new System.Drawing.Size(752, 373);
+            this.kryptonPanel1.Size = new System.Drawing.Size(798, 397);
             this.kryptonPanel1.TabIndex = 0;
             // 
             // BusquedaGroupBox
             // 
             this.BusquedaGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.BusquedaGroupBox.CaptionStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.GroupBoxCaption;
-            this.BusquedaGroupBox.GroupBackStyle = ComponentFactory.Krypton.Toolkit.PaletteBackStyle.ControlGroupBox;
-            this.BusquedaGroupBox.GroupBorderStyle = ComponentFactory.Krypton.Toolkit.PaletteBorderStyle.ControlGroupBox;
             this.BusquedaGroupBox.Location = new System.Drawing.Point(3, 2);
-            this.BusquedaGroupBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.BusquedaGroupBox.Margin = new System.Windows.Forms.Padding(2);
             this.BusquedaGroupBox.Name = "BusquedaGroupBox";
             // 
             // BusquedaGroupBox.Panel
             // 
             this.BusquedaGroupBox.Panel.Controls.Add(this.BuscarButton);
             this.BusquedaGroupBox.Panel.Controls.Add(this.BusquedaTextBox);
-            this.BusquedaGroupBox.Size = new System.Drawing.Size(746, 110);
+            this.BusquedaGroupBox.Size = new System.Drawing.Size(792, 110);
             this.BusquedaGroupBox.TabIndex = 2;
             this.BusquedaGroupBox.Values.Heading = "Busqueda";
             // 
@@ -122,7 +122,7 @@
             // 
             this.BuscarButton.AutoSize = true;
             this.BuscarButton.Location = new System.Drawing.Point(404, 30);
-            this.BuscarButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.BuscarButton.Margin = new System.Windows.Forms.Padding(2);
             this.BuscarButton.Name = "BuscarButton";
             this.BuscarButton.Size = new System.Drawing.Size(73, 28);
             this.BuscarButton.TabIndex = 3;
@@ -136,15 +136,14 @@
             this.ClearButton});
             this.BusquedaTextBox.InputControlStyle = ComponentFactory.Krypton.Toolkit.InputControlStyle.Ribbon;
             this.BusquedaTextBox.Location = new System.Drawing.Point(17, 32);
-            this.BusquedaTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.BusquedaTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.BusquedaTextBox.Name = "BusquedaTextBox";
             this.BusquedaTextBox.Size = new System.Drawing.Size(382, 23);
             this.BusquedaTextBox.TabIndex = 2;
+            this.BusquedaTextBox.KeyUp += new System.Windows.Forms.KeyEventHandler(this.BusquedaTextBox_KeyUp);
             // 
             // ClearButton
             // 
-            this.ClearButton.Style = ComponentFactory.Krypton.Toolkit.PaletteButtonStyle.Inherit;
-            this.ClearButton.ToolTipStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.ToolTip;
             this.ClearButton.Type = ComponentFactory.Krypton.Toolkit.PaletteButtonSpecStyle.Close;
             this.ClearButton.UniqueName = "1108868230D14A995A9EC71B7814ACBA";
             this.ClearButton.Click += new System.EventHandler(this.ClearButton_Click);
@@ -157,13 +156,13 @@
             this.GridHeaderGroup.HeaderStylePrimary = ComponentFactory.Krypton.Toolkit.HeaderStyle.DockActive;
             this.GridHeaderGroup.HeaderVisibleSecondary = false;
             this.GridHeaderGroup.Location = new System.Drawing.Point(2, 118);
-            this.GridHeaderGroup.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.GridHeaderGroup.Margin = new System.Windows.Forms.Padding(2);
             this.GridHeaderGroup.Name = "GridHeaderGroup";
             // 
             // GridHeaderGroup.Panel
             // 
             this.GridHeaderGroup.Panel.Controls.Add(this.AlmacenDataGridView);
-            this.GridHeaderGroup.Size = new System.Drawing.Size(748, 252);
+            this.GridHeaderGroup.Size = new System.Drawing.Size(794, 276);
             this.GridHeaderGroup.TabIndex = 0;
             this.GridHeaderGroup.ValuesPrimary.Heading = "Detalles";
             this.GridHeaderGroup.ValuesPrimary.Image = null;
@@ -179,8 +178,12 @@
             this.AlmacenDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.codigoDataGridViewTextBoxColumn,
             this.nombreDataGridViewTextBoxColumn,
-            this.descripcionDataGridViewTextBoxColumn});
-            this.AlmacenDataGridView.DataSource = this.tipoMercaderiaViewModelBindingSource;
+            this.descripcionDataGridViewTextBoxColumn,
+            this.codigoMercaderiaDataGridViewTextBoxColumn,
+            this.nombreMercaderiaDataGridViewTextBoxColumn,
+            this.unidadMedidaDataGridViewTextBoxColumn,
+            this.cantidadDataGridViewTextBoxColumn});
+            this.AlmacenDataGridView.DataSource = this.procedimientoProduccionViewModelBindingSource;
             this.AlmacenDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.AlmacenDataGridView.GridStyles.Style = ComponentFactory.Krypton.Toolkit.DataGridViewStyle.Sheet;
             this.AlmacenDataGridView.GridStyles.StyleBackground = ComponentFactory.Krypton.Toolkit.PaletteBackStyle.GridBackgroundSheet;
@@ -188,45 +191,14 @@
             this.AlmacenDataGridView.GridStyles.StyleDataCells = ComponentFactory.Krypton.Toolkit.GridStyle.Sheet;
             this.AlmacenDataGridView.GridStyles.StyleRow = ComponentFactory.Krypton.Toolkit.GridStyle.Sheet;
             this.AlmacenDataGridView.Location = new System.Drawing.Point(0, 0);
-            this.AlmacenDataGridView.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.AlmacenDataGridView.Margin = new System.Windows.Forms.Padding(2);
             this.AlmacenDataGridView.Name = "AlmacenDataGridView";
             this.AlmacenDataGridView.ReadOnly = true;
             this.AlmacenDataGridView.RowHeadersVisible = false;
             this.AlmacenDataGridView.RowHeadersWidth = 51;
             this.AlmacenDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.AlmacenDataGridView.Size = new System.Drawing.Size(746, 228);
+            this.AlmacenDataGridView.Size = new System.Drawing.Size(792, 252);
             this.AlmacenDataGridView.TabIndex = 0;
-            // 
-            // codigoDataGridViewTextBoxColumn
-            // 
-            this.codigoDataGridViewTextBoxColumn.DataPropertyName = "Codigo";
-            this.codigoDataGridViewTextBoxColumn.HeaderText = "Codigo";
-            this.codigoDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.codigoDataGridViewTextBoxColumn.Name = "codigoDataGridViewTextBoxColumn";
-            this.codigoDataGridViewTextBoxColumn.ReadOnly = true;
-            this.codigoDataGridViewTextBoxColumn.Width = 75;
-            // 
-            // nombreDataGridViewTextBoxColumn
-            // 
-            this.nombreDataGridViewTextBoxColumn.DataPropertyName = "Nombre";
-            this.nombreDataGridViewTextBoxColumn.HeaderText = "Nombre";
-            this.nombreDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.nombreDataGridViewTextBoxColumn.Name = "nombreDataGridViewTextBoxColumn";
-            this.nombreDataGridViewTextBoxColumn.ReadOnly = true;
-            this.nombreDataGridViewTextBoxColumn.Width = 80;
-            // 
-            // descripcionDataGridViewTextBoxColumn
-            // 
-            this.descripcionDataGridViewTextBoxColumn.DataPropertyName = "Descripcion";
-            this.descripcionDataGridViewTextBoxColumn.HeaderText = "Descripcion";
-            this.descripcionDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.descripcionDataGridViewTextBoxColumn.Name = "descripcionDataGridViewTextBoxColumn";
-            this.descripcionDataGridViewTextBoxColumn.ReadOnly = true;
-            this.descripcionDataGridViewTextBoxColumn.Width = 98;
-            // 
-            // tipoMercaderiaViewModelBindingSource
-            // 
-            this.tipoMercaderiaViewModelBindingSource.DataSource = typeof(AdmCostoProduccion.Common.ViewModels.Inventario.TipoMercaderiaViewModel);
             // 
             // BaseFormToolStrip
             // 
@@ -242,8 +214,8 @@
             this.BaseFormToolStrip.Location = new System.Drawing.Point(0, 0);
             this.BaseFormToolStrip.Name = "BaseFormToolStrip";
             this.BaseFormToolStrip.Padding = new System.Windows.Forms.Padding(2, 1, 2, 1);
-            this.BaseFormToolStrip.Size = new System.Drawing.Size(754, 29);
-            this.BaseFormToolStrip.TabIndex = 9;
+            this.BaseFormToolStrip.Size = new System.Drawing.Size(800, 29);
+            this.BaseFormToolStrip.TabIndex = 11;
             this.BaseFormToolStrip.Text = "BaseFormToolStrip";
             // 
             // AgregarButton
@@ -290,16 +262,75 @@
             this.CargarExcelButton.Size = new System.Drawing.Size(95, 24);
             this.CargarExcelButton.Text = "Cargal Excel";
             // 
-            // LstTipoMercaderiaForm
+            // procedimientoProduccionViewModelBindingSource
+            // 
+            this.procedimientoProduccionViewModelBindingSource.DataSource = typeof(AdmCostoProduccion.Common.ViewModels.Produccion.ProcedimientoProduccionViewModel);
+            // 
+            // codigoDataGridViewTextBoxColumn
+            // 
+            this.codigoDataGridViewTextBoxColumn.DataPropertyName = "Codigo";
+            this.codigoDataGridViewTextBoxColumn.HeaderText = "Codigo";
+            this.codigoDataGridViewTextBoxColumn.Name = "codigoDataGridViewTextBoxColumn";
+            this.codigoDataGridViewTextBoxColumn.ReadOnly = true;
+            this.codigoDataGridViewTextBoxColumn.Width = 75;
+            // 
+            // nombreDataGridViewTextBoxColumn
+            // 
+            this.nombreDataGridViewTextBoxColumn.DataPropertyName = "Nombre";
+            this.nombreDataGridViewTextBoxColumn.HeaderText = "Nombre";
+            this.nombreDataGridViewTextBoxColumn.Name = "nombreDataGridViewTextBoxColumn";
+            this.nombreDataGridViewTextBoxColumn.ReadOnly = true;
+            this.nombreDataGridViewTextBoxColumn.Width = 80;
+            // 
+            // descripcionDataGridViewTextBoxColumn
+            // 
+            this.descripcionDataGridViewTextBoxColumn.DataPropertyName = "Descripcion";
+            this.descripcionDataGridViewTextBoxColumn.HeaderText = "Descripcion";
+            this.descripcionDataGridViewTextBoxColumn.Name = "descripcionDataGridViewTextBoxColumn";
+            this.descripcionDataGridViewTextBoxColumn.ReadOnly = true;
+            this.descripcionDataGridViewTextBoxColumn.Width = 98;
+            // 
+            // codigoMercaderiaDataGridViewTextBoxColumn
+            // 
+            this.codigoMercaderiaDataGridViewTextBoxColumn.DataPropertyName = "CodigoMercaderia";
+            this.codigoMercaderiaDataGridViewTextBoxColumn.HeaderText = "CodigoMercaderia";
+            this.codigoMercaderiaDataGridViewTextBoxColumn.Name = "codigoMercaderiaDataGridViewTextBoxColumn";
+            this.codigoMercaderiaDataGridViewTextBoxColumn.ReadOnly = true;
+            this.codigoMercaderiaDataGridViewTextBoxColumn.Width = 134;
+            // 
+            // nombreMercaderiaDataGridViewTextBoxColumn
+            // 
+            this.nombreMercaderiaDataGridViewTextBoxColumn.DataPropertyName = "NombreMercaderia";
+            this.nombreMercaderiaDataGridViewTextBoxColumn.HeaderText = "NombreMercaderia";
+            this.nombreMercaderiaDataGridViewTextBoxColumn.Name = "nombreMercaderiaDataGridViewTextBoxColumn";
+            this.nombreMercaderiaDataGridViewTextBoxColumn.ReadOnly = true;
+            this.nombreMercaderiaDataGridViewTextBoxColumn.Width = 139;
+            // 
+            // unidadMedidaDataGridViewTextBoxColumn
+            // 
+            this.unidadMedidaDataGridViewTextBoxColumn.DataPropertyName = "UnidadMedida";
+            this.unidadMedidaDataGridViewTextBoxColumn.HeaderText = "UnidadMedida";
+            this.unidadMedidaDataGridViewTextBoxColumn.Name = "unidadMedidaDataGridViewTextBoxColumn";
+            this.unidadMedidaDataGridViewTextBoxColumn.ReadOnly = true;
+            this.unidadMedidaDataGridViewTextBoxColumn.Width = 114;
+            // 
+            // cantidadDataGridViewTextBoxColumn
+            // 
+            this.cantidadDataGridViewTextBoxColumn.DataPropertyName = "Cantidad";
+            this.cantidadDataGridViewTextBoxColumn.HeaderText = "Cantidad";
+            this.cantidadDataGridViewTextBoxColumn.Name = "cantidadDataGridViewTextBoxColumn";
+            this.cantidadDataGridViewTextBoxColumn.ReadOnly = true;
+            this.cantidadDataGridViewTextBoxColumn.Width = 84;
+            // 
+            // LstProcedimientoProduccionForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(754, 426);
+            this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.BaseFormHeaderGroup);
             this.Controls.Add(this.BaseFormToolStrip);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.Name = "LstTipoMercaderiaForm";
-            this.Text = "Tipo de Mercadería";
+            this.Name = "LstProcedimientoProduccionForm";
+            this.Text = "Procedimiento de Producción";
             ((System.ComponentModel.ISupportInitialize)(this.BaseFormHeaderGroup.Panel)).EndInit();
             this.BaseFormHeaderGroup.Panel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.BaseFormHeaderGroup)).EndInit();
@@ -316,9 +347,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.GridHeaderGroup)).EndInit();
             this.GridHeaderGroup.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.AlmacenDataGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tipoMercaderiaViewModelBindingSource)).EndInit();
             this.BaseFormToolStrip.ResumeLayout(false);
             this.BaseFormToolStrip.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.procedimientoProduccionViewModelBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -343,6 +374,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn codigoDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn nombreDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn descripcionDataGridViewTextBoxColumn;
-        private System.Windows.Forms.BindingSource tipoMercaderiaViewModelBindingSource;
+        private System.Windows.Forms.DataGridViewTextBoxColumn codigoMercaderiaDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nombreMercaderiaDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn unidadMedidaDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cantidadDataGridViewTextBoxColumn;
+        private System.Windows.Forms.BindingSource procedimientoProduccionViewModelBindingSource;
     }
 }

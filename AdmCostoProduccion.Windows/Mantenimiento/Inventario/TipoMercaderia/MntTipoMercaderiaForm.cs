@@ -1,6 +1,7 @@
 ﻿using AdmCostoProduccion.Common.Classes;
 using AdmCostoProduccion.Common.Data;
 using AdmCostoProduccion.Common.ViewModels.Inventario;
+using ComponentFactory.Krypton.Toolkit;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,7 +15,7 @@ using System.Windows.Forms;
 
 namespace AdmCostoProduccion.Windows.Mantenimiento.Inventario.TipoMercaderia
 {
-    public partial class MntTipoMercaderiaForm : Form
+    public partial class MntTipoMercaderiaForm : KryptonForm
     {
         private readonly ApplicationDbContext Context = new ApplicationDbContext();
         private TipoMercaderiaViewModel ViewModel = new TipoMercaderiaViewModel();

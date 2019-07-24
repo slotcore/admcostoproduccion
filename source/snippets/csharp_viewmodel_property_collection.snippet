@@ -24,7 +24,15 @@
             get 
             { 
                 return _$EntityName$s; 
-            } 
+            }
+            set
+            {
+                if (value != _$EntityName$s)
+                {
+                    _$EntityName$s = value;
+                    NotifyPropertyChanged();
+                }
+            }
         }]]>
       </Code>
     </Snippet>

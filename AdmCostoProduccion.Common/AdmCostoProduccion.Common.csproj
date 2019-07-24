@@ -77,6 +77,11 @@
     <Compile Include="Forms\MntBaseForm.Designer.cs">
       <DependentUpon>MntBaseForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201907240211160_initial-migration.cs" />
+    <Compile Include="Migrations\201907240211160_initial-migration.Designer.cs">
+      <DependentUpon>201907240211160_initial-migration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Almacen\Despacho.cs" />
     <Compile Include="Models\Almacen\DespachoDetalle.cs" />
     <Compile Include="Models\Almacen\Kardex.cs" />
@@ -119,6 +124,8 @@
     <Compile Include="ViewModels\Maestro\AlmacenViewModel.cs" />
     <Compile Include="ViewModels\Maestro\CentroLogisticoViewModel.cs" />
     <Compile Include="ViewModels\Maestro\PlantaFabricacionViewModel.cs" />
+    <Compile Include="ViewModels\Produccion\ProcedimientoProduccionInsumoViewModel.cs" />
+    <Compile Include="ViewModels\Produccion\ProcedimientoProduccionViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="AdmCostoProduccion.Common.pfx" />
@@ -134,6 +141,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MntBaseForm.resx">
       <DependentUpon>MntBaseForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907240211160_initial-migration.resx">
+      <DependentUpon>201907240211160_initial-migration.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

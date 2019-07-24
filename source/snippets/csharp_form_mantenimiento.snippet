@@ -34,6 +34,7 @@
         <![CDATA[using $LibraryName$.Classes;
 using $LibraryName$.Data;
 using $LibraryName$.ViewModels.$EsquemaName$;
+using ComponentFactory.Krypton.Toolkit;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -47,7 +48,7 @@ using System.Windows.Forms;
 
 namespace AdmCostoProduccion.Windows.Mantenimiento.$EsquemaName$.$Model$
 {
-    public partial class Mnt$Model$Form : Form
+    public partial class Mnt$Model$Form : KryptonForm
     {
         private readonly ApplicationDbContext Context = new ApplicationDbContext();
         private $Model$ViewModel ViewModel = new $Model$ViewModel();

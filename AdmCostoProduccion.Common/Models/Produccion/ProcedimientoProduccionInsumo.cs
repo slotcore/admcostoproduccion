@@ -25,6 +25,10 @@ namespace AdmCostoProduccion.Common.Models.Produccion
 
         #region Foraneas
 
+        public int ProcedimientoProduccionId { get; set; }
+
+        public virtual ProcedimientoProduccion ProcedimientoProduccion { get; set; }
+
         public int MercaderiaId { get; set; }
 
         

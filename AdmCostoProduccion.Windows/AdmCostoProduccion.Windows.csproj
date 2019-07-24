@@ -103,6 +103,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -114,40 +115,40 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Maestro\Almacen\LstAlmacenForm.cs">
+    <Compile Include="Mantenimiento\Maestro\Almacen\LstAlmacenForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Maestro\Almacen\LstAlmacenForm.Designer.cs">
+    <Compile Include="Mantenimiento\Maestro\Almacen\LstAlmacenForm.Designer.cs">
       <DependentUpon>LstAlmacenForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Maestro\Almacen\MntAlmacenForm.cs">
+    <Compile Include="Mantenimiento\Maestro\Almacen\MntAlmacenForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Maestro\Almacen\MntAlmacenForm.Designer.cs">
+    <Compile Include="Mantenimiento\Maestro\Almacen\MntAlmacenForm.Designer.cs">
       <DependentUpon>MntAlmacenForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Maestro\CentroLogistico\LstCentroLogisticoForm.cs">
+    <Compile Include="Mantenimiento\Maestro\CentroLogistico\LstCentroLogisticoForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Maestro\CentroLogistico\LstCentroLogisticoForm.Designer.cs">
+    <Compile Include="Mantenimiento\Maestro\CentroLogistico\LstCentroLogisticoForm.Designer.cs">
       <DependentUpon>LstCentroLogisticoForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Maestro\CentroLogistico\MntCentroLogisticoForm.cs">
+    <Compile Include="Mantenimiento\Maestro\CentroLogistico\MntCentroLogisticoForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Maestro\CentroLogistico\MntCentroLogisticoForm.Designer.cs">
+    <Compile Include="Mantenimiento\Maestro\CentroLogistico\MntCentroLogisticoForm.Designer.cs">
       <DependentUpon>MntCentroLogisticoForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Maestro\PlantaFabricacion\LstPlantaFabricacionForm.cs">
+    <Compile Include="Mantenimiento\Maestro\PlantaFabricacion\LstPlantaFabricacionForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Maestro\PlantaFabricacion\LstPlantaFabricacionForm.Designer.cs">
+    <Compile Include="Mantenimiento\Maestro\PlantaFabricacion\LstPlantaFabricacionForm.Designer.cs">
       <DependentUpon>LstPlantaFabricacionForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Maestro\PlantaFabricacion\MntPlantaFabricacionForm.cs">
+    <Compile Include="Mantenimiento\Maestro\PlantaFabricacion\MntPlantaFabricacionForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Maestro\PlantaFabricacion\MntPlantaFabricacionForm.Designer.cs">
+    <Compile Include="Mantenimiento\Maestro\PlantaFabricacion\MntPlantaFabricacionForm.Designer.cs">
       <DependentUpon>MntPlantaFabricacionForm.cs</DependentUpon>
     </Compile>
     <Compile Include="MainForm.cs">
@@ -228,24 +229,60 @@
     <Compile Include="Mantenimiento\Inventario\UnidadMedida\MntUnidadMedidaForm.Designer.cs">
       <DependentUpon>MntUnidadMedidaForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Mantenimiento\Produccion\ProcedimientoProduccion\LstProcedimientoProduccionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Mantenimiento\Produccion\ProcedimientoProduccion\LstProcedimientoProduccionForm.Designer.cs">
+      <DependentUpon>LstProcedimientoProduccionForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mantenimiento\Produccion\ProcedimientoProduccion\MntProcedimientoProduccionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Mantenimiento\Produccion\ProcedimientoProduccion\MntProcedimientoProduccionForm.Designer.cs">
+      <DependentUpon>MntProcedimientoProduccionForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mantenimiento\Produccion\ProcedimientoProduccion\MntProcedimientoProduccionInsumoForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Mantenimiento\Produccion\ProcedimientoProduccion\MntProcedimientoProduccionInsumoForm.Designer.cs">
+      <DependentUpon>MntProcedimientoProduccionInsumoForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
+    <Compile Include="Prompt\MercaderiaPromptForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Prompt\MercaderiaPromptForm.Designer.cs">
+      <DependentUpon>MercaderiaPromptForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Maestro\Almacen\LstAlmacenForm.resx">
+    <EmbeddedResource Include="Mantenimiento\Inventario\TipoMovimiento\LstTipoMovimientoForm.resx">
+      <DependentUpon>LstTipoMovimientoForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mantenimiento\Inventario\TipoMovimiento\MntTipoMovimientoForm.resx">
+      <DependentUpon>MntTipoMovimientoForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mantenimiento\Inventario\TipoRecepcion\LstTipoRecepcionForm.resx">
+      <DependentUpon>LstTipoRecepcionForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mantenimiento\Inventario\TipoRecepcion\MntTipoRecepcionForm.resx">
+      <DependentUpon>MntTipoRecepcionForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mantenimiento\Maestro\Almacen\LstAlmacenForm.resx">
       <DependentUpon>LstAlmacenForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Maestro\Almacen\MntAlmacenForm.resx">
+    <EmbeddedResource Include="Mantenimiento\Maestro\Almacen\MntAlmacenForm.resx">
       <DependentUpon>MntAlmacenForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Maestro\CentroLogistico\LstCentroLogisticoForm.resx">
+    <EmbeddedResource Include="Mantenimiento\Maestro\CentroLogistico\LstCentroLogisticoForm.resx">
       <DependentUpon>LstCentroLogisticoForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Maestro\CentroLogistico\MntCentroLogisticoForm.resx">
+    <EmbeddedResource Include="Mantenimiento\Maestro\CentroLogistico\MntCentroLogisticoForm.resx">
       <DependentUpon>MntCentroLogisticoForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Maestro\PlantaFabricacion\LstPlantaFabricacionForm.resx">
+    <EmbeddedResource Include="Mantenimiento\Maestro\PlantaFabricacion\LstPlantaFabricacionForm.resx">
       <DependentUpon>LstPlantaFabricacionForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Maestro\PlantaFabricacion\MntPlantaFabricacionForm.resx">
+    <EmbeddedResource Include="Mantenimiento\Maestro\PlantaFabricacion\MntPlantaFabricacionForm.resx">
       <DependentUpon>MntPlantaFabricacionForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
@@ -275,6 +312,18 @@
     <EmbeddedResource Include="Mantenimiento\Inventario\UnidadMedida\MntUnidadMedidaForm.resx">
       <DependentUpon>MntUnidadMedidaForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Mantenimiento\Produccion\ProcedimientoProduccion\LstProcedimientoProduccionForm.resx">
+      <DependentUpon>LstProcedimientoProduccionForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mantenimiento\Produccion\ProcedimientoProduccion\MntProcedimientoProduccionForm.resx">
+      <DependentUpon>MntProcedimientoProduccionForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mantenimiento\Produccion\ProcedimientoProduccion\MntProcedimientoProduccionInsumoForm.resx">
+      <DependentUpon>MntProcedimientoProduccionInsumoForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Prompt\MercaderiaPromptForm.resx">
+      <DependentUpon>MercaderiaPromptForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -292,10 +341,14 @@
     <None Include="Properties\DataSources\AdmCostoProduccion.Common.ViewModels.Inventario.MercaderiaViewModel.datasource" />
     <None Include="Properties\DataSources\AdmCostoProduccion.Common.ViewModels.Inventario.TipoDespachoViewModel.datasource" />
     <None Include="Properties\DataSources\AdmCostoProduccion.Common.ViewModels.Inventario.TipoMercaderiaViewModel.datasource" />
+    <None Include="Properties\DataSources\AdmCostoProduccion.Common.ViewModels.Inventario.TipoMovimientoViewModel.datasource" />
+    <None Include="Properties\DataSources\AdmCostoProduccion.Common.ViewModels.Inventario.TipoRecepcionViewModel.datasource" />
     <None Include="Properties\DataSources\AdmCostoProduccion.Common.ViewModels.Inventario.UnidadMedidaViewModel.datasource" />
     <None Include="Properties\DataSources\AdmCostoProduccion.Common.ViewModels.Maestro.AlmacenViewModel.datasource" />
     <None Include="Properties\DataSources\AdmCostoProduccion.Common.ViewModels.Maestro.CentroLogisticoViewModel.datasource" />
     <None Include="Properties\DataSources\AdmCostoProduccion.Common.ViewModels.Maestro.PlantaFabricacionViewModel.datasource" />
+    <None Include="Properties\DataSources\AdmCostoProduccion.Common.ViewModels.Produccion.ProcedimientoProduccionInsumoViewModel.datasource" />
+    <None Include="Properties\DataSources\AdmCostoProduccion.Common.ViewModels.Produccion.ProcedimientoProduccionViewModel.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -325,7 +378,9 @@
   <ItemGroup>
     <None Include="Resources\outbox_16x16.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\apply_16x16.png" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="Resources\add_16x16.png" />
   </ItemGroup>

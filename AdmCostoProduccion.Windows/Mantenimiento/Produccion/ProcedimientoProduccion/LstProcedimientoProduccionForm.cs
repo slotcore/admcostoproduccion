@@ -1,6 +1,6 @@
 ﻿using AdmCostoProduccion.Common.Classes;
 using AdmCostoProduccion.Common.Data;
-using AdmCostoProduccion.Common.ViewModels.Inventario;
+using AdmCostoProduccion.Common.ViewModels.Produccion;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,19 +11,19 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace AdmCostoProduccion.Windows.Mantenimiento.Inventario.TipoRecepcion
+namespace AdmCostoProduccion.Windows.Mantenimiento.Produccion.ProcedimientoProduccion
 {
-    public partial class LstTipoRecepcionForm : Form
+    public partial class LstProcedimientoProduccionForm : Form
     {
-        private ObservableListSource<TipoRecepcionViewModel> ViewModelList = new ObservableListSource<TipoRecepcionViewModel>();
+        private ObservableListSource<ProcedimientoProduccionViewModel> ViewModelList = new ObservableListSource<ProcedimientoProduccionViewModel>();
 
         #region Constructor
-        public LstTipoRecepcionForm()
+        public LstProcedimientoProduccionForm()
         {
             InitializeComponent();
 
-            ViewModelList = new ObservableListSource<TipoRecepcionViewModel>();
-            tipoRecepcionViewModelBindingSource.DataSource = ViewModelList;
+            ViewModelList = new ObservableListSource<ProcedimientoProduccionViewModel>();
+            procedimientoProduccionViewModelBindingSource.DataSource = ViewModelList;
         }
         #endregion
 
@@ -72,7 +72,7 @@ namespace AdmCostoProduccion.Windows.Mantenimiento.Inventario.TipoRecepcion
         {
             try
             {
-                var frm = new MntTipoRecepcionForm(ViewModelList);
+                var frm = new MntProcedimientoProduccionForm(ViewModelList);
                 frm.ShowDialog();
             }
             catch (Exception ex)
@@ -86,8 +86,8 @@ namespace AdmCostoProduccion.Windows.Mantenimiento.Inventario.TipoRecepcion
         {
             try
             {
-                var viewModel = (TipoRecepcionViewModel)tipoRecepcionViewModelBindingSource.Current;
-                var frm = new MntTipoRecepcionForm(viewModel, ViewModelList);
+                var viewModel = (ProcedimientoProduccionViewModel)procedimientoProduccionViewModelBindingSource.Current;
+                var frm = new MntProcedimientoProduccionForm(viewModel, ViewModelList);
                 frm.ShowDialog();
             }
             catch (Exception ex)
@@ -105,11 +105,11 @@ namespace AdmCostoProduccion.Windows.Mantenimiento.Inventario.TipoRecepcion
                 {
                     Cursor = Cursors.WaitCursor;
                     var context = new ApplicationDbContext();
-                    var viewModel = (TipoRecepcionViewModel)tipoRecepcionViewModelBindingSource.Current;
-                    var model = context.TipoRecepcions
-                        .Where(o => o.TipoRecepcionId == viewModel.TipoRecepcionId)
+                    var viewModel = (ProcedimientoProduccionViewModel)procedimientoProduccionViewModelBindingSource.Current;
+                    var model = context.ProcedimientoProduccions
+                        .Where(o => o.ProcedimientoProduccionId == viewModel.ProcedimientoProduccionId)
                         .FirstOrDefault();
-                    context.TipoRecepcions.Remove(model);
+                    context.ProcedimientoProduccions.Remove(model);
                     context.SaveChanges();
                     ViewModelList.Remove(viewModel);
                 }
@@ -130,11 +130,11 @@ namespace AdmCostoProduccion.Windows.Mantenimiento.Inventario.TipoRecepcion
             try
             {
                 Cursor = Cursors.WaitCursor;
-                var list = new ApplicationDbContext().TipoRecepcions.ToList();
+                var list = new ApplicationDbContext().ProcedimientoProduccions.ToList();
                 ViewModelList.Clear();
                 foreach (var model in list)
                 {
-                    ViewModelList.Add(new TipoRecepcionViewModel(model));
+                    ViewModelList.Add(new ProcedimientoProduccionViewModel(model));
                 }
             }
             catch (Exception ex)
@@ -154,7 +154,7 @@ namespace AdmCostoProduccion.Windows.Mantenimiento.Inventario.TipoRecepcion
             {
                 Cursor = Cursors.WaitCursor;
                 var cadenaBusqueda = BusquedaTextBox.Text.Trim().ToUpper();
-                var list = new ApplicationDbContext().TipoRecepcions.Where(o =>
+                var list = new ApplicationDbContext().ProcedimientoProduccions.Where(o =>
                                 o.Codigo.ToUpper().Contains(cadenaBusqueda) ||
                                 o.Nombre.ToUpper().Contains(cadenaBusqueda) ||
                                 o.Descripcion.ToUpper().Contains(cadenaBusqueda)).ToList();
@@ -162,7 +162,7 @@ namespace AdmCostoProduccion.Windows.Mantenimiento.Inventario.TipoRecepcion
                 ViewModelList.Clear();
                 foreach (var model in list)
                 {
-                    ViewModelList.Add(new TipoRecepcionViewModel(model));
+                    ViewModelList.Add(new ProcedimientoProduccionViewModel(model));
                 }
             }
             catch (Exception ex)

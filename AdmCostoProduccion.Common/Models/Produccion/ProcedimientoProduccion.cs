@@ -47,6 +47,7 @@ namespace AdmCostoProduccion.Common.Models.Produccion
 
         #region Relacionales
 
+        public virtual ICollection<ProcedimientoProduccionInsumo> ProcedimientoProduccionInsumos { get; set; }
         
         public virtual ICollection<OrdenProduccion> OrdenProduccions { get; set; }
 
