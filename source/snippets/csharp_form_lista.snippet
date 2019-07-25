@@ -22,12 +22,27 @@
         <Literal>
           <ID>LibraryName</ID>
           <ToolTip>Nombre del esquema</ToolTip>
+          <Default>AdmCostoProduccion.Windows</Default>
+        </Literal>
+        <Literal>
+          <ID>CommonLibraryName</ID>
+          <ToolTip>Nombre del esquema</ToolTip>
           <Default>AdmCostoProduccion.Common</Default>
         </Literal>
         <Literal>
           <ID>EsquemaName</ID>
           <ToolTip>Nombre del esquema</ToolTip>
-          <Default>Costo</Default>
+          <Default>Maestro</Default>
+        </Literal>
+        <Literal>
+          <ID>ProcessName</ID>
+          <ToolTip>Nombre del esquema</ToolTip>
+          <Default>Mantenimiento</Default>
+        </Literal>
+        <Literal>
+          <ID>FolderName</ID>
+          <ToolTip>Nombre del esquema</ToolTip>
+          <Default>CentroLogistico</Default>
         </Literal>
         <Literal>
           <ID>Propiedad1</ID>
@@ -46,9 +61,9 @@
         </Literal>
       </Declarations>
       <Code Language="csharp">
-        <![CDATA[using $LibraryName$.Classes;
-using $LibraryName$.Data;
-using $LibraryName$.ViewModels.$EsquemaName$;
+        <![CDATA[using $CommonLibraryName$.Classes;
+using $CommonLibraryName$.Data;
+using $CommonLibraryName$.ViewModels.$EsquemaName$;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -59,7 +74,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace AdmCostoProduccion.Windows.Mantenimiento.$EsquemaName$.$Model$
+namespace $LibraryName$.$ProcessName$.$EsquemaName$.$FolderName$
 {
     public partial class Lst$Model$Form : Form
     {

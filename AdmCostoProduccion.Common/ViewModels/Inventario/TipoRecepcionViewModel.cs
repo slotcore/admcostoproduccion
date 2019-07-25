@@ -21,6 +21,7 @@ namespace AdmCostoProduccion.Common.ViewModels.Inventario
             Codigo = model.Codigo;
             Nombre = model.Nombre;
             Descripcion = model.Descripcion;
+            Proceso = model.Proceso;
         }
 
         #endregion
@@ -34,6 +35,8 @@ namespace AdmCostoProduccion.Common.ViewModels.Inventario
         private string _Nombre;
 
         private string _Descripcion;
+
+        private string _Proceso;
 
         #endregion
 
@@ -107,6 +110,23 @@ namespace AdmCostoProduccion.Common.ViewModels.Inventario
             }
         }
 
+        public string Proceso
+        {
+            get
+            {
+                return _Proceso;
+            }
+
+            set
+            {
+                if (value != _Proceso)
+                {
+                    _Proceso = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
         #endregion
 
         #region Metodos Publicos
@@ -117,6 +137,7 @@ namespace AdmCostoProduccion.Common.ViewModels.Inventario
             viewModel.Codigo = _Codigo;
             viewModel.Nombre = _Nombre;
             viewModel.Descripcion = _Descripcion;
+            viewModel.Proceso = _Proceso;
         }
 
         public TipoRecepcion ToModel()
@@ -126,7 +147,8 @@ namespace AdmCostoProduccion.Common.ViewModels.Inventario
                 TipoRecepcionId = _TipoRecepcionId,
                 Codigo = _Codigo,
                 Nombre = _Nombre,
-                Descripcion = _Descripcion
+                Descripcion = _Descripcion,
+                Proceso = _Proceso
             };
 
             return model;

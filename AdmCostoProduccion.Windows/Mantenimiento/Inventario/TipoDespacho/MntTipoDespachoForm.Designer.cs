@@ -32,27 +32,70 @@
             System.Windows.Forms.Label codigoLabel;
             System.Windows.Forms.Label descripcionLabel;
             System.Windows.Forms.Label nombreLabel;
+            System.Windows.Forms.Label procesoLabel;
             this.BaseFormHeaderGroup = new ComponentFactory.Krypton.Toolkit.KryptonHeaderGroup();
             this.kryptonPanel1 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
-            this.BaseFormToolStrip = new System.Windows.Forms.ToolStrip();
-            this.GrabarButton = new System.Windows.Forms.ToolStripButton();
-            this.CancelarButton = new System.Windows.Forms.ToolStripButton();
+            this.procesoTextBox = new System.Windows.Forms.TextBox();
             this.tipoDespachoViewModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.codigoTextBox = new System.Windows.Forms.TextBox();
             this.descripcionTextBox = new System.Windows.Forms.TextBox();
             this.nombreTextBox = new System.Windows.Forms.TextBox();
+            this.BaseFormToolStrip = new System.Windows.Forms.ToolStrip();
+            this.GrabarButton = new System.Windows.Forms.ToolStripButton();
+            this.CancelarButton = new System.Windows.Forms.ToolStripButton();
             codigoLabel = new System.Windows.Forms.Label();
             descripcionLabel = new System.Windows.Forms.Label();
             nombreLabel = new System.Windows.Forms.Label();
+            procesoLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.BaseFormHeaderGroup)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BaseFormHeaderGroup.Panel)).BeginInit();
             this.BaseFormHeaderGroup.Panel.SuspendLayout();
             this.BaseFormHeaderGroup.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
-            this.BaseFormToolStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tipoDespachoViewModelBindingSource)).BeginInit();
+            this.BaseFormToolStrip.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // codigoLabel
+            // 
+            codigoLabel.AutoSize = true;
+            codigoLabel.BackColor = System.Drawing.Color.Transparent;
+            codigoLabel.Location = new System.Drawing.Point(217, 170);
+            codigoLabel.Name = "codigoLabel";
+            codigoLabel.Size = new System.Drawing.Size(56, 17);
+            codigoLabel.TabIndex = 0;
+            codigoLabel.Text = "Codigo:";
+            // 
+            // descripcionLabel
+            // 
+            descripcionLabel.AutoSize = true;
+            descripcionLabel.BackColor = System.Drawing.Color.Transparent;
+            descripcionLabel.Location = new System.Drawing.Point(217, 226);
+            descripcionLabel.Name = "descripcionLabel";
+            descripcionLabel.Size = new System.Drawing.Size(86, 17);
+            descripcionLabel.TabIndex = 4;
+            descripcionLabel.Text = "Descripcion:";
+            // 
+            // nombreLabel
+            // 
+            nombreLabel.AutoSize = true;
+            nombreLabel.BackColor = System.Drawing.Color.Transparent;
+            nombreLabel.Location = new System.Drawing.Point(217, 198);
+            nombreLabel.Name = "nombreLabel";
+            nombreLabel.Size = new System.Drawing.Size(62, 17);
+            nombreLabel.TabIndex = 2;
+            nombreLabel.Text = "Nombre:";
+            // 
+            // procesoLabel
+            // 
+            procesoLabel.AutoSize = true;
+            procesoLabel.BackColor = System.Drawing.Color.Transparent;
+            procesoLabel.Location = new System.Drawing.Point(217, 254);
+            procesoLabel.Name = "procesoLabel";
+            procesoLabel.Size = new System.Drawing.Size(64, 17);
+            procesoLabel.TabIndex = 6;
+            procesoLabel.Text = "Proceso:";
             // 
             // BaseFormHeaderGroup
             // 
@@ -79,6 +122,8 @@
             // 
             // kryptonPanel1
             // 
+            this.kryptonPanel1.Controls.Add(procesoLabel);
+            this.kryptonPanel1.Controls.Add(this.procesoTextBox);
             this.kryptonPanel1.Controls.Add(codigoLabel);
             this.kryptonPanel1.Controls.Add(this.codigoTextBox);
             this.kryptonPanel1.Controls.Add(descripcionLabel);
@@ -91,6 +136,42 @@
             this.kryptonPanel1.Name = "kryptonPanel1";
             this.kryptonPanel1.Size = new System.Drawing.Size(953, 486);
             this.kryptonPanel1.TabIndex = 0;
+            // 
+            // procesoTextBox
+            // 
+            this.procesoTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tipoDespachoViewModelBindingSource, "Proceso", true));
+            this.procesoTextBox.Location = new System.Drawing.Point(309, 251);
+            this.procesoTextBox.Name = "procesoTextBox";
+            this.procesoTextBox.Size = new System.Drawing.Size(398, 22);
+            this.procesoTextBox.TabIndex = 7;
+            // 
+            // tipoDespachoViewModelBindingSource
+            // 
+            this.tipoDespachoViewModelBindingSource.DataSource = typeof(AdmCostoProduccion.Common.ViewModels.Inventario.TipoDespachoViewModel);
+            // 
+            // codigoTextBox
+            // 
+            this.codigoTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tipoDespachoViewModelBindingSource, "Codigo", true));
+            this.codigoTextBox.Location = new System.Drawing.Point(309, 167);
+            this.codigoTextBox.Name = "codigoTextBox";
+            this.codigoTextBox.Size = new System.Drawing.Size(398, 22);
+            this.codigoTextBox.TabIndex = 1;
+            // 
+            // descripcionTextBox
+            // 
+            this.descripcionTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tipoDespachoViewModelBindingSource, "Descripcion", true));
+            this.descripcionTextBox.Location = new System.Drawing.Point(309, 223);
+            this.descripcionTextBox.Name = "descripcionTextBox";
+            this.descripcionTextBox.Size = new System.Drawing.Size(398, 22);
+            this.descripcionTextBox.TabIndex = 5;
+            // 
+            // nombreTextBox
+            // 
+            this.nombreTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tipoDespachoViewModelBindingSource, "Nombre", true));
+            this.nombreTextBox.Location = new System.Drawing.Point(309, 195);
+            this.nombreTextBox.Name = "nombreTextBox";
+            this.nombreTextBox.Size = new System.Drawing.Size(398, 22);
+            this.nombreTextBox.TabIndex = 3;
             // 
             // BaseFormToolStrip
             // 
@@ -125,64 +206,6 @@
             this.CancelarButton.Text = "Cancelar";
             this.CancelarButton.Click += new System.EventHandler(this.CancelarButton_Click);
             // 
-            // tipoDespachoViewModelBindingSource
-            // 
-            this.tipoDespachoViewModelBindingSource.DataSource = typeof(AdmCostoProduccion.Common.ViewModels.Inventario.TipoDespachoViewModel);
-            // 
-            // codigoLabel
-            // 
-            codigoLabel.AutoSize = true;
-            codigoLabel.BackColor = System.Drawing.Color.Transparent;
-            codigoLabel.Location = new System.Drawing.Point(217, 170);
-            codigoLabel.Name = "codigoLabel";
-            codigoLabel.Size = new System.Drawing.Size(56, 17);
-            codigoLabel.TabIndex = 0;
-            codigoLabel.Text = "Codigo:";
-            // 
-            // codigoTextBox
-            // 
-            this.codigoTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tipoDespachoViewModelBindingSource, "Codigo", true));
-            this.codigoTextBox.Location = new System.Drawing.Point(309, 167);
-            this.codigoTextBox.Name = "codigoTextBox";
-            this.codigoTextBox.Size = new System.Drawing.Size(398, 22);
-            this.codigoTextBox.TabIndex = 1;
-            // 
-            // descripcionLabel
-            // 
-            descripcionLabel.AutoSize = true;
-            descripcionLabel.BackColor = System.Drawing.Color.Transparent;
-            descripcionLabel.Location = new System.Drawing.Point(217, 198);
-            descripcionLabel.Name = "descripcionLabel";
-            descripcionLabel.Size = new System.Drawing.Size(86, 17);
-            descripcionLabel.TabIndex = 2;
-            descripcionLabel.Text = "Descripcion:";
-            // 
-            // descripcionTextBox
-            // 
-            this.descripcionTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tipoDespachoViewModelBindingSource, "Descripcion", true));
-            this.descripcionTextBox.Location = new System.Drawing.Point(309, 195);
-            this.descripcionTextBox.Name = "descripcionTextBox";
-            this.descripcionTextBox.Size = new System.Drawing.Size(398, 22);
-            this.descripcionTextBox.TabIndex = 3;
-            // 
-            // nombreLabel
-            // 
-            nombreLabel.AutoSize = true;
-            nombreLabel.BackColor = System.Drawing.Color.Transparent;
-            nombreLabel.Location = new System.Drawing.Point(217, 226);
-            nombreLabel.Name = "nombreLabel";
-            nombreLabel.Size = new System.Drawing.Size(62, 17);
-            nombreLabel.TabIndex = 4;
-            nombreLabel.Text = "Nombre:";
-            // 
-            // nombreTextBox
-            // 
-            this.nombreTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tipoDespachoViewModelBindingSource, "Nombre", true));
-            this.nombreTextBox.Location = new System.Drawing.Point(309, 223);
-            this.nombreTextBox.Name = "nombreTextBox";
-            this.nombreTextBox.Size = new System.Drawing.Size(398, 22);
-            this.nombreTextBox.TabIndex = 5;
-            // 
             // MntTipoDespachoForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -199,9 +222,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
             this.kryptonPanel1.ResumeLayout(false);
             this.kryptonPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tipoDespachoViewModelBindingSource)).EndInit();
             this.BaseFormToolStrip.ResumeLayout(false);
             this.BaseFormToolStrip.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tipoDespachoViewModelBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -218,5 +241,6 @@
         private System.Windows.Forms.BindingSource tipoDespachoViewModelBindingSource;
         private System.Windows.Forms.TextBox descripcionTextBox;
         private System.Windows.Forms.TextBox nombreTextBox;
+        private System.Windows.Forms.TextBox procesoTextBox;
     }
 }

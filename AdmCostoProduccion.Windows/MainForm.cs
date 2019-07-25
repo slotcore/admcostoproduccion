@@ -21,6 +21,7 @@ using AdmCostoProduccion.Windows.Mantenimiento.Inventario.TipoDespacho;
 using AdmCostoProduccion.Windows.Mantenimiento.Produccion.ProcedimientoProduccion;
 using AdmCostoProduccion.Windows.Procesos.Inventario.Recepcion;
 using AdmCostoProduccion.Windows.Procesos.Inventario.Despacho;
+using AdmCostoProduccion.Windows.Procesos.CompraVenta.Venta;
 
 namespace AdmCostoProduccion.Windows
 {
@@ -117,21 +118,6 @@ namespace AdmCostoProduccion.Windows
             form.Show();
         }
 
-        private void SalirMenuItem_Click(object sender, EventArgs e)
-        {
-            Salir();
-        }
-
-        private void SalirButton_Click(object sender, EventArgs e)
-        {
-            Salir();
-        }
-
-        private void Salir()
-        {
-            this.Close();
-        }
-
         private void MercaderíaMenuItem_Click(object sender, EventArgs e)
         {
             var form = new LstMercaderiaForm
@@ -193,6 +179,30 @@ namespace AdmCostoProduccion.Windows
                 MdiParent = this
             };
             form.Show();
+        }
+
+        private void VentaMenuItem_Click(object sender, EventArgs e)
+        {
+            var form = new LstVentaForm
+            {
+                MdiParent = this
+            };
+            form.Show();
+        }
+
+        private void SalirMenuItem_Click(object sender, EventArgs e)
+        {
+            Salir();
+        }
+
+        private void SalirButton_Click(object sender, EventArgs e)
+        {
+            Salir();
+        }
+
+        private void Salir()
+        {
+            this.Close();
         }
     }
 }

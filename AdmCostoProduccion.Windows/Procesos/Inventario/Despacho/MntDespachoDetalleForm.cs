@@ -14,7 +14,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace AdmCostoProduccion.Windows.Mantenimiento.Inventario.DespachoDetalle
+namespace AdmCostoProduccion.Windows.Procesos.Inventario.Despacho
 {
     public partial class MntDespachoDetalleForm : KryptonForm
     {
@@ -77,6 +77,18 @@ namespace AdmCostoProduccion.Windows.Mantenimiento.Inventario.DespachoDetalle
             {
                 Cursor = Cursors.WaitCursor;
                 despachoDetalleViewModelBindingSource.EndEdit();
+                //
+                var mercaderiaViewModel = (MercaderiaViewModel)mercaderiaTextBox.Tag;
+                var unidadMedidaViewModel = (UnidadMedidaViewModel)unidadMedidaViewModelBindingSource.Current;
+
+                if (mercaderiaViewModel == null) throw new Exception("Debe se seleccionar una mercadería");
+                if (unidadMedidaViewModel == null) throw new Exception("Debe de seleccionar una unidad de medida");
+
+                ViewModel.MercaderiaId = mercaderiaViewModel.MercaderiaId;
+                ViewModel.CodigoMercaderia = mercaderiaViewModel.Codigo;
+                ViewModel.NombreMercaderia = mercaderiaViewModel.Nombre;
+                ViewModel.UnidadMedidaId = unidadMedidaViewModel.UnidadMedidaId;
+                ViewModel.UnidadMedida = unidadMedidaViewModel.Nombre;
 
                 var model = ViewModel.ToModel();
                 if (IsNew)

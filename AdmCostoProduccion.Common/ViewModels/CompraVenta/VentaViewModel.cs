@@ -13,6 +13,7 @@ namespace AdmCostoProduccion.Common.ViewModels.CompraVenta
 
         public VentaViewModel()
         {
+            Fecha = DateTime.Now;
         }
 
         public VentaViewModel(Venta model)
@@ -183,6 +184,7 @@ namespace AdmCostoProduccion.Common.ViewModels.CompraVenta
             viewModel.Fecha = _Fecha;
             viewModel.Descripcion = _Descripcion;
             viewModel.CentroLogistico = _CentroLogistico;
+            viewModel.VentaDetalleViewModels = _VentaDetalleViewModels;
         }
 
         public Venta ToModel()

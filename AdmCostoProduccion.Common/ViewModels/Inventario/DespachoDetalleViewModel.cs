@@ -33,9 +33,9 @@ namespace AdmCostoProduccion.Common.ViewModels.Inventario
 
         private int _DespachoDetalleId;
 
-        private int _OrdenProduccionInsumoId;
+        private int? _OrdenProduccionInsumoId;
 
-        private int _VentaDetalleId;
+        private int? _VentaDetalleId;
 
         private int _MercaderiaId;
 
@@ -70,7 +70,7 @@ namespace AdmCostoProduccion.Common.ViewModels.Inventario
             }
         }
 
-        public int OrdenProduccionInsumoId
+        public int? OrdenProduccionInsumoId
         {
             get
             {
@@ -87,7 +87,7 @@ namespace AdmCostoProduccion.Common.ViewModels.Inventario
             }
         }
 
-        public int VentaDetalleId
+        public int? VentaDetalleId
         {
             get
             {

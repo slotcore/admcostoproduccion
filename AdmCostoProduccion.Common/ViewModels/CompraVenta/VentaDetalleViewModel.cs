@@ -179,6 +179,8 @@ namespace AdmCostoProduccion.Common.ViewModels.CompraVenta
             viewModel.MercaderiaId = _MercaderiaId;
             viewModel.Cantidad = _Cantidad;
             viewModel.PrecioUnitario = _PrecioUnitario;
+            viewModel.CodigoMercaderia = _CodigoMercaderia;
+            viewModel.NombreMercaderia = _NombreMercaderia;
         }
 
         public VentaDetalle ToModel()

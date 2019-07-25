@@ -65,6 +65,7 @@
     <Compile Include="Classes\ObjectBase.cs" />
     <Compile Include="Classes\ObservableListSource.cs" />
     <Compile Include="Data\ApplicationDbContext.cs" />
+    <Compile Include="Enum\DespachoDocumentoEnum.cs" />
     <Compile Include="Forms\LstBaseForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -80,6 +81,22 @@
     <Compile Include="Migrations\201907240211160_initial-migration.cs" />
     <Compile Include="Migrations\201907240211160_initial-migration.Designer.cs">
       <DependentUpon>201907240211160_initial-migration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201907251504314_update_20190725_1.cs" />
+    <Compile Include="Migrations\201907251504314_update_20190725_1.Designer.cs">
+      <DependentUpon>201907251504314_update_20190725_1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201907252042593_update_20190725_2.cs" />
+    <Compile Include="Migrations\201907252042593_update_20190725_2.Designer.cs">
+      <DependentUpon>201907252042593_update_20190725_2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201907252214040_update_20190725_3.cs" />
+    <Compile Include="Migrations\201907252214040_update_20190725_3.Designer.cs">
+      <DependentUpon>201907252214040_update_20190725_3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201907252220156_update_20190725_4.cs" />
+    <Compile Include="Migrations\201907252220156_update_20190725_4.Designer.cs">
+      <DependentUpon>201907252220156_update_20190725_4.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\CompraVenta\Compra.cs" />
@@ -156,6 +173,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201907240211160_initial-migration.resx">
       <DependentUpon>201907240211160_initial-migration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907251504314_update_20190725_1.resx">
+      <DependentUpon>201907251504314_update_20190725_1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907252042593_update_20190725_2.resx">
+      <DependentUpon>201907252042593_update_20190725_2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907252214040_update_20190725_3.resx">
+      <DependentUpon>201907252214040_update_20190725_3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907252220156_update_20190725_4.resx">
+      <DependentUpon>201907252220156_update_20190725_4.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -37,16 +37,17 @@
             this.ClearButton = new ComponentFactory.Krypton.Toolkit.ButtonSpecAny();
             this.GridHeaderGroup = new ComponentFactory.Krypton.Toolkit.KryptonHeaderGroup();
             this.DetalleDataGridView = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
+            this.tipoRecepcionViewModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.BaseFormToolStrip = new System.Windows.Forms.ToolStrip();
             this.AgregarButton = new System.Windows.Forms.ToolStripButton();
             this.ModificarButton = new System.Windows.Forms.ToolStripButton();
             this.EliminarButton = new System.Windows.Forms.ToolStripButton();
             this.ActualizarButton = new System.Windows.Forms.ToolStripButton();
             this.CargarExcelButton = new System.Windows.Forms.ToolStripButton();
-            this.tipoRecepcionViewModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.codigoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nombreDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.descripcionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Proceso = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.BaseFormHeaderGroup)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BaseFormHeaderGroup.Panel)).BeginInit();
             this.BaseFormHeaderGroup.Panel.SuspendLayout();
@@ -62,8 +63,8 @@
             this.GridHeaderGroup.Panel.SuspendLayout();
             this.GridHeaderGroup.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DetalleDataGridView)).BeginInit();
-            this.BaseFormToolStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tipoRecepcionViewModelBindingSource)).BeginInit();
+            this.BaseFormToolStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // BaseFormHeaderGroup
@@ -73,13 +74,13 @@
             this.BaseFormHeaderGroup.HeaderStyleSecondary = ComponentFactory.Krypton.Toolkit.HeaderStyle.Form;
             this.BaseFormHeaderGroup.HeaderVisibleSecondary = false;
             this.BaseFormHeaderGroup.Location = new System.Drawing.Point(0, 29);
-            this.BaseFormHeaderGroup.Margin = new System.Windows.Forms.Padding(2);
+            this.BaseFormHeaderGroup.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.BaseFormHeaderGroup.Name = "BaseFormHeaderGroup";
             // 
             // BaseFormHeaderGroup.Panel
             // 
             this.BaseFormHeaderGroup.Panel.Controls.Add(this.kryptonPanel1);
-            this.BaseFormHeaderGroup.Size = new System.Drawing.Size(800, 421);
+            this.BaseFormHeaderGroup.Size = new System.Drawing.Size(1067, 525);
             this.BaseFormHeaderGroup.StateNormal.HeaderPrimary.Border.Color1 = System.Drawing.SystemColors.ControlDarkDark;
             this.BaseFormHeaderGroup.StateNormal.HeaderPrimary.Border.DrawBorders = ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom;
             this.BaseFormHeaderGroup.StateNormal.HeaderPrimary.Border.ImageStyle = ComponentFactory.Krypton.Toolkit.PaletteImageStyle.Inherit;
@@ -94,9 +95,9 @@
             this.kryptonPanel1.Controls.Add(this.GridHeaderGroup);
             this.kryptonPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonPanel1.Location = new System.Drawing.Point(0, 0);
-            this.kryptonPanel1.Margin = new System.Windows.Forms.Padding(2);
+            this.kryptonPanel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.kryptonPanel1.Name = "kryptonPanel1";
-            this.kryptonPanel1.Size = new System.Drawing.Size(798, 397);
+            this.kryptonPanel1.Size = new System.Drawing.Size(1065, 497);
             this.kryptonPanel1.TabIndex = 0;
             // 
             // BusquedaGroupBox
@@ -106,25 +107,25 @@
             this.BusquedaGroupBox.CaptionStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.GroupBoxCaption;
             this.BusquedaGroupBox.GroupBackStyle = ComponentFactory.Krypton.Toolkit.PaletteBackStyle.ControlGroupBox;
             this.BusquedaGroupBox.GroupBorderStyle = ComponentFactory.Krypton.Toolkit.PaletteBorderStyle.ControlGroupBox;
-            this.BusquedaGroupBox.Location = new System.Drawing.Point(3, 2);
-            this.BusquedaGroupBox.Margin = new System.Windows.Forms.Padding(2);
+            this.BusquedaGroupBox.Location = new System.Drawing.Point(4, 2);
+            this.BusquedaGroupBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.BusquedaGroupBox.Name = "BusquedaGroupBox";
             // 
             // BusquedaGroupBox.Panel
             // 
             this.BusquedaGroupBox.Panel.Controls.Add(this.BuscarButton);
             this.BusquedaGroupBox.Panel.Controls.Add(this.BusquedaTextBox);
-            this.BusquedaGroupBox.Size = new System.Drawing.Size(792, 110);
+            this.BusquedaGroupBox.Size = new System.Drawing.Size(1057, 135);
             this.BusquedaGroupBox.TabIndex = 2;
             this.BusquedaGroupBox.Values.Heading = "Busqueda";
             // 
             // BuscarButton
             // 
             this.BuscarButton.AutoSize = true;
-            this.BuscarButton.Location = new System.Drawing.Point(404, 30);
-            this.BuscarButton.Margin = new System.Windows.Forms.Padding(2);
+            this.BuscarButton.Location = new System.Drawing.Point(539, 37);
+            this.BuscarButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.BuscarButton.Name = "BuscarButton";
-            this.BuscarButton.Size = new System.Drawing.Size(73, 28);
+            this.BuscarButton.Size = new System.Drawing.Size(97, 34);
             this.BuscarButton.TabIndex = 3;
             this.BuscarButton.Values.Image = global::AdmCostoProduccion.Windows.Properties.Resources.lookup_reference_16x16;
             this.BuscarButton.Values.Text = "Buscar";
@@ -135,10 +136,10 @@
             this.BusquedaTextBox.ButtonSpecs.AddRange(new ComponentFactory.Krypton.Toolkit.ButtonSpecAny[] {
             this.ClearButton});
             this.BusquedaTextBox.InputControlStyle = ComponentFactory.Krypton.Toolkit.InputControlStyle.Ribbon;
-            this.BusquedaTextBox.Location = new System.Drawing.Point(17, 32);
-            this.BusquedaTextBox.Margin = new System.Windows.Forms.Padding(2);
+            this.BusquedaTextBox.Location = new System.Drawing.Point(23, 39);
+            this.BusquedaTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.BusquedaTextBox.Name = "BusquedaTextBox";
-            this.BusquedaTextBox.Size = new System.Drawing.Size(382, 23);
+            this.BusquedaTextBox.Size = new System.Drawing.Size(509, 27);
             this.BusquedaTextBox.TabIndex = 2;
             this.BusquedaTextBox.KeyUp += new System.Windows.Forms.KeyEventHandler(this.BusquedaTextBox_KeyUp);
             // 
@@ -157,14 +158,14 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.GridHeaderGroup.HeaderStylePrimary = ComponentFactory.Krypton.Toolkit.HeaderStyle.DockActive;
             this.GridHeaderGroup.HeaderVisibleSecondary = false;
-            this.GridHeaderGroup.Location = new System.Drawing.Point(2, 118);
-            this.GridHeaderGroup.Margin = new System.Windows.Forms.Padding(2);
+            this.GridHeaderGroup.Location = new System.Drawing.Point(3, 145);
+            this.GridHeaderGroup.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.GridHeaderGroup.Name = "GridHeaderGroup";
             // 
             // GridHeaderGroup.Panel
             // 
             this.GridHeaderGroup.Panel.Controls.Add(this.DetalleDataGridView);
-            this.GridHeaderGroup.Size = new System.Drawing.Size(794, 276);
+            this.GridHeaderGroup.Size = new System.Drawing.Size(1060, 348);
             this.GridHeaderGroup.TabIndex = 0;
             this.GridHeaderGroup.ValuesPrimary.Heading = "Detalles";
             this.GridHeaderGroup.ValuesPrimary.Image = null;
@@ -180,7 +181,8 @@
             this.DetalleDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.codigoDataGridViewTextBoxColumn,
             this.nombreDataGridViewTextBoxColumn,
-            this.descripcionDataGridViewTextBoxColumn});
+            this.descripcionDataGridViewTextBoxColumn,
+            this.Proceso});
             this.DetalleDataGridView.DataSource = this.tipoRecepcionViewModelBindingSource;
             this.DetalleDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.DetalleDataGridView.GridStyles.Style = ComponentFactory.Krypton.Toolkit.DataGridViewStyle.Sheet;
@@ -189,14 +191,18 @@
             this.DetalleDataGridView.GridStyles.StyleDataCells = ComponentFactory.Krypton.Toolkit.GridStyle.Sheet;
             this.DetalleDataGridView.GridStyles.StyleRow = ComponentFactory.Krypton.Toolkit.GridStyle.Sheet;
             this.DetalleDataGridView.Location = new System.Drawing.Point(0, 0);
-            this.DetalleDataGridView.Margin = new System.Windows.Forms.Padding(2);
+            this.DetalleDataGridView.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.DetalleDataGridView.Name = "DetalleDataGridView";
             this.DetalleDataGridView.ReadOnly = true;
             this.DetalleDataGridView.RowHeadersVisible = false;
             this.DetalleDataGridView.RowHeadersWidth = 51;
             this.DetalleDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.DetalleDataGridView.Size = new System.Drawing.Size(792, 252);
+            this.DetalleDataGridView.Size = new System.Drawing.Size(1058, 320);
             this.DetalleDataGridView.TabIndex = 0;
+            // 
+            // tipoRecepcionViewModelBindingSource
+            // 
+            this.tipoRecepcionViewModelBindingSource.DataSource = typeof(AdmCostoProduccion.Common.ViewModels.Inventario.TipoRecepcionViewModel);
             // 
             // BaseFormToolStrip
             // 
@@ -211,8 +217,8 @@
             this.CargarExcelButton});
             this.BaseFormToolStrip.Location = new System.Drawing.Point(0, 0);
             this.BaseFormToolStrip.Name = "BaseFormToolStrip";
-            this.BaseFormToolStrip.Padding = new System.Windows.Forms.Padding(2, 1, 2, 1);
-            this.BaseFormToolStrip.Size = new System.Drawing.Size(800, 29);
+            this.BaseFormToolStrip.Padding = new System.Windows.Forms.Padding(3, 1, 3, 1);
+            this.BaseFormToolStrip.Size = new System.Drawing.Size(1067, 29);
             this.BaseFormToolStrip.TabIndex = 13;
             this.BaseFormToolStrip.Text = "BaseFormToolStrip";
             // 
@@ -221,7 +227,7 @@
             this.AgregarButton.Image = global::AdmCostoProduccion.Windows.Properties.Resources.add_16x16;
             this.AgregarButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.AgregarButton.Name = "AgregarButton";
-            this.AgregarButton.Size = new System.Drawing.Size(73, 24);
+            this.AgregarButton.Size = new System.Drawing.Size(87, 24);
             this.AgregarButton.Text = "Agregar";
             this.AgregarButton.Click += new System.EventHandler(this.AgregarButton_Click);
             // 
@@ -230,7 +236,7 @@
             this.ModificarButton.Image = global::AdmCostoProduccion.Windows.Properties.Resources.edit_16x16;
             this.ModificarButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.ModificarButton.Name = "ModificarButton";
-            this.ModificarButton.Size = new System.Drawing.Size(82, 24);
+            this.ModificarButton.Size = new System.Drawing.Size(97, 24);
             this.ModificarButton.Text = "Modificar";
             this.ModificarButton.Click += new System.EventHandler(this.ModificarButton_Click);
             // 
@@ -239,7 +245,7 @@
             this.EliminarButton.Image = global::AdmCostoProduccion.Windows.Properties.Resources.trash_16x16;
             this.EliminarButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.EliminarButton.Name = "EliminarButton";
-            this.EliminarButton.Size = new System.Drawing.Size(74, 24);
+            this.EliminarButton.Size = new System.Drawing.Size(87, 24);
             this.EliminarButton.Text = "Eliminar";
             this.EliminarButton.Click += new System.EventHandler(this.EliminarButton_Click);
             // 
@@ -248,7 +254,7 @@
             this.ActualizarButton.Image = global::AdmCostoProduccion.Windows.Properties.Resources.refresh2_16x16;
             this.ActualizarButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.ActualizarButton.Name = "ActualizarButton";
-            this.ActualizarButton.Size = new System.Drawing.Size(83, 24);
+            this.ActualizarButton.Size = new System.Drawing.Size(99, 24);
             this.ActualizarButton.Text = "Actualizar";
             this.ActualizarButton.Click += new System.EventHandler(this.ActualizarButton_Click);
             // 
@@ -257,44 +263,53 @@
             this.CargarExcelButton.Image = global::AdmCostoProduccion.Windows.Properties.Resources.exporttoxls_16x16;
             this.CargarExcelButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.CargarExcelButton.Name = "CargarExcelButton";
-            this.CargarExcelButton.Size = new System.Drawing.Size(95, 24);
+            this.CargarExcelButton.Size = new System.Drawing.Size(114, 24);
             this.CargarExcelButton.Text = "Cargal Excel";
-            // 
-            // tipoRecepcionViewModelBindingSource
-            // 
-            this.tipoRecepcionViewModelBindingSource.DataSource = typeof(AdmCostoProduccion.Common.ViewModels.Inventario.TipoRecepcionViewModel);
             // 
             // codigoDataGridViewTextBoxColumn
             // 
             this.codigoDataGridViewTextBoxColumn.DataPropertyName = "Codigo";
             this.codigoDataGridViewTextBoxColumn.HeaderText = "Codigo";
+            this.codigoDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.codigoDataGridViewTextBoxColumn.Name = "codigoDataGridViewTextBoxColumn";
             this.codigoDataGridViewTextBoxColumn.ReadOnly = true;
-            this.codigoDataGridViewTextBoxColumn.Width = 75;
+            this.codigoDataGridViewTextBoxColumn.Width = 91;
             // 
             // nombreDataGridViewTextBoxColumn
             // 
             this.nombreDataGridViewTextBoxColumn.DataPropertyName = "Nombre";
             this.nombreDataGridViewTextBoxColumn.HeaderText = "Nombre";
+            this.nombreDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.nombreDataGridViewTextBoxColumn.Name = "nombreDataGridViewTextBoxColumn";
             this.nombreDataGridViewTextBoxColumn.ReadOnly = true;
-            this.nombreDataGridViewTextBoxColumn.Width = 80;
+            this.nombreDataGridViewTextBoxColumn.Width = 97;
             // 
             // descripcionDataGridViewTextBoxColumn
             // 
             this.descripcionDataGridViewTextBoxColumn.DataPropertyName = "Descripcion";
             this.descripcionDataGridViewTextBoxColumn.HeaderText = "Descripcion";
+            this.descripcionDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.descripcionDataGridViewTextBoxColumn.Name = "descripcionDataGridViewTextBoxColumn";
             this.descripcionDataGridViewTextBoxColumn.ReadOnly = true;
-            this.descripcionDataGridViewTextBoxColumn.Width = 98;
+            this.descripcionDataGridViewTextBoxColumn.Width = 120;
+            // 
+            // Proceso
+            // 
+            this.Proceso.DataPropertyName = "Proceso";
+            this.Proceso.HeaderText = "Proceso";
+            this.Proceso.MinimumWidth = 6;
+            this.Proceso.Name = "Proceso";
+            this.Proceso.ReadOnly = true;
+            this.Proceso.Width = 94;
             // 
             // LstTipoRecepcionForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1067, 554);
             this.Controls.Add(this.BaseFormHeaderGroup);
             this.Controls.Add(this.BaseFormToolStrip);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "LstTipoRecepcionForm";
             this.Text = "Tipo de Recepción";
             ((System.ComponentModel.ISupportInitialize)(this.BaseFormHeaderGroup.Panel)).EndInit();
@@ -313,9 +328,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.GridHeaderGroup)).EndInit();
             this.GridHeaderGroup.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DetalleDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tipoRecepcionViewModelBindingSource)).EndInit();
             this.BaseFormToolStrip.ResumeLayout(false);
             this.BaseFormToolStrip.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tipoRecepcionViewModelBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -337,9 +352,10 @@
         private System.Windows.Forms.ToolStripButton EliminarButton;
         private System.Windows.Forms.ToolStripButton ActualizarButton;
         private System.Windows.Forms.ToolStripButton CargarExcelButton;
+        private System.Windows.Forms.BindingSource tipoRecepcionViewModelBindingSource;
         private System.Windows.Forms.DataGridViewTextBoxColumn codigoDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn nombreDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn descripcionDataGridViewTextBoxColumn;
-        private System.Windows.Forms.BindingSource tipoRecepcionViewModelBindingSource;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Proceso;
     }
 }

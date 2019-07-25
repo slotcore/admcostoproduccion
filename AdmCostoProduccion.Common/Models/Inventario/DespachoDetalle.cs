@@ -45,11 +45,11 @@ namespace AdmCostoProduccion.Common.Models.Inventario
         
         public virtual UnidadMedida UnidadMedida { get; set; }
 
-        public int OrdenProduccionInsumoId { get; set; }
+        public int? OrdenProduccionInsumoId { get; set; }
 
         public virtual OrdenProduccionInsumo OrdenProduccionInsumo { get; set; }
 
-        public int VentaDetalleId { get; set; }
+        public int? VentaDetalleId { get; set; }
 
         public virtual VentaDetalle VentaDetalle { get; set; }
 

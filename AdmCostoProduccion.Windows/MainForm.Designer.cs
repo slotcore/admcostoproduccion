@@ -48,13 +48,14 @@
             this.métodoValorizaciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.distribuciónValorizaciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.configuraciónValorizaciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.SalirMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ProcesosMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.InventarioMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.RecepcionMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.DespachoMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.CompraVentaMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.comprasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ventasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.VentaMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ProducciónMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ordenDeProducciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contabilidadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -62,11 +63,10 @@
             this.consultasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reportesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.SalirButton = new System.Windows.Forms.ToolStripButton();
             this.MainFormKryptonManager = new ComponentFactory.Krypton.Toolkit.KryptonManager(this.components);
             this.MainFormKryptonDockableNavigator = new ComponentFactory.Krypton.Docking.KryptonDockableNavigator();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.SalirButton = new System.Windows.Forms.ToolStripButton();
-            this.SalirMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.PrincipalMenuStrip.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MainFormKryptonDockableNavigator)).BeginInit();
@@ -231,6 +231,15 @@
             this.configuraciónValorizaciónToolStripMenuItem.Size = new System.Drawing.Size(270, 26);
             this.configuraciónValorizaciónToolStripMenuItem.Text = "Configuración Valorización";
             // 
+            // SalirMenuItem
+            // 
+            this.SalirMenuItem.Image = global::AdmCostoProduccion.Windows.Properties.Resources.outbox_16x16;
+            this.SalirMenuItem.Name = "SalirMenuItem";
+            this.SalirMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.F4)));
+            this.SalirMenuItem.Size = new System.Drawing.Size(178, 26);
+            this.SalirMenuItem.Text = "Salir";
+            this.SalirMenuItem.Click += new System.EventHandler(this.SalirMenuItem_Click);
+            // 
             // ProcesosMenuItem
             // 
             this.ProcesosMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -254,14 +263,14 @@
             // RecepcionMenuItem
             // 
             this.RecepcionMenuItem.Name = "RecepcionMenuItem";
-            this.RecepcionMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.RecepcionMenuItem.Size = new System.Drawing.Size(161, 26);
             this.RecepcionMenuItem.Text = "Recepción";
             this.RecepcionMenuItem.Click += new System.EventHandler(this.RecepcionMenuItem_Click);
             // 
             // DespachoMenuItem
             // 
             this.DespachoMenuItem.Name = "DespachoMenuItem";
-            this.DespachoMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.DespachoMenuItem.Size = new System.Drawing.Size(161, 26);
             this.DespachoMenuItem.Text = "Despacho";
             this.DespachoMenuItem.Click += new System.EventHandler(this.DespachoMenuItem_Click);
             // 
@@ -269,7 +278,7 @@
             // 
             this.CompraVentaMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.comprasToolStripMenuItem,
-            this.ventasToolStripMenuItem});
+            this.VentaMenuItem});
             this.CompraVentaMenuItem.Name = "CompraVentaMenuItem";
             this.CompraVentaMenuItem.Size = new System.Drawing.Size(224, 26);
             this.CompraVentaMenuItem.Text = "Compra/Venta";
@@ -277,14 +286,15 @@
             // comprasToolStripMenuItem
             // 
             this.comprasToolStripMenuItem.Name = "comprasToolStripMenuItem";
-            this.comprasToolStripMenuItem.Size = new System.Drawing.Size(145, 26);
+            this.comprasToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.comprasToolStripMenuItem.Text = "Compra";
             // 
-            // ventasToolStripMenuItem
+            // VentaMenuItem
             // 
-            this.ventasToolStripMenuItem.Name = "ventasToolStripMenuItem";
-            this.ventasToolStripMenuItem.Size = new System.Drawing.Size(145, 26);
-            this.ventasToolStripMenuItem.Text = "Venta";
+            this.VentaMenuItem.Name = "VentaMenuItem";
+            this.VentaMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.VentaMenuItem.Text = "Venta";
+            this.VentaMenuItem.Click += new System.EventHandler(this.VentaMenuItem_Click);
             // 
             // ProducciónMenuItem
             // 
@@ -340,6 +350,15 @@
             this.toolStrip1.TabIndex = 6;
             this.toolStrip1.Text = "toolStrip1";
             // 
+            // SalirButton
+            // 
+            this.SalirButton.Image = global::AdmCostoProduccion.Windows.Properties.Resources.outbox_16x16;
+            this.SalirButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.SalirButton.Name = "SalirButton";
+            this.SalirButton.Size = new System.Drawing.Size(62, 24);
+            this.SalirButton.Text = "Salir";
+            this.SalirButton.Click += new System.EventHandler(this.SalirButton_Click);
+            // 
             // MainFormKryptonManager
             // 
             this.MainFormKryptonManager.GlobalPaletteMode = ComponentFactory.Krypton.Toolkit.PaletteModeManager.Office2007Silver;
@@ -369,24 +388,6 @@
             this.statusStrip1.Size = new System.Drawing.Size(1149, 22);
             this.statusStrip1.TabIndex = 13;
             this.statusStrip1.Text = "statusStrip1";
-            // 
-            // SalirButton
-            // 
-            this.SalirButton.Image = global::AdmCostoProduccion.Windows.Properties.Resources.outbox_16x16;
-            this.SalirButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.SalirButton.Name = "SalirButton";
-            this.SalirButton.Size = new System.Drawing.Size(62, 24);
-            this.SalirButton.Text = "Salir";
-            this.SalirButton.Click += new System.EventHandler(this.SalirButton_Click);
-            // 
-            // SalirMenuItem
-            // 
-            this.SalirMenuItem.Image = global::AdmCostoProduccion.Windows.Properties.Resources.outbox_16x16;
-            this.SalirMenuItem.Name = "SalirMenuItem";
-            this.SalirMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.F4)));
-            this.SalirMenuItem.Size = new System.Drawing.Size(178, 26);
-            this.SalirMenuItem.Text = "Salir";
-            this.SalirMenuItem.Click += new System.EventHandler(this.SalirMenuItem_Click);
             // 
             // MainForm
             // 
@@ -434,7 +435,7 @@
         private System.Windows.Forms.ToolStripMenuItem TipoMercaderiaMenuItem;
         private System.Windows.Forms.ToolStripMenuItem CompraVentaMenuItem;
         private System.Windows.Forms.ToolStripMenuItem comprasToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem ventasToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem VentaMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ProducciónMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ProcedimientoProduccionMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ordenDeProducciónToolStripMenuItem;

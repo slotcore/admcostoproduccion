@@ -247,6 +247,36 @@
     <Compile Include="Mantenimiento\Produccion\ProcedimientoProduccion\MntProcedimientoProduccionInsumoForm.Designer.cs">
       <DependentUpon>MntProcedimientoProduccionInsumoForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Procesos\CompraVenta\Compra\LstCompraForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Procesos\CompraVenta\Compra\LstCompraForm.Designer.cs">
+      <DependentUpon>LstCompraForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Procesos\CompraVenta\Compra\MntCompraForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Procesos\CompraVenta\Compra\MntCompraForm.Designer.cs">
+      <DependentUpon>MntCompraForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Procesos\CompraVenta\Venta\LstVentaForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Procesos\CompraVenta\Venta\LstVentaForm.Designer.cs">
+      <DependentUpon>LstVentaForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Procesos\CompraVenta\Venta\MntVentaDetalleForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Procesos\CompraVenta\Venta\MntVentaDetalleForm.Designer.cs">
+      <DependentUpon>MntVentaDetalleForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Procesos\CompraVenta\Venta\MntVentaForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Procesos\CompraVenta\Venta\MntVentaForm.Designer.cs">
+      <DependentUpon>MntVentaForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Procesos\Inventario\Despacho\LstDespachoForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -369,6 +399,21 @@
     <EmbeddedResource Include="Mantenimiento\Produccion\ProcedimientoProduccion\MntProcedimientoProduccionInsumoForm.resx">
       <DependentUpon>MntProcedimientoProduccionInsumoForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Procesos\CompraVenta\Compra\LstCompraForm.resx">
+      <DependentUpon>LstCompraForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Procesos\CompraVenta\Compra\MntCompraForm.resx">
+      <DependentUpon>MntCompraForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Procesos\CompraVenta\Venta\LstVentaForm.resx">
+      <DependentUpon>LstVentaForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Procesos\CompraVenta\Venta\MntVentaDetalleForm.resx">
+      <DependentUpon>MntVentaDetalleForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Procesos\CompraVenta\Venta\MntVentaForm.resx">
+      <DependentUpon>MntVentaForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Procesos\Inventario\Despacho\LstDespachoForm.resx">
       <DependentUpon>LstDespachoForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -410,6 +455,7 @@
     <None Include="packages.config" />
     <None Include="Properties\app.manifest" />
     <None Include="Properties\DataSources\AdmCostoProduccion.Common.Models.Maestro.CentroLogistico.datasource" />
+    <None Include="Properties\DataSources\AdmCostoProduccion.Common.ViewModels.CompraVenta.VentaDetalleViewModel.datasource" />
     <None Include="Properties\DataSources\AdmCostoProduccion.Common.ViewModels.CompraVenta.VentaViewModel.datasource" />
     <None Include="Properties\DataSources\AdmCostoProduccion.Common.ViewModels.Inventario.DespachoDetalleViewModel.datasource" />
     <None Include="Properties\DataSources\AdmCostoProduccion.Common.ViewModels.Inventario.DespachoViewModel.datasource" />

@@ -20,20 +20,30 @@
           <Default>DataSourceName</Default>
         </Literal>
         <Literal>
-          <ID>LibraryName</ID>
+          <ID>CommonLibraryName</ID>
           <ToolTip>Nombre del esquema</ToolTip>
           <Default>AdmCostoProduccion.Common</Default>
         </Literal>
         <Literal>
+          <ID>LibraryName</ID>
+          <ToolTip>Nombre del esquema</ToolTip>
+          <Default>AdmCostoProduccion.Windows.Mantenimiento</Default>
+        </Literal>
+        <Literal>
           <ID>EsquemaName</ID>
           <ToolTip>Nombre del esquema</ToolTip>
-          <Default>Costo</Default>
+          <Default>Mantenimiento</Default>
+        </Literal>
+        <Literal>
+          <ID>FolderName</ID>
+          <ToolTip>Nombre del esquema</ToolTip>
+          <Default>Mercaderia</Default>
         </Literal>
       </Declarations>
       <Code Language="csharp">
-        <![CDATA[using $LibraryName$.Classes;
-using $LibraryName$.Data;
-using $LibraryName$.ViewModels.$EsquemaName$;
+        <![CDATA[using $CommonLibraryName$.Classes;
+using $CommonLibraryName$.Data;
+using $CommonLibraryName$.ViewModels.$EsquemaName$;
 using ComponentFactory.Krypton.Toolkit;
 using System;
 using System.Collections.Generic;
@@ -46,7 +56,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace AdmCostoProduccion.Windows.Mantenimiento.$EsquemaName$.$Model$
+namespace $LibraryName$.$EsquemaName$.$FolderName$
 {
     public partial class Mnt$Model$Form : KryptonForm
     {

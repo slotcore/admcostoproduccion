@@ -37,16 +37,17 @@
             this.ClearButton = new ComponentFactory.Krypton.Toolkit.ButtonSpecAny();
             this.GridHeaderGroup = new ComponentFactory.Krypton.Toolkit.KryptonHeaderGroup();
             this.DetalleDataGridView = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
+            this.tipoDespachoViewModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.BaseFormToolStrip = new System.Windows.Forms.ToolStrip();
             this.AgregarButton = new System.Windows.Forms.ToolStripButton();
             this.ModificarButton = new System.Windows.Forms.ToolStripButton();
             this.EliminarButton = new System.Windows.Forms.ToolStripButton();
             this.ActualizarButton = new System.Windows.Forms.ToolStripButton();
             this.CargarExcelButton = new System.Windows.Forms.ToolStripButton();
-            this.tipoDespachoViewModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.codigoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nombreDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.descripcionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Proceso = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.BaseFormHeaderGroup)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BaseFormHeaderGroup.Panel)).BeginInit();
             this.BaseFormHeaderGroup.Panel.SuspendLayout();
@@ -62,8 +63,8 @@
             this.GridHeaderGroup.Panel.SuspendLayout();
             this.GridHeaderGroup.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DetalleDataGridView)).BeginInit();
-            this.BaseFormToolStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tipoDespachoViewModelBindingSource)).BeginInit();
+            this.BaseFormToolStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // BaseFormHeaderGroup
@@ -180,7 +181,8 @@
             this.DetalleDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.codigoDataGridViewTextBoxColumn,
             this.nombreDataGridViewTextBoxColumn,
-            this.descripcionDataGridViewTextBoxColumn});
+            this.descripcionDataGridViewTextBoxColumn,
+            this.Proceso});
             this.DetalleDataGridView.DataSource = this.tipoDespachoViewModelBindingSource;
             this.DetalleDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.DetalleDataGridView.GridStyles.Style = ComponentFactory.Krypton.Toolkit.DataGridViewStyle.Sheet;
@@ -197,6 +199,10 @@
             this.DetalleDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.DetalleDataGridView.Size = new System.Drawing.Size(923, 361);
             this.DetalleDataGridView.TabIndex = 0;
+            // 
+            // tipoDespachoViewModelBindingSource
+            // 
+            this.tipoDespachoViewModelBindingSource.DataSource = typeof(AdmCostoProduccion.Common.ViewModels.Inventario.TipoDespachoViewModel);
             // 
             // BaseFormToolStrip
             // 
@@ -260,10 +266,6 @@
             this.CargarExcelButton.Size = new System.Drawing.Size(114, 24);
             this.CargarExcelButton.Text = "Cargal Excel";
             // 
-            // tipoDespachoViewModelBindingSource
-            // 
-            this.tipoDespachoViewModelBindingSource.DataSource = typeof(AdmCostoProduccion.Common.ViewModels.Inventario.TipoDespachoViewModel);
-            // 
             // codigoDataGridViewTextBoxColumn
             // 
             this.codigoDataGridViewTextBoxColumn.DataPropertyName = "Codigo";
@@ -291,6 +293,15 @@
             this.descripcionDataGridViewTextBoxColumn.ReadOnly = true;
             this.descripcionDataGridViewTextBoxColumn.Width = 120;
             // 
+            // Proceso
+            // 
+            this.Proceso.DataPropertyName = "Proceso";
+            this.Proceso.HeaderText = "Proceso";
+            this.Proceso.MinimumWidth = 6;
+            this.Proceso.Name = "Proceso";
+            this.Proceso.ReadOnly = true;
+            this.Proceso.Width = 94;
+            // 
             // LstTipoDespachoForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -316,9 +327,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.GridHeaderGroup)).EndInit();
             this.GridHeaderGroup.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DetalleDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tipoDespachoViewModelBindingSource)).EndInit();
             this.BaseFormToolStrip.ResumeLayout(false);
             this.BaseFormToolStrip.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tipoDespachoViewModelBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -340,9 +351,10 @@
         private System.Windows.Forms.ToolStripButton EliminarButton;
         private System.Windows.Forms.ToolStripButton ActualizarButton;
         private System.Windows.Forms.ToolStripButton CargarExcelButton;
+        private System.Windows.Forms.BindingSource tipoDespachoViewModelBindingSource;
         private System.Windows.Forms.DataGridViewTextBoxColumn codigoDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn nombreDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn descripcionDataGridViewTextBoxColumn;
-        private System.Windows.Forms.BindingSource tipoDespachoViewModelBindingSource;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Proceso;
     }
 }

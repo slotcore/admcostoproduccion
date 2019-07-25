@@ -24,6 +24,9 @@ namespace AdmCostoProduccion.Common.Models.Inventario
         public string Nombre { get; set; }
 
         public string Descripcion { get; set; }
+
+        public string Proceso { get; set; }
+
         #endregion
 
         #region Foraneas
@@ -31,7 +34,7 @@ namespace AdmCostoProduccion.Common.Models.Inventario
 
         #region Relacionales
 
-        
+
         public virtual ICollection<TipoRecepcion> TipoRecepcions { get; set; }
 
         #endregion

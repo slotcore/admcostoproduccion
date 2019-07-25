@@ -1,4 +1,5 @@
 ﻿using AdmCostoProduccion.Common.Classes;
+using AdmCostoProduccion.Common.Enum;
 using AdmCostoProduccion.Common.Models.Inventario;
 using System;
 using System.Collections.Generic;
@@ -28,7 +29,17 @@ namespace AdmCostoProduccion.Common.ViewModels.Inventario
             Almacen = model.Almacen.Nombre;
             OrdenProduccion = model.OrdenProduccion.Codigo;
             Venta = model.Venta.NumeroDocumento;
-            
+
+            if (model.Venta != null)
+            {
+                TipoDocumentoRelacionado = DespachoDocumentoEnum.Venta;
+                NumeroDocumentoRelacionado = model.Venta.NumeroDocumento;
+            }
+            if (model.OrdenProduccion != null)
+            {
+                TipoDocumentoRelacionado = DespachoDocumentoEnum.OrdenProduccion;
+                NumeroDocumentoRelacionado = model.OrdenProduccion.Codigo;
+            }
 
             foreach (var recepcionDetalle in model.DespachoDetalles)
             {
@@ -46,9 +57,9 @@ namespace AdmCostoProduccion.Common.ViewModels.Inventario
 
         private int _AlmacenId;
 
-        private int _OrdenProduccionId;
+        private int? _OrdenProduccionId;
 
-        private int _VentaId;
+        private int? _VentaId;
 
         private string _Codigo;
 
@@ -62,7 +73,9 @@ namespace AdmCostoProduccion.Common.ViewModels.Inventario
 
         private string _Venta;
 
-        private string _DocumentoRelacionado;
+        private string _TipoDocumentoRelacionado;
+
+        private string _NumeroDocumentoRelacionado;
 
         private ObservableListSource<DespachoDetalleViewModel> _DespachoDetalleViewModels = new ObservableListSource<DespachoDetalleViewModel>();
 
@@ -121,7 +134,7 @@ namespace AdmCostoProduccion.Common.ViewModels.Inventario
             }
         }
 
-        public int OrdenProduccionId
+        public int? OrdenProduccionId
         {
             get
             {
@@ -138,7 +151,7 @@ namespace AdmCostoProduccion.Common.ViewModels.Inventario
             }
         }
 
-        public int VentaId
+        public int? VentaId
         {
             get
             {
@@ -257,18 +270,35 @@ namespace AdmCostoProduccion.Common.ViewModels.Inventario
             }
         }
 
-        public string DocumentoRelacionado
+        public string TipoDocumentoRelacionado
         {
             get
             {
-                return _DocumentoRelacionado;
+                return _TipoDocumentoRelacionado;
             }
 
             set
             {
-                if (value != _DocumentoRelacionado)
+                if (value != _TipoDocumentoRelacionado)
                 {
-                    _DocumentoRelacionado = value;
+                    _TipoDocumentoRelacionado = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
+        public string NumeroDocumentoRelacionado
+        {
+            get
+            {
+                return _NumeroDocumentoRelacionado;
+            }
+
+            set
+            {
+                if (value != _NumeroDocumentoRelacionado)
+                {
+                    _NumeroDocumentoRelacionado = value;
                     NotifyPropertyChanged();
                 }
             }
@@ -307,6 +337,9 @@ namespace AdmCostoProduccion.Common.ViewModels.Inventario
             viewModel.Almacen = _Almacen;
             viewModel.OrdenProduccion = _OrdenProduccion;
             viewModel.Venta = _Venta;
+            viewModel.TipoDocumentoRelacionado = _TipoDocumentoRelacionado;
+            viewModel.NumeroDocumentoRelacionado = _NumeroDocumentoRelacionado;
+            viewModel.DespachoDetalleViewModels = _DespachoDetalleViewModels;
         }
 
         public Despacho ToModel()

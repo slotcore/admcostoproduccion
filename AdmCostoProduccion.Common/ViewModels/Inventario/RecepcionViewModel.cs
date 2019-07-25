@@ -45,9 +45,9 @@ namespace AdmCostoProduccion.Common.ViewModels.Inventario
 
         private int _AlmacenId;
 
-        private int _OrdenProduccionId;
+        private int? _OrdenProduccionId;
 
-        private int _CompraId;
+        private int? _CompraId;
 
         private string _Codigo;
 
@@ -118,7 +118,7 @@ namespace AdmCostoProduccion.Common.ViewModels.Inventario
             }
         }
 
-        public int OrdenProduccionId
+        public int? OrdenProduccionId
         {
             get
             {
@@ -135,7 +135,7 @@ namespace AdmCostoProduccion.Common.ViewModels.Inventario
             }
         }
 
-        public int CompraId
+        public int? CompraId
         {
             get
             {

@@ -38,12 +38,12 @@ namespace AdmCostoProduccion.Common.Models.Inventario
         
         public virtual Maestro.Almacen Almacen { get; set; }
 
-        public int OrdenProduccionId { get; set; }
+        public int? OrdenProduccionId { get; set; }
 
         
         public virtual OrdenProduccion OrdenProduccion { get; set; }
 
-        public int CompraId { get; set; }
+        public int? CompraId { get; set; }
 
         public virtual Compra Compra { get; set; }
 
