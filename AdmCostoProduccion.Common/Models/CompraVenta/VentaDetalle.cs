@@ -22,8 +22,6 @@ namespace AdmCostoProduccion.Common.Models.CompraVenta
         public double Cantidad { get; set; }
 
         public double PrecioUnitario { get; set; }
-
-        public double PrecioTotal { get; set; }
         #endregion
 
         #region Foraneas

@@ -1,4 +1,5 @@
 ﻿using AdmCostoProduccion.Common.Models.Almacen;
+using AdmCostoProduccion.Common.Models.CompraVenta;
 using AdmCostoProduccion.Common.Models.Inventario;
 using AdmCostoProduccion.Common.Models.Maestro;
 using AdmCostoProduccion.Common.Models.Produccion;
@@ -45,5 +46,7 @@ namespace AdmCostoProduccion.Common.Data
         public DbSet<DespachoDetalle> DespachoDetalles { get; set; }
         public DbSet<Recepcion> Recepcions { get; set; }
         public DbSet<RecepcionDetalle> RecepcionDetalles { get; set; }
+        public DbSet<Venta> Ventas { get; set; }
+        public DbSet<OrdenProduccion> OrdenProduccions { get; set; }
     }
 }

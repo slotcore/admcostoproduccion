@@ -1,6 +1,8 @@
 ﻿using AdmCostoProduccion.Common.Classes;
 using AdmCostoProduccion.Common.Data;
 using AdmCostoProduccion.Common.ViewModels.Inventario;
+using AdmCostoProduccion.Common.ViewModels.Maestro;
+using AdmCostoProduccion.Windows.Prompt;
 using ComponentFactory.Krypton.Toolkit;
 using System;
 using System.Collections.Generic;
@@ -19,6 +21,7 @@ namespace AdmCostoProduccion.Windows.Mantenimiento.Inventario.Despacho
     {
         private readonly ApplicationDbContext Context = new ApplicationDbContext();
         private DespachoViewModel ViewModel = new DespachoViewModel();
+        private List<AlmacenViewModel> almacenViewModels = new List<AlmacenViewModel>();
 
         #region Propiedades
         public bool IsNew { get; set; }
@@ -34,6 +37,8 @@ namespace AdmCostoProduccion.Windows.Mantenimiento.Inventario.Despacho
             viewModel.CopyTo(ref ViewModel);
             ViewModelList = viewModelList;
             despachoViewModelBindingSource.DataSource = ViewModel;
+            //
+            CargarCombos();
         }
 
         public MntDespachoForm(ObservableListSource<DespachoViewModel> viewModelList)
@@ -42,6 +47,8 @@ namespace AdmCostoProduccion.Windows.Mantenimiento.Inventario.Despacho
             IsNew = true;
             ViewModelList = viewModelList;
             despachoViewModelBindingSource.DataSource = ViewModel;
+            //
+            CargarCombos();
         }
         #endregion
 
@@ -75,6 +82,12 @@ namespace AdmCostoProduccion.Windows.Mantenimiento.Inventario.Despacho
         private void EliminarDetalleButton_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void TipoDocumentoComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            documentoRelacionadoTextBox.Text = string.Empty;
+            documentoRelacionadoTextBox.Tag = null;
         }
         #endregion
 
@@ -117,6 +130,58 @@ namespace AdmCostoProduccion.Windows.Mantenimiento.Inventario.Despacho
             finally
             {
                 Cursor = Cursors.Default;
+            }
+        }
+
+        private void CargarCombos()
+        {
+            var almacens = Context.Almacens.ToList();
+            foreach (var almacen in almacens)
+            {
+                almacenViewModels.Add(new AlmacenViewModel(almacen));
+            }
+            almacenViewModelBindingSource.DataSource = almacenViewModels;
+            //
+            tipoDocumentoComboBox.Items.Add("Venta");
+            tipoDocumentoComboBox.Items.Add("Orden de Producción");
+        }
+
+        private void BuscarDocumentos()
+        {
+            if (tipoDocumentoComboBox.SelectedItem != null)
+            {
+                switch (tipoDocumentoComboBox.SelectedItem.ToString())
+                {
+                    case "Venta":
+                        var formpromptventa = new VentaPromptForm();
+                        if (formpromptventa.ShowDialog() == DialogResult.OK)
+                        {
+                            var ventaViewModel = formpromptventa.VentaViewModel;
+                            documentoRelacionadoTextBox.Tag = ventaViewModel;
+                            documentoRelacionadoTextBox.Text = ventaViewModel.NumeroDocumento;
+                        }
+                        else
+                        {
+                            documentoRelacionadoTextBox.Tag = null;
+                            documentoRelacionadoTextBox.Text = string.Empty;
+                        }
+                        break;
+
+                    case "Orden de Producción":
+                        var formpromptventaop = new OrdenProduccionPromptForm();
+                        if (formpromptventaop.ShowDialog() == DialogResult.OK)
+                        {
+                            var opViewModel = formpromptventaop.OrdenProduccionViewModel;
+                            documentoRelacionadoTextBox.Tag = opViewModel;
+                            documentoRelacionadoTextBox.Text = opViewModel.Codigo;
+                        }
+                        else
+                        {
+                            documentoRelacionadoTextBox.Tag = null;
+                            documentoRelacionadoTextBox.Text = string.Empty;
+                        }
+                        break;
+                }
             }
         }
         #endregion

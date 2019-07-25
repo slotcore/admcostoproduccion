@@ -28,6 +28,7 @@ namespace AdmCostoProduccion.Common.ViewModels.Inventario
             Almacen = model.Almacen.Nombre;
             OrdenProduccion = model.OrdenProduccion.Codigo;
             Venta = model.Venta.NumeroDocumento;
+            
 
             foreach (var recepcionDetalle in model.DespachoDetalles)
             {
@@ -60,6 +61,8 @@ namespace AdmCostoProduccion.Common.ViewModels.Inventario
         private string _OrdenProduccion;
 
         private string _Venta;
+
+        private string _DocumentoRelacionado;
 
         private ObservableListSource<DespachoDetalleViewModel> _DespachoDetalleViewModels = new ObservableListSource<DespachoDetalleViewModel>();
 
@@ -249,6 +252,23 @@ namespace AdmCostoProduccion.Common.ViewModels.Inventario
                 if (value != _Venta)
                 {
                     _Venta = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
+        public string DocumentoRelacionado
+        {
+            get
+            {
+                return _DocumentoRelacionado;
+            }
+
+            set
+            {
+                if (value != _DocumentoRelacionado)
+                {
+                    _DocumentoRelacionado = value;
                     NotifyPropertyChanged();
                 }
             }

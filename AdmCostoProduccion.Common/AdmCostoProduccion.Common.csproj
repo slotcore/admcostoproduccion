@@ -117,6 +117,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\CompraVenta\VentaDetalleViewModel.cs" />
+    <Compile Include="ViewModels\CompraVenta\VentaViewModel.cs" />
     <Compile Include="ViewModels\Costo\CostoOrdenProduccionViewModel.cs" />
     <Compile Include="ViewModels\Costo\CostoProduccionViewModel.cs" />
     <Compile Include="ViewModels\Inventario\DespachoDetalleViewModel.cs" />
@@ -132,6 +134,8 @@
     <Compile Include="ViewModels\Maestro\AlmacenViewModel.cs" />
     <Compile Include="ViewModels\Maestro\CentroLogisticoViewModel.cs" />
     <Compile Include="ViewModels\Maestro\PlantaFabricacionViewModel.cs" />
+    <Compile Include="ViewModels\Produccion\OrdenProduccionInsumoViewModel.cs" />
+    <Compile Include="ViewModels\Produccion\OrdenProduccionViewModel.cs" />
     <Compile Include="ViewModels\Produccion\ProcedimientoProduccionInsumoViewModel.cs" />
     <Compile Include="ViewModels\Produccion\ProcedimientoProduccionViewModel.cs" />
   </ItemGroup>

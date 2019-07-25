@@ -290,6 +290,18 @@
     <Compile Include="Prompt\MercaderiaPromptForm.Designer.cs">
       <DependentUpon>MercaderiaPromptForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Prompt\OrdenProduccionPromptForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Prompt\OrdenProduccionPromptForm.Designer.cs">
+      <DependentUpon>OrdenProduccionPromptForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Prompt\VentaPromptForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Prompt\VentaPromptForm.Designer.cs">
+      <DependentUpon>VentaPromptForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Mantenimiento\Inventario\TipoMovimiento\LstTipoMovimientoForm.resx">
       <DependentUpon>LstTipoMovimientoForm.cs</DependentUpon>
@@ -378,6 +390,12 @@
     <EmbeddedResource Include="Prompt\MercaderiaPromptForm.resx">
       <DependentUpon>MercaderiaPromptForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Prompt\OrdenProduccionPromptForm.resx">
+      <DependentUpon>OrdenProduccionPromptForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Prompt\VentaPromptForm.resx">
+      <DependentUpon>VentaPromptForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -392,6 +410,7 @@
     <None Include="packages.config" />
     <None Include="Properties\app.manifest" />
     <None Include="Properties\DataSources\AdmCostoProduccion.Common.Models.Maestro.CentroLogistico.datasource" />
+    <None Include="Properties\DataSources\AdmCostoProduccion.Common.ViewModels.CompraVenta.VentaViewModel.datasource" />
     <None Include="Properties\DataSources\AdmCostoProduccion.Common.ViewModels.Inventario.DespachoDetalleViewModel.datasource" />
     <None Include="Properties\DataSources\AdmCostoProduccion.Common.ViewModels.Inventario.DespachoViewModel.datasource" />
     <None Include="Properties\DataSources\AdmCostoProduccion.Common.ViewModels.Inventario.MercaderiaViewModel.datasource" />
@@ -405,6 +424,7 @@
     <None Include="Properties\DataSources\AdmCostoProduccion.Common.ViewModels.Maestro.AlmacenViewModel.datasource" />
     <None Include="Properties\DataSources\AdmCostoProduccion.Common.ViewModels.Maestro.CentroLogisticoViewModel.datasource" />
     <None Include="Properties\DataSources\AdmCostoProduccion.Common.ViewModels.Maestro.PlantaFabricacionViewModel.datasource" />
+    <None Include="Properties\DataSources\AdmCostoProduccion.Common.ViewModels.Produccion.OrdenProduccionViewModel.datasource" />
     <None Include="Properties\DataSources\AdmCostoProduccion.Common.ViewModels.Produccion.ProcedimientoProduccionInsumoViewModel.datasource" />
     <None Include="Properties\DataSources\AdmCostoProduccion.Common.ViewModels.Produccion.ProcedimientoProduccionViewModel.datasource" />
     <None Include="Properties\Settings.settings">
