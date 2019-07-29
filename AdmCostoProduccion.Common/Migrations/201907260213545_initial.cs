@@ -3,7 +3,7 @@ namespace AdmCostoProduccion.Common.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class initialmigration : DbMigration
+    public partial class initial : DbMigration
     {
         public override void Up()
         {
@@ -67,7 +67,6 @@ namespace AdmCostoProduccion.Common.Migrations
                     {
                         OrdenProduccionId = c.Int(nullable: false, identity: true),
                         Codigo = c.String(),
-                        Nombre = c.String(),
                         Descripcion = c.String(),
                         Fecha = c.DateTime(nullable: false),
                         Cantidad = c.Double(nullable: false),
@@ -217,11 +216,11 @@ namespace AdmCostoProduccion.Common.Migrations
                         Eliminado = c.Boolean(nullable: false),
                     })
                 .PrimaryKey(t => t.KardexMovimientoId)
-                .ForeignKey("dbo.DespachoDetalles", t => t.DespachoDetalleId)
-                .ForeignKey("dbo.Mercaderias", t => t.MercaderiaId)
                 .ForeignKey("dbo.RecepcionDetalles", t => t.RecepcionDetalleId)
                 .ForeignKey("dbo.UnidadMedidas", t => t.UnidadMedidaId)
+                .ForeignKey("dbo.Mercaderias", t => t.MercaderiaId)
                 .ForeignKey("dbo.Kardexes", t => t.KardexId)
+                .ForeignKey("dbo.DespachoDetalles", t => t.DespachoDetalleId)
                 .ForeignKey("dbo.TipoMovimientoes", t => t.TipoMovimientoId)
                 .Index(t => t.KardexId)
                 .Index(t => t.TipoMovimientoId)
@@ -234,30 +233,30 @@ namespace AdmCostoProduccion.Common.Migrations
                 "dbo.DespachoDetalles",
                 c => new
                     {
-                        DespachoDetalleId = c.Int(nullable: false),
+                        DespachoDetalleId = c.Int(nullable: false, identity: true),
                         Cantidad = c.Double(nullable: false),
                         DespachoId = c.Int(nullable: false),
-                        OrdenProduccionInsumoId = c.Int(nullable: false),
                         MercaderiaId = c.Int(nullable: false),
                         UnidadMedidaId = c.Int(nullable: false),
+                        OrdenProduccionInsumoId = c.Int(),
+                        VentaDetalleId = c.Int(),
                         UsuarioCreacion = c.String(),
                         FechaCreacion = c.DateTime(nullable: false),
                         UsuarioUltimaActualizacion = c.String(),
                         FechaUltimaActualizacion = c.DateTime(),
                         Eliminado = c.Boolean(nullable: false),
-                        Mercaderia_MercaderiaId = c.Int(),
                     })
                 .PrimaryKey(t => t.DespachoDetalleId)
                 .ForeignKey("dbo.Despachoes", t => t.DespachoId)
-                .ForeignKey("dbo.Mercaderias", t => t.Mercaderia_MercaderiaId)
+                .ForeignKey("dbo.VentaDetalles", t => t.VentaDetalleId)
                 .ForeignKey("dbo.OrdenProduccionInsumoes", t => t.OrdenProduccionInsumoId)
                 .ForeignKey("dbo.UnidadMedidas", t => t.UnidadMedidaId)
-                .ForeignKey("dbo.Mercaderias", t => t.DespachoDetalleId)
-                .Index(t => t.DespachoDetalleId)
+                .ForeignKey("dbo.Mercaderias", t => t.MercaderiaId)
                 .Index(t => t.DespachoId)
-                .Index(t => t.OrdenProduccionInsumoId)
+                .Index(t => t.MercaderiaId)
                 .Index(t => t.UnidadMedidaId)
-                .Index(t => t.Mercaderia_MercaderiaId);
+                .Index(t => t.OrdenProduccionInsumoId)
+                .Index(t => t.VentaDetalleId);
             
             CreateTable(
                 "dbo.Despachoes",
@@ -268,7 +267,8 @@ namespace AdmCostoProduccion.Common.Migrations
                         Observacion = c.String(),
                         TipoDespachoId = c.Int(nullable: false),
                         AlmacenId = c.Int(nullable: false),
-                        OrdenProduccionId = c.Int(nullable: false),
+                        OrdenProduccionId = c.Int(),
+                        VentaId = c.Int(),
                         UsuarioCreacion = c.String(),
                         FechaCreacion = c.DateTime(nullable: false),
                         UsuarioUltimaActualizacion = c.String(),
@@ -279,9 +279,11 @@ namespace AdmCostoProduccion.Common.Migrations
                 .ForeignKey("dbo.Almacens", t => t.AlmacenId)
                 .ForeignKey("dbo.OrdenProduccions", t => t.OrdenProduccionId)
                 .ForeignKey("dbo.TipoDespachoes", t => t.TipoDespachoId)
+                .ForeignKey("dbo.Ventas", t => t.VentaId)
                 .Index(t => t.TipoDespachoId)
                 .Index(t => t.AlmacenId)
-                .Index(t => t.OrdenProduccionId);
+                .Index(t => t.OrdenProduccionId)
+                .Index(t => t.VentaId);
             
             CreateTable(
                 "dbo.TipoDespachoes",
@@ -291,6 +293,7 @@ namespace AdmCostoProduccion.Common.Migrations
                         Codigo = c.String(),
                         Nombre = c.String(),
                         Descripcion = c.String(),
+                        Proceso = c.String(),
                         UsuarioCreacion = c.String(),
                         FechaCreacion = c.DateTime(nullable: false),
                         UsuarioUltimaActualizacion = c.String(),
@@ -298,6 +301,46 @@ namespace AdmCostoProduccion.Common.Migrations
                         Eliminado = c.Boolean(nullable: false),
                     })
                 .PrimaryKey(t => t.TipoDespachoId);
+            
+            CreateTable(
+                "dbo.Ventas",
+                c => new
+                    {
+                        VentaId = c.Int(nullable: false, identity: true),
+                        NumeroDocumento = c.String(),
+                        Fecha = c.DateTime(nullable: false),
+                        Descripcion = c.String(),
+                        CentroLogisticoId = c.Int(nullable: false),
+                        UsuarioCreacion = c.String(),
+                        FechaCreacion = c.DateTime(nullable: false),
+                        UsuarioUltimaActualizacion = c.String(),
+                        FechaUltimaActualizacion = c.DateTime(),
+                        Eliminado = c.Boolean(nullable: false),
+                    })
+                .PrimaryKey(t => t.VentaId)
+                .ForeignKey("dbo.CentroLogisticoes", t => t.CentroLogisticoId)
+                .Index(t => t.CentroLogisticoId);
+            
+            CreateTable(
+                "dbo.VentaDetalles",
+                c => new
+                    {
+                        VentaDetalleId = c.Int(nullable: false, identity: true),
+                        Cantidad = c.Double(nullable: false),
+                        PrecioUnitario = c.Double(nullable: false),
+                        VentaId = c.Int(nullable: false),
+                        MercaderiaId = c.Int(nullable: false),
+                        UsuarioCreacion = c.String(),
+                        FechaCreacion = c.DateTime(nullable: false),
+                        UsuarioUltimaActualizacion = c.String(),
+                        FechaUltimaActualizacion = c.DateTime(),
+                        Eliminado = c.Boolean(nullable: false),
+                    })
+                .PrimaryKey(t => t.VentaDetalleId)
+                .ForeignKey("dbo.Mercaderias", t => t.MercaderiaId)
+                .ForeignKey("dbo.Ventas", t => t.VentaId)
+                .Index(t => t.VentaId)
+                .Index(t => t.MercaderiaId);
             
             CreateTable(
                 "dbo.Mercaderias",
@@ -317,6 +360,103 @@ namespace AdmCostoProduccion.Common.Migrations
                 .PrimaryKey(t => t.MercaderiaId)
                 .ForeignKey("dbo.TipoMercaderias", t => t.TipoMercaderiaId)
                 .Index(t => t.TipoMercaderiaId);
+            
+            CreateTable(
+                "dbo.CompraDetalles",
+                c => new
+                    {
+                        CompraDetalleId = c.Int(nullable: false, identity: true),
+                        Cantidad = c.Double(nullable: false),
+                        PrecioUnitario = c.Double(nullable: false),
+                        PrecioTotal = c.Double(nullable: false),
+                        CompraId = c.Int(nullable: false),
+                        MercaderiaId = c.Int(nullable: false),
+                        UsuarioCreacion = c.String(),
+                        FechaCreacion = c.DateTime(nullable: false),
+                        UsuarioUltimaActualizacion = c.String(),
+                        FechaUltimaActualizacion = c.DateTime(),
+                        Eliminado = c.Boolean(nullable: false),
+                    })
+                .PrimaryKey(t => t.CompraDetalleId)
+                .ForeignKey("dbo.Compras", t => t.CompraId)
+                .ForeignKey("dbo.Mercaderias", t => t.MercaderiaId)
+                .Index(t => t.CompraId)
+                .Index(t => t.MercaderiaId);
+            
+            CreateTable(
+                "dbo.Compras",
+                c => new
+                    {
+                        CompraId = c.Int(nullable: false, identity: true),
+                        NumeroDocumento = c.String(),
+                        Fecha = c.DateTime(nullable: false),
+                        Descripcion = c.String(),
+                        CentroLogisticoId = c.Int(nullable: false),
+                        UsuarioCreacion = c.String(),
+                        FechaCreacion = c.DateTime(nullable: false),
+                        UsuarioUltimaActualizacion = c.String(),
+                        FechaUltimaActualizacion = c.DateTime(),
+                        Eliminado = c.Boolean(nullable: false),
+                    })
+                .PrimaryKey(t => t.CompraId)
+                .ForeignKey("dbo.CentroLogisticoes", t => t.CentroLogisticoId)
+                .Index(t => t.CentroLogisticoId);
+            
+            CreateTable(
+                "dbo.Recepcions",
+                c => new
+                    {
+                        RecepcionId = c.Int(nullable: false, identity: true),
+                        Codigo = c.String(),
+                        Observacion = c.String(),
+                        TipoRecepcionId = c.Int(nullable: false),
+                        AlmacenId = c.Int(nullable: false),
+                        OrdenProduccionId = c.Int(),
+                        CompraId = c.Int(),
+                        UsuarioCreacion = c.String(),
+                        FechaCreacion = c.DateTime(nullable: false),
+                        UsuarioUltimaActualizacion = c.String(),
+                        FechaUltimaActualizacion = c.DateTime(),
+                        Eliminado = c.Boolean(nullable: false),
+                    })
+                .PrimaryKey(t => t.RecepcionId)
+                .ForeignKey("dbo.Almacens", t => t.AlmacenId)
+                .ForeignKey("dbo.Compras", t => t.CompraId)
+                .ForeignKey("dbo.OrdenProduccions", t => t.OrdenProduccionId)
+                .ForeignKey("dbo.TipoRecepcions", t => t.TipoRecepcionId)
+                .Index(t => t.TipoRecepcionId)
+                .Index(t => t.AlmacenId)
+                .Index(t => t.OrdenProduccionId)
+                .Index(t => t.CompraId);
+            
+            CreateTable(
+                "dbo.RecepcionDetalles",
+                c => new
+                    {
+                        RecepcionDetalleId = c.Int(nullable: false, identity: true),
+                        Cantidad = c.Double(nullable: false),
+                        RecepcionId = c.Int(nullable: false),
+                        MercaderiaId = c.Int(nullable: false),
+                        UnidadMedidaId = c.Int(nullable: false),
+                        OrdenProduccionInsumoId = c.Int(),
+                        CompraDetalleId = c.Int(),
+                        UsuarioCreacion = c.String(),
+                        FechaCreacion = c.DateTime(nullable: false),
+                        UsuarioUltimaActualizacion = c.String(),
+                        FechaUltimaActualizacion = c.DateTime(),
+                        Eliminado = c.Boolean(nullable: false),
+                    })
+                .PrimaryKey(t => t.RecepcionDetalleId)
+                .ForeignKey("dbo.CompraDetalles", t => t.CompraDetalleId)
+                .ForeignKey("dbo.Mercaderias", t => t.MercaderiaId)
+                .ForeignKey("dbo.OrdenProduccionInsumoes", t => t.OrdenProduccionInsumoId)
+                .ForeignKey("dbo.UnidadMedidas", t => t.UnidadMedidaId)
+                .ForeignKey("dbo.Recepcions", t => t.RecepcionId)
+                .Index(t => t.RecepcionId)
+                .Index(t => t.MercaderiaId)
+                .Index(t => t.UnidadMedidaId)
+                .Index(t => t.OrdenProduccionInsumoId)
+                .Index(t => t.CompraDetalleId);
             
             CreateTable(
                 "dbo.OrdenProduccionInsumoes",
@@ -340,75 +480,6 @@ namespace AdmCostoProduccion.Common.Migrations
                 .Index(t => t.OrdenProduccionId)
                 .Index(t => t.MercaderiaId)
                 .Index(t => t.UnidadMedidaId);
-            
-            CreateTable(
-                "dbo.RecepcionDetalles",
-                c => new
-                    {
-                        RecepcionDetalleId = c.Int(nullable: false, identity: true),
-                        Cantidad = c.Double(nullable: false),
-                        RecepcionId = c.Int(nullable: false),
-                        OrdenProduccionInsumoId = c.Int(nullable: false),
-                        MercaderiaId = c.Int(nullable: false),
-                        UnidadMedidaId = c.Int(nullable: false),
-                        UsuarioCreacion = c.String(),
-                        FechaCreacion = c.DateTime(nullable: false),
-                        UsuarioUltimaActualizacion = c.String(),
-                        FechaUltimaActualizacion = c.DateTime(),
-                        Eliminado = c.Boolean(nullable: false),
-                    })
-                .PrimaryKey(t => t.RecepcionDetalleId)
-                .ForeignKey("dbo.Mercaderias", t => t.MercaderiaId)
-                .ForeignKey("dbo.OrdenProduccionInsumoes", t => t.OrdenProduccionInsumoId)
-                .ForeignKey("dbo.Recepcions", t => t.RecepcionId)
-                .ForeignKey("dbo.UnidadMedidas", t => t.UnidadMedidaId)
-                .Index(t => t.RecepcionId)
-                .Index(t => t.OrdenProduccionInsumoId)
-                .Index(t => t.MercaderiaId)
-                .Index(t => t.UnidadMedidaId);
-            
-            CreateTable(
-                "dbo.Recepcions",
-                c => new
-                    {
-                        RecepcionId = c.Int(nullable: false, identity: true),
-                        Codigo = c.String(),
-                        Observacion = c.String(),
-                        TipoRecepcionId = c.Int(nullable: false),
-                        AlmacenId = c.Int(nullable: false),
-                        OrdenProduccionId = c.Int(nullable: false),
-                        UsuarioCreacion = c.String(),
-                        FechaCreacion = c.DateTime(nullable: false),
-                        UsuarioUltimaActualizacion = c.String(),
-                        FechaUltimaActualizacion = c.DateTime(),
-                        Eliminado = c.Boolean(nullable: false),
-                    })
-                .PrimaryKey(t => t.RecepcionId)
-                .ForeignKey("dbo.Almacens", t => t.AlmacenId)
-                .ForeignKey("dbo.OrdenProduccions", t => t.OrdenProduccionId)
-                .ForeignKey("dbo.TipoRecepcions", t => t.TipoRecepcionId)
-                .Index(t => t.TipoRecepcionId)
-                .Index(t => t.AlmacenId)
-                .Index(t => t.OrdenProduccionId);
-            
-            CreateTable(
-                "dbo.TipoRecepcions",
-                c => new
-                    {
-                        TipoRecepcionId = c.Int(nullable: false, identity: true),
-                        Codigo = c.String(),
-                        Nombre = c.String(),
-                        Descripcion = c.String(),
-                        UsuarioCreacion = c.String(),
-                        FechaCreacion = c.DateTime(nullable: false),
-                        UsuarioUltimaActualizacion = c.String(),
-                        FechaUltimaActualizacion = c.DateTime(),
-                        Eliminado = c.Boolean(nullable: false),
-                        TipoRecepcion_TipoRecepcionId = c.Int(),
-                    })
-                .PrimaryKey(t => t.TipoRecepcionId)
-                .ForeignKey("dbo.TipoRecepcions", t => t.TipoRecepcion_TipoRecepcionId)
-                .Index(t => t.TipoRecepcion_TipoRecepcionId);
             
             CreateTable(
                 "dbo.UnidadMedidas",
@@ -472,6 +543,26 @@ namespace AdmCostoProduccion.Common.Migrations
                 .ForeignKey("dbo.UnidadMedidas", t => t.UnidadMedidaId)
                 .Index(t => t.MercaderiaId)
                 .Index(t => t.UnidadMedidaId);
+            
+            CreateTable(
+                "dbo.TipoRecepcions",
+                c => new
+                    {
+                        TipoRecepcionId = c.Int(nullable: false, identity: true),
+                        Codigo = c.String(),
+                        Nombre = c.String(),
+                        Descripcion = c.String(),
+                        Proceso = c.String(),
+                        UsuarioCreacion = c.String(),
+                        FechaCreacion = c.DateTime(nullable: false),
+                        UsuarioUltimaActualizacion = c.String(),
+                        FechaUltimaActualizacion = c.DateTime(),
+                        Eliminado = c.Boolean(nullable: false),
+                        TipoRecepcion_TipoRecepcionId = c.Int(),
+                    })
+                .PrimaryKey(t => t.TipoRecepcionId)
+                .ForeignKey("dbo.TipoRecepcions", t => t.TipoRecepcion_TipoRecepcionId)
+                .Index(t => t.TipoRecepcion_TipoRecepcionId);
             
             CreateTable(
                 "dbo.OrdenServicios",
@@ -553,13 +644,21 @@ namespace AdmCostoProduccion.Common.Migrations
             DropForeignKey("dbo.OrdenProduccions", "PlantaFabricacionId", "dbo.PlantaFabricacions");
             DropForeignKey("dbo.CostoOrdenProduccions", "OrdenProduccionId", "dbo.OrdenProduccions");
             DropForeignKey("dbo.KardexMovimientoes", "TipoMovimientoId", "dbo.TipoMovimientoes");
-            DropForeignKey("dbo.DespachoDetalles", "DespachoDetalleId", "dbo.Mercaderias");
+            DropForeignKey("dbo.DespachoDetalles", "MercaderiaId", "dbo.Mercaderias");
+            DropForeignKey("dbo.KardexMovimientoes", "DespachoDetalleId", "dbo.DespachoDetalles");
+            DropForeignKey("dbo.VentaDetalles", "VentaId", "dbo.Ventas");
+            DropForeignKey("dbo.VentaDetalles", "MercaderiaId", "dbo.Mercaderias");
             DropForeignKey("dbo.Mercaderias", "TipoMercaderiaId", "dbo.TipoMercaderias");
             DropForeignKey("dbo.OrdenServicios", "MercaderiaId", "dbo.Mercaderias");
             DropForeignKey("dbo.Kardexes", "OrdenServicioId", "dbo.OrdenServicios");
             DropForeignKey("dbo.KardexMovimientoes", "KardexId", "dbo.Kardexes");
             DropForeignKey("dbo.Kardexes", "AlmacenId", "dbo.Almacens");
             DropForeignKey("dbo.OrdenProduccions", "MercaderiaId", "dbo.Mercaderias");
+            DropForeignKey("dbo.KardexMovimientoes", "MercaderiaId", "dbo.Mercaderias");
+            DropForeignKey("dbo.CompraDetalles", "MercaderiaId", "dbo.Mercaderias");
+            DropForeignKey("dbo.Recepcions", "TipoRecepcionId", "dbo.TipoRecepcions");
+            DropForeignKey("dbo.TipoRecepcions", "TipoRecepcion_TipoRecepcionId", "dbo.TipoRecepcions");
+            DropForeignKey("dbo.RecepcionDetalles", "RecepcionId", "dbo.Recepcions");
             DropForeignKey("dbo.RecepcionDetalles", "UnidadMedidaId", "dbo.UnidadMedidas");
             DropForeignKey("dbo.ProcedimientoProduccionInsumoes", "UnidadMedidaId", "dbo.UnidadMedidas");
             DropForeignKey("dbo.ProcedimientoProduccions", "UnidadMedidaId", "dbo.UnidadMedidas");
@@ -571,20 +670,21 @@ namespace AdmCostoProduccion.Common.Migrations
             DropForeignKey("dbo.OrdenProduccionInsumoes", "UnidadMedidaId", "dbo.UnidadMedidas");
             DropForeignKey("dbo.KardexMovimientoes", "UnidadMedidaId", "dbo.UnidadMedidas");
             DropForeignKey("dbo.DespachoDetalles", "UnidadMedidaId", "dbo.UnidadMedidas");
-            DropForeignKey("dbo.Recepcions", "TipoRecepcionId", "dbo.TipoRecepcions");
-            DropForeignKey("dbo.TipoRecepcions", "TipoRecepcion_TipoRecepcionId", "dbo.TipoRecepcions");
-            DropForeignKey("dbo.RecepcionDetalles", "RecepcionId", "dbo.Recepcions");
-            DropForeignKey("dbo.Recepcions", "OrdenProduccionId", "dbo.OrdenProduccions");
-            DropForeignKey("dbo.Recepcions", "AlmacenId", "dbo.Almacens");
             DropForeignKey("dbo.RecepcionDetalles", "OrdenProduccionInsumoId", "dbo.OrdenProduccionInsumoes");
-            DropForeignKey("dbo.RecepcionDetalles", "MercaderiaId", "dbo.Mercaderias");
-            DropForeignKey("dbo.KardexMovimientoes", "RecepcionDetalleId", "dbo.RecepcionDetalles");
             DropForeignKey("dbo.OrdenProduccionInsumoes", "OrdenProduccionId", "dbo.OrdenProduccions");
             DropForeignKey("dbo.OrdenProduccionInsumoes", "MercaderiaId", "dbo.Mercaderias");
             DropForeignKey("dbo.DespachoDetalles", "OrdenProduccionInsumoId", "dbo.OrdenProduccionInsumoes");
-            DropForeignKey("dbo.KardexMovimientoes", "MercaderiaId", "dbo.Mercaderias");
-            DropForeignKey("dbo.DespachoDetalles", "Mercaderia_MercaderiaId", "dbo.Mercaderias");
-            DropForeignKey("dbo.KardexMovimientoes", "DespachoDetalleId", "dbo.DespachoDetalles");
+            DropForeignKey("dbo.RecepcionDetalles", "MercaderiaId", "dbo.Mercaderias");
+            DropForeignKey("dbo.KardexMovimientoes", "RecepcionDetalleId", "dbo.RecepcionDetalles");
+            DropForeignKey("dbo.RecepcionDetalles", "CompraDetalleId", "dbo.CompraDetalles");
+            DropForeignKey("dbo.Recepcions", "OrdenProduccionId", "dbo.OrdenProduccions");
+            DropForeignKey("dbo.Recepcions", "CompraId", "dbo.Compras");
+            DropForeignKey("dbo.Recepcions", "AlmacenId", "dbo.Almacens");
+            DropForeignKey("dbo.CompraDetalles", "CompraId", "dbo.Compras");
+            DropForeignKey("dbo.Compras", "CentroLogisticoId", "dbo.CentroLogisticoes");
+            DropForeignKey("dbo.DespachoDetalles", "VentaDetalleId", "dbo.VentaDetalles");
+            DropForeignKey("dbo.Despachoes", "VentaId", "dbo.Ventas");
+            DropForeignKey("dbo.Ventas", "CentroLogisticoId", "dbo.CentroLogisticoes");
             DropForeignKey("dbo.Despachoes", "TipoDespachoId", "dbo.TipoDespachoes");
             DropForeignKey("dbo.Despachoes", "OrdenProduccionId", "dbo.OrdenProduccions");
             DropForeignKey("dbo.DespachoDetalles", "DespachoId", "dbo.Despachoes");
@@ -600,31 +700,40 @@ namespace AdmCostoProduccion.Common.Migrations
             DropIndex("dbo.Kardexes", new[] { "AlmacenId" });
             DropIndex("dbo.Kardexes", new[] { "OrdenServicioId" });
             DropIndex("dbo.OrdenServicios", new[] { "MercaderiaId" });
+            DropIndex("dbo.TipoRecepcions", new[] { "TipoRecepcion_TipoRecepcionId" });
             DropIndex("dbo.ProcedimientoProduccions", new[] { "UnidadMedidaId" });
             DropIndex("dbo.ProcedimientoProduccions", new[] { "MercaderiaId" });
             DropIndex("dbo.ProcedimientoProduccionInsumoes", new[] { "UnidadMedidaId" });
             DropIndex("dbo.ProcedimientoProduccionInsumoes", new[] { "MercaderiaId" });
             DropIndex("dbo.ProcedimientoProduccionInsumoes", new[] { "ProcedimientoProduccionId" });
-            DropIndex("dbo.TipoRecepcions", new[] { "TipoRecepcion_TipoRecepcionId" });
-            DropIndex("dbo.Recepcions", new[] { "OrdenProduccionId" });
-            DropIndex("dbo.Recepcions", new[] { "AlmacenId" });
-            DropIndex("dbo.Recepcions", new[] { "TipoRecepcionId" });
-            DropIndex("dbo.RecepcionDetalles", new[] { "UnidadMedidaId" });
-            DropIndex("dbo.RecepcionDetalles", new[] { "MercaderiaId" });
-            DropIndex("dbo.RecepcionDetalles", new[] { "OrdenProduccionInsumoId" });
-            DropIndex("dbo.RecepcionDetalles", new[] { "RecepcionId" });
             DropIndex("dbo.OrdenProduccionInsumoes", new[] { "UnidadMedidaId" });
             DropIndex("dbo.OrdenProduccionInsumoes", new[] { "MercaderiaId" });
             DropIndex("dbo.OrdenProduccionInsumoes", new[] { "OrdenProduccionId" });
+            DropIndex("dbo.RecepcionDetalles", new[] { "CompraDetalleId" });
+            DropIndex("dbo.RecepcionDetalles", new[] { "OrdenProduccionInsumoId" });
+            DropIndex("dbo.RecepcionDetalles", new[] { "UnidadMedidaId" });
+            DropIndex("dbo.RecepcionDetalles", new[] { "MercaderiaId" });
+            DropIndex("dbo.RecepcionDetalles", new[] { "RecepcionId" });
+            DropIndex("dbo.Recepcions", new[] { "CompraId" });
+            DropIndex("dbo.Recepcions", new[] { "OrdenProduccionId" });
+            DropIndex("dbo.Recepcions", new[] { "AlmacenId" });
+            DropIndex("dbo.Recepcions", new[] { "TipoRecepcionId" });
+            DropIndex("dbo.Compras", new[] { "CentroLogisticoId" });
+            DropIndex("dbo.CompraDetalles", new[] { "MercaderiaId" });
+            DropIndex("dbo.CompraDetalles", new[] { "CompraId" });
             DropIndex("dbo.Mercaderias", new[] { "TipoMercaderiaId" });
+            DropIndex("dbo.VentaDetalles", new[] { "MercaderiaId" });
+            DropIndex("dbo.VentaDetalles", new[] { "VentaId" });
+            DropIndex("dbo.Ventas", new[] { "CentroLogisticoId" });
+            DropIndex("dbo.Despachoes", new[] { "VentaId" });
             DropIndex("dbo.Despachoes", new[] { "OrdenProduccionId" });
             DropIndex("dbo.Despachoes", new[] { "AlmacenId" });
             DropIndex("dbo.Despachoes", new[] { "TipoDespachoId" });
-            DropIndex("dbo.DespachoDetalles", new[] { "Mercaderia_MercaderiaId" });
-            DropIndex("dbo.DespachoDetalles", new[] { "UnidadMedidaId" });
+            DropIndex("dbo.DespachoDetalles", new[] { "VentaDetalleId" });
             DropIndex("dbo.DespachoDetalles", new[] { "OrdenProduccionInsumoId" });
+            DropIndex("dbo.DespachoDetalles", new[] { "UnidadMedidaId" });
+            DropIndex("dbo.DespachoDetalles", new[] { "MercaderiaId" });
             DropIndex("dbo.DespachoDetalles", new[] { "DespachoId" });
-            DropIndex("dbo.DespachoDetalles", new[] { "DespachoDetalleId" });
             DropIndex("dbo.KardexMovimientoes", new[] { "UnidadMedidaId" });
             DropIndex("dbo.KardexMovimientoes", new[] { "MercaderiaId" });
             DropIndex("dbo.KardexMovimientoes", new[] { "DespachoDetalleId" });
@@ -648,14 +757,18 @@ namespace AdmCostoProduccion.Common.Migrations
             DropTable("dbo.TipoMercaderias");
             DropTable("dbo.Kardexes");
             DropTable("dbo.OrdenServicios");
+            DropTable("dbo.TipoRecepcions");
             DropTable("dbo.ProcedimientoProduccions");
             DropTable("dbo.ProcedimientoProduccionInsumoes");
             DropTable("dbo.UnidadMedidas");
-            DropTable("dbo.TipoRecepcions");
-            DropTable("dbo.Recepcions");
-            DropTable("dbo.RecepcionDetalles");
             DropTable("dbo.OrdenProduccionInsumoes");
+            DropTable("dbo.RecepcionDetalles");
+            DropTable("dbo.Recepcions");
+            DropTable("dbo.Compras");
+            DropTable("dbo.CompraDetalles");
             DropTable("dbo.Mercaderias");
+            DropTable("dbo.VentaDetalles");
+            DropTable("dbo.Ventas");
             DropTable("dbo.TipoDespachoes");
             DropTable("dbo.Despachoes");
             DropTable("dbo.DespachoDetalles");

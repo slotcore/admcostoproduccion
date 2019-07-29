@@ -83,9 +83,10 @@
             // 
             almacenIdLabel.AutoSize = true;
             almacenIdLabel.BackColor = System.Drawing.Color.Transparent;
-            almacenIdLabel.Location = new System.Drawing.Point(21, 30);
+            almacenIdLabel.Location = new System.Drawing.Point(16, 24);
+            almacenIdLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             almacenIdLabel.Name = "almacenIdLabel";
-            almacenIdLabel.Size = new System.Drawing.Size(66, 17);
+            almacenIdLabel.Size = new System.Drawing.Size(51, 13);
             almacenIdLabel.TabIndex = 0;
             almacenIdLabel.Text = "Almacen:";
             // 
@@ -93,9 +94,10 @@
             // 
             codigoLabel.AutoSize = true;
             codigoLabel.BackColor = System.Drawing.Color.Transparent;
-            codigoLabel.Location = new System.Drawing.Point(571, 58);
+            codigoLabel.Location = new System.Drawing.Point(428, 47);
+            codigoLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             codigoLabel.Name = "codigoLabel";
-            codigoLabel.Size = new System.Drawing.Size(56, 17);
+            codigoLabel.Size = new System.Drawing.Size(43, 13);
             codigoLabel.TabIndex = 6;
             codigoLabel.Text = "Codigo:";
             // 
@@ -103,9 +105,10 @@
             // 
             observacionLabel.AutoSize = true;
             observacionLabel.BackColor = System.Drawing.Color.Transparent;
-            observacionLabel.Location = new System.Drawing.Point(21, 89);
+            observacionLabel.Location = new System.Drawing.Point(16, 72);
+            observacionLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             observacionLabel.Name = "observacionLabel";
-            observacionLabel.Size = new System.Drawing.Size(92, 17);
+            observacionLabel.Size = new System.Drawing.Size(70, 13);
             observacionLabel.TabIndex = 8;
             observacionLabel.Text = "Observacion:";
             // 
@@ -113,9 +116,10 @@
             // 
             label1.AutoSize = true;
             label1.BackColor = System.Drawing.Color.Transparent;
-            label1.Location = new System.Drawing.Point(571, 28);
+            label1.Location = new System.Drawing.Point(428, 23);
+            label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(116, 17);
+            label1.Size = new System.Drawing.Size(89, 13);
             label1.TabIndex = 2;
             label1.Text = "Tipo Documento:";
             // 
@@ -123,9 +127,10 @@
             // 
             label2.AutoSize = true;
             label2.BackColor = System.Drawing.Color.Transparent;
-            label2.Location = new System.Drawing.Point(21, 60);
+            label2.Location = new System.Drawing.Point(16, 49);
+            label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             label2.Name = "label2";
-            label2.Size = new System.Drawing.Size(138, 17);
+            label2.Size = new System.Drawing.Size(105, 13);
             label2.TabIndex = 4;
             label2.Text = "Número Documento:";
             // 
@@ -136,13 +141,13 @@
             this.BaseFormHeaderGroup.HeaderStyleSecondary = ComponentFactory.Krypton.Toolkit.HeaderStyle.Form;
             this.BaseFormHeaderGroup.HeaderVisibleSecondary = false;
             this.BaseFormHeaderGroup.Location = new System.Drawing.Point(0, 31);
-            this.BaseFormHeaderGroup.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.BaseFormHeaderGroup.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.BaseFormHeaderGroup.Name = "BaseFormHeaderGroup";
             // 
             // BaseFormHeaderGroup.Panel
             // 
             this.BaseFormHeaderGroup.Panel.Controls.Add(this.kryptonPanel1);
-            this.BaseFormHeaderGroup.Size = new System.Drawing.Size(1115, 523);
+            this.BaseFormHeaderGroup.Size = new System.Drawing.Size(836, 419);
             this.BaseFormHeaderGroup.StateNormal.HeaderPrimary.Border.Color1 = System.Drawing.SystemColors.ControlDarkDark;
             this.BaseFormHeaderGroup.StateNormal.HeaderPrimary.Border.Draw = ComponentFactory.Krypton.Toolkit.InheritBool.True;
             this.BaseFormHeaderGroup.StateNormal.HeaderPrimary.Border.DrawBorders = ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom;
@@ -168,19 +173,19 @@
             this.kryptonPanel1.Controls.Add(this.GridHeaderGroup);
             this.kryptonPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonPanel1.Location = new System.Drawing.Point(0, 0);
-            this.kryptonPanel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.kryptonPanel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.kryptonPanel1.Name = "kryptonPanel1";
-            this.kryptonPanel1.Size = new System.Drawing.Size(1113, 495);
+            this.kryptonPanel1.Size = new System.Drawing.Size(834, 395);
             this.kryptonPanel1.TabIndex = 0;
             // 
             // tipoDocumentoComboBox
             // 
             this.tipoDocumentoComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.tipoDocumentoComboBox.FormattingEnabled = true;
-            this.tipoDocumentoComboBox.Location = new System.Drawing.Point(718, 27);
-            this.tipoDocumentoComboBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tipoDocumentoComboBox.Location = new System.Drawing.Point(538, 22);
+            this.tipoDocumentoComboBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tipoDocumentoComboBox.Name = "tipoDocumentoComboBox";
-            this.tipoDocumentoComboBox.Size = new System.Drawing.Size(368, 24);
+            this.tipoDocumentoComboBox.Size = new System.Drawing.Size(277, 21);
             this.tipoDocumentoComboBox.TabIndex = 3;
             this.tipoDocumentoComboBox.SelectedIndexChanged += new System.EventHandler(this.TipoDocumentoComboBox_SelectedIndexChanged);
             // 
@@ -188,10 +193,11 @@
             // 
             this.documentoRelacionadoTextBox.ButtonSpecs.AddRange(new ComponentFactory.Krypton.Toolkit.ButtonSpecAny[] {
             this.BuscarDocumentoButton});
-            this.documentoRelacionadoTextBox.Location = new System.Drawing.Point(168, 55);
-            this.documentoRelacionadoTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.documentoRelacionadoTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.despachoViewModelBindingSource, "NumeroDocumentoRelacionado", true));
+            this.documentoRelacionadoTextBox.Location = new System.Drawing.Point(126, 45);
+            this.documentoRelacionadoTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.documentoRelacionadoTextBox.Name = "documentoRelacionadoTextBox";
-            this.documentoRelacionadoTextBox.Size = new System.Drawing.Size(368, 27);
+            this.documentoRelacionadoTextBox.Size = new System.Drawing.Size(276, 24);
             this.documentoRelacionadoTextBox.TabIndex = 5;
             // 
             // BuscarDocumentoButton
@@ -210,10 +216,10 @@
             this.almacenIdComboBox.DisplayMember = "Nombre";
             this.almacenIdComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.almacenIdComboBox.FormattingEnabled = true;
-            this.almacenIdComboBox.Location = new System.Drawing.Point(168, 27);
-            this.almacenIdComboBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.almacenIdComboBox.Location = new System.Drawing.Point(126, 22);
+            this.almacenIdComboBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.almacenIdComboBox.Name = "almacenIdComboBox";
-            this.almacenIdComboBox.Size = new System.Drawing.Size(368, 24);
+            this.almacenIdComboBox.Size = new System.Drawing.Size(277, 21);
             this.almacenIdComboBox.TabIndex = 1;
             this.almacenIdComboBox.ValueMember = "AlmacenId";
             // 
@@ -228,19 +234,19 @@
             // codigoTextBox
             // 
             this.codigoTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.despachoViewModelBindingSource, "Codigo", true));
-            this.codigoTextBox.Location = new System.Drawing.Point(718, 55);
-            this.codigoTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.codigoTextBox.Location = new System.Drawing.Point(538, 45);
+            this.codigoTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.codigoTextBox.Name = "codigoTextBox";
-            this.codigoTextBox.Size = new System.Drawing.Size(368, 22);
+            this.codigoTextBox.Size = new System.Drawing.Size(277, 20);
             this.codigoTextBox.TabIndex = 7;
             // 
             // observacionTextBox
             // 
             this.observacionTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.despachoViewModelBindingSource, "Observacion", true));
-            this.observacionTextBox.Location = new System.Drawing.Point(168, 87);
-            this.observacionTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.observacionTextBox.Location = new System.Drawing.Point(126, 71);
+            this.observacionTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.observacionTextBox.Name = "observacionTextBox";
-            this.observacionTextBox.Size = new System.Drawing.Size(918, 22);
+            this.observacionTextBox.Size = new System.Drawing.Size(690, 20);
             this.observacionTextBox.TabIndex = 9;
             // 
             // GridHeaderGroup
@@ -254,14 +260,14 @@
             this.EliminarDetalleButton});
             this.GridHeaderGroup.HeaderStylePrimary = ComponentFactory.Krypton.Toolkit.HeaderStyle.DockActive;
             this.GridHeaderGroup.HeaderVisibleSecondary = false;
-            this.GridHeaderGroup.Location = new System.Drawing.Point(3, 131);
-            this.GridHeaderGroup.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.GridHeaderGroup.Location = new System.Drawing.Point(2, 106);
+            this.GridHeaderGroup.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.GridHeaderGroup.Name = "GridHeaderGroup";
             // 
             // GridHeaderGroup.Panel
             // 
             this.GridHeaderGroup.Panel.Controls.Add(this.DetalleDataGridView);
-            this.GridHeaderGroup.Size = new System.Drawing.Size(1107, 362);
+            this.GridHeaderGroup.Size = new System.Drawing.Size(829, 287);
             this.GridHeaderGroup.TabIndex = 12;
             this.GridHeaderGroup.ValuesPrimary.Heading = "Detalles";
             this.GridHeaderGroup.ValuesPrimary.Image = null;
@@ -317,13 +323,13 @@
             this.DetalleDataGridView.GridStyles.StyleDataCells = ComponentFactory.Krypton.Toolkit.GridStyle.Sheet;
             this.DetalleDataGridView.GridStyles.StyleRow = ComponentFactory.Krypton.Toolkit.GridStyle.Sheet;
             this.DetalleDataGridView.Location = new System.Drawing.Point(0, 0);
-            this.DetalleDataGridView.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.DetalleDataGridView.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.DetalleDataGridView.Name = "DetalleDataGridView";
             this.DetalleDataGridView.ReadOnly = true;
             this.DetalleDataGridView.RowHeadersVisible = false;
             this.DetalleDataGridView.RowHeadersWidth = 51;
             this.DetalleDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.DetalleDataGridView.Size = new System.Drawing.Size(1105, 329);
+            this.DetalleDataGridView.Size = new System.Drawing.Size(827, 258);
             this.DetalleDataGridView.TabIndex = 0;
             // 
             // codigoMercaderiaDataGridViewTextBoxColumn
@@ -333,7 +339,7 @@
             this.codigoMercaderiaDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.codigoMercaderiaDataGridViewTextBoxColumn.Name = "codigoMercaderiaDataGridViewTextBoxColumn";
             this.codigoMercaderiaDataGridViewTextBoxColumn.ReadOnly = true;
-            this.codigoMercaderiaDataGridViewTextBoxColumn.Width = 166;
+            this.codigoMercaderiaDataGridViewTextBoxColumn.Width = 134;
             // 
             // nombreMercaderiaDataGridViewTextBoxColumn
             // 
@@ -342,7 +348,7 @@
             this.nombreMercaderiaDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.nombreMercaderiaDataGridViewTextBoxColumn.Name = "nombreMercaderiaDataGridViewTextBoxColumn";
             this.nombreMercaderiaDataGridViewTextBoxColumn.ReadOnly = true;
-            this.nombreMercaderiaDataGridViewTextBoxColumn.Width = 172;
+            this.nombreMercaderiaDataGridViewTextBoxColumn.Width = 139;
             // 
             // unidadMedidaDataGridViewTextBoxColumn
             // 
@@ -351,7 +357,7 @@
             this.unidadMedidaDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.unidadMedidaDataGridViewTextBoxColumn.Name = "unidadMedidaDataGridViewTextBoxColumn";
             this.unidadMedidaDataGridViewTextBoxColumn.ReadOnly = true;
-            this.unidadMedidaDataGridViewTextBoxColumn.Width = 141;
+            this.unidadMedidaDataGridViewTextBoxColumn.Width = 114;
             // 
             // cantidadDataGridViewTextBoxColumn
             // 
@@ -360,7 +366,7 @@
             this.cantidadDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.cantidadDataGridViewTextBoxColumn.Name = "cantidadDataGridViewTextBoxColumn";
             this.cantidadDataGridViewTextBoxColumn.ReadOnly = true;
-            this.cantidadDataGridViewTextBoxColumn.Width = 102;
+            this.cantidadDataGridViewTextBoxColumn.Width = 84;
             // 
             // despachoDetalleViewModelsBindingSource
             // 
@@ -377,8 +383,8 @@
             this.CancelarButton});
             this.BaseFormToolStrip.Location = new System.Drawing.Point(0, 0);
             this.BaseFormToolStrip.Name = "BaseFormToolStrip";
-            this.BaseFormToolStrip.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.BaseFormToolStrip.Size = new System.Drawing.Size(1115, 31);
+            this.BaseFormToolStrip.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.BaseFormToolStrip.Size = new System.Drawing.Size(836, 31);
             this.BaseFormToolStrip.TabIndex = 22;
             this.BaseFormToolStrip.Text = "BaseFormToolStrip";
             // 
@@ -387,7 +393,7 @@
             this.GrabarButton.Image = global::AdmCostoProduccion.Windows.Properties.Resources.save_16x16;
             this.GrabarButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.GrabarButton.Name = "GrabarButton";
-            this.GrabarButton.Size = new System.Drawing.Size(78, 24);
+            this.GrabarButton.Size = new System.Drawing.Size(66, 24);
             this.GrabarButton.Text = "Grabar";
             this.GrabarButton.Click += new System.EventHandler(this.GrabarButton_Click);
             // 
@@ -396,18 +402,18 @@
             this.CancelarButton.Image = global::AdmCostoProduccion.Windows.Properties.Resources.cancel_16x16;
             this.CancelarButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.CancelarButton.Name = "CancelarButton";
-            this.CancelarButton.Size = new System.Drawing.Size(90, 24);
+            this.CancelarButton.Size = new System.Drawing.Size(77, 24);
             this.CancelarButton.Text = "Cancelar";
             this.CancelarButton.Click += new System.EventHandler(this.CancelarButton_Click);
             // 
             // MntDespachoForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1115, 554);
+            this.ClientSize = new System.Drawing.Size(836, 450);
             this.Controls.Add(this.BaseFormHeaderGroup);
             this.Controls.Add(this.BaseFormToolStrip);
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "MntDespachoForm";
             this.Text = "Mantenimiento Despacho";
             ((System.ComponentModel.ISupportInitialize)(this.BaseFormHeaderGroup.Panel)).EndInit();

@@ -1,6 +1,6 @@
-﻿namespace AdmCostoProduccion.Windows.Procesos.Inventario.Recepcion
+﻿namespace AdmCostoProduccion.Windows.Prompt
 {
-    partial class LstRecepcionForm
+    partial class CompraPromptForm
     {
         /// <summary>
         /// Required designer variable.
@@ -36,20 +36,15 @@
             this.BusquedaTextBox = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             this.ClearButton = new ComponentFactory.Krypton.Toolkit.ButtonSpecAny();
             this.GridHeaderGroup = new ComponentFactory.Krypton.Toolkit.KryptonHeaderGroup();
-            this.AlmacenDataGridView = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
+            this.DetalleDataGridView = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
             this.BaseFormToolStrip = new System.Windows.Forms.ToolStrip();
-            this.AgregarButton = new System.Windows.Forms.ToolStripButton();
-            this.ModificarButton = new System.Windows.Forms.ToolStripButton();
-            this.EliminarButton = new System.Windows.Forms.ToolStripButton();
-            this.ActualizarButton = new System.Windows.Forms.ToolStripButton();
-            this.CargarExcelButton = new System.Windows.Forms.ToolStripButton();
-            this.recepcionViewModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.codigoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.observacionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tipoRecepcionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.almacenDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tipoDocumentoRelacionadoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.numeroDocumentoRelacionadoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AceptarButton = new System.Windows.Forms.ToolStripButton();
+            this.CancelarButton = new System.Windows.Forms.ToolStripButton();
+            this.compraViewModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.numeroDocumentoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fechaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.descripcionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.centroLogisticoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.BaseFormHeaderGroup)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BaseFormHeaderGroup.Panel)).BeginInit();
             this.BaseFormHeaderGroup.Panel.SuspendLayout();
@@ -64,9 +59,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.GridHeaderGroup.Panel)).BeginInit();
             this.GridHeaderGroup.Panel.SuspendLayout();
             this.GridHeaderGroup.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.AlmacenDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DetalleDataGridView)).BeginInit();
             this.BaseFormToolStrip.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.recepcionViewModelBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.compraViewModelBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // BaseFormHeaderGroup
@@ -87,7 +82,7 @@
             this.BaseFormHeaderGroup.StateNormal.HeaderPrimary.Border.DrawBorders = ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom;
             this.BaseFormHeaderGroup.StateNormal.HeaderPrimary.Border.Width = 1;
             this.BaseFormHeaderGroup.TabIndex = 16;
-            this.BaseFormHeaderGroup.ValuesPrimary.Heading = "Recepción";
+            this.BaseFormHeaderGroup.ValuesPrimary.Heading = "Busqueda de Compras";
             this.BaseFormHeaderGroup.ValuesPrimary.Image = null;
             // 
             // kryptonPanel1
@@ -160,43 +155,42 @@
             // 
             // GridHeaderGroup.Panel
             // 
-            this.GridHeaderGroup.Panel.Controls.Add(this.AlmacenDataGridView);
-            this.GridHeaderGroup.Size = new System.Drawing.Size(794, 276);
+            this.GridHeaderGroup.Panel.Controls.Add(this.DetalleDataGridView);
+            this.GridHeaderGroup.Size = new System.Drawing.Size(794, 277);
             this.GridHeaderGroup.TabIndex = 0;
             this.GridHeaderGroup.ValuesPrimary.Heading = "Detalles";
             this.GridHeaderGroup.ValuesPrimary.Image = null;
             // 
-            // AlmacenDataGridView
+            // DetalleDataGridView
             // 
-            this.AlmacenDataGridView.AllowUserToAddRows = false;
-            this.AlmacenDataGridView.AllowUserToDeleteRows = false;
-            this.AlmacenDataGridView.AutoGenerateColumns = false;
-            this.AlmacenDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
-            this.AlmacenDataGridView.ColumnHeadersHeight = 25;
-            this.AlmacenDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.AlmacenDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.codigoDataGridViewTextBoxColumn,
-            this.observacionDataGridViewTextBoxColumn,
-            this.tipoRecepcionDataGridViewTextBoxColumn,
-            this.almacenDataGridViewTextBoxColumn,
-            this.tipoDocumentoRelacionadoDataGridViewTextBoxColumn,
-            this.numeroDocumentoRelacionadoDataGridViewTextBoxColumn});
-            this.AlmacenDataGridView.DataSource = this.recepcionViewModelBindingSource;
-            this.AlmacenDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.AlmacenDataGridView.GridStyles.Style = ComponentFactory.Krypton.Toolkit.DataGridViewStyle.Sheet;
-            this.AlmacenDataGridView.GridStyles.StyleBackground = ComponentFactory.Krypton.Toolkit.PaletteBackStyle.GridBackgroundSheet;
-            this.AlmacenDataGridView.GridStyles.StyleColumn = ComponentFactory.Krypton.Toolkit.GridStyle.Sheet;
-            this.AlmacenDataGridView.GridStyles.StyleDataCells = ComponentFactory.Krypton.Toolkit.GridStyle.Sheet;
-            this.AlmacenDataGridView.GridStyles.StyleRow = ComponentFactory.Krypton.Toolkit.GridStyle.Sheet;
-            this.AlmacenDataGridView.Location = new System.Drawing.Point(0, 0);
-            this.AlmacenDataGridView.Margin = new System.Windows.Forms.Padding(2);
-            this.AlmacenDataGridView.Name = "AlmacenDataGridView";
-            this.AlmacenDataGridView.ReadOnly = true;
-            this.AlmacenDataGridView.RowHeadersVisible = false;
-            this.AlmacenDataGridView.RowHeadersWidth = 51;
-            this.AlmacenDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.AlmacenDataGridView.Size = new System.Drawing.Size(792, 252);
-            this.AlmacenDataGridView.TabIndex = 0;
+            this.DetalleDataGridView.AllowUserToAddRows = false;
+            this.DetalleDataGridView.AllowUserToDeleteRows = false;
+            this.DetalleDataGridView.AutoGenerateColumns = false;
+            this.DetalleDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            this.DetalleDataGridView.ColumnHeadersHeight = 25;
+            this.DetalleDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.DetalleDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.numeroDocumentoDataGridViewTextBoxColumn,
+            this.fechaDataGridViewTextBoxColumn,
+            this.descripcionDataGridViewTextBoxColumn,
+            this.centroLogisticoDataGridViewTextBoxColumn});
+            this.DetalleDataGridView.DataSource = this.compraViewModelBindingSource;
+            this.DetalleDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.DetalleDataGridView.GridStyles.Style = ComponentFactory.Krypton.Toolkit.DataGridViewStyle.Sheet;
+            this.DetalleDataGridView.GridStyles.StyleBackground = ComponentFactory.Krypton.Toolkit.PaletteBackStyle.GridBackgroundSheet;
+            this.DetalleDataGridView.GridStyles.StyleColumn = ComponentFactory.Krypton.Toolkit.GridStyle.Sheet;
+            this.DetalleDataGridView.GridStyles.StyleDataCells = ComponentFactory.Krypton.Toolkit.GridStyle.Sheet;
+            this.DetalleDataGridView.GridStyles.StyleRow = ComponentFactory.Krypton.Toolkit.GridStyle.Sheet;
+            this.DetalleDataGridView.Location = new System.Drawing.Point(0, 0);
+            this.DetalleDataGridView.Margin = new System.Windows.Forms.Padding(2);
+            this.DetalleDataGridView.MultiSelect = false;
+            this.DetalleDataGridView.Name = "DetalleDataGridView";
+            this.DetalleDataGridView.ReadOnly = true;
+            this.DetalleDataGridView.RowHeadersVisible = false;
+            this.DetalleDataGridView.RowHeadersWidth = 51;
+            this.DetalleDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.DetalleDataGridView.Size = new System.Drawing.Size(792, 253);
+            this.DetalleDataGridView.TabIndex = 0;
             // 
             // BaseFormToolStrip
             // 
@@ -204,11 +198,8 @@
             this.BaseFormToolStrip.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.BaseFormToolStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.BaseFormToolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.AgregarButton,
-            this.ModificarButton,
-            this.EliminarButton,
-            this.ActualizarButton,
-            this.CargarExcelButton});
+            this.AceptarButton,
+            this.CancelarButton});
             this.BaseFormToolStrip.Location = new System.Drawing.Point(0, 0);
             this.BaseFormToolStrip.Name = "BaseFormToolStrip";
             this.BaseFormToolStrip.Padding = new System.Windows.Forms.Padding(2, 1, 2, 1);
@@ -216,112 +207,69 @@
             this.BaseFormToolStrip.TabIndex = 15;
             this.BaseFormToolStrip.Text = "BaseFormToolStrip";
             // 
-            // AgregarButton
+            // AceptarButton
             // 
-            this.AgregarButton.Image = global::AdmCostoProduccion.Windows.Properties.Resources.add_16x16;
-            this.AgregarButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.AgregarButton.Name = "AgregarButton";
-            this.AgregarButton.Size = new System.Drawing.Size(73, 24);
-            this.AgregarButton.Text = "Agregar";
-            this.AgregarButton.Click += new System.EventHandler(this.AgregarButton_Click);
+            this.AceptarButton.Image = global::AdmCostoProduccion.Windows.Properties.Resources.apply_16x16;
+            this.AceptarButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.AceptarButton.Name = "AceptarButton";
+            this.AceptarButton.Size = new System.Drawing.Size(72, 24);
+            this.AceptarButton.Text = "Aceptar";
+            this.AceptarButton.Click += new System.EventHandler(this.AceptarButton_Click);
             // 
-            // ModificarButton
+            // CancelarButton
             // 
-            this.ModificarButton.Image = global::AdmCostoProduccion.Windows.Properties.Resources.edit_16x16;
-            this.ModificarButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.ModificarButton.Name = "ModificarButton";
-            this.ModificarButton.Size = new System.Drawing.Size(82, 24);
-            this.ModificarButton.Text = "Modificar";
-            this.ModificarButton.Click += new System.EventHandler(this.ModificarButton_Click);
+            this.CancelarButton.Image = global::AdmCostoProduccion.Windows.Properties.Resources.cancel_16x16;
+            this.CancelarButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.CancelarButton.Name = "CancelarButton";
+            this.CancelarButton.Size = new System.Drawing.Size(77, 24);
+            this.CancelarButton.Text = "Cancelar";
+            this.CancelarButton.Click += new System.EventHandler(this.CancelarButton_Click);
             // 
-            // EliminarButton
+            // compraViewModelBindingSource
             // 
-            this.EliminarButton.Image = global::AdmCostoProduccion.Windows.Properties.Resources.trash_16x16;
-            this.EliminarButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.EliminarButton.Name = "EliminarButton";
-            this.EliminarButton.Size = new System.Drawing.Size(74, 24);
-            this.EliminarButton.Text = "Eliminar";
-            this.EliminarButton.Click += new System.EventHandler(this.EliminarButton_Click);
+            this.compraViewModelBindingSource.DataSource = typeof(AdmCostoProduccion.Common.ViewModels.CompraVenta.CompraViewModel);
             // 
-            // ActualizarButton
+            // numeroDocumentoDataGridViewTextBoxColumn
             // 
-            this.ActualizarButton.Image = global::AdmCostoProduccion.Windows.Properties.Resources.refresh2_16x16;
-            this.ActualizarButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.ActualizarButton.Name = "ActualizarButton";
-            this.ActualizarButton.Size = new System.Drawing.Size(83, 24);
-            this.ActualizarButton.Text = "Actualizar";
-            this.ActualizarButton.Click += new System.EventHandler(this.ActualizarButton_Click);
+            this.numeroDocumentoDataGridViewTextBoxColumn.DataPropertyName = "NumeroDocumento";
+            this.numeroDocumentoDataGridViewTextBoxColumn.HeaderText = "NumeroDocumento";
+            this.numeroDocumentoDataGridViewTextBoxColumn.Name = "numeroDocumentoDataGridViewTextBoxColumn";
+            this.numeroDocumentoDataGridViewTextBoxColumn.ReadOnly = true;
+            this.numeroDocumentoDataGridViewTextBoxColumn.Width = 143;
             // 
-            // CargarExcelButton
+            // fechaDataGridViewTextBoxColumn
             // 
-            this.CargarExcelButton.Image = global::AdmCostoProduccion.Windows.Properties.Resources.exporttoxls_16x16;
-            this.CargarExcelButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.CargarExcelButton.Name = "CargarExcelButton";
-            this.CargarExcelButton.Size = new System.Drawing.Size(95, 24);
-            this.CargarExcelButton.Text = "Cargal Excel";
+            this.fechaDataGridViewTextBoxColumn.DataPropertyName = "Fecha";
+            this.fechaDataGridViewTextBoxColumn.HeaderText = "Fecha";
+            this.fechaDataGridViewTextBoxColumn.Name = "fechaDataGridViewTextBoxColumn";
+            this.fechaDataGridViewTextBoxColumn.ReadOnly = true;
+            this.fechaDataGridViewTextBoxColumn.Width = 67;
             // 
-            // recepcionViewModelBindingSource
+            // descripcionDataGridViewTextBoxColumn
             // 
-            this.recepcionViewModelBindingSource.DataSource = typeof(AdmCostoProduccion.Common.ViewModels.Inventario.RecepcionViewModel);
+            this.descripcionDataGridViewTextBoxColumn.DataPropertyName = "Descripcion";
+            this.descripcionDataGridViewTextBoxColumn.HeaderText = "Descripcion";
+            this.descripcionDataGridViewTextBoxColumn.Name = "descripcionDataGridViewTextBoxColumn";
+            this.descripcionDataGridViewTextBoxColumn.ReadOnly = true;
+            this.descripcionDataGridViewTextBoxColumn.Width = 98;
             // 
-            // codigoDataGridViewTextBoxColumn
+            // centroLogisticoDataGridViewTextBoxColumn
             // 
-            this.codigoDataGridViewTextBoxColumn.DataPropertyName = "Codigo";
-            this.codigoDataGridViewTextBoxColumn.HeaderText = "Codigo";
-            this.codigoDataGridViewTextBoxColumn.Name = "codigoDataGridViewTextBoxColumn";
-            this.codigoDataGridViewTextBoxColumn.ReadOnly = true;
-            this.codigoDataGridViewTextBoxColumn.Width = 75;
+            this.centroLogisticoDataGridViewTextBoxColumn.DataPropertyName = "CentroLogistico";
+            this.centroLogisticoDataGridViewTextBoxColumn.HeaderText = "CentroLogistico";
+            this.centroLogisticoDataGridViewTextBoxColumn.Name = "centroLogisticoDataGridViewTextBoxColumn";
+            this.centroLogisticoDataGridViewTextBoxColumn.ReadOnly = true;
+            this.centroLogisticoDataGridViewTextBoxColumn.Width = 120;
             // 
-            // observacionDataGridViewTextBoxColumn
-            // 
-            this.observacionDataGridViewTextBoxColumn.DataPropertyName = "Observacion";
-            this.observacionDataGridViewTextBoxColumn.HeaderText = "Observacion";
-            this.observacionDataGridViewTextBoxColumn.Name = "observacionDataGridViewTextBoxColumn";
-            this.observacionDataGridViewTextBoxColumn.ReadOnly = true;
-            this.observacionDataGridViewTextBoxColumn.Width = 102;
-            // 
-            // tipoRecepcionDataGridViewTextBoxColumn
-            // 
-            this.tipoRecepcionDataGridViewTextBoxColumn.DataPropertyName = "TipoRecepcion";
-            this.tipoRecepcionDataGridViewTextBoxColumn.HeaderText = "TipoRecepcion";
-            this.tipoRecepcionDataGridViewTextBoxColumn.Name = "tipoRecepcionDataGridViewTextBoxColumn";
-            this.tipoRecepcionDataGridViewTextBoxColumn.ReadOnly = true;
-            this.tipoRecepcionDataGridViewTextBoxColumn.Width = 114;
-            // 
-            // almacenDataGridViewTextBoxColumn
-            // 
-            this.almacenDataGridViewTextBoxColumn.DataPropertyName = "Almacen";
-            this.almacenDataGridViewTextBoxColumn.HeaderText = "Almacen";
-            this.almacenDataGridViewTextBoxColumn.Name = "almacenDataGridViewTextBoxColumn";
-            this.almacenDataGridViewTextBoxColumn.ReadOnly = true;
-            this.almacenDataGridViewTextBoxColumn.Width = 83;
-            // 
-            // tipoDocumentoRelacionadoDataGridViewTextBoxColumn
-            // 
-            this.tipoDocumentoRelacionadoDataGridViewTextBoxColumn.DataPropertyName = "TipoDocumentoRelacionado";
-            this.tipoDocumentoRelacionadoDataGridViewTextBoxColumn.HeaderText = "TipoDocumentoRelacionado";
-            this.tipoDocumentoRelacionadoDataGridViewTextBoxColumn.Name = "tipoDocumentoRelacionadoDataGridViewTextBoxColumn";
-            this.tipoDocumentoRelacionadoDataGridViewTextBoxColumn.ReadOnly = true;
-            this.tipoDocumentoRelacionadoDataGridViewTextBoxColumn.Width = 187;
-            // 
-            // numeroDocumentoRelacionadoDataGridViewTextBoxColumn
-            // 
-            this.numeroDocumentoRelacionadoDataGridViewTextBoxColumn.DataPropertyName = "NumeroDocumentoRelacionado";
-            this.numeroDocumentoRelacionadoDataGridViewTextBoxColumn.HeaderText = "NumeroDocumentoRelacionado";
-            this.numeroDocumentoRelacionadoDataGridViewTextBoxColumn.Name = "numeroDocumentoRelacionadoDataGridViewTextBoxColumn";
-            this.numeroDocumentoRelacionadoDataGridViewTextBoxColumn.ReadOnly = true;
-            this.numeroDocumentoRelacionadoDataGridViewTextBoxColumn.Width = 208;
-            // 
-            // LstRecepcionForm
+            // CompraPromptForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.BaseFormHeaderGroup);
             this.Controls.Add(this.BaseFormToolStrip);
-            this.Margin = new System.Windows.Forms.Padding(2);
-            this.Name = "LstRecepcionForm";
-            this.Text = "Recepción";
+            this.Name = "CompraPromptForm";
+            this.Text = "Busqueda de Compras";
             ((System.ComponentModel.ISupportInitialize)(this.BaseFormHeaderGroup.Panel)).EndInit();
             this.BaseFormHeaderGroup.Panel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.BaseFormHeaderGroup)).EndInit();
@@ -337,10 +285,10 @@
             this.GridHeaderGroup.Panel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.GridHeaderGroup)).EndInit();
             this.GridHeaderGroup.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.AlmacenDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DetalleDataGridView)).EndInit();
             this.BaseFormToolStrip.ResumeLayout(false);
             this.BaseFormToolStrip.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.recepcionViewModelBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.compraViewModelBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -355,19 +303,14 @@
         private ComponentFactory.Krypton.Toolkit.KryptonTextBox BusquedaTextBox;
         private ComponentFactory.Krypton.Toolkit.ButtonSpecAny ClearButton;
         private ComponentFactory.Krypton.Toolkit.KryptonHeaderGroup GridHeaderGroup;
-        private ComponentFactory.Krypton.Toolkit.KryptonDataGridView AlmacenDataGridView;
+        private ComponentFactory.Krypton.Toolkit.KryptonDataGridView DetalleDataGridView;
         protected System.Windows.Forms.ToolStrip BaseFormToolStrip;
-        private System.Windows.Forms.ToolStripButton AgregarButton;
-        private System.Windows.Forms.ToolStripButton ModificarButton;
-        private System.Windows.Forms.ToolStripButton EliminarButton;
-        private System.Windows.Forms.ToolStripButton ActualizarButton;
-        private System.Windows.Forms.ToolStripButton CargarExcelButton;
-        private System.Windows.Forms.DataGridViewTextBoxColumn codigoDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn observacionDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tipoRecepcionDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn almacenDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tipoDocumentoRelacionadoDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn numeroDocumentoRelacionadoDataGridViewTextBoxColumn;
-        private System.Windows.Forms.BindingSource recepcionViewModelBindingSource;
+        private System.Windows.Forms.ToolStripButton AceptarButton;
+        private System.Windows.Forms.ToolStripButton CancelarButton;
+        private System.Windows.Forms.DataGridViewTextBoxColumn numeroDocumentoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn fechaDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn descripcionDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn centroLogisticoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.BindingSource compraViewModelBindingSource;
     }
 }

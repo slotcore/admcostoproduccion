@@ -2,10 +2,10 @@
 <CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
   <CodeSnippet Format="1.0.0">
     <Header>
-      <Title>ViewModelCreate</Title>
+      <Title>ViewModelChildCreate</Title>
       <Author>Jose Chacon</Author>
       <Description>Define un Modelo con EntityFramework</Description>
-      <Shortcut>cstprdvwmdlcreate</Shortcut>
+      <Shortcut>cstvwmdlchldcreate</Shortcut>
     </Header>
     <Snippet>
       <Declarations>
@@ -13,6 +13,11 @@
           <ID>Model</ID>
           <ToolTip>Reemplazar por el Nombre del modelo</ToolTip>
           <Default>Model</Default>
+        </Literal>
+        <Literal>
+          <ID>ModelParent</ID>
+          <ToolTip>Reemplazar por el Nombre del modelo</ToolTip>
+          <Default>ModelParent</Default>
         </Literal>
         <Literal>
           <ID>TipoDato1</ID>
@@ -57,7 +62,10 @@
       </Declarations>
       <Code Language="csharp">
         <![CDATA[using $LibraryName$.Classes;
+using AdmCostoProduccion.Common.Data;
+using $LibraryName$.Models.$EsquemaName$;
 using System;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 
@@ -67,14 +75,16 @@ namespace $LibraryName$.ViewModels.$EsquemaName$
     {
         #region Constructor
         
-        public $Model$ViewModel()
+        public $Model$ViewModel(int parentId)
         {
             _IsNew = true;
+            _$ModelParent$Id = parentId;
         }
         
         public $Model$ViewModel($Model$ model)
         {
             _$Model$Id = model.$Model$Id;
+            _$ModelParent$Id = model.$ModelParent$Id;
             _$Propiedad1$ = model.$Propiedad1$;
             _$Propiedad2$ = model.$Propiedad2$;
             _$Propiedad3$ = model.$Propiedad3$;
@@ -85,6 +95,8 @@ namespace $LibraryName$.ViewModels.$EsquemaName$
         #region Propiedades privadas
 
         private int _$Model$Id;
+
+        private int _$ModelParent$Id;
 
         private $TipoDato1$ _$Propiedad1$;
 
@@ -108,6 +120,23 @@ namespace $LibraryName$.ViewModels.$EsquemaName$
                 if (value != _$Model$Id)
                 {
                     _$Model$Id = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
+        public int $ModelParent$Id
+        {
+            get
+            {
+                return _$ModelParent$Id;
+            }
+
+            set
+            {
+                if (value != _$ModelParent$Id)
+                {
+                    _$ModelParent$Id = value;
                     NotifyPropertyChanged();
                 }
             }
@@ -173,6 +202,7 @@ namespace $LibraryName$.ViewModels.$EsquemaName$
             _IsNew = viewModel.IsNew;
             _IsOld = viewModel.IsOld;
             _$Model$Id = viewModel.$Model$Id;
+            _$ModelParent$Id = viewModel.$ModelParent$Id;
             _$Propiedad1$ = viewModel.$Propiedad1$;
             _$Propiedad2$ = viewModel.$Propiedad2$;
             _$Propiedad3$ = viewModel.$Propiedad3$;
@@ -183,6 +213,7 @@ namespace $LibraryName$.ViewModels.$EsquemaName$
             $Model$ model = new $Model$
             {
                 $Model$Id = _$Model$Id,
+                $ModelParent$Id = _$ModelParent$Id,
                 $Propiedad1$ = _$Propiedad1$,
                 $Propiedad2$ = _$Propiedad2$,
                 $Propiedad3$ = _$Propiedad3$
@@ -191,26 +222,24 @@ namespace $LibraryName$.ViewModels.$EsquemaName$
             return model;
         }
 
-        public void Grabar()
+        public void Grabar(ApplicationDbContext Context)
         {
-            ApplicationDbContext Context = new ApplicationDbContext();
             $Model$ model = this.ToModel();
 
-            if (IsNew)
-            {
-                Context.$Model$s.Add(model);
-            }
+            if (IsNew) Context.$Model$s.Add(model);
             else
             {
-                if (IsOld)
-                {
-                    Context.Entry(model).State = EntityState.Modified;
-                }
+                if (IsOld) Context.Entry(model).State = EntityState.Modified;
             }
-            Context.SaveChanges();
-            _IsNew = false;
-            _IsOld = false;
-            _$Model$Id = model.$Model$Id;
+        }
+
+        public void Eliminar(ApplicationDbContext Context)
+        {
+            if (!IsNew)
+            {
+                $Model$ model = this.ToModel();
+                Context.Entry(model).State = EntityState.Deleted;
+            }
         }
 
         #endregion

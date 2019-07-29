@@ -1,6 +1,5 @@
 ﻿using AdmCostoProduccion.Common.Classes;
-using AdmCostoProduccion.Common.Data;
-using AdmCostoProduccion.Common.ViewModels.Inventario;
+using AdmCostoProduccion.Common.ViewModels.CompraVenta;
 using AdmCostoProduccion.Windows.Prompt;
 using ComponentFactory.Krypton.Toolkit;
 using System;
@@ -14,36 +13,31 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace AdmCostoProduccion.Windows.Procesos.Inventario.Recepcion
+namespace AdmCostoProduccion.Windows.Procesos.CompraVenta.Compra
 {
-    public partial class MntRecepcionDetalleForm : KryptonForm
+    public partial class MntCompraDetalleForm : KryptonForm
     {
         #region Propiedades
-        private RecepcionDetalleViewModel ViewModel;
-        private ObservableListSource<RecepcionDetalleViewModel> ViewModelList;
-        private List<UnidadMedidaViewModel> unidadMedidaViewModels;
+        private CompraDetalleViewModel ViewModel;
+        private ObservableListSource<CompraDetalleViewModel> ViewModelList;
         #endregion
 
         #region Constructor
-        public MntRecepcionDetalleForm(RecepcionDetalleViewModel viewModel
-            , ObservableListSource<RecepcionDetalleViewModel> viewModelList)
+        public MntCompraDetalleForm(CompraDetalleViewModel viewModel
+            , ObservableListSource<CompraDetalleViewModel> viewModelList)
         {
             InitializeComponent();
             ViewModel.CopyOf(viewModel);
             ViewModelList = viewModelList;
-            recepcionDetalleViewModelBindingSource.DataSource = ViewModel;
-            //
-            CargarCombos();
+            compraDetalleViewModelBindingSource.DataSource = ViewModel;
         }
 
-        public MntRecepcionDetalleForm(int parentId, ObservableListSource<RecepcionDetalleViewModel> viewModelList)
+        public MntCompraDetalleForm(int parentId, ObservableListSource<CompraDetalleViewModel> viewModelList)
         {
             InitializeComponent();
-            ViewModel = new RecepcionDetalleViewModel(parentId);
+            ViewModel = new CompraDetalleViewModel(parentId);
             ViewModelList = viewModelList;
-            recepcionDetalleViewModelBindingSource.DataSource = ViewModel;
-            //
-            CargarCombos();
+            compraDetalleViewModelBindingSource.DataSource = ViewModel;
         }
         #endregion
 
@@ -55,7 +49,7 @@ namespace AdmCostoProduccion.Windows.Procesos.Inventario.Recepcion
 
         private void CancelarButton_Click(object sender, EventArgs e)
         {
-            recepcionDetalleViewModelBindingSource.CancelEdit();
+            compraDetalleViewModelBindingSource.CancelEdit();
             this.Close();
         }
 
@@ -72,16 +66,13 @@ namespace AdmCostoProduccion.Windows.Procesos.Inventario.Recepcion
             try
             {
                 Cursor = Cursors.WaitCursor;
-                recepcionDetalleViewModelBindingSource.EndEdit();
-                UnidadMedidaViewModel unidadMedida = (UnidadMedidaViewModel)unidadMedidaViewModelBindingSource.Current;
-                ViewModel.UnidadMedida = unidadMedida.Nombre;
-                ViewModel.UnidadMedidaId = unidadMedida.UnidadMedidaId;
+                compraDetalleViewModelBindingSource.EndEdit();
 
                 if (ViewModel.IsNew) ViewModelList.Add(ViewModel);
                 else
                 {
                     var viewModel = ViewModelList
-                        .Where(o => o.RecepcionDetalleId == ViewModel.RecepcionDetalleId)
+                        .Where(o => o.CompraDetalleId == ViewModel.CompraDetalleId)
                         .FirstOrDefault();
                     viewModel.CopyOf(ViewModel);
                 }
@@ -99,18 +90,6 @@ namespace AdmCostoProduccion.Windows.Procesos.Inventario.Recepcion
             }
         }
 
-        private void CargarCombos()
-        {
-            ApplicationDbContext context = new ApplicationDbContext();
-            var unidadMedidas = context.UnidadMedidas.ToList();
-            unidadMedidaViewModels = new List<UnidadMedidaViewModel>();
-            foreach (var unidadMedida in unidadMedidas)
-            {
-                unidadMedidaViewModels.Add(new UnidadMedidaViewModel(unidadMedida));
-            }
-            unidadMedidaViewModelBindingSource.DataSource = unidadMedidaViewModels;
-        }
-
         private void BuscarMercaderia()
         {
             try
@@ -119,9 +98,9 @@ namespace AdmCostoProduccion.Windows.Procesos.Inventario.Recepcion
                 if (formprompt.ShowDialog() == DialogResult.OK)
                 {
                     var mercaderiaViewModel = formprompt.MercaderiaViewModel;
-                    ViewModel.MercaderiaId = mercaderiaViewModel.MercaderiaId;
                     ViewModel.CodigoMercaderia = mercaderiaViewModel.Codigo;
                     ViewModel.NombreMercaderia = mercaderiaViewModel.Nombre;
+                    ViewModel.MercaderiaId = mercaderiaViewModel.MercaderiaId;
                 }
 
             }

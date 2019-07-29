@@ -2,10 +2,10 @@
 <CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
   <CodeSnippet Format="1.0.0">
     <Header>
-      <Title>ViewModelCreate</Title>
+      <Title>ViewModelParentCreate</Title>
       <Author>Jose Chacon</Author>
       <Description>Define un Modelo con EntityFramework</Description>
-      <Shortcut>cstprdvwmdlcreate</Shortcut>
+      <Shortcut>cstvwmdlprntcreate</Shortcut>
     </Header>
     <Snippet>
       <Declarations>
@@ -13,6 +13,11 @@
           <ID>Model</ID>
           <ToolTip>Reemplazar por el Nombre del modelo</ToolTip>
           <Default>Model</Default>
+        </Literal>
+        <Literal>
+          <ID>ModelChild</ID>
+          <ToolTip>Reemplazar por el Nombre del modelo</ToolTip>
+          <Default>ModelChild</Default>
         </Literal>
         <Literal>
           <ID>TipoDato1</ID>
@@ -57,7 +62,10 @@
       </Declarations>
       <Code Language="csharp">
         <![CDATA[using $LibraryName$.Classes;
+using $LibraryName$.Data;
+using $LibraryName$.Models.$EsquemaName$;
 using System;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 
@@ -78,6 +86,11 @@ namespace $LibraryName$.ViewModels.$EsquemaName$
             _$Propiedad1$ = model.$Propiedad1$;
             _$Propiedad2$ = model.$Propiedad2$;
             _$Propiedad3$ = model.$Propiedad3$;
+
+            foreach (var child in model.$ModelChild$s)
+            {
+                $ModelChild$ViewModels.Add(new $ModelChild$ViewModel(child));
+            }
         }
         
         #endregion
@@ -91,6 +104,9 @@ namespace $LibraryName$.ViewModels.$EsquemaName$
         private $TipoDato2$ _$Propiedad2$;
 
         private $TipoDato3$ _$Propiedad3$;
+
+        private ObservableListSource<$ModelChild$ViewModel> _$ModelChild$ViewModels 
+            = new ObservableListSource<$ModelChild$ViewModel>();
 
         #endregion
 
@@ -164,6 +180,22 @@ namespace $LibraryName$.ViewModels.$EsquemaName$
             }
         }
 
+        public ObservableListSource<$ModelChild$ViewModel> $ModelChild$ViewModels
+        {
+            get
+            {
+                return _$ModelChild$ViewModels;
+            }
+            set
+            {
+                if (value != _$ModelChild$ViewModels)
+                {
+                    _$ModelChild$ViewModels = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
         #endregion
 
         #region Metodos Publicos
@@ -176,6 +208,7 @@ namespace $LibraryName$.ViewModels.$EsquemaName$
             _$Propiedad1$ = viewModel.$Propiedad1$;
             _$Propiedad2$ = viewModel.$Propiedad2$;
             _$Propiedad3$ = viewModel.$Propiedad3$;
+            _$ModelChild$ViewModels = viewModel.$ModelChild$ViewModels;
         }
 
         public $Model$ ToModel()
@@ -207,10 +240,33 @@ namespace $LibraryName$.ViewModels.$EsquemaName$
                     Context.Entry(model).State = EntityState.Modified;
                 }
             }
+            //Childs
+            foreach ($ModelChild$ViewModel viewModel in $ModelChild$ViewModels)
+            {
+                viewModel.Grabar(Context);
+            }
+            //Childs deletes
+            foreach (var viewModel in $ModelChild$ViewModels.GetRemoveItems())
+            {
+                viewModel.Eliminar(Context);
+            }
             Context.SaveChanges();
             _IsNew = false;
             _IsOld = false;
             _$Model$Id = model.$Model$Id;
+        }
+
+        public void Eliminar()
+        {
+            ApplicationDbContext Context = new ApplicationDbContext();
+
+            $Model$ model = this.ToModel();
+            foreach (var viewModelChild in $ModelChild$ViewModels)
+            {
+                viewModelChild.Eliminar(Context);
+            }
+            Context.Entry(model).State = EntityState.Deleted;
+            Context.SaveChanges();
         }
 
         #endregion

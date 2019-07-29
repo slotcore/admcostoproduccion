@@ -1,117 +1,59 @@
 ﻿using AdmCostoProduccion.Common.Classes;
 using AdmCostoProduccion.Common.Data;
-using AdmCostoProduccion.Common.Models.Inventario;
+using AdmCostoProduccion.Common.Models.CompraVenta;
 using System;
 using System.Data.Entity;
 using System.Linq;
 using System.Text;
 
-namespace AdmCostoProduccion.Common.ViewModels.Inventario
+namespace AdmCostoProduccion.Common.ViewModels.CompraVenta
 {
-    public class RecepcionDetalleViewModel : ObjectBase
+    public class CompraDetalleViewModel : ObjectBase
     {
         #region Constructor
 
-        public RecepcionDetalleViewModel(int parentId)
+        public CompraDetalleViewModel(int parentId)
         {
             _IsNew = true;
-            _RecepcionId = parentId;
+            _CompraId = parentId;
         }
 
-        public RecepcionDetalleViewModel(RecepcionDetalle model)
+        public CompraDetalleViewModel(CompraDetalle model)
         {
-            _RecepcionDetalleId = model.RecepcionDetalleId;
-            _RecepcionId = model.RecepcionId;
-            _OrdenProduccionInsumoId = model.OrdenProduccionInsumoId;
             _CompraDetalleId = model.CompraDetalleId;
+            _CompraId = model.CompraId;
             _MercaderiaId = model.MercaderiaId;
-            _UnidadMedidaId = model.UnidadMedidaId;
             _Cantidad = model.Cantidad;
+            _PrecioUnitario = model.PrecioUnitario;
             _CodigoMercaderia = model.Mercaderia.Codigo;
             _NombreMercaderia = model.Mercaderia.Nombre;
-            _UnidadMedida = model.UnidadMedida.Nombre;
         }
 
         #endregion
 
         #region Propiedades privadas
 
-        private int _RecepcionDetalleId;
+        private int _CompraDetalleId;
 
-        private int _RecepcionId;
-
-        private int? _OrdenProduccionInsumoId;
-
-        private int? _CompraDetalleId;
+        private int _CompraId;
 
         private int _MercaderiaId;
 
-        private int _UnidadMedidaId;
-
         private double _Cantidad;
+
+        private double _PrecioUnitario;
+
+        private double _PrecioTotal;
 
         private string _CodigoMercaderia;
 
         private string _NombreMercaderia;
 
-        private string _UnidadMedida;
-
         #endregion
 
         #region Propiedades publicas
 
-        public int RecepcionDetalleId
-        {
-            get
-            {
-                return _RecepcionDetalleId;
-            }
-
-            set
-            {
-                if (value != _RecepcionDetalleId)
-                {
-                    _RecepcionDetalleId = value;
-                    NotifyPropertyChanged();
-                }
-            }
-        }
-
-        public int RecepcionId
-        {
-            get
-            {
-                return _RecepcionId;
-            }
-
-            set
-            {
-                if (value != _RecepcionId)
-                {
-                    _RecepcionId = value;
-                    NotifyPropertyChanged();
-                }
-            }
-        }
-
-        public int? OrdenProduccionInsumoId
-        {
-            get
-            {
-                return _OrdenProduccionInsumoId;
-            }
-
-            set
-            {
-                if (value != _OrdenProduccionInsumoId)
-                {
-                    _OrdenProduccionInsumoId = value;
-                    NotifyPropertyChanged();
-                }
-            }
-        }
-
-        public int? CompraDetalleId
+        public int CompraDetalleId
         {
             get
             {
@@ -123,6 +65,23 @@ namespace AdmCostoProduccion.Common.ViewModels.Inventario
                 if (value != _CompraDetalleId)
                 {
                     _CompraDetalleId = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
+        public int CompraId
+        {
+            get
+            {
+                return _CompraId;
+            }
+
+            set
+            {
+                if (value != _CompraId)
+                {
+                    _CompraId = value;
                     NotifyPropertyChanged();
                 }
             }
@@ -145,23 +104,6 @@ namespace AdmCostoProduccion.Common.ViewModels.Inventario
             }
         }
 
-        public int UnidadMedidaId
-        {
-            get
-            {
-                return _UnidadMedidaId;
-            }
-
-            set
-            {
-                if (value != _UnidadMedidaId)
-                {
-                    _UnidadMedidaId = value;
-                    NotifyPropertyChanged();
-                }
-            }
-        }
-
         public double Cantidad
         {
             get
@@ -175,6 +117,44 @@ namespace AdmCostoProduccion.Common.ViewModels.Inventario
                 {
                     _Cantidad = value;
                     NotifyPropertyChanged();
+                }
+            }
+        }
+
+        public double PrecioUnitario
+        {
+            get
+            {
+                return _PrecioUnitario;
+            }
+
+            set
+            {
+                if (value != _PrecioUnitario)
+                {
+                    _PrecioUnitario = value;
+                    NotifyPropertyChanged();
+                    //
+                    PrecioTotal = _PrecioUnitario * _Cantidad;
+                }
+            }
+        }
+
+        public double PrecioTotal
+        {
+            get
+            {
+                return _PrecioTotal;
+            }
+
+            set
+            {
+                if (value != _PrecioTotal)
+                {
+                    _PrecioTotal = value;
+                    NotifyPropertyChanged();
+                    //
+                    if (_Cantidad > 0) PrecioUnitario = _PrecioTotal / _Cantidad;
                 }
             }
         }
@@ -213,54 +193,32 @@ namespace AdmCostoProduccion.Common.ViewModels.Inventario
             }
         }
 
-        public string UnidadMedida
-        {
-            get
-            {
-                return _UnidadMedida;
-            }
-
-            set
-            {
-                if (value != _UnidadMedida)
-                {
-                    _UnidadMedida = value;
-                    NotifyPropertyChanged();
-                }
-            }
-        }
-
         #endregion
 
         #region Metodos Publicos
 
-        public void CopyOf(RecepcionDetalleViewModel viewModel)
+        public void CopyOf(CompraDetalleViewModel viewModel)
         {
             _IsNew = viewModel.IsNew;
             _IsOld = viewModel.IsOld;
-            _RecepcionDetalleId = viewModel.RecepcionDetalleId;
-            _RecepcionId = viewModel.RecepcionId;
-            _OrdenProduccionInsumoId = viewModel.OrdenProduccionInsumoId;
             _CompraDetalleId = viewModel.CompraDetalleId;
+            _CompraId = viewModel.CompraId;
             _MercaderiaId = viewModel.MercaderiaId;
-            _UnidadMedidaId = viewModel.UnidadMedidaId;
             _Cantidad = viewModel.Cantidad;
+            _PrecioUnitario = viewModel.PrecioUnitario;
             _CodigoMercaderia = viewModel.CodigoMercaderia;
             _NombreMercaderia = viewModel.NombreMercaderia;
-            _UnidadMedida = viewModel.UnidadMedida;
         }
 
-        public RecepcionDetalle ToModel()
+        public CompraDetalle ToModel()
         {
-            RecepcionDetalle model = new RecepcionDetalle
+            CompraDetalle model = new CompraDetalle
             {
-                RecepcionDetalleId = _RecepcionDetalleId,
-                RecepcionId = _RecepcionId,
-                OrdenProduccionInsumoId = _OrdenProduccionInsumoId,
                 CompraDetalleId = _CompraDetalleId,
+                CompraId = _CompraId,
                 MercaderiaId = _MercaderiaId,
-                UnidadMedidaId = _UnidadMedidaId,
-                Cantidad = _Cantidad
+                Cantidad = _Cantidad,
+                PrecioUnitario = _PrecioUnitario
             };
 
             return model;
@@ -268,9 +226,9 @@ namespace AdmCostoProduccion.Common.ViewModels.Inventario
 
         public void Grabar(ApplicationDbContext Context)
         {
-            RecepcionDetalle model = this.ToModel();
+            CompraDetalle model = this.ToModel();
 
-            if (IsNew) Context.RecepcionDetalles.Add(model);
+            if (IsNew) Context.CompraDetalles.Add(model);
             else
             {
                 if (IsOld) Context.Entry(model).State = EntityState.Modified;
@@ -281,7 +239,7 @@ namespace AdmCostoProduccion.Common.ViewModels.Inventario
         {
             if (!IsNew)
             {
-                RecepcionDetalle model = this.ToModel();
+                CompraDetalle model = this.ToModel();
                 Context.Entry(model).State = EntityState.Deleted;
             }
         }

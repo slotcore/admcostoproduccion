@@ -1,7 +1,9 @@
 ﻿using AdmCostoProduccion.Common.Classes;
+using AdmCostoProduccion.Common.Data;
+using AdmCostoProduccion.Common.Enum;
 using AdmCostoProduccion.Common.Models.Inventario;
 using System;
-using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 
@@ -13,25 +15,35 @@ namespace AdmCostoProduccion.Common.ViewModels.Inventario
 
         public RecepcionViewModel()
         {
+            _IsNew = true;
         }
 
         public RecepcionViewModel(Recepcion model)
         {
-            RecepcionId = model.RecepcionId;
-            TipoRecepcionId = model.TipoRecepcionId;
-            AlmacenId = model.AlmacenId;
-            OrdenProduccionId = model.OrdenProduccionId;
-            CompraId = model.CompraId;
-            Codigo = model.Codigo;
-            Observacion = model.Observacion;
-            TipoRecepcion = model.TipoRecepcion.Nombre;
-            Almacen = model.Almacen.Nombre;
-            OrdenProduccion = model.OrdenProduccion.Codigo;
-            Compra = model.Compra.NumeroDocumento;
+            _RecepcionId = model.RecepcionId;
+            _TipoRecepcionId = model.TipoRecepcionId;
+            _AlmacenId = model.AlmacenId;
+            _OrdenProduccionId = model.OrdenProduccionId;
+            _CompraId = model.CompraId;
+            _Codigo = model.Codigo;
+            _Observacion = model.Observacion;
+            _TipoRecepcion = model.TipoRecepcion.Nombre;
+            _Almacen = model.Almacen.Nombre;
 
-            foreach (var recepcionDetalle in model.RecepcionDetalles)
+            if (model.Compra != null)
             {
-                RecepcionDetalleViewModels.Add(new RecepcionDetalleViewModel(recepcionDetalle));
+                _TipoDocumentoRelacionado = TipoDocumentoEnum.Compra;
+                _NumeroDocumentoRelacionado = model.Compra.NumeroDocumento;
+            }
+            if (model.OrdenProduccion != null)
+            {
+                _TipoDocumentoRelacionado = TipoDocumentoEnum.OrdenProduccion;
+                _NumeroDocumentoRelacionado = model.OrdenProduccion.Codigo;
+            }
+
+            foreach (var child in model.RecepcionDetalles)
+            {
+                RecepcionDetalleViewModels.Add(new RecepcionDetalleViewModel(child));
             }
         }
 
@@ -57,11 +69,12 @@ namespace AdmCostoProduccion.Common.ViewModels.Inventario
 
         private string _Almacen;
 
-        private string _OrdenProduccion;
+        private string _TipoDocumentoRelacionado;
 
-        private string _Compra;
+        private string _NumeroDocumentoRelacionado;
 
-        private ObservableListSource<RecepcionDetalleViewModel> _RecepcionDetalleViewModels = new ObservableListSource<RecepcionDetalleViewModel>();
+        private ObservableListSource<RecepcionDetalleViewModel> _RecepcionDetalleViewModels
+            = new ObservableListSource<RecepcionDetalleViewModel>();
 
         #endregion
 
@@ -220,41 +233,41 @@ namespace AdmCostoProduccion.Common.ViewModels.Inventario
             }
         }
 
-        public string OrdenProduccion
+        public string TipoDocumentoRelacionado
         {
             get
             {
-                return _OrdenProduccion;
+                return _TipoDocumentoRelacionado;
             }
 
             set
             {
-                if (value != _OrdenProduccion)
+                if (value != _TipoDocumentoRelacionado)
                 {
-                    _OrdenProduccion = value;
+                    _TipoDocumentoRelacionado = value;
                     NotifyPropertyChanged();
                 }
             }
         }
 
-        public string Compra
+        public string NumeroDocumentoRelacionado
         {
             get
             {
-                return _Compra;
+                return _NumeroDocumentoRelacionado;
             }
 
             set
             {
-                if (value != _Compra)
+                if (value != _NumeroDocumentoRelacionado)
                 {
-                    _Compra = value;
+                    _NumeroDocumentoRelacionado = value;
                     NotifyPropertyChanged();
                 }
             }
         }
 
-        public virtual ObservableListSource<RecepcionDetalleViewModel> RecepcionDetalleViewModels
+        public ObservableListSource<RecepcionDetalleViewModel> RecepcionDetalleViewModels
         {
             get
             {
@@ -274,19 +287,22 @@ namespace AdmCostoProduccion.Common.ViewModels.Inventario
 
         #region Metodos Publicos
 
-        public void CopyTo(ref RecepcionViewModel viewModel)
+        public void CopyOf(RecepcionViewModel viewModel)
         {
-            viewModel.RecepcionId = _RecepcionId;
-            viewModel.TipoRecepcionId = _TipoRecepcionId;
-            viewModel.AlmacenId = _AlmacenId;
-            viewModel.OrdenProduccionId = _OrdenProduccionId;
-            viewModel.CompraId = _CompraId;
-            viewModel.Codigo = _Codigo;
-            viewModel.Observacion = _Observacion;
-            viewModel.TipoRecepcion = _TipoRecepcion;
-            viewModel.Almacen = _Almacen;
-            viewModel.OrdenProduccion = _OrdenProduccion;
-            viewModel.Compra = _Compra;
+            _IsNew = viewModel.IsNew;
+            _IsOld = viewModel.IsOld;
+            _RecepcionId = viewModel.RecepcionId;
+            _TipoRecepcionId = viewModel.TipoRecepcionId;
+            _AlmacenId = viewModel.AlmacenId;
+            _OrdenProduccionId = viewModel.OrdenProduccionId;
+            _CompraId = viewModel.CompraId;
+            _Codigo = viewModel.Codigo;
+            _Observacion = viewModel.Observacion;
+            _TipoRecepcion = viewModel.TipoRecepcion;
+            _Almacen = viewModel.Almacen;
+            _TipoDocumentoRelacionado = viewModel.TipoDocumentoRelacionado;
+            _NumeroDocumentoRelacionado = viewModel.NumeroDocumentoRelacionado;
+            _RecepcionDetalleViewModels = viewModel.RecepcionDetalleViewModels;
         }
 
         public Recepcion ToModel()
@@ -302,13 +318,52 @@ namespace AdmCostoProduccion.Common.ViewModels.Inventario
                 Observacion = _Observacion
             };
 
-            model.RecepcionDetalles = new List<RecepcionDetalle>();
-            foreach (var viewModel in RecepcionDetalleViewModels)
-            {
-                model.RecepcionDetalles.Add(viewModel.ToModel());
-            }
-
             return model;
+        }
+
+        public void Grabar()
+        {
+            ApplicationDbContext Context = new ApplicationDbContext();
+            Recepcion model = this.ToModel();
+
+            if (IsNew)
+            {
+                Context.Recepcions.Add(model);
+            }
+            else
+            {
+                if (IsOld)
+                {
+                    Context.Entry(model).State = EntityState.Modified;
+                }
+            }
+            //Childs
+            foreach (RecepcionDetalleViewModel viewModel in RecepcionDetalleViewModels)
+            {
+                viewModel.Grabar(Context);
+            }
+            //Childs deletes
+            foreach (var viewModel in RecepcionDetalleViewModels.GetRemoveItems())
+            {
+                viewModel.Eliminar(Context);
+            }
+            Context.SaveChanges();
+            _IsNew = false;
+            _IsOld = false;
+            _RecepcionId = model.RecepcionId;
+        }
+
+        public void Eliminar()
+        {
+            ApplicationDbContext Context = new ApplicationDbContext();
+
+            Recepcion model = this.ToModel();
+            foreach (var viewModelChild in RecepcionDetalleViewModels)
+            {
+                viewModelChild.Eliminar(Context);
+            }
+            Context.Entry(model).State = EntityState.Deleted;
+            Context.SaveChanges();
         }
 
         #endregion

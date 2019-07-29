@@ -5,7 +5,7 @@
       <Title>FormLista</Title>
       <Author>Jose Chacon</Author>
       <Description>Define un Modelo con EntityFramework</Description>
-      <Shortcut>cstprdformlst</Shortcut>
+      <Shortcut>cstformlst</Shortcut>
     </Header>
     <Snippet>
       <Declarations>
@@ -167,14 +167,9 @@ namespace $LibraryName$.$ProcessName$.$EsquemaName$.$FolderName$
                 if (MessageBox.Show("¿Esta seguro de eliminar el registro?", "Eliminar", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     Cursor = Cursors.WaitCursor;
-                    var context = new ApplicationDbContext();
                     var viewModel = ($Model$ViewModel)$DataSourceName$BindingSource.Current;
-                    var model = context.$Model$s
-                        .Where(o => o.$Model$Id == viewModel.$Model$Id)
-                        .FirstOrDefault();
-                    context.$Model$s.Remove(model);
-                    context.SaveChanges();
-                    ViewModelList.Remove(viewModel);
+                    viewModel.Eliminar();
+                    ViewModelList.RemoveItem(viewModel);
                 }
             }
             catch (Exception ex)

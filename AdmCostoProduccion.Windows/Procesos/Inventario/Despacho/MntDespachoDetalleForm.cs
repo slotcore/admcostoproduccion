@@ -19,7 +19,7 @@ namespace AdmCostoProduccion.Windows.Procesos.Inventario.Despacho
     public partial class MntDespachoDetalleForm : KryptonForm
     {
         private readonly ApplicationDbContext Context = new ApplicationDbContext();
-        private DespachoDetalleViewModel ViewModel = new DespachoDetalleViewModel();
+        private DespachoDetalleViewModel ViewModel;
         private List<UnidadMedidaViewModel> unidadMedidaViewModels = new List<UnidadMedidaViewModel>();
 
         #region Propiedades
@@ -33,17 +33,18 @@ namespace AdmCostoProduccion.Windows.Procesos.Inventario.Despacho
         {
             InitializeComponent();
             IsNew = false;
-            viewModel.CopyTo(ref ViewModel);
+            ViewModel.CopyOf(viewModel);
             ViewModelList = viewModelList;
             despachoDetalleViewModelBindingSource.DataSource = ViewModel;
             //
             CargarCombos();
         }
 
-        public MntDespachoDetalleForm(ObservableListSource<DespachoDetalleViewModel> viewModelList)
+        public MntDespachoDetalleForm(int despachoId, ObservableListSource<DespachoDetalleViewModel> viewModelList)
         {
             InitializeComponent();
             IsNew = true;
+            ViewModel = new DespachoDetalleViewModel(despachoId);
             ViewModelList = viewModelList;
             despachoDetalleViewModelBindingSource.DataSource = ViewModel;
             //
@@ -90,24 +91,13 @@ namespace AdmCostoProduccion.Windows.Procesos.Inventario.Despacho
                 ViewModel.UnidadMedidaId = unidadMedidaViewModel.UnidadMedidaId;
                 ViewModel.UnidadMedida = unidadMedidaViewModel.Nombre;
 
-                var model = ViewModel.ToModel();
-                if (IsNew)
-                {
-                    //Context.DespachoDetalles.Add(model);
-                    //Context.SaveChanges();
-                    //
-                    ViewModel.DespachoDetalleId = model.DespachoDetalleId;
-                    ViewModelList.Add(ViewModel);
-                }
+                if (ViewModel.IsNew) ViewModelList.Add(ViewModel);
                 else
                 {
-                    //Context.Entry(model).State = EntityState.Modified;
-                    //Context.SaveChanges();
-                    //
                     var viewModel = ViewModelList
                         .Where(o => o.DespachoDetalleId == ViewModel.DespachoDetalleId)
                         .FirstOrDefault();
-                    ViewModel.CopyTo(ref viewModel);
+                    viewModel.CopyOf(ViewModel);
                 }
                 this.Close();
 

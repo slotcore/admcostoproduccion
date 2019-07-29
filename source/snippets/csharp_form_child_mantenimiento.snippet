@@ -2,10 +2,10 @@
 <CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
   <CodeSnippet Format="1.0.0">
     <Header>
-      <Title>FormMantenimiento</Title>
+      <Title>FormChildMantenimiento</Title>
       <Author>Jose Chacon</Author>
       <Description>Define un Modelo con EntityFramework</Description>
-      <Shortcut>cstprdformmnt</Shortcut>
+      <Shortcut>cstformchldmmnt</Shortcut>
     </Header>
     <Snippet>
       <Declarations>
@@ -60,7 +60,7 @@ namespace $LibraryName$.$EsquemaName$.$FolderName$
     public partial class Mnt$Model$Form : KryptonForm
     {
         #region Propiedades
-        private $Model$ViewModel ViewModel = new $Model$ViewModel();
+        private $Model$ViewModel ViewModel;
         private ObservableListSource<$Model$ViewModel> ViewModelList;
         #endregion
 
@@ -74,10 +74,10 @@ namespace $LibraryName$.$EsquemaName$.$FolderName$
             $DataSourceName$BindingSource.DataSource = ViewModel;
         }
 
-        public Mnt$Model$Form(ObservableListSource<$Model$ViewModel> viewModelList)
+        public Mnt$Model$Form(int parentId, ObservableListSource<$Model$ViewModel> viewModelList)
         {
             InitializeComponent();
-            ViewModel = new $Model$ViewModel();
+            ViewModel = new $Model$ViewModel(parentId);
             ViewModelList = viewModelList;
             $DataSourceName$BindingSource.DataSource = ViewModel;
         }
@@ -104,7 +104,7 @@ namespace $LibraryName$.$EsquemaName$.$FolderName$
             {
                 Cursor = Cursors.WaitCursor;
                 $DataSourceName$BindingSource.EndEdit();
-                ViewModel.Grabar();
+
                 if (ViewModel.IsNew) ViewModelList.Add(ViewModel);
                 else
                 {

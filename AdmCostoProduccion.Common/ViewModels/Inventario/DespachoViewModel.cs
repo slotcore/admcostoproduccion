@@ -1,8 +1,10 @@
 ﻿using AdmCostoProduccion.Common.Classes;
+using AdmCostoProduccion.Common.Data;
 using AdmCostoProduccion.Common.Enum;
 using AdmCostoProduccion.Common.Models.Inventario;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 
@@ -14,31 +16,30 @@ namespace AdmCostoProduccion.Common.ViewModels.Inventario
 
         public DespachoViewModel()
         {
+            _IsNew = true;
         }
 
         public DespachoViewModel(Despacho model)
         {
-            DespachoId = model.DespachoId;
-            TipoDespachoId = model.TipoDespachoId;
-            AlmacenId = model.AlmacenId;
-            OrdenProduccionId = model.OrdenProduccionId;
-            VentaId = model.VentaId;
-            Codigo = model.Codigo;
-            Observacion = model.Observacion;
-            TipoDespacho = model.TipoDespacho.Nombre;
-            Almacen = model.Almacen.Nombre;
-            OrdenProduccion = model.OrdenProduccion.Codigo;
-            Venta = model.Venta.NumeroDocumento;
+            _DespachoId = model.DespachoId;
+            _TipoDespachoId = model.TipoDespachoId;
+            _AlmacenId = model.AlmacenId;
+            _OrdenProduccionId = model.OrdenProduccionId;
+            _VentaId = model.VentaId;
+            _Codigo = model.Codigo;
+            _Observacion = model.Observacion;
+            _TipoDespacho = model.TipoDespacho.Nombre;
+            _Almacen = model.Almacen.Nombre;
 
             if (model.Venta != null)
             {
-                TipoDocumentoRelacionado = DespachoDocumentoEnum.Venta;
-                NumeroDocumentoRelacionado = model.Venta.NumeroDocumento;
+                _TipoDocumentoRelacionado = TipoDocumentoEnum.Venta;
+                _NumeroDocumentoRelacionado = model.Venta.NumeroDocumento;
             }
             if (model.OrdenProduccion != null)
             {
-                TipoDocumentoRelacionado = DespachoDocumentoEnum.OrdenProduccion;
-                NumeroDocumentoRelacionado = model.OrdenProduccion.Codigo;
+                _TipoDocumentoRelacionado = TipoDocumentoEnum.OrdenProduccion;
+                _NumeroDocumentoRelacionado = model.OrdenProduccion.Codigo;
             }
 
             foreach (var recepcionDetalle in model.DespachoDetalles)
@@ -69,15 +70,12 @@ namespace AdmCostoProduccion.Common.ViewModels.Inventario
 
         private string _Almacen;
 
-        private string _OrdenProduccion;
-
-        private string _Venta;
-
         private string _TipoDocumentoRelacionado;
 
         private string _NumeroDocumentoRelacionado;
 
-        private ObservableListSource<DespachoDetalleViewModel> _DespachoDetalleViewModels = new ObservableListSource<DespachoDetalleViewModel>();
+        private ObservableListSource<DespachoDetalleViewModel> _DespachoDetalleViewModels 
+            = new ObservableListSource<DespachoDetalleViewModel>();
 
         #endregion
 
@@ -236,40 +234,6 @@ namespace AdmCostoProduccion.Common.ViewModels.Inventario
             }
         }
 
-        public string OrdenProduccion
-        {
-            get
-            {
-                return _OrdenProduccion;
-            }
-
-            set
-            {
-                if (value != _OrdenProduccion)
-                {
-                    _OrdenProduccion = value;
-                    NotifyPropertyChanged();
-                }
-            }
-        }
-
-        public string Venta
-        {
-            get
-            {
-                return _Venta;
-            }
-
-            set
-            {
-                if (value != _Venta)
-                {
-                    _Venta = value;
-                    NotifyPropertyChanged();
-                }
-            }
-        }
-
         public string TipoDocumentoRelacionado
         {
             get
@@ -324,25 +288,25 @@ namespace AdmCostoProduccion.Common.ViewModels.Inventario
 
         #region Metodos Publicos
 
-        public void CopyTo(ref DespachoViewModel viewModel)
+        public void CopyOf(DespachoViewModel viewModel)
         {
-            viewModel.DespachoId = _DespachoId;
-            viewModel.TipoDespachoId = _TipoDespachoId;
-            viewModel.AlmacenId = _AlmacenId;
-            viewModel.OrdenProduccionId = _OrdenProduccionId;
-            viewModel.VentaId = _VentaId;
-            viewModel.Codigo = _Codigo;
-            viewModel.Observacion = _Observacion;
-            viewModel.TipoDespacho = _TipoDespacho;
-            viewModel.Almacen = _Almacen;
-            viewModel.OrdenProduccion = _OrdenProduccion;
-            viewModel.Venta = _Venta;
-            viewModel.TipoDocumentoRelacionado = _TipoDocumentoRelacionado;
-            viewModel.NumeroDocumentoRelacionado = _NumeroDocumentoRelacionado;
-            viewModel.DespachoDetalleViewModels = _DespachoDetalleViewModels;
+            _IsNew = viewModel.IsNew;
+            _IsOld = viewModel.IsOld;
+            _DespachoId = viewModel.DespachoId;
+            _TipoDespachoId = viewModel.TipoDespachoId;
+            _AlmacenId = viewModel.AlmacenId;
+            _OrdenProduccionId = viewModel.OrdenProduccionId;
+            _VentaId = viewModel.VentaId;
+            _Codigo = viewModel.Codigo;
+            _Observacion = viewModel.Observacion;
+            _TipoDespacho = viewModel.TipoDespacho;
+            _Almacen = viewModel.Almacen;
+            _TipoDocumentoRelacionado = viewModel.TipoDocumentoRelacionado;
+            _NumeroDocumentoRelacionado = viewModel.NumeroDocumentoRelacionado;
+            _DespachoDetalleViewModels = viewModel.DespachoDetalleViewModels;
         }
 
-        public Despacho ToModel()
+        private Despacho ToModel()
         {
             Despacho model = new Despacho
             {
@@ -355,13 +319,36 @@ namespace AdmCostoProduccion.Common.ViewModels.Inventario
                 Observacion = _Observacion
             };
 
-            model.DespachoDetalles = new List<DespachoDetalle>();
-            foreach (var viewModel in DespachoDetalleViewModels)
-            {
-                model.DespachoDetalles.Add(viewModel.ToModel());
-            }
-
             return model;
+        }
+
+        public void Grabar()
+        {
+            ApplicationDbContext Context = new ApplicationDbContext();
+            Despacho model = this.ToModel();
+
+            if (IsNew)
+            {
+                Context.Despachos.Add(model);
+            }
+            else
+            {
+                if (IsOld)
+                {
+                    Context.Entry(model).State = EntityState.Modified;
+                }
+            }
+            if (DespachoDetalleViewModels.Count > 0)
+            {
+                foreach (DespachoDetalleViewModel viewModel in DespachoDetalleViewModels)
+                {
+                    viewModel.Grabar(Context);
+                }
+            }
+            Context.SaveChanges();
+            _IsNew = false;
+            _IsOld = false;
+            _DespachoId = model.DespachoId;
         }
 
         #endregion

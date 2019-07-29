@@ -25,10 +25,13 @@ namespace AdmCostoProduccion.Common.Data
             base.OnModelCreating(modelBuilder); // This needs to go before the other rules!
 
             modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
+
             modelBuilder.Entity<DespachoDetalle>()
-                .HasRequired(f => f.Mercaderia)
-                .WithRequiredDependent()
+                .HasRequired(d => d.Mercaderia)
+                .WithMany(m => m.DespachoDetalles)
+                .HasForeignKey(d => d.MercaderiaId)
                 .WillCascadeOnDelete(false);
+
         }
 
         public DbSet<CentroLogistico> CentroLogisticos { get; set; }
@@ -48,6 +51,8 @@ namespace AdmCostoProduccion.Common.Data
         public DbSet<RecepcionDetalle> RecepcionDetalles { get; set; }
         public DbSet<Venta> Ventas { get; set; }
         public DbSet<VentaDetalle> VentaDetalles { get; set; }
+        public DbSet<Compra> Compras { get; set; }
+        public DbSet<CompraDetalle> CompraDetalles { get; set; }
         public DbSet<OrdenProduccion> OrdenProduccions { get; set; }
     }
 }

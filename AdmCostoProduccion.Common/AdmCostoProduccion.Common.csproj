@@ -9,9 +9,10 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>AdmCostoProduccion.Common</RootNamespace>
     <AssemblyName>AdmCostoProduccion.Common</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -78,25 +79,9 @@
     <Compile Include="Forms\MntBaseForm.Designer.cs">
       <DependentUpon>MntBaseForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201907240211160_initial-migration.cs" />
-    <Compile Include="Migrations\201907240211160_initial-migration.Designer.cs">
-      <DependentUpon>201907240211160_initial-migration.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201907251504314_update_20190725_1.cs" />
-    <Compile Include="Migrations\201907251504314_update_20190725_1.Designer.cs">
-      <DependentUpon>201907251504314_update_20190725_1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201907252042593_update_20190725_2.cs" />
-    <Compile Include="Migrations\201907252042593_update_20190725_2.Designer.cs">
-      <DependentUpon>201907252042593_update_20190725_2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201907252214040_update_20190725_3.cs" />
-    <Compile Include="Migrations\201907252214040_update_20190725_3.Designer.cs">
-      <DependentUpon>201907252214040_update_20190725_3.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201907252220156_update_20190725_4.cs" />
-    <Compile Include="Migrations\201907252220156_update_20190725_4.Designer.cs">
-      <DependentUpon>201907252220156_update_20190725_4.cs</DependentUpon>
+    <Compile Include="Migrations\201907260213545_initial.cs" />
+    <Compile Include="Migrations\201907260213545_initial.Designer.cs">
+      <DependentUpon>201907260213545_initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\CompraVenta\Compra.cs" />
@@ -134,6 +119,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\CompraVenta\CompraDetalleViewModel.cs" />
+    <Compile Include="ViewModels\CompraVenta\CompraViewModel.cs" />
     <Compile Include="ViewModels\CompraVenta\VentaDetalleViewModel.cs" />
     <Compile Include="ViewModels\CompraVenta\VentaViewModel.cs" />
     <Compile Include="ViewModels\Costo\CostoOrdenProduccionViewModel.cs" />
@@ -171,20 +158,8 @@
     <EmbeddedResource Include="Forms\MntBaseForm.resx">
       <DependentUpon>MntBaseForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201907240211160_initial-migration.resx">
-      <DependentUpon>201907240211160_initial-migration.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201907251504314_update_20190725_1.resx">
-      <DependentUpon>201907251504314_update_20190725_1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201907252042593_update_20190725_2.resx">
-      <DependentUpon>201907252042593_update_20190725_2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201907252214040_update_20190725_3.resx">
-      <DependentUpon>201907252214040_update_20190725_3.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201907252220156_update_20190725_4.resx">
-      <DependentUpon>201907252220156_update_20190725_4.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201907260213545_initial.resx">
+      <DependentUpon>201907260213545_initial.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

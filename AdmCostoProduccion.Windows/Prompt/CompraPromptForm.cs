@@ -1,6 +1,8 @@
 ﻿using AdmCostoProduccion.Common.Classes;
 using AdmCostoProduccion.Common.Data;
 using AdmCostoProduccion.Common.ViewModels.CompraVenta;
+using AdmCostoProduccion.Common.ViewModels.Inventario;
+using ComponentFactory.Krypton.Toolkit;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,41 +13,57 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace AdmCostoProduccion.Windows.Procesos.CompraVenta.Compra
+namespace AdmCostoProduccion.Windows.Prompt
 {
-    public partial class LstCompraForm : Form
+    public partial class CompraPromptForm : KryptonForm
     {
         private ObservableListSource<CompraViewModel> ViewModelList = new ObservableListSource<CompraViewModel>();
+        private CompraViewModel _CompraViewModel = new CompraViewModel();
+        private List<CompraViewModel> _CompraViewModelList = new List<CompraViewModel>();
+
+        public CompraViewModel CompraViewModel
+        {
+            get { return _CompraViewModel; }
+        }
+
+        public List<CompraViewModel> CompraViewModelList
+        {
+            get { return _CompraViewModelList; }
+        }
 
         #region Constructor
-        public LstCompraForm()
+        public CompraPromptForm()
         {
             InitializeComponent();
 
             ViewModelList = new ObservableListSource<CompraViewModel>();
             compraViewModelBindingSource.DataSource = ViewModelList;
         }
+
+        public CompraPromptForm(string filtro)
+        {
+            InitializeComponent();
+
+            ViewModelList = new ObservableListSource<CompraViewModel>();
+            compraViewModelBindingSource.DataSource = ViewModelList;
+            if (!string.IsNullOrEmpty(filtro))
+            {
+                BusquedaTextBox.Text = filtro;
+                Buscar();
+            }
+        }
         #endregion
 
         #region Eventos de Formulario
-        private void AgregarButton_Click(object sender, EventArgs e)
+
+        private void AceptarButton_Click(object sender, EventArgs e)
         {
-            Agregar();
+            Aceptar();
         }
 
-        private void ModificarButton_Click(object sender, EventArgs e)
+        private void CancelarButton_Click(object sender, EventArgs e)
         {
-            Modificar();
-        }
-
-        private void EliminarButton_Click(object sender, EventArgs e)
-        {
-            Eliminar();
-        }
-
-        private void ActualizarButton_Click(object sender, EventArgs e)
-        {
-            Actualizar();
+            Cancelar();
         }
 
         private void BuscarButton_Click(object sender, EventArgs e)
@@ -65,15 +83,24 @@ namespace AdmCostoProduccion.Windows.Procesos.CompraVenta.Compra
                 Buscar();
             }
         }
+
+        private void DetalleDataGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            Aceptar();
+        }
         #endregion
 
         #region Eventos Privados
-        private void Agregar()
+        private void Aceptar()
         {
             try
             {
-                var frm = new MntCompraForm(ViewModelList);
-                frm.ShowDialog();
+                if (compraViewModelBindingSource.Current == null)
+                {
+                    throw new Exception("Debe de seleccionar al menos un registro");
+                }
+                _CompraViewModel = (CompraViewModel)compraViewModelBindingSource.Current;
+                DialogResult = DialogResult.OK;
             }
             catch (Exception ex)
             {
@@ -82,64 +109,16 @@ namespace AdmCostoProduccion.Windows.Procesos.CompraVenta.Compra
             }
         }
 
-        private void Modificar()
+        private void Cancelar()
         {
             try
             {
-                var viewModel = (CompraViewModel)compraViewModelBindingSource.Current;
-                var frm = new MntCompraForm(viewModel, ViewModelList);
-                frm.ShowDialog();
+                DialogResult = DialogResult.Cancel;
             }
             catch (Exception ex)
             {
                 MessageBox.Show(string.Format("Ocurrió un error al modificar, mensaje de error: {0}", ex.Message)
                     , "Modificar", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void Eliminar()
-        {
-            try
-            {
-                if (MessageBox.Show("¿Esta seguro de eliminar el registro?", "Eliminar", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                {
-                    Cursor = Cursors.WaitCursor;
-                    var viewModel = (CompraViewModel)compraViewModelBindingSource.Current;
-                    viewModel.Eliminar();
-                    ViewModelList.RemoveItem(viewModel);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(string.Format("Ocurrió un error al eliminar, mensaje de error: {0}", ex.Message)
-                    , "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally
-            {
-                Cursor = Cursors.Default;
-            }
-        }
-
-        private void Actualizar()
-        {
-            try
-            {
-                Cursor = Cursors.WaitCursor;
-                var list = new ApplicationDbContext().Compras.ToList();
-                ViewModelList.Clear();
-                foreach (var model in list)
-                {
-                    ViewModelList.Add(new CompraViewModel(model));
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(string.Format("Ocurrió un error al actualizar, mensaje de error: {0}", ex.Message)
-                    , "Actualizar", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally
-            {
-                Cursor = Cursors.Default;
             }
         }
 
@@ -151,6 +130,7 @@ namespace AdmCostoProduccion.Windows.Procesos.CompraVenta.Compra
                 var cadenaBusqueda = BusquedaTextBox.Text.Trim().ToUpper();
                 var list = new ApplicationDbContext().Compras.Where(o =>
                                 o.NumeroDocumento.ToUpper().Contains(cadenaBusqueda) ||
+                                o.CentroLogistico.Nombre.ToUpper().Contains(cadenaBusqueda) ||
                                 o.Descripcion.ToUpper().Contains(cadenaBusqueda)).ToList();
 
                 ViewModelList.Clear();

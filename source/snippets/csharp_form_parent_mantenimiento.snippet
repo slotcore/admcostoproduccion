@@ -2,10 +2,10 @@
 <CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
   <CodeSnippet Format="1.0.0">
     <Header>
-      <Title>FormMantenimiento</Title>
+      <Title>FormParentMantenimiento</Title>
       <Author>Jose Chacon</Author>
       <Description>Define un Modelo con EntityFramework</Description>
-      <Shortcut>cstprdformmnt</Shortcut>
+      <Shortcut>cstforprntmmnt</Shortcut>
     </Header>
     <Snippet>
       <Declarations>
@@ -15,9 +15,19 @@
           <Default>Model</Default>
         </Literal>
         <Literal>
+          <ID>ModelChild</ID>
+          <ToolTip>Reemplazar por el Nombre del modelo</ToolTip>
+          <Default>ModelChild</Default>
+        </Literal>
+        <Literal>
           <ID>DataSourceName</ID>
           <ToolTip>Reemplazar por el Nombre del modelo</ToolTip>
           <Default>DataSourceName</Default>
+        </Literal>
+        <Literal>
+          <ID>DataSourceChildName</ID>
+          <ToolTip>Reemplazar por el Nombre del modelo</ToolTip>
+          <Default>DataSourceChildName</Default>
         </Literal>
         <Literal>
           <ID>CommonLibraryName</ID>
@@ -94,6 +104,21 @@ namespace $LibraryName$.$EsquemaName$.$FolderName$
             $DataSourceName$BindingSource.CancelEdit();
             this.Close();
         }
+
+        private void AgregarDetalleButton_Click(object sender, EventArgs e)
+        {
+            AgregarDetalle();
+        }
+
+        private void ModificarDetalleButton_Click(object sender, EventArgs e)
+        {
+            ModificarDetalle();
+        }
+
+        private void EliminarDetalleButton_Click(object sender, EventArgs e)
+        {
+            EliminarDetalle();
+        }
         #endregion
 
         #region Eventos Privados
@@ -102,10 +127,11 @@ namespace $LibraryName$.$EsquemaName$.$FolderName$
         {
             try
             {
+                bool IsNew = ViewModel.IsNew;
                 Cursor = Cursors.WaitCursor;
                 $DataSourceName$BindingSource.EndEdit();
                 ViewModel.Grabar();
-                if (ViewModel.IsNew) ViewModelList.Add(ViewModel);
+                if (IsNew) ViewModelList.Add(ViewModel);
                 else
                 {
                     var viewModel = ViewModelList
@@ -124,6 +150,53 @@ namespace $LibraryName$.$EsquemaName$.$FolderName$
             finally
             {
                 Cursor = Cursors.Default;
+            }
+        }
+
+        private void AgregarDetalle()
+        {
+            try
+            {
+                var frm = new Mnt$ModelChild$Form(ViewModel.$Model$Id, ViewModel.$ModelChild$ViewModels);
+                frm.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(string.Format("Ocurrió un error al agregar, mensaje de error: {0}", ex.Message)
+                    , "Agregar", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void ModificarDetalle()
+        {
+            try
+            {
+                var viewModel = ($ModelChild$ViewModel)$DataSourceChildName$sBindingSource.Current;
+                var frm = new Mnt$ModelChild$Form(viewModel, ViewModel.$ModelChild$ViewModels);
+                frm.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(string.Format("Ocurrió un error al modificar, mensaje de error: {0}", ex.Message)
+                    , "Modificar", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void EliminarDetalle()
+        {
+            try
+            {
+                if (MessageBox.Show("¿Seguro desea eliminar el registro?", "Eliminar"
+                    , MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    var viewModelDetail = ($ModelChild$ViewModel)$DataSourceChildName$sBindingSource.Current;
+                    ViewModel.$ModelChild$ViewModels.RemoveItem(viewModelDetail);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(string.Format("Ocurrió un error al eliminar el registro, mensaje de error: {0}", ex.Message)
+                    , "Modificar", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         #endregion

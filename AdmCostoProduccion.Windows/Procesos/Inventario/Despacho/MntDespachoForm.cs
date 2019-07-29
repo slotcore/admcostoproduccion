@@ -24,7 +24,7 @@ namespace AdmCostoProduccion.Windows.Procesos.Inventario.Despacho
     public partial class MntDespachoForm : KryptonForm
     {
         private readonly ApplicationDbContext Context = new ApplicationDbContext();
-        private DespachoViewModel ViewModel = new DespachoViewModel();
+        private DespachoViewModel ViewModel;
         private List<AlmacenViewModel> almacenViewModels = new List<AlmacenViewModel>();
 
         #region Propiedades
@@ -38,7 +38,7 @@ namespace AdmCostoProduccion.Windows.Procesos.Inventario.Despacho
         {
             InitializeComponent();
             IsNew = false;
-            viewModel.CopyTo(ref ViewModel);
+            ViewModel.CopyOf(viewModel);
             ViewModelList = viewModelList;
             despachoViewModelBindingSource.DataSource = ViewModel;
             //
@@ -49,6 +49,7 @@ namespace AdmCostoProduccion.Windows.Procesos.Inventario.Despacho
         {
             InitializeComponent();
             IsNew = true;
+            ViewModel = new DespachoViewModel();
             ViewModelList = viewModelList;
             despachoViewModelBindingSource.DataSource = ViewModel;
             //
@@ -90,8 +91,9 @@ namespace AdmCostoProduccion.Windows.Procesos.Inventario.Despacho
 
         private void TipoDocumentoComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            documentoRelacionadoTextBox.Text = string.Empty;
-            documentoRelacionadoTextBox.Tag = null;
+            //ViewModel.NumeroDocumentoRelacionado = string.Empty;
+            //ViewModel.VentaId = 0;
+            //ViewModel.OrdenProduccionId = 0;
         }
         #endregion
 
@@ -110,27 +112,15 @@ namespace AdmCostoProduccion.Windows.Procesos.Inventario.Despacho
                 if (almacenViewModel == null) throw new Exception("Debe de seleccionar un almacén");
                 ViewModel.AlmacenId = almacenViewModel.AlmacenId;
                 ViewModel.Almacen = almacenViewModel.Nombre;
-                //
-                CargarDocumento();
+                ViewModel.Grabar();
 
-                var model = ViewModel.ToModel();
-                if (IsNew)
-                {
-                    Context.Despachos.Add(model);
-                    Context.SaveChanges();
-                    //
-                    ViewModel.DespachoId = model.DespachoId;
-                    ViewModelList.Add(ViewModel);
-                }
+                if (IsNew) ViewModelList.Add(ViewModel);
                 else
                 {
-                    Context.Entry(model).State = EntityState.Modified;
-                    Context.SaveChanges();
-                    //
                     var viewModel = ViewModelList
                         .Where(o => o.DespachoId == ViewModel.DespachoId)
                         .FirstOrDefault();
-                    ViewModel.CopyTo(ref viewModel);
+                    viewModel.CopyOf(ViewModel);
                 }
                 this.Close();
 
@@ -155,8 +145,15 @@ namespace AdmCostoProduccion.Windows.Procesos.Inventario.Despacho
             }
             almacenViewModelBindingSource.DataSource = almacenViewModels;
             //
-            tipoDocumentoComboBox.Items.Add(DespachoDocumentoEnum.Venta);
-            tipoDocumentoComboBox.Items.Add(DespachoDocumentoEnum.OrdenProduccion);
+            tipoDocumentoComboBox.Items.Add(TipoDocumentoEnum.Venta);
+            tipoDocumentoComboBox.Items.Add(TipoDocumentoEnum.OrdenProduccion);
+
+            //
+            if (!IsNew)
+            {
+                tipoDocumentoComboBox.SelectedItem = ViewModel.TipoDespacho;
+                almacenIdComboBox.SelectedItem = almacenViewModels.Where(a => a.AlmacenId == ViewModel.AlmacenId).FirstOrDefault();
+            }
         }
 
         private void BuscarDocumentos()
@@ -167,33 +164,35 @@ namespace AdmCostoProduccion.Windows.Procesos.Inventario.Despacho
                 {
                     switch (tipoDocumentoComboBox.SelectedItem.ToString())
                     {
-                        case DespachoDocumentoEnum.Venta:
+                        case TipoDocumentoEnum.Venta:
                             var formpromptventa = new VentaPromptForm();
                             if (formpromptventa.ShowDialog() == DialogResult.OK)
                             {
                                 var ventaViewModel = formpromptventa.VentaViewModel;
-                                documentoRelacionadoTextBox.Tag = ventaViewModel;
-                                documentoRelacionadoTextBox.Text = ventaViewModel.NumeroDocumento;
+                                ViewModel.TipoDocumentoRelacionado = TipoDocumentoEnum.Venta;
+                                ViewModel.NumeroDocumentoRelacionado = ventaViewModel.NumeroDocumento;
+                                ViewModel.VentaId = ventaViewModel.VentaId;
                             }
                             else
                             {
-                                documentoRelacionadoTextBox.Tag = null;
-                                documentoRelacionadoTextBox.Text = string.Empty;
+                                ViewModel.NumeroDocumentoRelacionado = string.Empty;
+                                ViewModel.VentaId = 0;
                             }
                             break;
 
-                        case DespachoDocumentoEnum.OrdenProduccion:
+                        case TipoDocumentoEnum.OrdenProduccion:
                             var formpromptventaop = new OrdenProduccionPromptForm();
                             if (formpromptventaop.ShowDialog() == DialogResult.OK)
                             {
                                 var opViewModel = formpromptventaop.OrdenProduccionViewModel;
-                                documentoRelacionadoTextBox.Tag = opViewModel;
-                                documentoRelacionadoTextBox.Text = opViewModel.Codigo;
+                                ViewModel.TipoDocumentoRelacionado = TipoDocumentoEnum.OrdenProduccion;
+                                ViewModel.NumeroDocumentoRelacionado = opViewModel.Codigo;
+                                ViewModel.OrdenProduccionId = opViewModel.OrdenProduccionId;
                             }
                             else
                             {
-                                documentoRelacionadoTextBox.Tag = null;
-                                documentoRelacionadoTextBox.Text = string.Empty;
+                                ViewModel.NumeroDocumentoRelacionado = string.Empty;
+                                ViewModel.OrdenProduccionId = 0;
                             }
                             break;
                     }
@@ -210,7 +209,7 @@ namespace AdmCostoProduccion.Windows.Procesos.Inventario.Despacho
         {
             try
             {
-                var frm = new MntDespachoDetalleForm(ViewModel.DespachoDetalleViewModels);
+                var frm = new MntDespachoDetalleForm(ViewModel.DespachoId, ViewModel.DespachoDetalleViewModels);
                 frm.ShowDialog();
             }
             catch (Exception ex)
@@ -237,17 +236,15 @@ namespace AdmCostoProduccion.Windows.Procesos.Inventario.Despacho
 
         private void CargarTipo()
         {
-            ViewModel.TipoDespacho = string.Empty;
-            ViewModel.TipoDespachoId = 0;
             if (tipoDocumentoComboBox.SelectedItem != null)
             {
                 TipoDespacho tipoDespacho = null;
                 switch (tipoDocumentoComboBox.SelectedItem.ToString())
                 {
-                    case DespachoDocumentoEnum.Venta:
+                    case TipoDocumentoEnum.Venta:                        
                         tipoDespacho = Context.TipoDespachos.Where(o => o.Proceso.Equals("Venta")).FirstOrDefault();
                         break;
-                    case DespachoDocumentoEnum.OrdenProduccion:
+                    case TipoDocumentoEnum.OrdenProduccion:
                         tipoDespacho = Context.TipoDespachos.Where(o => o.Proceso.Equals("OrdenProduccion")).FirstOrDefault();
                         break;
                 }
@@ -257,29 +254,10 @@ namespace AdmCostoProduccion.Windows.Procesos.Inventario.Despacho
                     ViewModel.TipoDespachoId = tipoDespacho.TipoDespachoId;
                 }
             }
-        }
-
-        private void CargarDocumento()
-        {
-            if (documentoRelacionadoTextBox.Tag == null)
+            else
             {
-                throw new Exception("Debe seleccionar algun documento");
-            }
-            if (tipoDocumentoComboBox.SelectedItem != null)
-            {
-                switch (tipoDocumentoComboBox.SelectedItem.ToString())
-                {
-                    case DespachoDocumentoEnum.Venta:
-                        var ventaViewModel = (VentaViewModel)documentoRelacionadoTextBox.Tag;
-                        ViewModel.VentaId = ventaViewModel.VentaId;
-                        ViewModel.Venta = ventaViewModel.NumeroDocumento;
-                        break;
-                    case DespachoDocumentoEnum.OrdenProduccion:
-                        var ordenProduccionViewModel = (OrdenProduccionViewModel)documentoRelacionadoTextBox.Tag;
-                        ViewModel.OrdenProduccionId = ordenProduccionViewModel.OrdenProduccionId;
-                        ViewModel.OrdenProduccion = ordenProduccionViewModel.Codigo;
-                        break;
-                }
+                ViewModel.TipoDespacho = string.Empty;
+                ViewModel.TipoDespachoId = 0;
             }
         }
         #endregion

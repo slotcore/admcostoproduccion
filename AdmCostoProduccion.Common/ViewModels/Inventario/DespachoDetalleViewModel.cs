@@ -1,6 +1,8 @@
 ﻿using AdmCostoProduccion.Common.Classes;
+using AdmCostoProduccion.Common.Data;
 using AdmCostoProduccion.Common.Models.Inventario;
 using System;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 
@@ -10,21 +12,24 @@ namespace AdmCostoProduccion.Common.ViewModels.Inventario
     {
         #region Constructor
 
-        public DespachoDetalleViewModel()
+        public DespachoDetalleViewModel(int despachoId)
         {
+            _IsNew = true;
+            _DespachoId = despachoId;
         }
 
         public DespachoDetalleViewModel(DespachoDetalle model)
         {
-            DespachoDetalleId = model.DespachoDetalleId;
-            OrdenProduccionInsumoId = model.OrdenProduccionInsumoId;
-            VentaDetalleId = model.VentaDetalleId;
-            MercaderiaId = model.MercaderiaId;
-            UnidadMedidaId = model.UnidadMedidaId;
-            Cantidad = model.Cantidad;
-            CodigoMercaderia = model.Mercaderia.Codigo;
-            NombreMercaderia = model.Mercaderia.Nombre;
-            UnidadMedida = model.UnidadMedida.Nombre;
+            _DespachoDetalleId = model.DespachoDetalleId;
+            _DespachoId = model.DespachoId;
+            _OrdenProduccionInsumoId = model.OrdenProduccionInsumoId;
+            _VentaDetalleId = model.VentaDetalleId;
+            _MercaderiaId = model.MercaderiaId;
+            _UnidadMedidaId = model.UnidadMedidaId;
+            _Cantidad = model.Cantidad;
+            _CodigoMercaderia = model.Mercaderia.Codigo;
+            _NombreMercaderia = model.Mercaderia.Nombre;
+            _UnidadMedida = model.UnidadMedida.Nombre;
         }
 
         #endregion
@@ -32,6 +37,8 @@ namespace AdmCostoProduccion.Common.ViewModels.Inventario
         #region Propiedades privadas
 
         private int _DespachoDetalleId;
+
+        private int _DespachoId;
 
         private int? _OrdenProduccionInsumoId;
 
@@ -65,6 +72,23 @@ namespace AdmCostoProduccion.Common.ViewModels.Inventario
                 if (value != _DespachoDetalleId)
                 {
                     _DespachoDetalleId = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
+        public int DespachoId
+        {
+            get
+            {
+                return _DespachoId;
+            }
+
+            set
+            {
+                if (value != _DespachoId)
+                {
+                    _DespachoId = value;
                     NotifyPropertyChanged();
                 }
             }
@@ -210,24 +234,28 @@ namespace AdmCostoProduccion.Common.ViewModels.Inventario
 
         #region Metodos Publicos
 
-        public void CopyTo(ref DespachoDetalleViewModel viewModel)
+        public void CopyOf(DespachoDetalleViewModel viewModel)
         {
-            viewModel.DespachoDetalleId = _DespachoDetalleId;
-            viewModel.OrdenProduccionInsumoId = _OrdenProduccionInsumoId;
-            viewModel.VentaDetalleId = _VentaDetalleId;
-            viewModel.MercaderiaId = _MercaderiaId;
-            viewModel.UnidadMedidaId = _UnidadMedidaId;
-            viewModel.Cantidad = _Cantidad;
-            viewModel.CodigoMercaderia = _CodigoMercaderia;
-            viewModel.NombreMercaderia = _NombreMercaderia;
-            viewModel.UnidadMedida = _UnidadMedida;
+            _IsNew = viewModel.IsNew;
+            _IsOld = viewModel.IsOld;
+            _DespachoDetalleId = viewModel.DespachoDetalleId;
+            _DespachoId = viewModel.DespachoId;
+            _OrdenProduccionInsumoId = viewModel.OrdenProduccionInsumoId;
+            _VentaDetalleId = viewModel.VentaDetalleId;
+            _MercaderiaId = viewModel.MercaderiaId;
+            _UnidadMedidaId = viewModel.UnidadMedidaId;
+            _Cantidad = viewModel.Cantidad;
+            _CodigoMercaderia = viewModel.CodigoMercaderia;
+            _NombreMercaderia = viewModel.NombreMercaderia;
+            _UnidadMedida = viewModel.UnidadMedida;
         }
 
-        public DespachoDetalle ToModel()
+        private DespachoDetalle ToModel()
         {
             DespachoDetalle model = new DespachoDetalle
             {
                 DespachoDetalleId = _DespachoDetalleId,
+                DespachoId = _DespachoId,
                 OrdenProduccionInsumoId = _OrdenProduccionInsumoId,
                 VentaDetalleId = _VentaDetalleId,
                 MercaderiaId = _MercaderiaId,
@@ -236,6 +264,17 @@ namespace AdmCostoProduccion.Common.ViewModels.Inventario
             };
 
             return model;
+        }
+
+        public void Grabar(ApplicationDbContext Context)
+        {
+            DespachoDetalle model = this.ToModel();
+
+            if (IsNew) Context.DespachoDetalles.Add(model);
+            else
+            {
+                if (IsOld) Context.Entry(model).State = EntityState.Modified;
+            }
         }
 
         #endregion

@@ -22,6 +22,7 @@ using AdmCostoProduccion.Windows.Mantenimiento.Produccion.ProcedimientoProduccio
 using AdmCostoProduccion.Windows.Procesos.Inventario.Recepcion;
 using AdmCostoProduccion.Windows.Procesos.Inventario.Despacho;
 using AdmCostoProduccion.Windows.Procesos.CompraVenta.Venta;
+using AdmCostoProduccion.Windows.Procesos.CompraVenta.Compra;
 
 namespace AdmCostoProduccion.Windows
 {
@@ -184,6 +185,15 @@ namespace AdmCostoProduccion.Windows
         private void VentaMenuItem_Click(object sender, EventArgs e)
         {
             var form = new LstVentaForm
+            {
+                MdiParent = this
+            };
+            form.Show();
+        }
+
+        private void CompraMenuItem_Click(object sender, EventArgs e)
+        {
+            var form = new LstCompraForm
             {
                 MdiParent = this
             };

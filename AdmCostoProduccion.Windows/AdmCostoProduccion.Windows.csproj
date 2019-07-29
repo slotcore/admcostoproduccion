@@ -8,7 +8,7 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>AdmCostoProduccion.Windows</RootNamespace>
     <AssemblyName>AdmCostoProduccion.Windows</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
     <TargetFrameworkProfile />
@@ -90,6 +90,9 @@
     <Reference Include="ComponentFactory.Krypton.Navigator">
       <HintPath>..\source\dlls\ComponentFactory.Krypton.Navigator.dll</HintPath>
     </Reference>
+    <Reference Include="ComponentFactory.Krypton.Ribbon">
+      <HintPath>..\source\dlls\ComponentFactory.Krypton.Ribbon.dll</HintPath>
+    </Reference>
     <Reference Include="ComponentFactory.Krypton.Toolkit, Version=3.5.2.0, Culture=neutral, PublicKeyToken=a87e673e9ecb6e8e, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\source\dlls\ComponentFactory.Krypton.Toolkit.dll</HintPath>
@@ -104,6 +107,7 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Design" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -253,6 +257,12 @@
     <Compile Include="Procesos\CompraVenta\Compra\LstCompraForm.Designer.cs">
       <DependentUpon>LstCompraForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Procesos\CompraVenta\Compra\MntCompraDetalleForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Procesos\CompraVenta\Compra\MntCompraDetalleForm.Designer.cs">
+      <DependentUpon>MntCompraDetalleForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Procesos\CompraVenta\Compra\MntCompraForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -301,19 +311,25 @@
     <Compile Include="Procesos\Inventario\Recepcion\LstRecepcionForm.Designer.cs">
       <DependentUpon>LstRecepcionForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Procesos\Inventario\Recepcion\MntRecepcionDetalleForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Procesos\Inventario\Recepcion\MntRecepcionDetalleForm.Designer.cs">
-      <DependentUpon>MntRecepcionDetalleForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Procesos\Inventario\Recepcion\MntRecepcionForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Procesos\Inventario\Recepcion\MntRecepcionForm.Designer.cs">
       <DependentUpon>MntRecepcionForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Procesos\Inventario\Recepcion\MntRecepcionDetalleForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Procesos\Inventario\Recepcion\MntRecepcionDetalleForm.Designer.cs">
+      <DependentUpon>MntRecepcionDetalleForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
+    <Compile Include="Prompt\CompraPromptForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Prompt\CompraPromptForm.Designer.cs">
+      <DependentUpon>CompraPromptForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Prompt\MercaderiaPromptForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -402,6 +418,9 @@
     <EmbeddedResource Include="Procesos\CompraVenta\Compra\LstCompraForm.resx">
       <DependentUpon>LstCompraForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Procesos\CompraVenta\Compra\MntCompraDetalleForm.resx">
+      <DependentUpon>MntCompraDetalleForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Procesos\CompraVenta\Compra\MntCompraForm.resx">
       <DependentUpon>MntCompraForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -426,11 +445,14 @@
     <EmbeddedResource Include="Procesos\Inventario\Recepcion\LstRecepcionForm.resx">
       <DependentUpon>LstRecepcionForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Procesos\Inventario\Recepcion\MntRecepcionForm.resx">
+      <DependentUpon>MntRecepcionForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Procesos\Inventario\Recepcion\MntRecepcionDetalleForm.resx">
       <DependentUpon>MntRecepcionDetalleForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Procesos\Inventario\Recepcion\MntRecepcionForm.resx">
-      <DependentUpon>MntRecepcionForm.cs</DependentUpon>
+    <EmbeddedResource Include="Prompt\CompraPromptForm.resx">
+      <DependentUpon>CompraPromptForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Prompt\MercaderiaPromptForm.resx">
       <DependentUpon>MercaderiaPromptForm.cs</DependentUpon>
@@ -441,6 +463,7 @@
     <EmbeddedResource Include="Prompt\VentaPromptForm.resx">
       <DependentUpon>VentaPromptForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -455,6 +478,8 @@
     <None Include="packages.config" />
     <None Include="Properties\app.manifest" />
     <None Include="Properties\DataSources\AdmCostoProduccion.Common.Models.Maestro.CentroLogistico.datasource" />
+    <None Include="Properties\DataSources\AdmCostoProduccion.Common.ViewModels.CompraVenta.CompraDetalleViewModel.datasource" />
+    <None Include="Properties\DataSources\AdmCostoProduccion.Common.ViewModels.CompraVenta.CompraViewModel.datasource" />
     <None Include="Properties\DataSources\AdmCostoProduccion.Common.ViewModels.CompraVenta.VentaDetalleViewModel.datasource" />
     <None Include="Properties\DataSources\AdmCostoProduccion.Common.ViewModels.CompraVenta.VentaViewModel.datasource" />
     <None Include="Properties\DataSources\AdmCostoProduccion.Common.ViewModels.Inventario.DespachoDetalleViewModel.datasource" />
