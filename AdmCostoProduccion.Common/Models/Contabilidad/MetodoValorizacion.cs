@@ -17,7 +17,7 @@ namespace AdmCostoProduccion.Common.Models.Contabilidad
 
         #region Propiedades
         [Key]
-        public int MetodoValorizacionId { get; set; }
+        public string MetodoValorizacionId { get; set; }
 
         public string Codigo { get; set; }
 

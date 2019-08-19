@@ -12,21 +12,22 @@ namespace AdmCostoProduccion.Common.ViewModels.Inventario
 
         public TipoMovimientoViewModel()
         {
+            _TipoMovimientoId = Guid.NewGuid().ToString();
         }
 
         public TipoMovimientoViewModel(TipoMovimiento model)
         {
-            TipoMovimientoId = model.TipoMovimientoId;
-            Codigo = model.Codigo;
-            Nombre = model.Nombre;
-            Descripcion = model.Descripcion;
+            _TipoMovimientoId = model.TipoMovimientoId;
+            _Codigo = model.Codigo;
+            _Nombre = model.Nombre;
+            _Descripcion = model.Descripcion;
         }
 
         #endregion
 
         #region Propiedades privadas
 
-        private int _TipoMovimientoId;
+        private string _TipoMovimientoId;
 
         private string _Codigo;
 
@@ -38,7 +39,7 @@ namespace AdmCostoProduccion.Common.ViewModels.Inventario
 
         #region Propiedades publicas
 
-        public int TipoMovimientoId
+        public string TipoMovimientoId
         {
             get
             {

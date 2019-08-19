@@ -211,7 +211,7 @@ namespace AdmCostoProduccion.Windows.Procesos.Inventario.Recepcion
                             else
                             {
                                 ViewModel.NumeroDocumentoRelacionado = string.Empty;
-                                ViewModel.CompraId = 0;
+                                ViewModel.CompraId = string.Empty;
                             }
                             break;
 
@@ -227,7 +227,7 @@ namespace AdmCostoProduccion.Windows.Procesos.Inventario.Recepcion
                             else
                             {
                                 ViewModel.NumeroDocumentoRelacionado = string.Empty;
-                                ViewModel.OrdenProduccionId = 0;
+                                ViewModel.OrdenProduccionId = string.Empty;
                             }
                             break;
                     }
@@ -264,7 +264,7 @@ namespace AdmCostoProduccion.Windows.Procesos.Inventario.Recepcion
             else
             {
                 ViewModel.TipoRecepcion = string.Empty;
-                ViewModel.TipoRecepcionId = 0;
+                ViewModel.TipoRecepcionId = string.Empty;
             }
         }
         #endregion

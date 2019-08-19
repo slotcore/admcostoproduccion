@@ -12,6 +12,7 @@ namespace AdmCostoProduccion.Common.ViewModels.Maestro
 
         public PlantaFabricacionViewModel()
         {
+            _PlantaFabricacionId = Guid.NewGuid().ToString();
         }
 
         public PlantaFabricacionViewModel(PlantaFabricacion model)
@@ -28,9 +29,9 @@ namespace AdmCostoProduccion.Common.ViewModels.Maestro
 
         #region Propiedades privadas
 
-        private int _PlantaFabricacionId;
+        private string _PlantaFabricacionId;
 
-        private int _CentroLogisticoId;
+        private string _CentroLogisticoId;
 
         private string _Codigo;
 
@@ -44,7 +45,7 @@ namespace AdmCostoProduccion.Common.ViewModels.Maestro
 
         #region Propiedades publicas
 
-        public int PlantaFabricacionId
+        public string PlantaFabricacionId
         {
             get
             {
@@ -61,7 +62,7 @@ namespace AdmCostoProduccion.Common.ViewModels.Maestro
             }
         }
 
-        public int CentroLogisticoId
+        public string CentroLogisticoId
         {
             get
             {

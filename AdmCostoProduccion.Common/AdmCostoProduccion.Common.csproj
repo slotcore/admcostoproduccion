@@ -65,13 +65,15 @@
     <Compile Include="Classes\EntityBase.cs" />
     <Compile Include="Classes\ObjectBase.cs" />
     <Compile Include="Classes\ObservableListSource.cs" />
+    <Compile Include="Commands\AplicacionCommand.cs" />
+    <Compile Include="Commands\InventarioCommand.cs" />
     <Compile Include="Data\ApplicationDbContext.cs" />
     <Compile Include="Enum\DespachoDocumentoEnum.cs" />
-    <Compile Include="Forms\LstBaseForm.cs">
+    <Compile Include="Forms\BaseForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\LstBaseForm.Designer.cs">
-      <DependentUpon>LstBaseForm.cs</DependentUpon>
+    <Compile Include="Forms\BaseForm.Designer.cs">
+      <DependentUpon>BaseForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\MntBaseForm.cs">
       <SubType>Form</SubType>
@@ -79,20 +81,30 @@
     <Compile Include="Forms\MntBaseForm.Designer.cs">
       <DependentUpon>MntBaseForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201907260213545_initial.cs" />
-    <Compile Include="Migrations\201907260213545_initial.Designer.cs">
-      <DependentUpon>201907260213545_initial.cs</DependentUpon>
+    <Compile Include="Migrations\201908180134177_Initial_20190817.cs" />
+    <Compile Include="Migrations\201908180134177_Initial_20190817.Designer.cs">
+      <DependentUpon>201908180134177_Initial_20190817.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201908181719503_update_20190818.cs" />
+    <Compile Include="Migrations\201908181719503_update_20190818.Designer.cs">
+      <DependentUpon>201908181719503_update_20190818.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201908182236300_update_20190818_2.cs" />
+    <Compile Include="Migrations\201908182236300_update_20190818_2.Designer.cs">
+      <DependentUpon>201908182236300_update_20190818_2.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Aplicacion\AplicacionConfiguracion.cs" />
+    <Compile Include="Models\Aplicacion\AplicacionCorrelativo.cs" />
     <Compile Include="Models\CompraVenta\Compra.cs" />
     <Compile Include="Models\CompraVenta\CompraDetalle.cs" />
     <Compile Include="Models\CompraVenta\Venta.cs" />
     <Compile Include="Models\CompraVenta\VentaDetalle.cs" />
     <Compile Include="Models\Inventario\Despacho.cs" />
     <Compile Include="Models\Inventario\DespachoDetalle.cs" />
-    <Compile Include="Models\Almacen\Kardex.cs" />
-    <Compile Include="Models\Almacen\KardexMovimiento.cs" />
-    <Compile Include="Models\Almacen\OrdenServicio.cs" />
+    <Compile Include="Models\Inventario\Kardex.cs" />
+    <Compile Include="Models\Inventario\KardexMovimiento.cs" />
+    <Compile Include="Models\Inventario\OrdenServicio.cs" />
     <Compile Include="Models\Inventario\Recepcion.cs" />
     <Compile Include="Models\Inventario\RecepcionDetalle.cs" />
     <Compile Include="Models\Inventario\TipoDespacho.cs" />
@@ -119,15 +131,26 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="SqlResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SqlResource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\Aplicacion\AplicacionConfiguracionViewModel.cs" />
+    <Compile Include="ViewModels\Aplicacion\AplicacionCorrelativoViewModel.cs" />
     <Compile Include="ViewModels\CompraVenta\CompraDetalleViewModel.cs" />
     <Compile Include="ViewModels\CompraVenta\CompraViewModel.cs" />
     <Compile Include="ViewModels\CompraVenta\VentaDetalleViewModel.cs" />
     <Compile Include="ViewModels\CompraVenta\VentaViewModel.cs" />
-    <Compile Include="ViewModels\Costo\CostoOrdenProduccionViewModel.cs" />
-    <Compile Include="ViewModels\Costo\CostoProduccionViewModel.cs" />
+    <Compile Include="ViewModels\Contabilidad\ConfiguracionValorizacionViewModel.cs" />
+    <Compile Include="ViewModels\Contabilidad\CostoOrdenProduccionViewModel.cs" />
+    <Compile Include="ViewModels\Contabilidad\CostoProduccionViewModel.cs" />
     <Compile Include="ViewModels\Inventario\DespachoDetalleViewModel.cs" />
     <Compile Include="ViewModels\Inventario\DespachoViewModel.cs" />
+    <Compile Include="ViewModels\Inventario\KardexMovimientoViewModel.cs" />
+    <Compile Include="ViewModels\Inventario\KardexViewModel.cs" />
     <Compile Include="ViewModels\Inventario\MercaderiaViewModel.cs" />
+    <Compile Include="ViewModels\Inventario\OrdenServicioViewModel.cs" />
     <Compile Include="ViewModels\Inventario\RecepcionDetalleViewModel.cs" />
     <Compile Include="ViewModels\Inventario\RecepcionViewModel.cs" />
     <Compile Include="ViewModels\Inventario\TipoDespachoViewModel.cs" />
@@ -152,18 +175,28 @@
     <Folder Include="Properties\DataSources\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Forms\LstBaseForm.resx">
-      <DependentUpon>LstBaseForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\BaseForm.resx">
+      <DependentUpon>BaseForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MntBaseForm.resx">
       <DependentUpon>MntBaseForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201907260213545_initial.resx">
-      <DependentUpon>201907260213545_initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201908180134177_Initial_20190817.resx">
+      <DependentUpon>201908180134177_Initial_20190817.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908181719503_update_20190818.resx">
+      <DependentUpon>201908181719503_update_20190818.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908182236300_update_20190818_2.resx">
+      <DependentUpon>201908182236300_update_20190818_2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SqlResource.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>SqlResource.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

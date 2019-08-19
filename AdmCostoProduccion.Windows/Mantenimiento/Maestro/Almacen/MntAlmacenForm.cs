@@ -76,7 +76,8 @@ namespace AdmCostoProduccion.Windows.Maestro.Almacen
             }
 
             centroLogisticoViewModelBindingSource.DataSource = CentroLogisticoViewModels;
-            centroLogisticoIdComboBox.SelectedValue = AlmacenViewModel.CentroLogisticoId;
+            if (!string.IsNullOrEmpty(AlmacenViewModel.CentroLogisticoId))
+                centroLogisticoIdComboBox.SelectedValue = AlmacenViewModel.CentroLogisticoId;
         }
 
         private void Grabar()

@@ -19,7 +19,7 @@ namespace AdmCostoProduccion.Common.Models.Produccion
         #region Propiedades
 
         [Key]
-        public int ProcedimientoProduccionId { get; set; }
+        public string ProcedimientoProduccionId { get; set; }
 
         public string Codigo { get; set; }
 
@@ -33,12 +33,12 @@ namespace AdmCostoProduccion.Common.Models.Produccion
 
         #region Foraneas
 
-        public int MercaderiaId { get; set; }
+        public string MercaderiaId { get; set; }
 
         
         public virtual Mercaderia Mercaderia { get; set; }
 
-        public int UnidadMedidaId { get; set; }
+        public string UnidadMedidaId { get; set; }
 
         
         public virtual UnidadMedida UnidadMedida { get; set; }

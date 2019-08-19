@@ -17,7 +17,7 @@ namespace AdmCostoProduccion.Common.Models.Maestro
 
         #region Propiedades
         [Key]
-        public int CentroLogisticoId { get; set; }
+        public string CentroLogisticoId { get; set; }
 
         public string Codigo { get; set; }
 

@@ -12,6 +12,7 @@ namespace AdmCostoProduccion.Common.ViewModels.Inventario
 
         public TipoMercaderiaViewModel()
         {
+            _TipoMercaderiaId = Guid.NewGuid().ToString();
         }
 
         public TipoMercaderiaViewModel(TipoMercaderia model)
@@ -26,7 +27,7 @@ namespace AdmCostoProduccion.Common.ViewModels.Inventario
 
         #region Propiedades privadas
 
-        private int _TipoMercaderiaId;
+        private string _TipoMercaderiaId;
 
         private string _Codigo;
 
@@ -38,7 +39,7 @@ namespace AdmCostoProduccion.Common.ViewModels.Inventario
 
         #region Propiedades publicas
 
-        public int TipoMercaderiaId
+        public string TipoMercaderiaId
         {
             get
             {

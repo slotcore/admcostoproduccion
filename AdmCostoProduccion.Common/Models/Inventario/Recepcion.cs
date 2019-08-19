@@ -19,7 +19,7 @@ namespace AdmCostoProduccion.Common.Models.Inventario
 
         #region Propiedades
         [Key]
-        public int RecepcionId { get; set; }
+        public string RecepcionId { get; set; }
 
         public string Codigo { get; set; }
 
@@ -28,22 +28,22 @@ namespace AdmCostoProduccion.Common.Models.Inventario
 
         #region Foraneas
 
-        public int TipoRecepcionId { get; set; }
+        public string TipoRecepcionId { get; set; }
 
         
         public virtual TipoRecepcion TipoRecepcion { get; set; }
 
-        public int AlmacenId { get; set; }
+        public string AlmacenId { get; set; }
 
         
         public virtual Maestro.Almacen Almacen { get; set; }
 
-        public int? OrdenProduccionId { get; set; }
+        public string OrdenProduccionId { get; set; }
 
         
         public virtual OrdenProduccion OrdenProduccion { get; set; }
 
-        public int? CompraId { get; set; }
+        public string CompraId { get; set; }
 
         public virtual Compra Compra { get; set; }
 

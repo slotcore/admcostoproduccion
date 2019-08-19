@@ -1,4 +1,5 @@
 ﻿using AdmCostoProduccion.Common.Classes;
+using AdmCostoProduccion.Common.Models.Contabilidad;
 using AdmCostoProduccion.Common.Models.Produccion;
 
 using System;
@@ -18,7 +19,7 @@ namespace AdmCostoProduccion.Common.Models.Maestro
 
         #region Propiedades
         [Key]
-        public int PlantaFabricacionId { get; set; }
+        public string PlantaFabricacionId { get; set; }
 
         public string Codigo { get; set; }
 
@@ -29,7 +30,7 @@ namespace AdmCostoProduccion.Common.Models.Maestro
 
         #region Foraneas
 
-        public int CentroLogisticoId { get; set; }
+        public string CentroLogisticoId { get; set; }
 
         
         public virtual CentroLogistico CentroLogistico { get; set; }
@@ -37,9 +38,10 @@ namespace AdmCostoProduccion.Common.Models.Maestro
         #endregion
 
         #region Relacionales
-
-        
+                
         public virtual ICollection<OrdenProduccion> OrdenProduccions { get; set; }
+
+        public virtual ICollection<CostoProduccion> CostoProduccions { get; set; }
 
         #endregion
     }

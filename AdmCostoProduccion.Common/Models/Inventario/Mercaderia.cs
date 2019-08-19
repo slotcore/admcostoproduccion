@@ -1,5 +1,4 @@
 ﻿using AdmCostoProduccion.Common.Classes;
-using AdmCostoProduccion.Common.Models.Almacen;
 using AdmCostoProduccion.Common.Models.CompraVenta;
 using AdmCostoProduccion.Common.Models.Produccion;
 
@@ -20,7 +19,7 @@ namespace AdmCostoProduccion.Common.Models.Inventario
 
         #region Propiedades
         [Key]
-        public int MercaderiaId { get; set; }
+        public string MercaderiaId { get; set; }
 
         public string Codigo { get; set; }
 
@@ -31,7 +30,7 @@ namespace AdmCostoProduccion.Common.Models.Inventario
 
         #region Foraneas
 
-        public int TipoMercaderiaId { get; set; }
+        public string TipoMercaderiaId { get; set; }
 
         
         public virtual TipoMercaderia TipoMercaderia { get; set; }

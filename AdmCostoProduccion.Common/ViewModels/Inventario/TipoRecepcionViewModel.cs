@@ -1,5 +1,4 @@
 ﻿using AdmCostoProduccion.Common.Classes;
-using AdmCostoProduccion.Common.Models.Almacen;
 using AdmCostoProduccion.Common.Models.Inventario;
 using System;
 using System.Linq;
@@ -13,6 +12,7 @@ namespace AdmCostoProduccion.Common.ViewModels.Inventario
 
         public TipoRecepcionViewModel()
         {
+            _TipoRecepcionId = Guid.NewGuid().ToString();
         }
 
         public TipoRecepcionViewModel(TipoRecepcion model)
@@ -28,7 +28,7 @@ namespace AdmCostoProduccion.Common.ViewModels.Inventario
 
         #region Propiedades privadas
 
-        private int _TipoRecepcionId;
+        private string _TipoRecepcionId;
 
         private string _Codigo;
 
@@ -42,7 +42,7 @@ namespace AdmCostoProduccion.Common.ViewModels.Inventario
 
         #region Propiedades publicas
 
-        public int TipoRecepcionId
+        public string TipoRecepcionId
         {
             get
             {

@@ -12,6 +12,7 @@ namespace AdmCostoProduccion.Common.ViewModels.Inventario
 
         public MercaderiaViewModel()
         {
+            _MercaderiaId = Guid.NewGuid().ToString();
         }
 
         public MercaderiaViewModel(Mercaderia model)
@@ -28,9 +29,9 @@ namespace AdmCostoProduccion.Common.ViewModels.Inventario
 
         #region Propiedades privadas
 
-        private int _MercaderiaId;
+        private string _MercaderiaId;
 
-        private int _TipoMercaderiaId;
+        private string _TipoMercaderiaId;
 
         private string _Codigo;
 
@@ -44,7 +45,7 @@ namespace AdmCostoProduccion.Common.ViewModels.Inventario
 
         #region Propiedades publicas
 
-        public int MercaderiaId
+        public string MercaderiaId
         {
             get
             {
@@ -61,7 +62,7 @@ namespace AdmCostoProduccion.Common.ViewModels.Inventario
             }
         }
 
-        public int TipoMercaderiaId
+        public string TipoMercaderiaId
         {
             get
             {

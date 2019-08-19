@@ -12,6 +12,7 @@ namespace AdmCostoProduccion.Common.ViewModels.CompraVenta
 
         public VentaDetalleViewModel()
         {
+            _VentaDetalleId = Guid.NewGuid().ToString();
         }
 
         public VentaDetalleViewModel(VentaDetalle model)
@@ -28,9 +29,9 @@ namespace AdmCostoProduccion.Common.ViewModels.CompraVenta
 
         #region Propiedades privadas
 
-        private int _VentaDetalleId;
+        private string _VentaDetalleId;
 
-        private int _MercaderiaId;
+        private string _MercaderiaId;
 
         private double _Cantidad;
 
@@ -46,7 +47,7 @@ namespace AdmCostoProduccion.Common.ViewModels.CompraVenta
 
         #region Propiedades publicas
 
-        public int VentaDetalleId
+        public string VentaDetalleId
         {
             get
             {
@@ -63,7 +64,7 @@ namespace AdmCostoProduccion.Common.ViewModels.CompraVenta
             }
         }
 
-        public int MercaderiaId
+        public string MercaderiaId
         {
             get
             {

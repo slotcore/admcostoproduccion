@@ -12,11 +12,12 @@ namespace AdmCostoProduccion.Common.ViewModels.Inventario
 
         public UnidadMedidaViewModel()
         {
+            _UnidadMedidaId = Guid.NewGuid().ToString();
         }
 
         public UnidadMedidaViewModel(UnidadMedida model)
         {
-            UnidadMedidaId = model.UnidadMedidaId;
+            _UnidadMedidaId = model.UnidadMedidaId;
             _Codigo = model.Codigo;
             _Nombre = model.Nombre;
             _Descripcion = model.Descripcion;
@@ -27,7 +28,7 @@ namespace AdmCostoProduccion.Common.ViewModels.Inventario
 
         #region Propiedades privadas
 
-        private int _UnidadMedidaId;
+        private string _UnidadMedidaId;
 
         private string _Codigo;
 
@@ -41,7 +42,7 @@ namespace AdmCostoProduccion.Common.ViewModels.Inventario
 
         #region Propiedades publicas
 
-        public int UnidadMedidaId
+        public string UnidadMedidaId
         {
             get
             {

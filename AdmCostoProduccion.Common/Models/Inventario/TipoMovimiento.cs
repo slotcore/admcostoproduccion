@@ -1,5 +1,4 @@
 ﻿using AdmCostoProduccion.Common.Classes;
-using AdmCostoProduccion.Common.Models.Almacen;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -17,7 +16,7 @@ namespace AdmCostoProduccion.Common.Models.Inventario
 
         #region Propiedades
         [Key]
-        public int TipoMovimientoId { get; set; }
+        public string TipoMovimientoId { get; set; }
 
         public string Codigo { get; set; }
 

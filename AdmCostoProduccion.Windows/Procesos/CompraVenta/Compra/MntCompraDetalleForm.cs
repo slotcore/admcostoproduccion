@@ -32,7 +32,7 @@ namespace AdmCostoProduccion.Windows.Procesos.CompraVenta.Compra
             compraDetalleViewModelBindingSource.DataSource = ViewModel;
         }
 
-        public MntCompraDetalleForm(int parentId, ObservableListSource<CompraDetalleViewModel> viewModelList)
+        public MntCompraDetalleForm(string parentId, ObservableListSource<CompraDetalleViewModel> viewModelList)
         {
             InitializeComponent();
             ViewModel = new CompraDetalleViewModel(parentId);

@@ -119,6 +119,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Mantenimiento\Aplicacion\AplicacionConfiguracion\MntAplicacionConfiguracionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Mantenimiento\Aplicacion\AplicacionConfiguracion\MntAplicacionConfiguracionForm.Designer.cs">
+      <DependentUpon>MntAplicacionConfiguracionForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mantenimiento\Aplicacion\AplicacionCorrelativo\LstAplicacionCorrelativoForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Mantenimiento\Aplicacion\AplicacionCorrelativo\LstAplicacionCorrelativoForm.Designer.cs">
+      <DependentUpon>LstAplicacionCorrelativoForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mantenimiento\Aplicacion\AplicacionCorrelativo\MntAplicacionCorrelativoForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Mantenimiento\Aplicacion\AplicacionCorrelativo\MntAplicacionCorrelativoForm.Designer.cs">
+      <DependentUpon>MntAplicacionCorrelativoForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Mantenimiento\Maestro\Almacen\LstAlmacenForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -287,6 +305,24 @@
     <Compile Include="Procesos\CompraVenta\Venta\MntVentaForm.Designer.cs">
       <DependentUpon>MntVentaForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Procesos\Contabilidad\CostoProduccion\LstCostoProduccionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Procesos\Contabilidad\CostoProduccion\LstCostoProduccionForm.Designer.cs">
+      <DependentUpon>LstCostoProduccionForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Procesos\Contabilidad\CostoProduccion\MntCostoOrdenProduccionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Procesos\Contabilidad\CostoProduccion\MntCostoOrdenProduccionForm.Designer.cs">
+      <DependentUpon>MntCostoOrdenProduccionForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Procesos\Contabilidad\CostoProduccion\MntCostoProduccionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Procesos\Contabilidad\CostoProduccion\MntCostoProduccionForm.Designer.cs">
+      <DependentUpon>MntCostoProduccionForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Procesos\Inventario\Despacho\LstDespachoForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -323,6 +359,24 @@
     <Compile Include="Procesos\Inventario\Recepcion\MntRecepcionDetalleForm.Designer.cs">
       <DependentUpon>MntRecepcionDetalleForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Procesos\Produccion\OrdenProduccion\LstOrdenProduccionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Procesos\Produccion\OrdenProduccion\LstOrdenProduccionForm.Designer.cs">
+      <DependentUpon>LstOrdenProduccionForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Procesos\Produccion\OrdenProduccion\MntOrdenProduccionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Procesos\Produccion\OrdenProduccion\MntOrdenProduccionForm.Designer.cs">
+      <DependentUpon>MntOrdenProduccionForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Procesos\Produccion\OrdenProduccion\MntOrdenProduccionInsumoForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Procesos\Produccion\OrdenProduccion\MntOrdenProduccionInsumoForm.Designer.cs">
+      <DependentUpon>MntOrdenProduccionInsumoForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Prompt\CompraPromptForm.cs">
       <SubType>Form</SubType>
@@ -349,6 +403,15 @@
       <DependentUpon>VentaPromptForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Mantenimiento\Aplicacion\AplicacionConfiguracion\MntAplicacionConfiguracionForm.resx">
+      <DependentUpon>MntAplicacionConfiguracionForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mantenimiento\Aplicacion\AplicacionCorrelativo\LstAplicacionCorrelativoForm.resx">
+      <DependentUpon>LstAplicacionCorrelativoForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mantenimiento\Aplicacion\AplicacionCorrelativo\MntAplicacionCorrelativoForm.resx">
+      <DependentUpon>MntAplicacionCorrelativoForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Mantenimiento\Inventario\TipoMovimiento\LstTipoMovimientoForm.resx">
       <DependentUpon>LstTipoMovimientoForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -433,6 +496,15 @@
     <EmbeddedResource Include="Procesos\CompraVenta\Venta\MntVentaForm.resx">
       <DependentUpon>MntVentaForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Procesos\Contabilidad\CostoProduccion\LstCostoProduccionForm.resx">
+      <DependentUpon>LstCostoProduccionForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Procesos\Contabilidad\CostoProduccion\MntCostoOrdenProduccionForm.resx">
+      <DependentUpon>MntCostoOrdenProduccionForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Procesos\Contabilidad\CostoProduccion\MntCostoProduccionForm.resx">
+      <DependentUpon>MntCostoProduccionForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Procesos\Inventario\Despacho\LstDespachoForm.resx">
       <DependentUpon>LstDespachoForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -450,6 +522,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Procesos\Inventario\Recepcion\MntRecepcionDetalleForm.resx">
       <DependentUpon>MntRecepcionDetalleForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Procesos\Produccion\OrdenProduccion\LstOrdenProduccionForm.resx">
+      <DependentUpon>LstOrdenProduccionForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Procesos\Produccion\OrdenProduccion\MntOrdenProduccionForm.resx">
+      <DependentUpon>MntOrdenProduccionForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Procesos\Produccion\OrdenProduccion\MntOrdenProduccionInsumoForm.resx">
+      <DependentUpon>MntOrdenProduccionInsumoForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Prompt\CompraPromptForm.resx">
       <DependentUpon>CompraPromptForm.cs</DependentUpon>
@@ -477,11 +558,15 @@
     <None Include="AdmCostoProduccion.Windows.pfx" />
     <None Include="packages.config" />
     <None Include="Properties\app.manifest" />
-    <None Include="Properties\DataSources\AdmCostoProduccion.Common.Models.Maestro.CentroLogistico.datasource" />
+    <None Include="Properties\DataSources\AdmCostoProduccion.Common.ViewModels.Aplicacion.AplicacionConfiguracionViewModel.datasource" />
+    <None Include="Properties\DataSources\AdmCostoProduccion.Common.ViewModels.Aplicacion.AplicacionCorrelativoViewModel.datasource" />
     <None Include="Properties\DataSources\AdmCostoProduccion.Common.ViewModels.CompraVenta.CompraDetalleViewModel.datasource" />
     <None Include="Properties\DataSources\AdmCostoProduccion.Common.ViewModels.CompraVenta.CompraViewModel.datasource" />
     <None Include="Properties\DataSources\AdmCostoProduccion.Common.ViewModels.CompraVenta.VentaDetalleViewModel.datasource" />
     <None Include="Properties\DataSources\AdmCostoProduccion.Common.ViewModels.CompraVenta.VentaViewModel.datasource" />
+    <None Include="Properties\DataSources\AdmCostoProduccion.Common.ViewModels.Contabilidad.ConfiguracionValorizacionViewModel.datasource" />
+    <None Include="Properties\DataSources\AdmCostoProduccion.Common.ViewModels.Contabilidad.CostoOrdenProduccionViewModel.datasource" />
+    <None Include="Properties\DataSources\AdmCostoProduccion.Common.ViewModels.Contabilidad.CostoProduccionViewModel.datasource" />
     <None Include="Properties\DataSources\AdmCostoProduccion.Common.ViewModels.Inventario.DespachoDetalleViewModel.datasource" />
     <None Include="Properties\DataSources\AdmCostoProduccion.Common.ViewModels.Inventario.DespachoViewModel.datasource" />
     <None Include="Properties\DataSources\AdmCostoProduccion.Common.ViewModels.Inventario.MercaderiaViewModel.datasource" />
@@ -495,6 +580,7 @@
     <None Include="Properties\DataSources\AdmCostoProduccion.Common.ViewModels.Maestro.AlmacenViewModel.datasource" />
     <None Include="Properties\DataSources\AdmCostoProduccion.Common.ViewModels.Maestro.CentroLogisticoViewModel.datasource" />
     <None Include="Properties\DataSources\AdmCostoProduccion.Common.ViewModels.Maestro.PlantaFabricacionViewModel.datasource" />
+    <None Include="Properties\DataSources\AdmCostoProduccion.Common.ViewModels.Produccion.OrdenProduccionInsumoViewModel.datasource" />
     <None Include="Properties\DataSources\AdmCostoProduccion.Common.ViewModels.Produccion.OrdenProduccionViewModel.datasource" />
     <None Include="Properties\DataSources\AdmCostoProduccion.Common.ViewModels.Produccion.ProcedimientoProduccionInsumoViewModel.datasource" />
     <None Include="Properties\DataSources\AdmCostoProduccion.Common.ViewModels.Produccion.ProcedimientoProduccionViewModel.datasource" />
@@ -553,6 +639,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\lookup&amp;reference_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\boorderitem_16x16.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

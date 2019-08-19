@@ -1,9 +1,11 @@
 ﻿using AdmCostoProduccion.Common.Classes;
+using AdmCostoProduccion.Common.Commands.Inventario;
 using AdmCostoProduccion.Common.Data;
 using AdmCostoProduccion.Common.Enum;
 using AdmCostoProduccion.Common.Models.Inventario;
 using System;
 using System.Data.Entity;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 
@@ -15,6 +17,7 @@ namespace AdmCostoProduccion.Common.ViewModels.Inventario
 
         public RecepcionViewModel()
         {
+            _RecepcionId = Guid.NewGuid().ToString();
             _IsNew = true;
         }
 
@@ -51,15 +54,15 @@ namespace AdmCostoProduccion.Common.ViewModels.Inventario
 
         #region Propiedades privadas
 
-        private int _RecepcionId;
+        private string _RecepcionId;
 
-        private int _TipoRecepcionId;
+        private string _TipoRecepcionId;
 
-        private int _AlmacenId;
+        private string _AlmacenId;
 
-        private int? _OrdenProduccionId;
+        private string _OrdenProduccionId;
 
-        private int? _CompraId;
+        private string _CompraId;
 
         private string _Codigo;
 
@@ -80,7 +83,7 @@ namespace AdmCostoProduccion.Common.ViewModels.Inventario
 
         #region Propiedades publicas
 
-        public int RecepcionId
+        public string RecepcionId
         {
             get
             {
@@ -97,7 +100,7 @@ namespace AdmCostoProduccion.Common.ViewModels.Inventario
             }
         }
 
-        public int TipoRecepcionId
+        public string TipoRecepcionId
         {
             get
             {
@@ -114,7 +117,7 @@ namespace AdmCostoProduccion.Common.ViewModels.Inventario
             }
         }
 
-        public int AlmacenId
+        public string AlmacenId
         {
             get
             {
@@ -131,7 +134,7 @@ namespace AdmCostoProduccion.Common.ViewModels.Inventario
             }
         }
 
-        public int? OrdenProduccionId
+        public string OrdenProduccionId
         {
             get
             {
@@ -148,7 +151,7 @@ namespace AdmCostoProduccion.Common.ViewModels.Inventario
             }
         }
 
-        public int? CompraId
+        public string CompraId
         {
             get
             {
@@ -323,40 +326,56 @@ namespace AdmCostoProduccion.Common.ViewModels.Inventario
 
         public void Grabar()
         {
-            ApplicationDbContext Context = new ApplicationDbContext();
-            Recepcion model = this.ToModel();
-
-            if (IsNew)
+            using (ApplicationDbContext context = new ApplicationDbContext())
             {
-                Context.Recepcions.Add(model);
-            }
-            else
-            {
-                if (IsOld)
+                using (var dbContextTransaction = context.Database.BeginTransaction())
                 {
-                    Context.Entry(model).State = EntityState.Modified;
+                    Recepcion model = this.ToModel();
+
+                    if (IsNew)
+                    {
+                        context.Recepcions.Add(model);
+                    }
+                    else
+                    {
+                        if (IsOld)
+                        {
+                            context.Entry(model).State = EntityState.Modified;
+                        }
+                    }
+                    //Childs
+                    foreach (RecepcionDetalleViewModel viewModel in RecepcionDetalleViewModels)
+                    {
+                        viewModel.Grabar(context);
+                    }
+                    //Childs deletes
+                    foreach (var viewModel in RecepcionDetalleViewModels.GetRemoveItems())
+                    {
+                        viewModel.Eliminar(context);
+                    }
+
+                    try
+                    {
+                        context.SaveChanges();
+                        GrabarMovimiento(context);
+                        dbContextTransaction.Commit();
+
+                        _IsNew = false;
+                        _IsOld = false;
+                        _RecepcionId = model.RecepcionId;
+                    }
+                    catch (Exception ex)
+                    {
+                        dbContextTransaction.Rollback();
+                        throw ex;
+                    }
                 }
             }
-            //Childs
-            foreach (RecepcionDetalleViewModel viewModel in RecepcionDetalleViewModels)
-            {
-                viewModel.Grabar(Context);
-            }
-            //Childs deletes
-            foreach (var viewModel in RecepcionDetalleViewModels.GetRemoveItems())
-            {
-                viewModel.Eliminar(Context);
-            }
-            Context.SaveChanges();
-            _IsNew = false;
-            _IsOld = false;
-            _RecepcionId = model.RecepcionId;
         }
 
         public void Eliminar()
         {
             ApplicationDbContext Context = new ApplicationDbContext();
-
             Recepcion model = this.ToModel();
             foreach (var viewModelChild in RecepcionDetalleViewModels)
             {
@@ -364,6 +383,11 @@ namespace AdmCostoProduccion.Common.ViewModels.Inventario
             }
             Context.Entry(model).State = EntityState.Deleted;
             Context.SaveChanges();
+        }
+
+        private void GrabarMovimiento(ApplicationDbContext Context)
+        {
+            InventarioCommand.GenerarMovimientoRecepcion(this, Context);
         }
 
         #endregion

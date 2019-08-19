@@ -1,4 +1,5 @@
 ﻿using AdmCostoProduccion.Common.Classes;
+using AdmCostoProduccion.Common.Commands.Inventario;
 using AdmCostoProduccion.Common.Data;
 using AdmCostoProduccion.Common.Enum;
 using AdmCostoProduccion.Common.Models.Inventario;
@@ -17,6 +18,7 @@ namespace AdmCostoProduccion.Common.ViewModels.Inventario
         public DespachoViewModel()
         {
             _IsNew = true;
+            _DespachoId = Guid.NewGuid().ToString();
         }
 
         public DespachoViewModel(Despacho model)
@@ -52,15 +54,15 @@ namespace AdmCostoProduccion.Common.ViewModels.Inventario
 
         #region Propiedades privadas
 
-        private int _DespachoId;
+        private string _DespachoId;
 
-        private int _TipoDespachoId;
+        private string _TipoDespachoId;
 
-        private int _AlmacenId;
+        private string _AlmacenId;
 
-        private int? _OrdenProduccionId;
+        private string _OrdenProduccionId;
 
-        private int? _VentaId;
+        private string _VentaId;
 
         private string _Codigo;
 
@@ -81,7 +83,7 @@ namespace AdmCostoProduccion.Common.ViewModels.Inventario
 
         #region Propiedades publicas
 
-        public int DespachoId
+        public string DespachoId
         {
             get
             {
@@ -98,7 +100,7 @@ namespace AdmCostoProduccion.Common.ViewModels.Inventario
             }
         }
 
-        public int TipoDespachoId
+        public string TipoDespachoId
         {
             get
             {
@@ -115,7 +117,7 @@ namespace AdmCostoProduccion.Common.ViewModels.Inventario
             }
         }
 
-        public int AlmacenId
+        public string AlmacenId
         {
             get
             {
@@ -132,7 +134,7 @@ namespace AdmCostoProduccion.Common.ViewModels.Inventario
             }
         }
 
-        public int? OrdenProduccionId
+        public string OrdenProduccionId
         {
             get
             {
@@ -149,7 +151,7 @@ namespace AdmCostoProduccion.Common.ViewModels.Inventario
             }
         }
 
-        public int? VentaId
+        public string VentaId
         {
             get
             {
@@ -324,31 +326,48 @@ namespace AdmCostoProduccion.Common.ViewModels.Inventario
 
         public void Grabar()
         {
-            ApplicationDbContext Context = new ApplicationDbContext();
-            Despacho model = this.ToModel();
+            using (ApplicationDbContext context = new ApplicationDbContext())
+            {
+                using (var dbContextTransaction = context.Database.BeginTransaction())
+                {
+                    Despacho model = this.ToModel();
 
-            if (IsNew)
-            {
-                Context.Despachos.Add(model);
-            }
-            else
-            {
-                if (IsOld)
-                {
-                    Context.Entry(model).State = EntityState.Modified;
+                    if (IsNew)
+                    {
+                        context.Despachos.Add(model);
+                    }
+                    else
+                    {
+                        if (IsOld)
+                        {
+                            context.Entry(model).State = EntityState.Modified;
+                        }
+                    }
+                    if (DespachoDetalleViewModels.Count > 0)
+                    {
+                        foreach (DespachoDetalleViewModel viewModel in DespachoDetalleViewModels)
+                        {
+                            viewModel.Grabar(context);
+                        }
+                    }
+                    try
+                    {
+                        context.SaveChanges();
+                        //Se genera el movimiento de salida
+                        InventarioCommand.GenerarMovimientoSalida(this, context);
+                        dbContextTransaction.Commit();
+
+                        _IsNew = false;
+                        _IsOld = false;
+                        _DespachoId = model.DespachoId;
+                    }
+                    catch (Exception ex)
+                    {
+                        dbContextTransaction.Rollback();
+                        throw ex;
+                    }
                 }
             }
-            if (DespachoDetalleViewModels.Count > 0)
-            {
-                foreach (DespachoDetalleViewModel viewModel in DespachoDetalleViewModels)
-                {
-                    viewModel.Grabar(Context);
-                }
-            }
-            Context.SaveChanges();
-            _IsNew = false;
-            _IsOld = false;
-            _DespachoId = model.DespachoId;
         }
 
         #endregion

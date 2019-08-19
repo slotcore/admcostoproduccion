@@ -176,7 +176,7 @@ namespace AdmCostoProduccion.Windows.Procesos.Inventario.Despacho
                             else
                             {
                                 ViewModel.NumeroDocumentoRelacionado = string.Empty;
-                                ViewModel.VentaId = 0;
+                                ViewModel.VentaId = string.Empty;
                             }
                             break;
 
@@ -192,7 +192,7 @@ namespace AdmCostoProduccion.Windows.Procesos.Inventario.Despacho
                             else
                             {
                                 ViewModel.NumeroDocumentoRelacionado = string.Empty;
-                                ViewModel.OrdenProduccionId = 0;
+                                ViewModel.OrdenProduccionId = string.Empty;
                             }
                             break;
                     }
@@ -257,7 +257,7 @@ namespace AdmCostoProduccion.Windows.Procesos.Inventario.Despacho
             else
             {
                 ViewModel.TipoDespacho = string.Empty;
-                ViewModel.TipoDespachoId = 0;
+                ViewModel.TipoDespachoId = string.Empty;
             }
         }
         #endregion

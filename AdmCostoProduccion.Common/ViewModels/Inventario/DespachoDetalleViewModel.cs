@@ -12,10 +12,11 @@ namespace AdmCostoProduccion.Common.ViewModels.Inventario
     {
         #region Constructor
 
-        public DespachoDetalleViewModel(int despachoId)
+        public DespachoDetalleViewModel(string despachoId)
         {
             _IsNew = true;
             _DespachoId = despachoId;
+            _DespachoDetalleId = Guid.NewGuid().ToString();
         }
 
         public DespachoDetalleViewModel(DespachoDetalle model)
@@ -36,17 +37,17 @@ namespace AdmCostoProduccion.Common.ViewModels.Inventario
 
         #region Propiedades privadas
 
-        private int _DespachoDetalleId;
+        private string _DespachoDetalleId;
 
-        private int _DespachoId;
+        private string _DespachoId;
 
-        private int? _OrdenProduccionInsumoId;
+        private string _OrdenProduccionInsumoId;
 
-        private int? _VentaDetalleId;
+        private string _VentaDetalleId;
 
-        private int _MercaderiaId;
+        private string _MercaderiaId;
 
-        private int _UnidadMedidaId;
+        private string _UnidadMedidaId;
 
         private double _Cantidad;
 
@@ -60,7 +61,7 @@ namespace AdmCostoProduccion.Common.ViewModels.Inventario
 
         #region Propiedades publicas
 
-        public int DespachoDetalleId
+        public string DespachoDetalleId
         {
             get
             {
@@ -77,7 +78,7 @@ namespace AdmCostoProduccion.Common.ViewModels.Inventario
             }
         }
 
-        public int DespachoId
+        public string DespachoId
         {
             get
             {
@@ -94,7 +95,7 @@ namespace AdmCostoProduccion.Common.ViewModels.Inventario
             }
         }
 
-        public int? OrdenProduccionInsumoId
+        public string OrdenProduccionInsumoId
         {
             get
             {
@@ -111,7 +112,7 @@ namespace AdmCostoProduccion.Common.ViewModels.Inventario
             }
         }
 
-        public int? VentaDetalleId
+        public string VentaDetalleId
         {
             get
             {
@@ -128,7 +129,7 @@ namespace AdmCostoProduccion.Common.ViewModels.Inventario
             }
         }
 
-        public int MercaderiaId
+        public string MercaderiaId
         {
             get
             {
@@ -145,7 +146,7 @@ namespace AdmCostoProduccion.Common.ViewModels.Inventario
             }
         }
 
-        public int UnidadMedidaId
+        public string UnidadMedidaId
         {
             get
             {

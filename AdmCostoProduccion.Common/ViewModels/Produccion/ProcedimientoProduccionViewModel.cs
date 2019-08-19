@@ -13,6 +13,7 @@ namespace AdmCostoProduccion.Common.ViewModels.Produccion
 
         public ProcedimientoProduccionViewModel()
         {
+            _ProcedimientoProduccionId = Guid.NewGuid().ToString();
         }
 
         public ProcedimientoProduccionViewModel(ProcedimientoProduccion model)
@@ -42,11 +43,11 @@ namespace AdmCostoProduccion.Common.ViewModels.Produccion
 
         #region Propiedades privadas
 
-        private int _ProcedimientoProduccionId;
+        private string _ProcedimientoProduccionId;
 
-        private int _MercaderiaId;
+        private string _MercaderiaId;
 
-        private int _UnidadMedidaId;
+        private string _UnidadMedidaId;
 
         private string _Codigo;
 
@@ -69,7 +70,7 @@ namespace AdmCostoProduccion.Common.ViewModels.Produccion
 
         #region Propiedades publicas
 
-        public int ProcedimientoProduccionId
+        public string ProcedimientoProduccionId
         {
             get
             {
@@ -86,7 +87,7 @@ namespace AdmCostoProduccion.Common.ViewModels.Produccion
             }
         }
 
-        public int MercaderiaId
+        public string MercaderiaId
         {
             get
             {
@@ -103,7 +104,7 @@ namespace AdmCostoProduccion.Common.ViewModels.Produccion
             }
         }
 
-        public int UnidadMedidaId
+        public string UnidadMedidaId
         {
             get
             {

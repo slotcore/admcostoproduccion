@@ -1,5 +1,4 @@
 ﻿using AdmCostoProduccion.Common.Classes;
-using AdmCostoProduccion.Common.Models.Almacen;
 using AdmCostoProduccion.Common.Models.Produccion;
 
 using System;
@@ -19,7 +18,7 @@ namespace AdmCostoProduccion.Common.Models.Inventario
 
         #region Propiedades
         [Key]
-        public int UnidadMedidaId { get; set; }
+        public string UnidadMedidaId { get; set; }
 
         public string Codigo { get; set; }
 

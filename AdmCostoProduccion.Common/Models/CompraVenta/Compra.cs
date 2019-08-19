@@ -18,7 +18,7 @@ namespace AdmCostoProduccion.Common.Models.CompraVenta
 
         #region Propiedades
         [Key]
-        public int CompraId { get; set; }
+        public string CompraId { get; set; }
 
         public string NumeroDocumento { get; set; }
 
@@ -29,7 +29,7 @@ namespace AdmCostoProduccion.Common.Models.CompraVenta
 
         #region Foraneas
 
-        public int CentroLogisticoId { get; set; }
+        public string CentroLogisticoId { get; set; }
 
         public virtual CentroLogistico CentroLogistico { get; set; }
 

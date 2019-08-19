@@ -19,7 +19,7 @@ namespace AdmCostoProduccion.Common.Models.Inventario
         #region Propiedades
 
         [Key]
-        public int DespachoId { get; set; }
+        public string DespachoId { get; set; }
 
         public string Codigo { get; set; }
 
@@ -29,19 +29,19 @@ namespace AdmCostoProduccion.Common.Models.Inventario
 
         #region Foraneas
 
-        public int TipoDespachoId { get; set; }
+        public string TipoDespachoId { get; set; }
 
         public virtual TipoDespacho TipoDespacho { get; set; }
 
-        public int AlmacenId { get; set; }
+        public string AlmacenId { get; set; }
 
         public virtual Maestro.Almacen Almacen { get; set; }
 
-        public int? OrdenProduccionId { get; set; }
+        public string OrdenProduccionId { get; set; }
 
         public virtual OrdenProduccion OrdenProduccion { get; set; }
 
-        public int? VentaId { get; set; }
+        public string VentaId { get; set; }
 
         public virtual Venta Venta { get; set; }
 

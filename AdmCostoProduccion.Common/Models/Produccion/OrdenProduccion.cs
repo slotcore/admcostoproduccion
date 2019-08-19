@@ -1,5 +1,4 @@
 ﻿using AdmCostoProduccion.Common.Classes;
-using AdmCostoProduccion.Common.Models.Almacen;
 using AdmCostoProduccion.Common.Models.Contabilidad;
 using AdmCostoProduccion.Common.Models.Inventario;
 using AdmCostoProduccion.Common.Models.Maestro;
@@ -21,7 +20,7 @@ namespace AdmCostoProduccion.Common.Models.Produccion
 
         #region Propiedades
         [Key]
-        public int OrdenProduccionId { get; set; }
+        public string OrdenProduccionId { get; set; }
 
         public string Codigo { get; set; }
 
@@ -37,22 +36,22 @@ namespace AdmCostoProduccion.Common.Models.Produccion
 
         #region Foraneas
 
-        public int PlantaFabricacionId { get; set; }
+        public string PlantaFabricacionId { get; set; }
 
         
         public virtual PlantaFabricacion PlantaFabricacion { get; set; }
 
-        public int MercaderiaId { get; set; }
+        public string MercaderiaId { get; set; }
 
         
         public virtual Mercaderia Mercaderia { get; set; }
 
-        public int ProcedimientoProduccionId { get; set; }
+        public string ProcedimientoProduccionId { get; set; }
 
         
         public virtual ProcedimientoProduccion ProcedimientoProduccion { get; set; }
 
-        public int UnidadMedidaId { get; set; }
+        public string UnidadMedidaId { get; set; }
 
         
         public virtual UnidadMedida UnidadMedida { get; set; }

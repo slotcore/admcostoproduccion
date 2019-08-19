@@ -23,6 +23,10 @@ using AdmCostoProduccion.Windows.Procesos.Inventario.Recepcion;
 using AdmCostoProduccion.Windows.Procesos.Inventario.Despacho;
 using AdmCostoProduccion.Windows.Procesos.CompraVenta.Venta;
 using AdmCostoProduccion.Windows.Procesos.CompraVenta.Compra;
+using AdmCostoProduccion.Windows.Procesos.Produccion.OrdenProduccion;
+using AdmCostoProduccion.Windows.Procesos.Contabilidad.CostoProduccion;
+using AdmCostoProduccion.Windows.Mantenimiento.Aplicacion.AplicacionConfiguracion;
+using AdmCostoProduccion.Windows.Mantenimiento.Aplicacion.AplicacionCorrelativo;
 
 namespace AdmCostoProduccion.Windows
 {
@@ -52,7 +56,6 @@ namespace AdmCostoProduccion.Windows
                         Tag = this.ActiveMdiChild
                     };
 
-                    this.ActiveMdiChild.FormClosed += new FormClosedEventHandler(ActiveMdiChild_FormClosed);
                     this.ActiveMdiChild.Parent = page;
 
                     MainFormKryptonDockableNavigator.Pages.Add(page);
@@ -69,9 +72,19 @@ namespace AdmCostoProduccion.Windows
                 (MainFormKryptonDockableNavigator.SelectedPage.Tag as Form).Select();
         }
 
-        private void ActiveMdiChild_FormClosed(object sender, FormClosedEventArgs e)
+        private void MainFormKryptonDockableNavigator_CloseAction(object sender, CloseActionEventArgs e)
         {
-            ((sender as Form).Tag as KryptonPage).Dispose();
+            (e.Item.Tag as Form).Close();
+            if (MainFormKryptonDockableNavigator.Pages.Count == 1)
+            {
+                MainFormKryptonDockableNavigator.Visible = false;
+            }
+        }
+
+        private void AplicacionConfiguracionMenuItem_Click(object sender, EventArgs e)
+        {
+            var form = new MntAplicacionConfiguracionForm();
+            form.ShowDialog();
         }
 
         private void CentroLogisticoMenuItem_Click(object sender, EventArgs e)
@@ -194,6 +207,33 @@ namespace AdmCostoProduccion.Windows
         private void CompraMenuItem_Click(object sender, EventArgs e)
         {
             var form = new LstCompraForm
+            {
+                MdiParent = this
+            };
+            form.Show();
+        }
+
+        private void OrdenProduccionMenuItem_Click(object sender, EventArgs e)
+        {
+            var form = new LstOrdenProduccionForm
+            {
+                MdiParent = this
+            };
+            form.Show();
+        }
+
+        private void CostoProduccionMenuItem_Click(object sender, EventArgs e)
+        {
+            var form = new LstCostoProduccionForm
+            {
+                MdiParent = this
+            };
+            form.Show();
+        }
+
+        private void CorrelativoMenuItem_Click(object sender, EventArgs e)
+        {
+            var form = new LstAplicacionCorrelativoForm
             {
                 MdiParent = this
             };

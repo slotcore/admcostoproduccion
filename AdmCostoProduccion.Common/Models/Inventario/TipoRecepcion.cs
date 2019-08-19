@@ -17,7 +17,7 @@ namespace AdmCostoProduccion.Common.Models.Inventario
 
         #region Propiedades
         [Key]
-        public int TipoRecepcionId { get; set; }
+        public string TipoRecepcionId { get; set; }
 
         public string Codigo { get; set; }
 

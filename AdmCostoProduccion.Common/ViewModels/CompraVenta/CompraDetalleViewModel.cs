@@ -12,10 +12,11 @@ namespace AdmCostoProduccion.Common.ViewModels.CompraVenta
     {
         #region Constructor
 
-        public CompraDetalleViewModel(int parentId)
+        public CompraDetalleViewModel(string parentId)
         {
             _IsNew = true;
             _CompraId = parentId;
+            _CompraDetalleId = Guid.NewGuid().ToString();
         }
 
         public CompraDetalleViewModel(CompraDetalle model)
@@ -33,11 +34,11 @@ namespace AdmCostoProduccion.Common.ViewModels.CompraVenta
 
         #region Propiedades privadas
 
-        private int _CompraDetalleId;
+        private string _CompraDetalleId;
 
-        private int _CompraId;
+        private string _CompraId;
 
-        private int _MercaderiaId;
+        private string _MercaderiaId;
 
         private double _Cantidad;
 
@@ -53,7 +54,7 @@ namespace AdmCostoProduccion.Common.ViewModels.CompraVenta
 
         #region Propiedades publicas
 
-        public int CompraDetalleId
+        public string CompraDetalleId
         {
             get
             {
@@ -70,7 +71,7 @@ namespace AdmCostoProduccion.Common.ViewModels.CompraVenta
             }
         }
 
-        public int CompraId
+        public string CompraId
         {
             get
             {
@@ -87,7 +88,7 @@ namespace AdmCostoProduccion.Common.ViewModels.CompraVenta
             }
         }
 
-        public int MercaderiaId
+        public string MercaderiaId
         {
             get
             {

@@ -1,5 +1,4 @@
 ﻿using AdmCostoProduccion.Common.Classes;
-using AdmCostoProduccion.Common.Models.Almacen;
 using AdmCostoProduccion.Common.Models.Inventario;
 using System;
 using System.Linq;
@@ -13,6 +12,7 @@ namespace AdmCostoProduccion.Common.ViewModels.Inventario
 
         public TipoDespachoViewModel()
         {
+            _TipoDespachoId = Guid.NewGuid().ToString();
         }
 
         public TipoDespachoViewModel(TipoDespacho model)
@@ -28,7 +28,7 @@ namespace AdmCostoProduccion.Common.ViewModels.Inventario
 
         #region Propiedades privadas
 
-        private int _TipoDespachoId;
+        private string _TipoDespachoId;
 
         private string _Codigo;
 
@@ -42,7 +42,7 @@ namespace AdmCostoProduccion.Common.ViewModels.Inventario
 
         #region Propiedades publicas
 
-        public int TipoDespachoId
+        public string TipoDespachoId
         {
             get
             {

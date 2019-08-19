@@ -17,7 +17,7 @@ namespace AdmCostoProduccion.Common.Models.Contabilidad
 
         #region Propiedades
         [Key]
-        public int ConfiguracionValorizacionId { get; set; }
+        public string ConfiguracionValorizacionId { get; set; }
 
         public string Codigo { get; set; }
 
@@ -28,12 +28,12 @@ namespace AdmCostoProduccion.Common.Models.Contabilidad
 
         #region Foraneas
 
-        public int MetodoValorizacionId { get; set; }
+        public string MetodoValorizacionId { get; set; }
 
         
         public virtual MetodoValorizacion MetodoValorizacion { get; set; }
 
-        public int DistribucionValorizacionId { get; set; }
+        public string DistribucionValorizacionId { get; set; }
 
         
         public virtual DistribucionValorizacion DistribucionValorizacion { get; set; }

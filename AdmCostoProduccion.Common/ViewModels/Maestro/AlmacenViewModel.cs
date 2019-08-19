@@ -12,25 +12,26 @@ namespace AdmCostoProduccion.Common.ViewModels.Maestro
 
         public AlmacenViewModel()
         {
+            _AlmacenId = Guid.NewGuid().ToString();
         }
 
         public AlmacenViewModel(Almacen model)
         {
-            AlmacenId = model.AlmacenId;
-            CentroLogisticoId = model.CentroLogisticoId;
-            Codigo = model.Codigo;
-            Nombre = model.Nombre;
-            Descripcion = model.Descripcion;
-            CentroLogistico = model.CentroLogistico.Nombre;
+            _AlmacenId = model.AlmacenId;
+            _CentroLogisticoId = model.CentroLogisticoId;
+            _Codigo = model.Codigo;
+            _Nombre = model.Nombre;
+            _Descripcion = model.Descripcion;
+            _CentroLogistico = model.CentroLogistico.Nombre;
         }
 
         #endregion
 
         #region Propiedades privadas
 
-        private int _AlmacenId;
+        private string _AlmacenId;
 
-        private int _CentroLogisticoId;
+        private string _CentroLogisticoId;
 
         private string _Codigo;
 
@@ -44,7 +45,7 @@ namespace AdmCostoProduccion.Common.ViewModels.Maestro
 
         #region Propiedades publicas
 
-        public int AlmacenId
+        public string AlmacenId
         {
             get
             {
@@ -61,7 +62,7 @@ namespace AdmCostoProduccion.Common.ViewModels.Maestro
             }
         }
 
-        public int CentroLogisticoId
+        public string CentroLogisticoId
         {
             get
             {

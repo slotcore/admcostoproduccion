@@ -40,7 +40,7 @@ namespace AdmCostoProduccion.Windows.Procesos.Inventario.Despacho
             CargarCombos();
         }
 
-        public MntDespachoDetalleForm(int despachoId, ObservableListSource<DespachoDetalleViewModel> viewModelList)
+        public MntDespachoDetalleForm(string despachoId, ObservableListSource<DespachoDetalleViewModel> viewModelList)
         {
             InitializeComponent();
             IsNew = true;

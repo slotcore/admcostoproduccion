@@ -1,5 +1,5 @@
 ﻿using AdmCostoProduccion.Common.Classes;
-using AdmCostoProduccion.Common.Models.Almacen;
+using AdmCostoProduccion.Common.Models.Inventario;
 using AdmCostoProduccion.Common.Models.Produccion;
 
 using System;
@@ -18,7 +18,7 @@ namespace AdmCostoProduccion.Common.Models.Contabilidad
 
         #region Propiedades
         [Key]
-        public int CostoOrdenProduccionId { get; set; }
+        public string CostoOrdenProduccionId { get; set; }
 
         public double FactorDistribucion { get; set; }
 
@@ -32,17 +32,17 @@ namespace AdmCostoProduccion.Common.Models.Contabilidad
 
         #region Foraneas
 
-        public int CostoProduccionId { get; set; }
+        public string CostoProduccionId { get; set; }
 
         
         public virtual CostoProduccion CostoProduccion { get; set; }
 
-        public int OrdenProduccionId { get; set; }
+        public string OrdenProduccionId { get; set; }
 
         
         public virtual OrdenProduccion OrdenProduccion { get; set; }
 
-        public int KardexMovimientoId { get; set; }
+        public string KardexMovimientoId { get; set; }
 
         
         public virtual KardexMovimiento KardexMovimiento { get; set; }

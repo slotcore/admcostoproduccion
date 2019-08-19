@@ -1,6 +1,8 @@
 ﻿using AdmCostoProduccion.Common.Classes;
+using AdmCostoProduccion.Common.Data;
 using AdmCostoProduccion.Common.Models.Produccion;
 using System;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 
@@ -10,30 +12,36 @@ namespace AdmCostoProduccion.Common.ViewModels.Produccion
     {
         #region Constructor
 
-        public OrdenProduccionInsumoViewModel()
+        public OrdenProduccionInsumoViewModel(string parentId)
         {
+            _IsNew = true;
+            _OrdenProduccionId = parentId;
+            _OrdenProduccionInsumoId = Guid.NewGuid().ToString();
         }
 
         public OrdenProduccionInsumoViewModel(OrdenProduccionInsumo model)
         {
-            OrdenProduccionInsumoId = model.OrdenProduccionInsumoId;
-            MercaderiaId = model.MercaderiaId;
-            UnidadMedidaId = model.UnidadMedidaId;
-            Cantidad = model.Cantidad;
-            CodigoMercaderia = model.Mercaderia.Codigo;
-            NombreMercaderia = model.Mercaderia.Nombre;
-            UnidadMedida = model.UnidadMedida.Nombre;
+            _OrdenProduccionInsumoId = model.OrdenProduccionInsumoId;
+            _OrdenProduccionId = model.OrdenProduccionId;
+            _MercaderiaId = model.MercaderiaId;
+            _UnidadMedidaId = model.UnidadMedidaId;
+            _Cantidad = model.Cantidad;
+            _CodigoMercaderia = model.Mercaderia.Codigo;
+            _NombreMercaderia = model.Mercaderia.Nombre;
+            _UnidadMedida = model.UnidadMedida.Nombre;
         }
 
         #endregion
 
         #region Propiedades privadas
 
-        private int _OrdenProduccionInsumoId;
+        private string _OrdenProduccionInsumoId;
 
-        private int _MercaderiaId;
+        private string _OrdenProduccionId;
 
-        private int _UnidadMedidaId;
+        private string _MercaderiaId;
+
+        private string _UnidadMedidaId;
 
         private double _Cantidad;
 
@@ -47,7 +55,7 @@ namespace AdmCostoProduccion.Common.ViewModels.Produccion
 
         #region Propiedades publicas
 
-        public int OrdenProduccionInsumoId
+        public string OrdenProduccionInsumoId
         {
             get
             {
@@ -64,7 +72,24 @@ namespace AdmCostoProduccion.Common.ViewModels.Produccion
             }
         }
 
-        public int MercaderiaId
+        public string OrdenProduccionId
+        {
+            get
+            {
+                return _OrdenProduccionId;
+            }
+
+            set
+            {
+                if (value != _OrdenProduccionId)
+                {
+                    _OrdenProduccionId = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
+        public string MercaderiaId
         {
             get
             {
@@ -81,7 +106,7 @@ namespace AdmCostoProduccion.Common.ViewModels.Produccion
             }
         }
 
-        public int UnidadMedidaId
+        public string UnidadMedidaId
         {
             get
             {
@@ -170,15 +195,18 @@ namespace AdmCostoProduccion.Common.ViewModels.Produccion
 
         #region Metodos Publicos
 
-        public void CopyTo(ref OrdenProduccionInsumoViewModel viewModel)
+        public void CopyOf(OrdenProduccionInsumoViewModel viewModel)
         {
-            viewModel.OrdenProduccionInsumoId = _OrdenProduccionInsumoId;
-            viewModel.MercaderiaId = _MercaderiaId;
-            viewModel.UnidadMedidaId = _UnidadMedidaId;
-            viewModel.Cantidad = _Cantidad;
-            viewModel.CodigoMercaderia = _CodigoMercaderia;
-            viewModel.NombreMercaderia = _NombreMercaderia;
-            viewModel.UnidadMedida = _UnidadMedida;
+            _IsNew = viewModel.IsNew;
+            _IsOld = viewModel.IsOld;
+            _OrdenProduccionInsumoId = viewModel.OrdenProduccionInsumoId;
+            _OrdenProduccionId = viewModel.OrdenProduccionId;
+            _MercaderiaId = viewModel.MercaderiaId;
+            _UnidadMedidaId = viewModel.UnidadMedidaId;
+            _Cantidad = viewModel.Cantidad;
+            _CodigoMercaderia = viewModel.CodigoMercaderia;
+            _NombreMercaderia = viewModel.NombreMercaderia;
+            _UnidadMedida = viewModel.UnidadMedida;
         }
 
         public OrdenProduccionInsumo ToModel()
@@ -186,12 +214,33 @@ namespace AdmCostoProduccion.Common.ViewModels.Produccion
             OrdenProduccionInsumo model = new OrdenProduccionInsumo
             {
                 OrdenProduccionInsumoId = _OrdenProduccionInsumoId,
+                OrdenProduccionId = _OrdenProduccionId,
                 MercaderiaId = _MercaderiaId,
                 UnidadMedidaId = _UnidadMedidaId,
                 Cantidad = _Cantidad
             };
 
             return model;
+        }
+
+        public void Grabar(ApplicationDbContext Context)
+        {
+            OrdenProduccionInsumo model = this.ToModel();
+
+            if (IsNew) Context.OrdenProduccionInsumos.Add(model);
+            else
+            {
+                if (IsOld) Context.Entry(model).State = EntityState.Modified;
+            }
+        }
+
+        public void Eliminar(ApplicationDbContext Context)
+        {
+            if (!IsNew)
+            {
+                OrdenProduccionInsumo model = this.ToModel();
+                Context.Entry(model).State = EntityState.Deleted;
+            }
         }
 
         #endregion

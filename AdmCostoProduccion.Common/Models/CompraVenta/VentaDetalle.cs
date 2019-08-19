@@ -17,7 +17,7 @@ namespace AdmCostoProduccion.Common.Models.CompraVenta
 
         #region Propiedades
         [Key]
-        public int VentaDetalleId { get; set; }
+        public string VentaDetalleId { get; set; }
 
         public double Cantidad { get; set; }
 
@@ -26,11 +26,11 @@ namespace AdmCostoProduccion.Common.Models.CompraVenta
 
         #region Foraneas
 
-        public int VentaId { get; set; }
+        public string VentaId { get; set; }
 
         public virtual Venta Venta { get; set; }
 
-        public int MercaderiaId { get; set; }
+        public string MercaderiaId { get; set; }
 
         public virtual Mercaderia Mercaderia { get; set; }
 

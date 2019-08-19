@@ -1,7 +1,8 @@
 ﻿using AdmCostoProduccion.Common.Classes;
+using AdmCostoProduccion.Common.Data;
 using AdmCostoProduccion.Common.Models.Produccion;
 using System;
-using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 
@@ -13,27 +14,30 @@ namespace AdmCostoProduccion.Common.ViewModels.Produccion
 
         public OrdenProduccionViewModel()
         {
+            _IsNew = true;
+            _OrdenProduccionId = Guid.NewGuid().ToString();
         }
 
         public OrdenProduccionViewModel(OrdenProduccion model)
         {
-            OrdenProduccionId = model.OrdenProduccionId;
-            PlantaFabricacionId = model.PlantaFabricacionId;
-            MercaderiaId = model.MercaderiaId;
-            ProcedimientoProduccionId = model.ProcedimientoProduccionId;
-            UnidadMedidaId = model.UnidadMedidaId;
-            Codigo = model.Codigo;
-            Fecha = model.Fecha;
-            Cantidad = model.Cantidad;
-            Lote = model.Lote;
-            CodigoMercaderia = model.Mercaderia.Codigo;
-            NombreMercaderia = model.Mercaderia.Nombre;
-            ProcedimientoProduccion = model.ProcedimientoProduccion.Nombre;
-            UnidadMedida = model.UnidadMedida.Nombre;
+            _OrdenProduccionId = model.OrdenProduccionId;
+            _PlantaFabricacionId = model.PlantaFabricacionId;
+            _MercaderiaId = model.MercaderiaId;
+            _ProcedimientoProduccionId = model.ProcedimientoProduccionId;
+            _UnidadMedidaId = model.ProcedimientoProduccionId;
+            _Codigo = model.Codigo;
+            _Fecha = model.Fecha;
+            _Cantidad = model.Cantidad;
+            _Lote = model.Lote;
+            _PlantaFabricacion = model.PlantaFabricacion.Nombre;
+            _CodigoMercaderia = model.Mercaderia.Codigo;
+            _NombreMercaderia = model.Mercaderia.Nombre;
+            _ProcedimientoProduccion = model.ProcedimientoProduccion.Nombre;
+            _UnidadMedida = model.UnidadMedida.Nombre;
 
-            foreach (var ordenProduccionInsumo in model.OrdenProduccionInsumos)
+            foreach (var child in model.OrdenProduccionInsumos)
             {
-                OrdenProduccionInsumoViewModels.Add(new OrdenProduccionInsumoViewModel(ordenProduccionInsumo));
+                OrdenProduccionInsumoViewModels.Add(new OrdenProduccionInsumoViewModel(child));
             }
         }
 
@@ -41,15 +45,15 @@ namespace AdmCostoProduccion.Common.ViewModels.Produccion
 
         #region Propiedades privadas
 
-        private int _OrdenProduccionId;
+        private string _OrdenProduccionId;
 
-        private int _PlantaFabricacionId;
+        private string _PlantaFabricacionId;
 
-        private int _MercaderiaId;
+        private string _MercaderiaId;
 
-        private int _ProcedimientoProduccionId;
+        private string _ProcedimientoProduccionId;
 
-        private int _UnidadMedidaId;
+        private string _UnidadMedidaId;
 
         private string _Codigo;
 
@@ -59,6 +63,8 @@ namespace AdmCostoProduccion.Common.ViewModels.Produccion
 
         private string _Lote;
 
+        private string _PlantaFabricacion;
+
         private string _CodigoMercaderia;
 
         private string _NombreMercaderia;
@@ -67,14 +73,14 @@ namespace AdmCostoProduccion.Common.ViewModels.Produccion
 
         private string _UnidadMedida;
 
-        private ObservableListSource<OrdenProduccionInsumoViewModel> _OrdenProduccionInsumoViewModels 
+        private ObservableListSource<OrdenProduccionInsumoViewModel> _OrdenProduccionInsumoViewModels
             = new ObservableListSource<OrdenProduccionInsumoViewModel>();
 
         #endregion
 
         #region Propiedades publicas
 
-        public int OrdenProduccionId
+        public string OrdenProduccionId
         {
             get
             {
@@ -91,7 +97,7 @@ namespace AdmCostoProduccion.Common.ViewModels.Produccion
             }
         }
 
-        public int PlantaFabricacionId
+        public string PlantaFabricacionId
         {
             get
             {
@@ -108,7 +114,7 @@ namespace AdmCostoProduccion.Common.ViewModels.Produccion
             }
         }
 
-        public int MercaderiaId
+        public string MercaderiaId
         {
             get
             {
@@ -125,7 +131,7 @@ namespace AdmCostoProduccion.Common.ViewModels.Produccion
             }
         }
 
-        public int ProcedimientoProduccionId
+        public string ProcedimientoProduccionId
         {
             get
             {
@@ -142,7 +148,7 @@ namespace AdmCostoProduccion.Common.ViewModels.Produccion
             }
         }
 
-        public int UnidadMedidaId
+        public string UnidadMedidaId
         {
             get
             {
@@ -227,6 +233,23 @@ namespace AdmCostoProduccion.Common.ViewModels.Produccion
             }
         }
 
+        public string PlantaFabricacion
+        {
+            get
+            {
+                return _PlantaFabricacion;
+            }
+
+            set
+            {
+                if (value != _PlantaFabricacion)
+                {
+                    _PlantaFabricacion = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
         public string CodigoMercaderia
         {
             get
@@ -295,7 +318,7 @@ namespace AdmCostoProduccion.Common.ViewModels.Produccion
             }
         }
 
-        public virtual ObservableListSource<OrdenProduccionInsumoViewModel> OrdenProduccionInsumoViewModels
+        public ObservableListSource<OrdenProduccionInsumoViewModel> OrdenProduccionInsumoViewModels
         {
             get
             {
@@ -315,21 +338,25 @@ namespace AdmCostoProduccion.Common.ViewModels.Produccion
 
         #region Metodos Publicos
 
-        public void CopyTo(ref OrdenProduccionViewModel viewModel)
+        public void CopyOf(OrdenProduccionViewModel viewModel)
         {
-            viewModel.OrdenProduccionId = _OrdenProduccionId;
-            viewModel.PlantaFabricacionId = _PlantaFabricacionId;
-            viewModel.MercaderiaId = _MercaderiaId;
-            viewModel.ProcedimientoProduccionId = _ProcedimientoProduccionId;
-            viewModel.UnidadMedidaId = _UnidadMedidaId;
-            viewModel.Codigo = _Codigo;
-            viewModel.Fecha = _Fecha;
-            viewModel.Cantidad = _Cantidad;
-            viewModel.Lote = _Lote;
-            viewModel.CodigoMercaderia = CodigoMercaderia;
-            viewModel.NombreMercaderia = NombreMercaderia;
-            viewModel.ProcedimientoProduccion = ProcedimientoProduccion;
-            viewModel.UnidadMedida = UnidadMedida;
+            _IsNew = viewModel.IsNew;
+            _IsOld = viewModel.IsOld;
+            _OrdenProduccionId = viewModel.OrdenProduccionId;
+            _PlantaFabricacionId = viewModel.PlantaFabricacionId;
+            _MercaderiaId = viewModel.MercaderiaId;
+            _ProcedimientoProduccionId = viewModel.ProcedimientoProduccionId;
+            _UnidadMedidaId = viewModel.UnidadMedidaId;
+            _Codigo = viewModel.Codigo;
+            _Fecha = viewModel.Fecha;
+            _Cantidad = viewModel.Cantidad;
+            _Lote = viewModel.Lote;
+            _PlantaFabricacion = viewModel.PlantaFabricacion;
+            _CodigoMercaderia = viewModel.CodigoMercaderia;
+            _NombreMercaderia = viewModel.NombreMercaderia;
+            _ProcedimientoProduccion = viewModel.ProcedimientoProduccion;
+            _UnidadMedida = viewModel.UnidadMedida;
+            _OrdenProduccionInsumoViewModels = viewModel.OrdenProduccionInsumoViewModels;
         }
 
         public OrdenProduccion ToModel()
@@ -347,13 +374,52 @@ namespace AdmCostoProduccion.Common.ViewModels.Produccion
                 Lote = _Lote
             };
 
-            model.OrdenProduccionInsumos = new List<OrdenProduccionInsumo>();
-            foreach (var ordenProduccionInsumoViewModel in OrdenProduccionInsumoViewModels)
-            {
-                model.OrdenProduccionInsumos.Add(ordenProduccionInsumoViewModel.ToModel());
-            }
-
             return model;
+        }
+
+        public void Grabar()
+        {
+            ApplicationDbContext Context = new ApplicationDbContext();
+            OrdenProduccion model = this.ToModel();
+
+            if (IsNew)
+            {
+                Context.OrdenProduccions.Add(model);
+            }
+            else
+            {
+                if (IsOld)
+                {
+                    Context.Entry(model).State = EntityState.Modified;
+                }
+            }
+            //Childs
+            foreach (OrdenProduccionInsumoViewModel viewModel in OrdenProduccionInsumoViewModels)
+            {
+                viewModel.Grabar(Context);
+            }
+            //Childs deletes
+            foreach (var viewModel in OrdenProduccionInsumoViewModels.GetRemoveItems())
+            {
+                viewModel.Eliminar(Context);
+            }
+            Context.SaveChanges();
+            _IsNew = false;
+            _IsOld = false;
+            _OrdenProduccionId = model.OrdenProduccionId;
+        }
+
+        public void Eliminar()
+        {
+            ApplicationDbContext Context = new ApplicationDbContext();
+
+            OrdenProduccion model = this.ToModel();
+            foreach (var viewModelChild in OrdenProduccionInsumoViewModels)
+            {
+                viewModelChild.Eliminar(Context);
+            }
+            Context.Entry(model).State = EntityState.Deleted;
+            Context.SaveChanges();
         }
 
         #endregion

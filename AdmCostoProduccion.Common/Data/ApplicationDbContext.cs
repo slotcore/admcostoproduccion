@@ -1,5 +1,6 @@
-﻿using AdmCostoProduccion.Common.Models.Almacen;
+﻿using AdmCostoProduccion.Common.Models.Aplicacion;
 using AdmCostoProduccion.Common.Models.CompraVenta;
+using AdmCostoProduccion.Common.Models.Contabilidad;
 using AdmCostoProduccion.Common.Models.Inventario;
 using AdmCostoProduccion.Common.Models.Maestro;
 using AdmCostoProduccion.Common.Models.Produccion;
@@ -34,6 +35,8 @@ namespace AdmCostoProduccion.Common.Data
 
         }
 
+        public DbSet<AplicacionConfiguracion> AplicacionConfiguracions { get; set; }
+        public DbSet<AplicacionCorrelativo> AplicacionCorrelativos { get; set; }
         public DbSet<CentroLogistico> CentroLogisticos { get; set; }
         public DbSet<Almacen> Almacens { get; set; }
         public DbSet<PlantaFabricacion> PlantaFabricacions { get; set; }
@@ -54,5 +57,12 @@ namespace AdmCostoProduccion.Common.Data
         public DbSet<Compra> Compras { get; set; }
         public DbSet<CompraDetalle> CompraDetalles { get; set; }
         public DbSet<OrdenProduccion> OrdenProduccions { get; set; }
+        public DbSet<OrdenProduccionInsumo> OrdenProduccionInsumos { get; set; }
+        public DbSet<CostoProduccion> CostoProduccions { get; set; }
+        public DbSet<CostoOrdenProduccion> CostoOrdenProduccions { get; set; }
+        public DbSet<ConfiguracionValorizacion> ConfiguracionValorizacions { get; set; }
+        public DbSet<OrdenServicio> OrdenServicios { get; set; }
+        public DbSet<Kardex> Kardexs { get; set; }
+        public DbSet<KardexMovimiento> KardexMovimientos { get; set; }
     }
 }

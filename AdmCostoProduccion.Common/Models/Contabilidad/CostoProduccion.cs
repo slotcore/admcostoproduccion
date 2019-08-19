@@ -1,5 +1,5 @@
 ﻿using AdmCostoProduccion.Common.Classes;
-
+using AdmCostoProduccion.Common.Models.Maestro;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -17,7 +17,7 @@ namespace AdmCostoProduccion.Common.Models.Contabilidad
 
         #region Propiedades
         [Key]
-        public int CostoProduccionId { get; set; }
+        public string CostoProduccionId { get; set; }
 
         public string Codigo { get; set; }
 
@@ -37,12 +37,11 @@ namespace AdmCostoProduccion.Common.Models.Contabilidad
 
         #region Foraneas
 
-        public int AlmacenId { get; set; }
+        public string PlantaFabricacionId { get; set; }
 
-        
-        public virtual Models.Maestro.Almacen Almacen { get; set; }
+        public virtual PlantaFabricacion PlantaFabricacion { get; set; }
 
-        public int ConfiguracionValorizacionId { get; set; }
+        public string ConfiguracionValorizacionId { get; set; }
 
         
         public virtual ConfiguracionValorizacion ConfiguracionValorizacion { get; set; }

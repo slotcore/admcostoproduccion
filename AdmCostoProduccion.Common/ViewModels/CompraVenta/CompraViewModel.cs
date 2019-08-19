@@ -15,6 +15,7 @@ namespace AdmCostoProduccion.Common.ViewModels.CompraVenta
         public CompraViewModel()
         {
             _IsNew = true;
+            _CompraId = Guid.NewGuid().ToString();
             _Fecha = DateTime.Now;
         }
 
@@ -37,9 +38,9 @@ namespace AdmCostoProduccion.Common.ViewModels.CompraVenta
 
         #region Propiedades privadas
 
-        private int _CompraId;
+        private string _CompraId;
 
-        private int _CentroLogisticoId;
+        private string _CentroLogisticoId;
 
         private string _NumeroDocumento;
 
@@ -56,7 +57,7 @@ namespace AdmCostoProduccion.Common.ViewModels.CompraVenta
 
         #region Propiedades publicas
 
-        public int CompraId
+        public string CompraId
         {
             get
             {
@@ -73,7 +74,7 @@ namespace AdmCostoProduccion.Common.ViewModels.CompraVenta
             }
         }
 
-        public int CentroLogisticoId
+        public string CentroLogisticoId
         {
             get
             {
