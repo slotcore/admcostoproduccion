@@ -15,135 +15,100 @@ namespace AdmCostoProduccion.Common.Commands.Inventario
     {
         public static void GenerarRecepcion(CompraViewModel compraViewModel, ApplicationDbContext context)
         {
-            var recepcion = context.Recepcions
-                .Where(o => o.CompraId == compraViewModel.CompraId)
-                .FirstOrDefault();
-            //Correlativo
-            var correlativo = AplicacionCommand.GetCorrelativo("RE");
-            //TipoRecepcion
-            var tipoRecepcion = context.TipoRecepcions
-                .Where(o => o.Codigo == "CO")
-                .FirstOrDefault();
-            if (tipoRecepcion == null)
-                throw new Exception("No existe configurado tipo Recepcion CO - Compra");
-
-            //Recepcion
-            var recepcionId = Guid.NewGuid().ToString();
-            if (recepcion == null)
-            {
-                context.Database.ExecuteSqlCommand(
-                    SqlResource.Recepcion_Insert,
-                        new SqlParameter("@RecepcionId", recepcionId),
-                        new SqlParameter("@Codigo", correlativo),
-                        new SqlParameter("@Observacion", string.Format("Asociado a compra: {0}", compraViewModel.NumeroDocumento)),
-                        new SqlParameter("@TipoRecepcionId", tipoRecepcion.TipoRecepcionId),
-                        new SqlParameter("@AlmacenId", 0),
-                        new SqlParameter("@OrdenProduccionId", DBNull.Value),
-                        new SqlParameter("@CompraId", compraViewModel.CompraId),
-                        new SqlParameter("@UsuarioCreacion", DBNull.Value),
-                        new SqlParameter("@FechaCreacion", DateTime.Now),
-                        new SqlParameter("@Eliminado", false)
-                );
-            }
-            else
-            {
-                recepcionId = recepcion.RecepcionId;
-                context.Database.ExecuteSqlCommand(
-                    SqlResource.Recepcion_Update,
-                        new SqlParameter("@RecepcionId", recepcionId),
-                        new SqlParameter("@Codigo", correlativo),
-                        new SqlParameter("@Observacion", string.Format("Asociado a compra: {0}", compraViewModel.NumeroDocumento)),
-                        new SqlParameter("@TipoRecepcionId", tipoRecepcion.TipoRecepcionId),
-                        new SqlParameter("@AlmacenId", 0),
-                        new SqlParameter("@OrdenProduccionId", DBNull.Value),
-                        new SqlParameter("@CompraId", compraViewModel.CompraId),
-                        new SqlParameter("@UsuarioUltimaActualizacion", DBNull.Value),
-                        new SqlParameter("@FechaUltimaActualizacion", DateTime.Now),
-                        new SqlParameter("@Eliminado", false)
-                );
-            }
             foreach (var compraDetalleViewModel in compraViewModel.CompraDetalleViewModels)
             {
-                ////Se busca si ya tiene asociado alguna recepcion
-                ////Kardex
-                //Kardex kardex = ordenServicio.Kardexs
-                //    .Where(o => o.AlmacenId == compraViewModel.AlmacenId)
-                //    .FirstOrDefault();
-                //var kardexId = Guid.NewGuid().ToString();
-                //if (kardex == null)
-                //{
-                //    context.Database.ExecuteSqlCommand(
-                //        SqlResource.Kardex_Insert,
-                //            new SqlParameter("@KardexId", kardexId),
-                //            new SqlParameter("@CantidadSaldo", compraDetalleViewModel.Cantidad),
-                //            new SqlParameter("@CantidadEntrada", compraDetalleViewModel.Cantidad),
-                //            new SqlParameter("@CantidadSalida", 0),
-                //            new SqlParameter("@OrdenServicioId", recepcionId),
-                //            new SqlParameter("@AlmacenId", compraViewModel.AlmacenId),
-                //            new SqlParameter("@UsuarioCreacion", DBNull.Value),
-                //            new SqlParameter("@FechaCreacion", DateTime.Now),
-                //            new SqlParameter("@Eliminado", false)
-                //    );
-                //}
-                //else
-                //{
-                //    kardexId = kardex.KardexId;
-                //    var cantidadSaldo = kardex.CantidadSaldo + compraDetalleViewModel.Cantidad - cantidadAnterior;
-                //    var cantidadEntrada = kardex.CantidadEntrada + compraDetalleViewModel.Cantidad - cantidadAnterior;
-                //    var cantidadSalida = kardex.CantidadSalida;
-                //    context.Database.ExecuteSqlCommand(
-                //        SqlResource.Kardex_Update,
-                //            new SqlParameter("@KardexId", kardexId),
-                //            new SqlParameter("@CantidadSaldo", cantidadSaldo),
-                //            new SqlParameter("@CantidadEntrada", cantidadEntrada),
-                //            new SqlParameter("@CantidadSalida", cantidadSalida),
-                //            new SqlParameter("@OrdenServicioId", recepcionId),
-                //            new SqlParameter("@AlmacenId", compraViewModel.AlmacenId),
-                //            new SqlParameter("@UsuarioUltimaActualizacion", DBNull.Value),
-                //            new SqlParameter("@FechaUltimaActualizacion", DateTime.Now),
-                //            new SqlParameter("@Eliminado", false)
-                //    );
-                //}
-                ////KardexMovimiento
-                //TipoMovimiento tipoMovimiento = context.TipoMovimientos
-                //    .Where(o => o.Codigo == "ENT")
-                //    .FirstOrDefault();
-                //var kardexMovimientoId = Guid.NewGuid().ToString();
-                //if (recepcion == null)
-                //{
-                //    context.Database.ExecuteSqlCommand(
-                //        SqlResource.KardexMovimiento_Insert,
-                //            new SqlParameter("@KardexMovimientoId", kardexMovimientoId),
-                //            new SqlParameter("@Cantidad", compraDetalleViewModel.Cantidad),
-                //            new SqlParameter("@KardexId", kardexId),
-                //            new SqlParameter("@TipoMovimientoId", tipoMovimiento.TipoMovimientoId),
-                //            new SqlParameter("@RecepcionDetalleId", compraDetalleViewModel.RecepcionDetalleId),
-                //            new SqlParameter("@DespachoDetalleId", DBNull.Value),
-                //            new SqlParameter("@MercaderiaId", compraDetalleViewModel.MercaderiaId),
-                //            new SqlParameter("@UnidadMedidaId", compraDetalleViewModel.UnidadMedidaId),
-                //            new SqlParameter("@UsuarioCreacion", DBNull.Value),
-                //            new SqlParameter("@FechaCreacion", DateTime.Now),
-                //            new SqlParameter("@Eliminado", false)
-                //    );
-                //}
-                //else
-                //{
-                //    kardexMovimientoId = recepcion.KardexMovimientoId;
-                //    context.Database.ExecuteSqlCommand(
-                //        SqlResource.KardexMovimiento_Update,
-                //            new SqlParameter("@KardexMovimientoId", kardexMovimientoId),
-                //            new SqlParameter("@Cantidad", compraDetalleViewModel.Cantidad),
-                //            new SqlParameter("@KardexId", kardexId),
-                //            new SqlParameter("@TipoMovimientoId", tipoMovimiento.TipoMovimientoId),
-                //            new SqlParameter("@RecepcionDetalleId", compraDetalleViewModel.RecepcionDetalleId),
-                //            new SqlParameter("@DespachoDetalleId", DBNull.Value),
-                //            new SqlParameter("@MercaderiaId", compraDetalleViewModel.MercaderiaId),
-                //            new SqlParameter("@UnidadMedidaId", compraDetalleViewModel.UnidadMedidaId),
-                //            new SqlParameter("@UsuarioUltimaActualizacion", DBNull.Value),
-                //            new SqlParameter("@FechaUltimaActualizacion", DateTime.Now),
-                //            new SqlParameter("@Eliminado", false)
-                //    );
-                //}
+                //Mercaderia
+                var mercaderia = context.Mercaderias
+                    .Where(o => o.MercaderiaId == compraDetalleViewModel.MercaderiaId)
+                    .FirstOrDefault();
+                //ReglaAlmacenaje
+                var reglaAlmacenaje = context.ReglaAlmacenajes
+                    .Where(o => o.FamiliaMercaderiaId == mercaderia.FamiliaMercaderiaId)
+                    .FirstOrDefault();
+
+                //Se verifica si existe la recepcion
+                var recepcion = context.Recepcions
+                    .Where(o => o.CompraId == compraViewModel.CompraId && o.AlmacenId == reglaAlmacenaje.AlmacenId)
+                    .FirstOrDefault();
+
+                //Recepcion
+                var recepcionId = Guid.NewGuid().ToString();
+                if (recepcion == null)
+                {
+                    //Correlativo
+                    var correlativo = AplicacionCommand.GetCorrelativo("RE");
+                    //TipoRecepcion
+                    var tipoRecepcion = context.TipoRecepcions
+                        .Where(o => o.Codigo == "CO")
+                        .FirstOrDefault();
+                    if (tipoRecepcion == null)
+                        throw new Exception("No existe configurado tipo Recepcion CO - Compra");
+
+                    context.Database.ExecuteSqlCommand(
+                        SqlResource.Recepcion_Insert,
+                            new SqlParameter("@RecepcionId", recepcionId),
+                            new SqlParameter("@Codigo", correlativo),
+                            new SqlParameter("@Observacion", string.Format("Asociado a compra: {0}", compraViewModel.NumeroDocumento)),
+                            new SqlParameter("@TipoRecepcionId", tipoRecepcion.TipoRecepcionId),
+                            new SqlParameter("@AlmacenId", reglaAlmacenaje.AlmacenId),
+                            new SqlParameter("@OrdenProduccionId", DBNull.Value),
+                            new SqlParameter("@CompraId", compraViewModel.CompraId),
+                            new SqlParameter("@UsuarioCreacion", DBNull.Value),
+                            new SqlParameter("@FechaCreacion", DateTime.Now),
+                            new SqlParameter("@Eliminado", false)
+                    );
+                }
+                else
+                {
+                    recepcionId = recepcion.RecepcionId;
+                }
+                //Se busca si ya tiene asociado algun detalle
+                //RecepcionDetalle
+                var recepcionDetalle = recepcion?.RecepcionDetalles
+                    .Where(o => o.CompraDetalleId == compraDetalleViewModel.CompraDetalleId)
+                    .FirstOrDefault();
+                var recepcionDetalleId = Guid.NewGuid().ToString();
+                if (recepcionDetalle == null)
+                {
+                    context.Database.ExecuteSqlCommand(
+                        SqlResource.RecepcionDetalle_Insert,
+                            new SqlParameter("@RecepcionDetalleId", recepcionDetalleId),
+                            new SqlParameter("@Cantidad", compraDetalleViewModel.Cantidad),
+                            new SqlParameter("@RecepcionId", recepcionId),
+                            new SqlParameter("@MercaderiaId", compraDetalleViewModel.MercaderiaId),
+                            new SqlParameter("@UnidadMedidaId", compraDetalleViewModel.UnidadMedidaId),
+                            new SqlParameter("@OrdenProduccionInsumoId", DBNull.Value),
+                            new SqlParameter("@CompraDetalleId", compraDetalleViewModel.CompraDetalleId),
+                            new SqlParameter("@UsuarioCreacion", DBNull.Value),
+                            new SqlParameter("@FechaCreacion", DateTime.Now),
+                            new SqlParameter("@Eliminado", false)
+                    );
+                }
+                else
+                {
+                    context.Database.ExecuteSqlCommand(
+                        SqlResource.RecepcionDetalle_Update,
+                            new SqlParameter("@RecepcionDetalleId", recepcionDetalleId),
+                            new SqlParameter("@Cantidad", compraDetalleViewModel.Cantidad),
+                            new SqlParameter("@RecepcionId", recepcionId),
+                            new SqlParameter("@MercaderiaId", compraDetalleViewModel.MercaderiaId),
+                            new SqlParameter("@UnidadMedidaId", compraDetalleViewModel.UnidadMedidaId),
+                            new SqlParameter("@OrdenProduccionInsumoId", DBNull.Value),
+                            new SqlParameter("@CompraDetalleId", compraDetalleViewModel.CompraDetalleId),
+                            new SqlParameter("@UsuarioUltimaActualizacion", DBNull.Value),
+                            new SqlParameter("@FechaUltimaActualizacion", DateTime.Now),
+                            new SqlParameter("@Eliminado", false)
+                    );
+                }
+            }
+
+            //Se generan los movimientos asociados
+            var recepcions = context.Recepcions
+                .Where(o => o.CompraId == compraViewModel.CompraId).ToList();
+            foreach (var recepcion in recepcions)
+            {
+                var recepcionViewModel = new RecepcionViewModel(recepcion);
+                GenerarMovimientoRecepcion(recepcionViewModel, context);
             }
         }
 

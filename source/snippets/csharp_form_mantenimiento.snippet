@@ -5,7 +5,7 @@
       <Title>FormMantenimiento</Title>
       <Author>Jose Chacon</Author>
       <Description>Define un Modelo con EntityFramework</Description>
-      <Shortcut>cstprdformmnt</Shortcut>
+      <Shortcut>cstformmnt</Shortcut>
     </Header>
     <Snippet>
       <Declarations>
@@ -102,10 +102,11 @@ namespace $LibraryName$.$EsquemaName$.$FolderName$
         {
             try
             {
+                bool IsNew = ViewModel.IsNew;
                 Cursor = Cursors.WaitCursor;
                 $DataSourceName$BindingSource.EndEdit();
                 ViewModel.Grabar();
-                if (ViewModel.IsNew) ViewModelList.Add(ViewModel);
+                if (IsNew) ViewModelList.Add(ViewModel);
                 else
                 {
                     var viewModel = ViewModelList

@@ -93,6 +93,14 @@
     <Compile Include="Migrations\201908182236300_update_20190818_2.Designer.cs">
       <DependentUpon>201908182236300_update_20190818_2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201908212223161_update_20190821.cs" />
+    <Compile Include="Migrations\201908212223161_update_20190821.Designer.cs">
+      <DependentUpon>201908212223161_update_20190821.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201908221822217_update_20190822_1.cs" />
+    <Compile Include="Migrations\201908221822217_update_20190822_1.Designer.cs">
+      <DependentUpon>201908221822217_update_20190822_1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Aplicacion\AplicacionConfiguracion.cs" />
     <Compile Include="Models\Aplicacion\AplicacionCorrelativo.cs" />
@@ -102,11 +110,13 @@
     <Compile Include="Models\CompraVenta\VentaDetalle.cs" />
     <Compile Include="Models\Inventario\Despacho.cs" />
     <Compile Include="Models\Inventario\DespachoDetalle.cs" />
+    <Compile Include="Models\Inventario\FamiliaMercaderia.cs" />
     <Compile Include="Models\Inventario\Kardex.cs" />
     <Compile Include="Models\Inventario\KardexMovimiento.cs" />
     <Compile Include="Models\Inventario\OrdenServicio.cs" />
     <Compile Include="Models\Inventario\Recepcion.cs" />
     <Compile Include="Models\Inventario\RecepcionDetalle.cs" />
+    <Compile Include="Models\Inventario\ReglaAlmacenaje.cs" />
     <Compile Include="Models\Inventario\TipoDespacho.cs" />
     <Compile Include="Models\Inventario\TipoMovimiento.cs" />
     <Compile Include="Models\Inventario\TipoRecepcion.cs" />
@@ -147,12 +157,14 @@
     <Compile Include="ViewModels\Contabilidad\CostoProduccionViewModel.cs" />
     <Compile Include="ViewModels\Inventario\DespachoDetalleViewModel.cs" />
     <Compile Include="ViewModels\Inventario\DespachoViewModel.cs" />
+    <Compile Include="ViewModels\Inventario\FamiliaMercaderiaViewModel.cs" />
     <Compile Include="ViewModels\Inventario\KardexMovimientoViewModel.cs" />
     <Compile Include="ViewModels\Inventario\KardexViewModel.cs" />
     <Compile Include="ViewModels\Inventario\MercaderiaViewModel.cs" />
     <Compile Include="ViewModels\Inventario\OrdenServicioViewModel.cs" />
     <Compile Include="ViewModels\Inventario\RecepcionDetalleViewModel.cs" />
     <Compile Include="ViewModels\Inventario\RecepcionViewModel.cs" />
+    <Compile Include="ViewModels\Inventario\ReglaAlmacenajeViewModel.cs" />
     <Compile Include="ViewModels\Inventario\TipoDespachoViewModel.cs" />
     <Compile Include="ViewModels\Inventario\TipoMercaderiaViewModel.cs" />
     <Compile Include="ViewModels\Inventario\TipoMovimientoViewModel.cs" />
@@ -189,6 +201,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201908182236300_update_20190818_2.resx">
       <DependentUpon>201908182236300_update_20190818_2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908212223161_update_20190821.resx">
+      <DependentUpon>201908212223161_update_20190821.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908221822217_update_20190822_1.resx">
+      <DependentUpon>201908221822217_update_20190822_1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -173,5 +173,34 @@ namespace AdmCostoProduccion.Common {
                 return ResourceManager.GetString("Recepcion_Update", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a INSERT INTO RecepcionDetalles (RecepcionDetalleId, Cantidad, RecepcionId, MercaderiaId, UnidadMedidaId, OrdenProduccionInsumoId, CompraDetalleId, UsuarioCreacion, FechaCreacion, Eliminado)
+        ///VALUES (@RecepcionDetalleId, @Cantidad, @RecepcionId, @MercaderiaId, @UnidadMedidaId, @OrdenProduccionInsumoId, @CompraDetalleId, @UsuarioCreacion, @FechaCreacion, @Eliminado).
+        /// </summary>
+        public static string RecepcionDetalle_Insert {
+            get {
+                return ResourceManager.GetString("RecepcionDetalle_Insert", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a UPDATE RecepcionDetalles
+        ///SET Cantidad = @Cantidad
+        ///	, RecepcionId = @RecepcionId
+        ///	, MercaderiaId = @MercaderiaId
+        ///	, UnidadMedidaId = @UnidadMedidaId
+        ///	, OrdenProduccionInsumoId = @OrdenProduccionInsumoId
+        ///	, CompraDetalleId = @CompraDetalleId
+        ///	, UsuarioUltimaActualizacion = @UsuarioUltimaActualizacion
+        ///	, FechaUltimaActualizacion = @FechaUltimaActualizacion
+        ///	, Eliminado = @Eliminado
+        ///WHERE RecepcionDetalleId = @RecepcionDetalleId.
+        /// </summary>
+        public static string RecepcionDetalle_Update {
+            get {
+                return ResourceManager.GetString("RecepcionDetalle_Update", resourceCulture);
+            }
+        }
     }
 }

@@ -357,7 +357,8 @@ namespace AdmCostoProduccion.Common.ViewModels.Inventario
                     try
                     {
                         context.SaveChanges();
-                        GrabarMovimiento(context);
+                        //Se genera el movimiento de Ingreso
+                        InventarioCommand.GenerarMovimientoRecepcion(this, context);
                         dbContextTransaction.Commit();
 
                         _IsNew = false;
@@ -383,11 +384,6 @@ namespace AdmCostoProduccion.Common.ViewModels.Inventario
             }
             Context.Entry(model).State = EntityState.Deleted;
             Context.SaveChanges();
-        }
-
-        private void GrabarMovimiento(ApplicationDbContext Context)
-        {
-            InventarioCommand.GenerarMovimientoRecepcion(this, Context);
         }
 
         #endregion

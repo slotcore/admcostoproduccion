@@ -63,7 +63,7 @@
             mercaderiaIdLabel.BackColor = System.Drawing.Color.Transparent;
             mercaderiaIdLabel.Location = new System.Drawing.Point(182, 135);
             mercaderiaIdLabel.Name = "mercaderiaIdLabel";
-            mercaderiaIdLabel.Size = new System.Drawing.Size(63, 13);
+            mercaderiaIdLabel.Size = new System.Drawing.Size(73, 15);
             mercaderiaIdLabel.TabIndex = 0;
             mercaderiaIdLabel.Text = "Mercaderia:";
             // 
@@ -73,7 +73,7 @@
             cantidadLabel.BackColor = System.Drawing.Color.Transparent;
             cantidadLabel.Location = new System.Drawing.Point(182, 191);
             cantidadLabel.Name = "cantidadLabel";
-            cantidadLabel.Size = new System.Drawing.Size(52, 13);
+            cantidadLabel.Size = new System.Drawing.Size(59, 15);
             cantidadLabel.TabIndex = 2;
             cantidadLabel.Text = "Cantidad:";
             // 
@@ -83,7 +83,7 @@
             unidadMedidaIdLabel.BackColor = System.Drawing.Color.Transparent;
             unidadMedidaIdLabel.Location = new System.Drawing.Point(182, 164);
             unidadMedidaIdLabel.Name = "unidadMedidaIdLabel";
-            unidadMedidaIdLabel.Size = new System.Drawing.Size(82, 13);
+            unidadMedidaIdLabel.Size = new System.Drawing.Size(95, 15);
             unidadMedidaIdLabel.TabIndex = 4;
             unidadMedidaIdLabel.Text = "Unidad Medida:";
             // 
@@ -121,7 +121,7 @@
             this.kryptonPanel1.Location = new System.Drawing.Point(0, 0);
             this.kryptonPanel1.Margin = new System.Windows.Forms.Padding(2);
             this.kryptonPanel1.Name = "kryptonPanel1";
-            this.kryptonPanel1.Size = new System.Drawing.Size(798, 395);
+            this.kryptonPanel1.Size = new System.Drawing.Size(798, 391);
             this.kryptonPanel1.TabIndex = 0;
             // 
             // cantidadTextBox
@@ -161,7 +161,7 @@
             this.mercaderiaTextBox.Location = new System.Drawing.Point(277, 132);
             this.mercaderiaTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.mercaderiaTextBox.Name = "mercaderiaTextBox";
-            this.mercaderiaTextBox.Size = new System.Drawing.Size(365, 24);
+            this.mercaderiaTextBox.Size = new System.Drawing.Size(365, 27);
             this.mercaderiaTextBox.TabIndex = 1;
             // 
             // BuscarMercaderiaButton
@@ -190,7 +190,7 @@
             this.GrabarButton.Image = global::AdmCostoProduccion.Windows.Properties.Resources.save_16x16;
             this.GrabarButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.GrabarButton.Name = "GrabarButton";
-            this.GrabarButton.Size = new System.Drawing.Size(66, 24);
+            this.GrabarButton.Size = new System.Drawing.Size(78, 24);
             this.GrabarButton.Text = "Grabar";
             this.GrabarButton.Click += new System.EventHandler(this.GrabarButton_Click);
             // 
@@ -199,7 +199,7 @@
             this.CancelarButton.Image = global::AdmCostoProduccion.Windows.Properties.Resources.cancel_16x16;
             this.CancelarButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.CancelarButton.Name = "CancelarButton";
-            this.CancelarButton.Size = new System.Drawing.Size(77, 24);
+            this.CancelarButton.Size = new System.Drawing.Size(90, 24);
             this.CancelarButton.Text = "Cancelar";
             this.CancelarButton.Click += new System.EventHandler(this.CancelarButton_Click);
             // 

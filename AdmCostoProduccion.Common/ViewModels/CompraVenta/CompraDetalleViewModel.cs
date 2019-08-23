@@ -24,10 +24,12 @@ namespace AdmCostoProduccion.Common.ViewModels.CompraVenta
             _CompraDetalleId = model.CompraDetalleId;
             _CompraId = model.CompraId;
             _MercaderiaId = model.MercaderiaId;
+            _UnidadMedidaId = model.UnidadMedidaId;
             _Cantidad = model.Cantidad;
             _PrecioUnitario = model.PrecioUnitario;
             _CodigoMercaderia = model.Mercaderia.Codigo;
             _NombreMercaderia = model.Mercaderia.Nombre;
+            _UnidadMedida = model.UnidadMedida?.Nombre;
         }
 
         #endregion
@@ -40,6 +42,8 @@ namespace AdmCostoProduccion.Common.ViewModels.CompraVenta
 
         private string _MercaderiaId;
 
+        private string _UnidadMedidaId;
+
         private double _Cantidad;
 
         private double _PrecioUnitario;
@@ -49,6 +53,8 @@ namespace AdmCostoProduccion.Common.ViewModels.CompraVenta
         private string _CodigoMercaderia;
 
         private string _NombreMercaderia;
+
+        private string _UnidadMedida;
 
         #endregion
 
@@ -100,6 +106,23 @@ namespace AdmCostoProduccion.Common.ViewModels.CompraVenta
                 if (value != _MercaderiaId)
                 {
                     _MercaderiaId = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
+        public string UnidadMedidaId
+        {
+            get
+            {
+                return _UnidadMedidaId;
+            }
+
+            set
+            {
+                if (value != _UnidadMedidaId)
+                {
+                    _UnidadMedidaId = value;
                     NotifyPropertyChanged();
                 }
             }
@@ -194,6 +217,23 @@ namespace AdmCostoProduccion.Common.ViewModels.CompraVenta
             }
         }
 
+        public string UnidadMedida
+        {
+            get
+            {
+                return _UnidadMedida;
+            }
+
+            set
+            {
+                if (value != _UnidadMedida)
+                {
+                    _UnidadMedida = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
         #endregion
 
         #region Metodos Publicos
@@ -205,10 +245,12 @@ namespace AdmCostoProduccion.Common.ViewModels.CompraVenta
             _CompraDetalleId = viewModel.CompraDetalleId;
             _CompraId = viewModel.CompraId;
             _MercaderiaId = viewModel.MercaderiaId;
+            _UnidadMedidaId = viewModel.UnidadMedidaId;
             _Cantidad = viewModel.Cantidad;
             _PrecioUnitario = viewModel.PrecioUnitario;
             _CodigoMercaderia = viewModel.CodigoMercaderia;
             _NombreMercaderia = viewModel.NombreMercaderia;
+            _UnidadMedida = viewModel.UnidadMedida;
         }
 
         public CompraDetalle ToModel()
@@ -218,6 +260,7 @@ namespace AdmCostoProduccion.Common.ViewModels.CompraVenta
                 CompraDetalleId = _CompraDetalleId,
                 CompraId = _CompraId,
                 MercaderiaId = _MercaderiaId,
+                UnidadMedidaId = _UnidadMedidaId,
                 Cantidad = _Cantidad,
                 PrecioUnitario = _PrecioUnitario
             };

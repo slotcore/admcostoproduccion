@@ -8,35 +8,27 @@ using System.Text;
 
 namespace AdmCostoProduccion.Common.ViewModels.Inventario
 {
-    public class MercaderiaViewModel : ObjectBase
+    public class FamiliaMercaderiaViewModel : ObjectBase
     {
         #region Constructor
 
-        public MercaderiaViewModel()
+        public FamiliaMercaderiaViewModel()
         {
             _IsNew = true;
-            _MercaderiaId = Guid.NewGuid().ToString();
+            _FamiliaMercaderiaId = Guid.NewGuid().ToString();
         }
 
-        public MercaderiaViewModel(Mercaderia model)
+        public FamiliaMercaderiaViewModel(FamiliaMercaderia model)
         {
-            _MercaderiaId = model.MercaderiaId;
-            _TipoMercaderiaId = model.TipoMercaderiaId;
-            _FamiliaMercaderiaId = model.TipoMercaderiaId;
+            _FamiliaMercaderiaId = model.FamiliaMercaderiaId;
             _Codigo = model.Codigo;
             _Nombre = model.Nombre;
             _Descripcion = model.Descripcion;
-            _TipoMercaderia = model.TipoMercaderia?.Nombre;
-            _FamiliaMercaderia = model.FamiliaMercaderia?.Nombre;
         }
 
         #endregion
 
         #region Propiedades privadas
-
-        private string _MercaderiaId;
-
-        private string _TipoMercaderiaId;
 
         private string _FamiliaMercaderiaId;
 
@@ -46,47 +38,9 @@ namespace AdmCostoProduccion.Common.ViewModels.Inventario
 
         private string _Descripcion;
 
-        private string _TipoMercaderia;
-
-        private string _FamiliaMercaderia;
-
         #endregion
 
         #region Propiedades publicas
-
-        public string MercaderiaId
-        {
-            get
-            {
-                return _MercaderiaId;
-            }
-
-            set
-            {
-                if (value != _MercaderiaId)
-                {
-                    _MercaderiaId = value;
-                    NotifyPropertyChanged();
-                }
-            }
-        }
-
-        public string TipoMercaderiaId
-        {
-            get
-            {
-                return _TipoMercaderiaId;
-            }
-
-            set
-            {
-                if (value != _TipoMercaderiaId)
-                {
-                    _TipoMercaderiaId = value;
-                    NotifyPropertyChanged();
-                }
-            }
-        }
 
         public string FamiliaMercaderiaId
         {
@@ -156,64 +110,24 @@ namespace AdmCostoProduccion.Common.ViewModels.Inventario
             }
         }
 
-        public string TipoMercaderia
-        {
-            get
-            {
-                return _TipoMercaderia;
-            }
-
-            set
-            {
-                if (value != _TipoMercaderia)
-                {
-                    _TipoMercaderia = value;
-                    NotifyPropertyChanged();
-                }
-            }
-        }
-
-        public string FamiliaMercaderia
-        {
-            get
-            {
-                return _FamiliaMercaderia;
-            }
-
-            set
-            {
-                if (value != _FamiliaMercaderia)
-                {
-                    _FamiliaMercaderia = value;
-                    NotifyPropertyChanged();
-                }
-            }
-        }
-
         #endregion
 
         #region Metodos Publicos
 
-        public void CopyOf(MercaderiaViewModel viewModel)
+        public void CopyOf(FamiliaMercaderiaViewModel viewModel)
         {
             _IsNew = viewModel.IsNew;
             _IsOld = viewModel.IsOld;
-            _MercaderiaId = viewModel.MercaderiaId;
-            _TipoMercaderiaId = viewModel.TipoMercaderiaId;
             _FamiliaMercaderiaId = viewModel.FamiliaMercaderiaId;
             _Codigo = viewModel.Codigo;
             _Nombre = viewModel.Nombre;
             _Descripcion = viewModel.Descripcion;
-            _TipoMercaderia = viewModel.TipoMercaderia;
-            _FamiliaMercaderia = viewModel.FamiliaMercaderia;
         }
 
-        public Mercaderia ToModel()
+        public FamiliaMercaderia ToModel()
         {
-            Mercaderia model = new Mercaderia
+            FamiliaMercaderia model = new FamiliaMercaderia
             {
-                MercaderiaId = _MercaderiaId,
-                TipoMercaderiaId = _TipoMercaderiaId,
                 FamiliaMercaderiaId = _FamiliaMercaderiaId,
                 Codigo = _Codigo,
                 Nombre = _Nombre,
@@ -227,11 +141,11 @@ namespace AdmCostoProduccion.Common.ViewModels.Inventario
         {
             using (var context = new ApplicationDbContext())
             {
-                Mercaderia model = this.ToModel();
+                FamiliaMercaderia model = this.ToModel();
 
                 if (IsNew)
                 {
-                    context.Mercaderias.Add(model);
+                    context.FamiliaMercaderias.Add(model);
                 }
                 else
                 {
@@ -243,7 +157,7 @@ namespace AdmCostoProduccion.Common.ViewModels.Inventario
                 context.SaveChanges();
                 _IsNew = false;
                 _IsOld = false;
-                _MercaderiaId = model.MercaderiaId;
+                _FamiliaMercaderiaId = model.FamiliaMercaderiaId;
             }
         }
 
@@ -251,7 +165,7 @@ namespace AdmCostoProduccion.Common.ViewModels.Inventario
         {
             using (var context = new ApplicationDbContext())
             {
-                Mercaderia model = this.ToModel();
+                FamiliaMercaderia model = this.ToModel();
                 context.Entry(model).State = EntityState.Deleted;
                 context.SaveChanges();
             }

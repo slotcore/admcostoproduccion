@@ -64,5 +64,7 @@ namespace AdmCostoProduccion.Common.Data
         public DbSet<OrdenServicio> OrdenServicios { get; set; }
         public DbSet<Kardex> Kardexs { get; set; }
         public DbSet<KardexMovimiento> KardexMovimientos { get; set; }
+        public DbSet<FamiliaMercaderia> FamiliaMercaderias { get; set; }
+        public DbSet<ReglaAlmacenaje> ReglaAlmacenajes { get; set; }
     }
 }

@@ -1,23 +1,22 @@
 ﻿using AdmCostoProduccion.Common.Classes;
-using AdmCostoProduccion.Common.Models.Inventario;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace AdmCostoProduccion.Common.Models.Maestro
+namespace AdmCostoProduccion.Common.Models.Inventario
 {
-    public class Almacen : EntityBase
+    public class FamiliaMercaderia : EntityBase
     {
         #region Constructor
-        public Almacen() : base()
+        public FamiliaMercaderia() : base()
         {
         }
         #endregion
 
         #region Propiedades
         [Key]
-        public string AlmacenId { get; set; }
+        public string FamiliaMercaderiaId { get; set; }
 
         public string Codigo { get; set; }
 
@@ -27,22 +26,13 @@ namespace AdmCostoProduccion.Common.Models.Maestro
         #endregion
 
         #region Foraneas
-
-        public string CentroLogisticoId { get; set; }
-
-        
-        public virtual CentroLogistico CentroLogistico { get; set; }
         #endregion
 
         #region Relacionales
 
+        public virtual ICollection<Mercaderia> Mercaderias { get; set; }
+
         public virtual ICollection<ReglaAlmacenaje> ReglaAlmacenajes { get; set; }
-                       
-        public virtual ICollection<Kardex> Kardexs { get; set; }
-                
-        public virtual ICollection<Recepcion> Recepcions { get; set; }
-                
-        public virtual ICollection<Despacho> Despachos { get; set; }
 
         #endregion
     }

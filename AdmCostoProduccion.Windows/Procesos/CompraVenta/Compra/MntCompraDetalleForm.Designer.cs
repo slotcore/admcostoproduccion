@@ -33,10 +33,13 @@
             System.Windows.Forms.Label cantidadLabel;
             System.Windows.Forms.Label precioTotalLabel;
             System.Windows.Forms.Label precioUnitarioLabel;
+            System.Windows.Forms.Label unidadMedidaIdLabel;
             this.BaseFormHeaderGroup = new ComponentFactory.Krypton.Toolkit.KryptonHeaderGroup();
             this.kryptonPanel1 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
-            this.cantidadTextBox = new System.Windows.Forms.TextBox();
+            this.unidadMedidaIdComboBox = new System.Windows.Forms.ComboBox();
             this.compraDetalleViewModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.unidadMedidaViewModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.cantidadTextBox = new System.Windows.Forms.TextBox();
             this.precioTotalTextBox = new System.Windows.Forms.TextBox();
             this.precioUnitarioTextBox = new System.Windows.Forms.TextBox();
             this.mercaderiaTextBox = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
@@ -48,6 +51,7 @@
             cantidadLabel = new System.Windows.Forms.Label();
             precioTotalLabel = new System.Windows.Forms.Label();
             precioUnitarioLabel = new System.Windows.Forms.Label();
+            unidadMedidaIdLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.BaseFormHeaderGroup)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BaseFormHeaderGroup.Panel)).BeginInit();
             this.BaseFormHeaderGroup.Panel.SuspendLayout();
@@ -55,6 +59,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.compraDetalleViewModelBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.unidadMedidaViewModelBindingSource)).BeginInit();
             this.BaseFormToolStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -72,7 +77,7 @@
             // 
             cantidadLabel.AutoSize = true;
             cantidadLabel.BackColor = System.Drawing.Color.Transparent;
-            cantidadLabel.Location = new System.Drawing.Point(177, 164);
+            cantidadLabel.Location = new System.Drawing.Point(177, 194);
             cantidadLabel.Name = "cantidadLabel";
             cantidadLabel.Size = new System.Drawing.Size(52, 13);
             cantidadLabel.TabIndex = 2;
@@ -82,7 +87,7 @@
             // 
             precioTotalLabel.AutoSize = true;
             precioTotalLabel.BackColor = System.Drawing.Color.Transparent;
-            precioTotalLabel.Location = new System.Drawing.Point(177, 190);
+            precioTotalLabel.Location = new System.Drawing.Point(177, 220);
             precioTotalLabel.Name = "precioTotalLabel";
             precioTotalLabel.Size = new System.Drawing.Size(67, 13);
             precioTotalLabel.TabIndex = 4;
@@ -92,11 +97,21 @@
             // 
             precioUnitarioLabel.AutoSize = true;
             precioUnitarioLabel.BackColor = System.Drawing.Color.Transparent;
-            precioUnitarioLabel.Location = new System.Drawing.Point(177, 216);
+            precioUnitarioLabel.Location = new System.Drawing.Point(177, 246);
             precioUnitarioLabel.Name = "precioUnitarioLabel";
             precioUnitarioLabel.Size = new System.Drawing.Size(79, 13);
             precioUnitarioLabel.TabIndex = 6;
             precioUnitarioLabel.Text = "Precio Unitario:";
+            // 
+            // unidadMedidaIdLabel
+            // 
+            unidadMedidaIdLabel.AutoSize = true;
+            unidadMedidaIdLabel.BackColor = System.Drawing.Color.Transparent;
+            unidadMedidaIdLabel.Location = new System.Drawing.Point(173, 167);
+            unidadMedidaIdLabel.Name = "unidadMedidaIdLabel";
+            unidadMedidaIdLabel.Size = new System.Drawing.Size(82, 13);
+            unidadMedidaIdLabel.TabIndex = 8;
+            unidadMedidaIdLabel.Text = "Unidad Medida:";
             // 
             // BaseFormHeaderGroup
             // 
@@ -122,6 +137,8 @@
             // 
             // kryptonPanel1
             // 
+            this.kryptonPanel1.Controls.Add(unidadMedidaIdLabel);
+            this.kryptonPanel1.Controls.Add(this.unidadMedidaIdComboBox);
             this.kryptonPanel1.Controls.Add(cantidadLabel);
             this.kryptonPanel1.Controls.Add(this.cantidadTextBox);
             this.kryptonPanel1.Controls.Add(precioTotalLabel);
@@ -137,22 +154,39 @@
             this.kryptonPanel1.Size = new System.Drawing.Size(798, 395);
             this.kryptonPanel1.TabIndex = 0;
             // 
-            // cantidadTextBox
+            // unidadMedidaIdComboBox
             // 
-            this.cantidadTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.compraDetalleViewModelBindingSource, "Cantidad", true));
-            this.cantidadTextBox.Location = new System.Drawing.Point(278, 161);
-            this.cantidadTextBox.Name = "cantidadTextBox";
-            this.cantidadTextBox.Size = new System.Drawing.Size(365, 20);
-            this.cantidadTextBox.TabIndex = 3;
+            this.unidadMedidaIdComboBox.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.compraDetalleViewModelBindingSource, "UnidadMedidaId", true));
+            this.unidadMedidaIdComboBox.DataSource = this.unidadMedidaViewModelBindingSource;
+            this.unidadMedidaIdComboBox.DisplayMember = "Nombre";
+            this.unidadMedidaIdComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.unidadMedidaIdComboBox.FormattingEnabled = true;
+            this.unidadMedidaIdComboBox.Location = new System.Drawing.Point(278, 164);
+            this.unidadMedidaIdComboBox.Name = "unidadMedidaIdComboBox";
+            this.unidadMedidaIdComboBox.Size = new System.Drawing.Size(365, 21);
+            this.unidadMedidaIdComboBox.TabIndex = 9;
+            this.unidadMedidaIdComboBox.ValueMember = "UnidadMedidaId";
             // 
             // compraDetalleViewModelBindingSource
             // 
             this.compraDetalleViewModelBindingSource.DataSource = typeof(AdmCostoProduccion.Common.ViewModels.CompraVenta.CompraDetalleViewModel);
             // 
+            // unidadMedidaViewModelBindingSource
+            // 
+            this.unidadMedidaViewModelBindingSource.DataSource = typeof(AdmCostoProduccion.Common.ViewModels.Inventario.UnidadMedidaViewModel);
+            // 
+            // cantidadTextBox
+            // 
+            this.cantidadTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.compraDetalleViewModelBindingSource, "Cantidad", true));
+            this.cantidadTextBox.Location = new System.Drawing.Point(278, 191);
+            this.cantidadTextBox.Name = "cantidadTextBox";
+            this.cantidadTextBox.Size = new System.Drawing.Size(365, 20);
+            this.cantidadTextBox.TabIndex = 3;
+            // 
             // precioTotalTextBox
             // 
             this.precioTotalTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.compraDetalleViewModelBindingSource, "PrecioTotal", true));
-            this.precioTotalTextBox.Location = new System.Drawing.Point(278, 187);
+            this.precioTotalTextBox.Location = new System.Drawing.Point(278, 217);
             this.precioTotalTextBox.Name = "precioTotalTextBox";
             this.precioTotalTextBox.Size = new System.Drawing.Size(365, 20);
             this.precioTotalTextBox.TabIndex = 5;
@@ -160,7 +194,7 @@
             // precioUnitarioTextBox
             // 
             this.precioUnitarioTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.compraDetalleViewModelBindingSource, "PrecioUnitario", true));
-            this.precioUnitarioTextBox.Location = new System.Drawing.Point(278, 213);
+            this.precioUnitarioTextBox.Location = new System.Drawing.Point(278, 243);
             this.precioUnitarioTextBox.Name = "precioUnitarioTextBox";
             this.precioUnitarioTextBox.Size = new System.Drawing.Size(365, 20);
             this.precioUnitarioTextBox.TabIndex = 7;
@@ -232,6 +266,7 @@
             this.kryptonPanel1.ResumeLayout(false);
             this.kryptonPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.compraDetalleViewModelBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.unidadMedidaViewModelBindingSource)).EndInit();
             this.BaseFormToolStrip.ResumeLayout(false);
             this.BaseFormToolStrip.PerformLayout();
             this.ResumeLayout(false);
@@ -252,5 +287,7 @@
         private System.Windows.Forms.BindingSource compraDetalleViewModelBindingSource;
         private System.Windows.Forms.TextBox precioTotalTextBox;
         private System.Windows.Forms.TextBox precioUnitarioTextBox;
+        private System.Windows.Forms.ComboBox unidadMedidaIdComboBox;
+        private System.Windows.Forms.BindingSource unidadMedidaViewModelBindingSource;
     }
 }

@@ -57,7 +57,10 @@
       </Declarations>
       <Code Language="csharp">
         <![CDATA[using $LibraryName$.Classes;
+using $LibraryName$.Data;
+using $LibraryName$.Models.$EsquemaName$;
 using System;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 
@@ -70,6 +73,7 @@ namespace $LibraryName$.ViewModels.$EsquemaName$
         public $Model$ViewModel()
         {
             _IsNew = true;
+            _$Model$Id = Guid.NewGuid().ToString();
         }
         
         public $Model$ViewModel($Model$ model)
@@ -193,24 +197,36 @@ namespace $LibraryName$.ViewModels.$EsquemaName$
 
         public void Grabar()
         {
-            ApplicationDbContext Context = new ApplicationDbContext();
-            $Model$ model = this.ToModel();
+            using (var context = new ApplicationDbContext())
+            {
+                $Model$ model = this.ToModel();
 
-            if (IsNew)
-            {
-                Context.$Model$s.Add(model);
-            }
-            else
-            {
-                if (IsOld)
+                if (IsNew)
                 {
-                    Context.Entry(model).State = EntityState.Modified;
+                    context.$Model$s.Add(model);
                 }
+                else
+                {
+                    if (IsOld)
+                    {
+                        context.Entry(model).State = EntityState.Modified;
+                    }
+                }
+                context.SaveChanges();
+                _IsNew = false;
+                _IsOld = false;
+                _$Model$Id = model.$Model$Id;
             }
-            Context.SaveChanges();
-            _IsNew = false;
-            _IsOld = false;
-            _$Model$Id = model.$Model$Id;
+        }
+
+        public void Eliminar()
+        {
+            using (var context = new ApplicationDbContext())
+            {
+                $Model$ model = this.ToModel();
+                context.Entry(model).State = EntityState.Deleted;
+                context.SaveChanges();
+            }
         }
 
         #endregion

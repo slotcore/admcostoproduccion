@@ -34,6 +34,10 @@ namespace AdmCostoProduccion.Common.Models.Inventario
 
         
         public virtual TipoMercaderia TipoMercaderia { get; set; }
+        
+        public string FamiliaMercaderiaId { get; set; }
+
+        public virtual FamiliaMercaderia FamiliaMercaderia { get; set; }
 
         #endregion
 

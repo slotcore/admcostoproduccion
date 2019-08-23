@@ -34,6 +34,10 @@ namespace AdmCostoProduccion.Common.Models.CompraVenta
 
         public virtual Mercaderia Mercaderia { get; set; }
 
+        public string UnidadMedidaId { get; set; }
+
+        public virtual UnidadMedida UnidadMedida { get; set; }
+
         #endregion
 
         #region Relacionales

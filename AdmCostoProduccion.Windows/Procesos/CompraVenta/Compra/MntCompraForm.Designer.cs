@@ -35,26 +35,27 @@
             System.Windows.Forms.Label numeroDocumentoLabel;
             this.BaseFormHeaderGroup = new ComponentFactory.Krypton.Toolkit.KryptonHeaderGroup();
             this.kryptonPanel1 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
+            this.centroLogisticoIdComboBox = new System.Windows.Forms.ComboBox();
+            this.compraViewModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.centroLogisticoViewModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.descripcionTextBox = new System.Windows.Forms.TextBox();
+            this.fechaDateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.numeroDocumentoTextBox = new System.Windows.Forms.TextBox();
             this.GridHeaderGroup = new ComponentFactory.Krypton.Toolkit.KryptonHeaderGroup();
             this.AgregarDetalleButton = new ComponentFactory.Krypton.Toolkit.ButtonSpecHeaderGroup();
             this.ModificarDetalleButton = new ComponentFactory.Krypton.Toolkit.ButtonSpecHeaderGroup();
             this.EliminarDetalleButton = new ComponentFactory.Krypton.Toolkit.ButtonSpecHeaderGroup();
             this.DetalleDataGridView = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
+            this.compraDetalleViewModelsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.BaseFormToolStrip = new System.Windows.Forms.ToolStrip();
             this.GrabarButton = new System.Windows.Forms.ToolStripButton();
             this.CancelarButton = new System.Windows.Forms.ToolStripButton();
-            this.compraViewModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.centroLogisticoIdComboBox = new System.Windows.Forms.ComboBox();
-            this.descripcionTextBox = new System.Windows.Forms.TextBox();
-            this.fechaDateTimePicker = new System.Windows.Forms.DateTimePicker();
-            this.numeroDocumentoTextBox = new System.Windows.Forms.TextBox();
-            this.compraDetalleViewModelsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.codigoMercaderiaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nombreMercaderiaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UnidadMedida = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cantidadDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.precioUnitarioDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.precioTotalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.centroLogisticoViewModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             centroLogisticoIdLabel = new System.Windows.Forms.Label();
             descripcionLabel = new System.Windows.Forms.Label();
             fechaLabel = new System.Windows.Forms.Label();
@@ -65,16 +66,56 @@
             this.BaseFormHeaderGroup.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.compraViewModelBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.centroLogisticoViewModelBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GridHeaderGroup)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GridHeaderGroup.Panel)).BeginInit();
             this.GridHeaderGroup.Panel.SuspendLayout();
             this.GridHeaderGroup.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DetalleDataGridView)).BeginInit();
-            this.BaseFormToolStrip.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.compraViewModelBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.compraDetalleViewModelsBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.centroLogisticoViewModelBindingSource)).BeginInit();
+            this.BaseFormToolStrip.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // centroLogisticoIdLabel
+            // 
+            centroLogisticoIdLabel.AutoSize = true;
+            centroLogisticoIdLabel.BackColor = System.Drawing.Color.Transparent;
+            centroLogisticoIdLabel.Location = new System.Drawing.Point(14, 18);
+            centroLogisticoIdLabel.Name = "centroLogisticoIdLabel";
+            centroLogisticoIdLabel.Size = new System.Drawing.Size(86, 13);
+            centroLogisticoIdLabel.TabIndex = 0;
+            centroLogisticoIdLabel.Text = "Centro Logistico:";
+            // 
+            // descripcionLabel
+            // 
+            descripcionLabel.AutoSize = true;
+            descripcionLabel.BackColor = System.Drawing.Color.Transparent;
+            descripcionLabel.Location = new System.Drawing.Point(14, 45);
+            descripcionLabel.Name = "descripcionLabel";
+            descripcionLabel.Size = new System.Drawing.Size(66, 13);
+            descripcionLabel.TabIndex = 4;
+            descripcionLabel.Text = "Descripcion:";
+            // 
+            // fechaLabel
+            // 
+            fechaLabel.AutoSize = true;
+            fechaLabel.BackColor = System.Drawing.Color.Transparent;
+            fechaLabel.Location = new System.Drawing.Point(417, 45);
+            fechaLabel.Name = "fechaLabel";
+            fechaLabel.Size = new System.Drawing.Size(40, 13);
+            fechaLabel.TabIndex = 7;
+            fechaLabel.Text = "Fecha:";
+            // 
+            // numeroDocumentoLabel
+            // 
+            numeroDocumentoLabel.AutoSize = true;
+            numeroDocumentoLabel.BackColor = System.Drawing.Color.Transparent;
+            numeroDocumentoLabel.Location = new System.Drawing.Point(417, 18);
+            numeroDocumentoLabel.Name = "numeroDocumentoLabel";
+            numeroDocumentoLabel.Size = new System.Drawing.Size(105, 13);
+            numeroDocumentoLabel.TabIndex = 2;
+            numeroDocumentoLabel.Text = "Numero Documento:";
             // 
             // BaseFormHeaderGroup
             // 
@@ -117,6 +158,52 @@
             this.kryptonPanel1.Size = new System.Drawing.Size(798, 395);
             this.kryptonPanel1.TabIndex = 0;
             // 
+            // centroLogisticoIdComboBox
+            // 
+            this.centroLogisticoIdComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.compraViewModelBindingSource, "CentroLogisticoId", true));
+            this.centroLogisticoIdComboBox.DataSource = this.centroLogisticoViewModelBindingSource;
+            this.centroLogisticoIdComboBox.DisplayMember = "Nombre";
+            this.centroLogisticoIdComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.centroLogisticoIdComboBox.FormattingEnabled = true;
+            this.centroLogisticoIdComboBox.Location = new System.Drawing.Point(125, 15);
+            this.centroLogisticoIdComboBox.Name = "centroLogisticoIdComboBox";
+            this.centroLogisticoIdComboBox.Size = new System.Drawing.Size(259, 21);
+            this.centroLogisticoIdComboBox.TabIndex = 1;
+            this.centroLogisticoIdComboBox.ValueMember = "CentroLogisticoId";
+            // 
+            // compraViewModelBindingSource
+            // 
+            this.compraViewModelBindingSource.DataSource = typeof(AdmCostoProduccion.Common.ViewModels.CompraVenta.CompraViewModel);
+            // 
+            // centroLogisticoViewModelBindingSource
+            // 
+            this.centroLogisticoViewModelBindingSource.DataSource = typeof(AdmCostoProduccion.Common.ViewModels.Maestro.CentroLogisticoViewModel);
+            // 
+            // descripcionTextBox
+            // 
+            this.descripcionTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.compraViewModelBindingSource, "Descripcion", true));
+            this.descripcionTextBox.Location = new System.Drawing.Point(125, 42);
+            this.descripcionTextBox.Name = "descripcionTextBox";
+            this.descripcionTextBox.Size = new System.Drawing.Size(259, 20);
+            this.descripcionTextBox.TabIndex = 5;
+            // 
+            // fechaDateTimePicker
+            // 
+            this.fechaDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.compraViewModelBindingSource, "Fecha", true));
+            this.fechaDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.fechaDateTimePicker.Location = new System.Drawing.Point(528, 42);
+            this.fechaDateTimePicker.Name = "fechaDateTimePicker";
+            this.fechaDateTimePicker.Size = new System.Drawing.Size(130, 20);
+            this.fechaDateTimePicker.TabIndex = 8;
+            // 
+            // numeroDocumentoTextBox
+            // 
+            this.numeroDocumentoTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.compraViewModelBindingSource, "NumeroDocumento", true));
+            this.numeroDocumentoTextBox.Location = new System.Drawing.Point(528, 16);
+            this.numeroDocumentoTextBox.Name = "numeroDocumentoTextBox";
+            this.numeroDocumentoTextBox.Size = new System.Drawing.Size(259, 20);
+            this.numeroDocumentoTextBox.TabIndex = 3;
+            // 
             // GridHeaderGroup
             // 
             this.GridHeaderGroup.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -128,14 +215,14 @@
             this.EliminarDetalleButton});
             this.GridHeaderGroup.HeaderStylePrimary = ComponentFactory.Krypton.Toolkit.HeaderStyle.DockActive;
             this.GridHeaderGroup.HeaderVisibleSecondary = false;
-            this.GridHeaderGroup.Location = new System.Drawing.Point(2, 128);
+            this.GridHeaderGroup.Location = new System.Drawing.Point(2, 80);
             this.GridHeaderGroup.Margin = new System.Windows.Forms.Padding(2);
             this.GridHeaderGroup.Name = "GridHeaderGroup";
             // 
             // GridHeaderGroup.Panel
             // 
             this.GridHeaderGroup.Panel.Controls.Add(this.DetalleDataGridView);
-            this.GridHeaderGroup.Size = new System.Drawing.Size(794, 266);
+            this.GridHeaderGroup.Size = new System.Drawing.Size(794, 314);
             this.GridHeaderGroup.TabIndex = 12;
             this.GridHeaderGroup.ValuesPrimary.Heading = "Detalles";
             this.GridHeaderGroup.ValuesPrimary.Image = null;
@@ -172,6 +259,7 @@
             this.DetalleDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.codigoMercaderiaDataGridViewTextBoxColumn,
             this.nombreMercaderiaDataGridViewTextBoxColumn,
+            this.UnidadMedida,
             this.cantidadDataGridViewTextBoxColumn,
             this.precioUnitarioDataGridViewTextBoxColumn,
             this.precioTotalDataGridViewTextBoxColumn});
@@ -189,8 +277,13 @@
             this.DetalleDataGridView.RowHeadersVisible = false;
             this.DetalleDataGridView.RowHeadersWidth = 51;
             this.DetalleDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.DetalleDataGridView.Size = new System.Drawing.Size(792, 237);
+            this.DetalleDataGridView.Size = new System.Drawing.Size(792, 285);
             this.DetalleDataGridView.TabIndex = 0;
+            // 
+            // compraDetalleViewModelsBindingSource
+            // 
+            this.compraDetalleViewModelsBindingSource.DataMember = "CompraDetalleViewModels";
+            this.compraDetalleViewModelsBindingSource.DataSource = this.compraViewModelBindingSource;
             // 
             // BaseFormToolStrip
             // 
@@ -225,93 +318,6 @@
             this.CancelarButton.Text = "Cancelar";
             this.CancelarButton.Click += new System.EventHandler(this.CancelarButton_Click);
             // 
-            // compraViewModelBindingSource
-            // 
-            this.compraViewModelBindingSource.DataSource = typeof(AdmCostoProduccion.Common.ViewModels.CompraVenta.CompraViewModel);
-            // 
-            // centroLogisticoIdLabel
-            // 
-            centroLogisticoIdLabel.AutoSize = true;
-            centroLogisticoIdLabel.BackColor = System.Drawing.Color.Transparent;
-            centroLogisticoIdLabel.Location = new System.Drawing.Point(27, 18);
-            centroLogisticoIdLabel.Name = "centroLogisticoIdLabel";
-            centroLogisticoIdLabel.Size = new System.Drawing.Size(86, 13);
-            centroLogisticoIdLabel.TabIndex = 12;
-            centroLogisticoIdLabel.Text = "Centro Logistico:";
-            // 
-            // centroLogisticoIdComboBox
-            // 
-            this.centroLogisticoIdComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.compraViewModelBindingSource, "CentroLogisticoId", true));
-            this.centroLogisticoIdComboBox.DataSource = this.centroLogisticoViewModelBindingSource;
-            this.centroLogisticoIdComboBox.DisplayMember = "Nombre";
-            this.centroLogisticoIdComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.centroLogisticoIdComboBox.FormattingEnabled = true;
-            this.centroLogisticoIdComboBox.Location = new System.Drawing.Point(138, 15);
-            this.centroLogisticoIdComboBox.Name = "centroLogisticoIdComboBox";
-            this.centroLogisticoIdComboBox.Size = new System.Drawing.Size(336, 21);
-            this.centroLogisticoIdComboBox.TabIndex = 13;
-            this.centroLogisticoIdComboBox.ValueMember = "CentroLogisticoId";
-            // 
-            // descripcionLabel
-            // 
-            descripcionLabel.AutoSize = true;
-            descripcionLabel.BackColor = System.Drawing.Color.Transparent;
-            descripcionLabel.Location = new System.Drawing.Point(27, 45);
-            descripcionLabel.Name = "descripcionLabel";
-            descripcionLabel.Size = new System.Drawing.Size(66, 13);
-            descripcionLabel.TabIndex = 14;
-            descripcionLabel.Text = "Descripcion:";
-            // 
-            // descripcionTextBox
-            // 
-            this.descripcionTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.compraViewModelBindingSource, "Descripcion", true));
-            this.descripcionTextBox.Location = new System.Drawing.Point(138, 42);
-            this.descripcionTextBox.Name = "descripcionTextBox";
-            this.descripcionTextBox.Size = new System.Drawing.Size(336, 20);
-            this.descripcionTextBox.TabIndex = 15;
-            // 
-            // fechaLabel
-            // 
-            fechaLabel.AutoSize = true;
-            fechaLabel.BackColor = System.Drawing.Color.Transparent;
-            fechaLabel.Location = new System.Drawing.Point(27, 72);
-            fechaLabel.Name = "fechaLabel";
-            fechaLabel.Size = new System.Drawing.Size(40, 13);
-            fechaLabel.TabIndex = 16;
-            fechaLabel.Text = "Fecha:";
-            // 
-            // fechaDateTimePicker
-            // 
-            this.fechaDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.compraViewModelBindingSource, "Fecha", true));
-            this.fechaDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.fechaDateTimePicker.Location = new System.Drawing.Point(138, 68);
-            this.fechaDateTimePicker.Name = "fechaDateTimePicker";
-            this.fechaDateTimePicker.Size = new System.Drawing.Size(130, 20);
-            this.fechaDateTimePicker.TabIndex = 17;
-            // 
-            // numeroDocumentoLabel
-            // 
-            numeroDocumentoLabel.AutoSize = true;
-            numeroDocumentoLabel.BackColor = System.Drawing.Color.Transparent;
-            numeroDocumentoLabel.Location = new System.Drawing.Point(27, 97);
-            numeroDocumentoLabel.Name = "numeroDocumentoLabel";
-            numeroDocumentoLabel.Size = new System.Drawing.Size(105, 13);
-            numeroDocumentoLabel.TabIndex = 18;
-            numeroDocumentoLabel.Text = "Numero Documento:";
-            // 
-            // numeroDocumentoTextBox
-            // 
-            this.numeroDocumentoTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.compraViewModelBindingSource, "NumeroDocumento", true));
-            this.numeroDocumentoTextBox.Location = new System.Drawing.Point(138, 94);
-            this.numeroDocumentoTextBox.Name = "numeroDocumentoTextBox";
-            this.numeroDocumentoTextBox.Size = new System.Drawing.Size(336, 20);
-            this.numeroDocumentoTextBox.TabIndex = 19;
-            // 
-            // compraDetalleViewModelsBindingSource
-            // 
-            this.compraDetalleViewModelsBindingSource.DataMember = "CompraDetalleViewModels";
-            this.compraDetalleViewModelsBindingSource.DataSource = this.compraViewModelBindingSource;
-            // 
             // codigoMercaderiaDataGridViewTextBoxColumn
             // 
             this.codigoMercaderiaDataGridViewTextBoxColumn.DataPropertyName = "CodigoMercaderia";
@@ -327,6 +333,14 @@
             this.nombreMercaderiaDataGridViewTextBoxColumn.Name = "nombreMercaderiaDataGridViewTextBoxColumn";
             this.nombreMercaderiaDataGridViewTextBoxColumn.ReadOnly = true;
             this.nombreMercaderiaDataGridViewTextBoxColumn.Width = 139;
+            // 
+            // UnidadMedida
+            // 
+            this.UnidadMedida.DataPropertyName = "UnidadMedida";
+            this.UnidadMedida.HeaderText = "UnidadMedida";
+            this.UnidadMedida.Name = "UnidadMedida";
+            this.UnidadMedida.ReadOnly = true;
+            this.UnidadMedida.Width = 114;
             // 
             // cantidadDataGridViewTextBoxColumn
             // 
@@ -352,10 +366,6 @@
             this.precioTotalDataGridViewTextBoxColumn.ReadOnly = true;
             this.precioTotalDataGridViewTextBoxColumn.Width = 94;
             // 
-            // centroLogisticoViewModelBindingSource
-            // 
-            this.centroLogisticoViewModelBindingSource.DataSource = typeof(AdmCostoProduccion.Common.ViewModels.Maestro.CentroLogisticoViewModel);
-            // 
             // MntCompraForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -373,16 +383,16 @@
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
             this.kryptonPanel1.ResumeLayout(false);
             this.kryptonPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.compraViewModelBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.centroLogisticoViewModelBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.GridHeaderGroup.Panel)).EndInit();
             this.GridHeaderGroup.Panel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.GridHeaderGroup)).EndInit();
             this.GridHeaderGroup.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DetalleDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.compraDetalleViewModelsBindingSource)).EndInit();
             this.BaseFormToolStrip.ResumeLayout(false);
             this.BaseFormToolStrip.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.compraViewModelBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.compraDetalleViewModelsBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.centroLogisticoViewModelBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -405,12 +415,13 @@
         private System.Windows.Forms.TextBox descripcionTextBox;
         private System.Windows.Forms.DateTimePicker fechaDateTimePicker;
         private System.Windows.Forms.TextBox numeroDocumentoTextBox;
+        private System.Windows.Forms.BindingSource compraDetalleViewModelsBindingSource;
+        private System.Windows.Forms.BindingSource centroLogisticoViewModelBindingSource;
         private System.Windows.Forms.DataGridViewTextBoxColumn codigoMercaderiaDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn nombreMercaderiaDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn UnidadMedida;
         private System.Windows.Forms.DataGridViewTextBoxColumn cantidadDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn precioUnitarioDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn precioTotalDataGridViewTextBoxColumn;
-        private System.Windows.Forms.BindingSource compraDetalleViewModelsBindingSource;
-        private System.Windows.Forms.BindingSource centroLogisticoViewModelBindingSource;
     }
 }

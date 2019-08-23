@@ -27,6 +27,8 @@ using AdmCostoProduccion.Windows.Procesos.Produccion.OrdenProduccion;
 using AdmCostoProduccion.Windows.Procesos.Contabilidad.CostoProduccion;
 using AdmCostoProduccion.Windows.Mantenimiento.Aplicacion.AplicacionConfiguracion;
 using AdmCostoProduccion.Windows.Mantenimiento.Aplicacion.AplicacionCorrelativo;
+using AdmCostoProduccion.Windows.Mantenimiento.Inventario.FamiliaMercaderia;
+using AdmCostoProduccion.Windows.Mantenimiento.Inventario.ReglaAlmacenaje;
 
 namespace AdmCostoProduccion.Windows
 {
@@ -234,6 +236,24 @@ namespace AdmCostoProduccion.Windows
         private void CorrelativoMenuItem_Click(object sender, EventArgs e)
         {
             var form = new LstAplicacionCorrelativoForm
+            {
+                MdiParent = this
+            };
+            form.Show();
+        }
+
+        private void FamiliaMercaderiaMenuItem_Click(object sender, EventArgs e)
+        {
+            var form = new LstFamiliaMercaderiaForm
+            {
+                MdiParent = this
+            };
+            form.Show();
+        }
+
+        private void ReglaAlmacenajeMenuItem_Click(object sender, EventArgs e)
+        {
+            var form = new LstReglaAlmacenajeForm
             {
                 MdiParent = this
             };

@@ -1,4 +1,5 @@
 ﻿using AdmCostoProduccion.Common.Classes;
+using AdmCostoProduccion.Common.Models.CompraVenta;
 using AdmCostoProduccion.Common.Models.Produccion;
 
 using System;
@@ -34,26 +35,23 @@ namespace AdmCostoProduccion.Common.Models.Inventario
         #endregion
 
         #region Relacionales
-
-        
+                
         public virtual ICollection<ProcedimientoProduccion> ProcedimientoProduccions { get; set; }
-
-        
+                
         public virtual ICollection<ProcedimientoProduccionInsumo> ProcedimientoProduccionInsumos { get; set; }
-
-        
+                
         public virtual ICollection<OrdenProduccion> OrdenProduccions { get; set; }
-
-        
+                
         public virtual ICollection<OrdenProduccionInsumo> OrdenProduccionInsumos { get; set; }
 
-        
+        public virtual ICollection<CompraDetalle> CompraDetalles { get; set; }
+
+        public virtual ICollection<VentaDetalle> VentaDetalles { get; set; }
+                
         public virtual ICollection<RecepcionDetalle> RecepcionDetalles { get; set; }
-
-        
+                
         public virtual ICollection<DespachoDetalle> DespachoDetalles { get; set; }
-
-        
+                
         public virtual ICollection<KardexMovimiento> KardexMovimientos { get; set; }
 
         #endregion

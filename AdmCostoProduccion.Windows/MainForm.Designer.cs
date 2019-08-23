@@ -33,6 +33,7 @@
             this.MantenimientoMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aplicaciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AplicacionConfiguracionMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.CorrelativoMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MaestrosMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.CentroLogisticoMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.PlantaFabricacionMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -40,6 +41,7 @@
             this.MntInventarioMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.UnidadMedidaMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.TipoMercaderiaMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.FamiliaMercaderiaMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MercaderíaMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.TipoMovimientoMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.TipoRecepcionMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -69,7 +71,7 @@
             this.MainFormKryptonManager = new ComponentFactory.Krypton.Toolkit.KryptonManager(this.components);
             this.MainFormKryptonDockableNavigator = new ComponentFactory.Krypton.Docking.KryptonDockableNavigator();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.CorrelativoMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ReglaAlmacenajeMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.PrincipalMenuStrip.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MainFormKryptonDockableNavigator)).BeginInit();
@@ -117,9 +119,16 @@
             // AplicacionConfiguracionMenuItem
             // 
             this.AplicacionConfiguracionMenuItem.Name = "AplicacionConfiguracionMenuItem";
-            this.AplicacionConfiguracionMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.AplicacionConfiguracionMenuItem.Size = new System.Drawing.Size(150, 22);
             this.AplicacionConfiguracionMenuItem.Text = "Configuración";
             this.AplicacionConfiguracionMenuItem.Click += new System.EventHandler(this.AplicacionConfiguracionMenuItem_Click);
+            // 
+            // CorrelativoMenuItem
+            // 
+            this.CorrelativoMenuItem.Name = "CorrelativoMenuItem";
+            this.CorrelativoMenuItem.Size = new System.Drawing.Size(150, 22);
+            this.CorrelativoMenuItem.Text = "Correlativo";
+            this.CorrelativoMenuItem.Click += new System.EventHandler(this.CorrelativoMenuItem_Click);
             // 
             // MaestrosMenuItem
             // 
@@ -157,10 +166,12 @@
             this.MntInventarioMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.UnidadMedidaMenuItem,
             this.TipoMercaderiaMenuItem,
+            this.FamiliaMercaderiaMenuItem,
             this.MercaderíaMenuItem,
             this.TipoMovimientoMenuItem,
             this.TipoRecepcionMenuItem,
-            this.TipoDespachoMenuItem});
+            this.TipoDespachoMenuItem,
+            this.ReglaAlmacenajeMenuItem});
             this.MntInventarioMenuItem.Name = "MntInventarioMenuItem";
             this.MntInventarioMenuItem.Size = new System.Drawing.Size(184, 26);
             this.MntInventarioMenuItem.Text = "Inventario";
@@ -168,42 +179,49 @@
             // UnidadMedidaMenuItem
             // 
             this.UnidadMedidaMenuItem.Name = "UnidadMedidaMenuItem";
-            this.UnidadMedidaMenuItem.Size = new System.Drawing.Size(171, 22);
+            this.UnidadMedidaMenuItem.Size = new System.Drawing.Size(184, 22);
             this.UnidadMedidaMenuItem.Text = "Unidad de Medida";
             this.UnidadMedidaMenuItem.Click += new System.EventHandler(this.UnidadMedidaMenuItem_Click);
             // 
             // TipoMercaderiaMenuItem
             // 
             this.TipoMercaderiaMenuItem.Name = "TipoMercaderiaMenuItem";
-            this.TipoMercaderiaMenuItem.Size = new System.Drawing.Size(171, 22);
+            this.TipoMercaderiaMenuItem.Size = new System.Drawing.Size(184, 22);
             this.TipoMercaderiaMenuItem.Text = "Tipo Mercadería";
             this.TipoMercaderiaMenuItem.Click += new System.EventHandler(this.TipoMercaderiaMenuItem_Click);
+            // 
+            // FamiliaMercaderiaMenuItem
+            // 
+            this.FamiliaMercaderiaMenuItem.Name = "FamiliaMercaderiaMenuItem";
+            this.FamiliaMercaderiaMenuItem.Size = new System.Drawing.Size(184, 22);
+            this.FamiliaMercaderiaMenuItem.Text = "Familia Mercadería";
+            this.FamiliaMercaderiaMenuItem.Click += new System.EventHandler(this.FamiliaMercaderiaMenuItem_Click);
             // 
             // MercaderíaMenuItem
             // 
             this.MercaderíaMenuItem.Name = "MercaderíaMenuItem";
-            this.MercaderíaMenuItem.Size = new System.Drawing.Size(171, 22);
+            this.MercaderíaMenuItem.Size = new System.Drawing.Size(184, 22);
             this.MercaderíaMenuItem.Text = "Mercadería";
             this.MercaderíaMenuItem.Click += new System.EventHandler(this.MercaderíaMenuItem_Click);
             // 
             // TipoMovimientoMenuItem
             // 
             this.TipoMovimientoMenuItem.Name = "TipoMovimientoMenuItem";
-            this.TipoMovimientoMenuItem.Size = new System.Drawing.Size(171, 22);
+            this.TipoMovimientoMenuItem.Size = new System.Drawing.Size(184, 22);
             this.TipoMovimientoMenuItem.Text = "Tipo Movimiento";
             this.TipoMovimientoMenuItem.Click += new System.EventHandler(this.TipoMovimientoMenuItem_Click);
             // 
             // TipoRecepcionMenuItem
             // 
             this.TipoRecepcionMenuItem.Name = "TipoRecepcionMenuItem";
-            this.TipoRecepcionMenuItem.Size = new System.Drawing.Size(171, 22);
+            this.TipoRecepcionMenuItem.Size = new System.Drawing.Size(184, 22);
             this.TipoRecepcionMenuItem.Text = "Tipo Recepción";
             this.TipoRecepcionMenuItem.Click += new System.EventHandler(this.TipoRecepcionMenuItem_Click);
             // 
             // TipoDespachoMenuItem
             // 
             this.TipoDespachoMenuItem.Name = "TipoDespachoMenuItem";
-            this.TipoDespachoMenuItem.Size = new System.Drawing.Size(171, 22);
+            this.TipoDespachoMenuItem.Size = new System.Drawing.Size(184, 22);
             this.TipoDespachoMenuItem.Text = "Tipo Despacho";
             this.TipoDespachoMenuItem.Click += new System.EventHandler(this.TipoDespachoMenuItem_Click);
             // 
@@ -276,7 +294,7 @@
             this.RecepcionMenuItem,
             this.DespachoMenuItem});
             this.InventarioMenuItem.Name = "InventarioMenuItem";
-            this.InventarioMenuItem.Size = new System.Drawing.Size(151, 22);
+            this.InventarioMenuItem.Size = new System.Drawing.Size(180, 22);
             this.InventarioMenuItem.Text = "Inventario";
             // 
             // RecepcionMenuItem
@@ -299,7 +317,7 @@
             this.CompraMenuItem,
             this.VentaMenuItem});
             this.CompraVentaMenuItem.Name = "CompraVentaMenuItem";
-            this.CompraVentaMenuItem.Size = new System.Drawing.Size(151, 22);
+            this.CompraVentaMenuItem.Size = new System.Drawing.Size(180, 22);
             this.CompraVentaMenuItem.Text = "Compra/Venta";
             // 
             // CompraMenuItem
@@ -321,7 +339,7 @@
             this.ProducciónMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.OrdenProduccionMenuItem});
             this.ProducciónMenuItem.Name = "ProducciónMenuItem";
-            this.ProducciónMenuItem.Size = new System.Drawing.Size(151, 22);
+            this.ProducciónMenuItem.Size = new System.Drawing.Size(180, 22);
             this.ProducciónMenuItem.Text = "Producción";
             // 
             // OrdenProduccionMenuItem
@@ -336,7 +354,7 @@
             this.contabilidadToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.CostoProduccionMenuItem});
             this.contabilidadToolStripMenuItem.Name = "contabilidadToolStripMenuItem";
-            this.contabilidadToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
+            this.contabilidadToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.contabilidadToolStripMenuItem.Text = "Contabilidad";
             // 
             // CostoProduccionMenuItem
@@ -411,12 +429,12 @@
             this.statusStrip1.TabIndex = 13;
             this.statusStrip1.Text = "statusStrip1";
             // 
-            // CorrelativoMenuItem
+            // ReglaAlmacenajeMenuItem
             // 
-            this.CorrelativoMenuItem.Name = "CorrelativoMenuItem";
-            this.CorrelativoMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.CorrelativoMenuItem.Text = "Correlativo";
-            this.CorrelativoMenuItem.Click += new System.EventHandler(this.CorrelativoMenuItem_Click);
+            this.ReglaAlmacenajeMenuItem.Name = "ReglaAlmacenajeMenuItem";
+            this.ReglaAlmacenajeMenuItem.Size = new System.Drawing.Size(184, 22);
+            this.ReglaAlmacenajeMenuItem.Text = "Regla de Almacenaje";
+            this.ReglaAlmacenajeMenuItem.Click += new System.EventHandler(this.ReglaAlmacenajeMenuItem_Click);
             // 
             // MainForm
             // 
@@ -489,6 +507,8 @@
         private System.Windows.Forms.ToolStripMenuItem aplicaciónToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem AplicacionConfiguracionMenuItem;
         private System.Windows.Forms.ToolStripMenuItem CorrelativoMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem FamiliaMercaderiaMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ReglaAlmacenajeMenuItem;
     }
 }
 

@@ -1,5 +1,7 @@
 ﻿using AdmCostoProduccion.Common.Classes;
+using AdmCostoProduccion.Common.Data;
 using AdmCostoProduccion.Common.ViewModels.CompraVenta;
+using AdmCostoProduccion.Common.ViewModels.Inventario;
 using AdmCostoProduccion.Windows.Prompt;
 using ComponentFactory.Krypton.Toolkit;
 using System;
@@ -20,6 +22,7 @@ namespace AdmCostoProduccion.Windows.Procesos.CompraVenta.Compra
         #region Propiedades
         private CompraDetalleViewModel ViewModel;
         private ObservableListSource<CompraDetalleViewModel> ViewModelList;
+        private List<UnidadMedidaViewModel> unidadMedidaViewModels;
         #endregion
 
         #region Constructor
@@ -29,6 +32,7 @@ namespace AdmCostoProduccion.Windows.Procesos.CompraVenta.Compra
             InitializeComponent();
             ViewModel.CopyOf(viewModel);
             ViewModelList = viewModelList;
+            CargarCombo();
             compraDetalleViewModelBindingSource.DataSource = ViewModel;
         }
 
@@ -37,6 +41,7 @@ namespace AdmCostoProduccion.Windows.Procesos.CompraVenta.Compra
             InitializeComponent();
             ViewModel = new CompraDetalleViewModel(parentId);
             ViewModelList = viewModelList;
+            CargarCombo();
             compraDetalleViewModelBindingSource.DataSource = ViewModel;
         }
         #endregion
@@ -67,6 +72,11 @@ namespace AdmCostoProduccion.Windows.Procesos.CompraVenta.Compra
             {
                 Cursor = Cursors.WaitCursor;
                 compraDetalleViewModelBindingSource.EndEdit();
+
+                var unidadMedidaViewModel = (UnidadMedidaViewModel)unidadMedidaViewModelBindingSource.Current;
+                if (unidadMedidaViewModel == null) throw new Exception("Debe seleccionar unidad de medida¡¡");
+                ViewModel.UnidadMedidaId = unidadMedidaViewModel.UnidadMedidaId;
+                ViewModel.UnidadMedida = unidadMedidaViewModel.Nombre;
 
                 if (ViewModel.IsNew) ViewModelList.Add(ViewModel);
                 else
@@ -112,6 +122,20 @@ namespace AdmCostoProduccion.Windows.Procesos.CompraVenta.Compra
             finally
             {
                 Cursor = Cursors.Default;
+            }
+        }
+
+        private void CargarCombo()
+        {
+            using (var context = new ApplicationDbContext())
+            {
+                var unidadMedidas = context.UnidadMedidas.ToList();
+                unidadMedidaViewModels = new List<UnidadMedidaViewModel>();
+                foreach (var unidadMedida in unidadMedidas)
+                {
+                    unidadMedidaViewModels.Add(new UnidadMedidaViewModel(unidadMedida));
+                }
+                unidadMedidaViewModelBindingSource.DataSource = unidadMedidaViewModels;
             }
         }
         #endregion

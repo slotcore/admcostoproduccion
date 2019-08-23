@@ -137,6 +137,30 @@
     <Compile Include="Mantenimiento\Aplicacion\AplicacionCorrelativo\MntAplicacionCorrelativoForm.Designer.cs">
       <DependentUpon>MntAplicacionCorrelativoForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Mantenimiento\Inventario\FamiliaMercaderia\LstFamiliaMercaderiaForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Mantenimiento\Inventario\FamiliaMercaderia\LstFamiliaMercaderiaForm.Designer.cs">
+      <DependentUpon>LstFamiliaMercaderiaForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mantenimiento\Inventario\FamiliaMercaderia\MntFamiliaMercaderiaForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Mantenimiento\Inventario\FamiliaMercaderia\MntFamiliaMercaderiaForm.Designer.cs">
+      <DependentUpon>MntFamiliaMercaderiaForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mantenimiento\Inventario\ReglaAlmacenaje\LstReglaAlmacenajeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Mantenimiento\Inventario\ReglaAlmacenaje\LstReglaAlmacenajeForm.Designer.cs">
+      <DependentUpon>LstReglaAlmacenajeForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mantenimiento\Inventario\ReglaAlmacenaje\MntReglaAlmacenajeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Mantenimiento\Inventario\ReglaAlmacenaje\MntReglaAlmacenajeForm.Designer.cs">
+      <DependentUpon>MntReglaAlmacenajeForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Mantenimiento\Maestro\Almacen\LstAlmacenForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -412,6 +436,18 @@
     <EmbeddedResource Include="Mantenimiento\Aplicacion\AplicacionCorrelativo\MntAplicacionCorrelativoForm.resx">
       <DependentUpon>MntAplicacionCorrelativoForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Mantenimiento\Inventario\FamiliaMercaderia\LstFamiliaMercaderiaForm.resx">
+      <DependentUpon>LstFamiliaMercaderiaForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mantenimiento\Inventario\FamiliaMercaderia\MntFamiliaMercaderiaForm.resx">
+      <DependentUpon>MntFamiliaMercaderiaForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mantenimiento\Inventario\ReglaAlmacenaje\LstReglaAlmacenajeForm.resx">
+      <DependentUpon>LstReglaAlmacenajeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mantenimiento\Inventario\ReglaAlmacenaje\MntReglaAlmacenajeForm.resx">
+      <DependentUpon>MntReglaAlmacenajeForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Mantenimiento\Inventario\TipoMovimiento\LstTipoMovimientoForm.resx">
       <DependentUpon>LstTipoMovimientoForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -569,9 +605,11 @@
     <None Include="Properties\DataSources\AdmCostoProduccion.Common.ViewModels.Contabilidad.CostoProduccionViewModel.datasource" />
     <None Include="Properties\DataSources\AdmCostoProduccion.Common.ViewModels.Inventario.DespachoDetalleViewModel.datasource" />
     <None Include="Properties\DataSources\AdmCostoProduccion.Common.ViewModels.Inventario.DespachoViewModel.datasource" />
+    <None Include="Properties\DataSources\AdmCostoProduccion.Common.ViewModels.Inventario.FamiliaMercaderiaViewModel.datasource" />
     <None Include="Properties\DataSources\AdmCostoProduccion.Common.ViewModels.Inventario.MercaderiaViewModel.datasource" />
     <None Include="Properties\DataSources\AdmCostoProduccion.Common.ViewModels.Inventario.RecepcionDetalleViewModel.datasource" />
     <None Include="Properties\DataSources\AdmCostoProduccion.Common.ViewModels.Inventario.RecepcionViewModel.datasource" />
+    <None Include="Properties\DataSources\AdmCostoProduccion.Common.ViewModels.Inventario.ReglaAlmacenajeViewModel.datasource" />
     <None Include="Properties\DataSources\AdmCostoProduccion.Common.ViewModels.Inventario.TipoDespachoViewModel.datasource" />
     <None Include="Properties\DataSources\AdmCostoProduccion.Common.ViewModels.Inventario.TipoMercaderiaViewModel.datasource" />
     <None Include="Properties\DataSources\AdmCostoProduccion.Common.ViewModels.Inventario.TipoMovimientoViewModel.datasource" />
@@ -643,5 +681,6 @@
   <ItemGroup>
     <None Include="Resources\boorderitem_16x16.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

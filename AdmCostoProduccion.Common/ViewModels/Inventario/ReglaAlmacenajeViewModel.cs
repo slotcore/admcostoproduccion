@@ -8,37 +8,33 @@ using System.Text;
 
 namespace AdmCostoProduccion.Common.ViewModels.Inventario
 {
-    public class MercaderiaViewModel : ObjectBase
+    public class ReglaAlmacenajeViewModel : ObjectBase
     {
         #region Constructor
 
-        public MercaderiaViewModel()
+        public ReglaAlmacenajeViewModel()
         {
             _IsNew = true;
-            _MercaderiaId = Guid.NewGuid().ToString();
+            _ReglaAlmacenajeId = Guid.NewGuid().ToString();
         }
 
-        public MercaderiaViewModel(Mercaderia model)
+        public ReglaAlmacenajeViewModel(ReglaAlmacenaje model)
         {
-            _MercaderiaId = model.MercaderiaId;
-            _TipoMercaderiaId = model.TipoMercaderiaId;
-            _FamiliaMercaderiaId = model.TipoMercaderiaId;
+            _ReglaAlmacenajeId = model.ReglaAlmacenajeId;
             _Codigo = model.Codigo;
             _Nombre = model.Nombre;
             _Descripcion = model.Descripcion;
-            _TipoMercaderia = model.TipoMercaderia?.Nombre;
-            _FamiliaMercaderia = model.FamiliaMercaderia?.Nombre;
+            _AlmacenId = model.AlmacenId;
+            _FamiliaMercaderiaId = model.FamiliaMercaderiaId;
+            _Almacen = model.Almacen.Nombre;
+            _FamiliaMercaderia = model.FamiliaMercaderia.Nombre;
         }
 
         #endregion
 
         #region Propiedades privadas
 
-        private string _MercaderiaId;
-
-        private string _TipoMercaderiaId;
-
-        private string _FamiliaMercaderiaId;
+        private string _ReglaAlmacenajeId;
 
         private string _Codigo;
 
@@ -46,7 +42,11 @@ namespace AdmCostoProduccion.Common.ViewModels.Inventario
 
         private string _Descripcion;
 
-        private string _TipoMercaderia;
+        private string _AlmacenId;
+
+        private string _FamiliaMercaderiaId;
+
+        private string _Almacen;
 
         private string _FamiliaMercaderia;
 
@@ -54,52 +54,18 @@ namespace AdmCostoProduccion.Common.ViewModels.Inventario
 
         #region Propiedades publicas
 
-        public string MercaderiaId
+        public string ReglaAlmacenajeId
         {
             get
             {
-                return _MercaderiaId;
+                return _ReglaAlmacenajeId;
             }
 
             set
             {
-                if (value != _MercaderiaId)
+                if (value != _ReglaAlmacenajeId)
                 {
-                    _MercaderiaId = value;
-                    NotifyPropertyChanged();
-                }
-            }
-        }
-
-        public string TipoMercaderiaId
-        {
-            get
-            {
-                return _TipoMercaderiaId;
-            }
-
-            set
-            {
-                if (value != _TipoMercaderiaId)
-                {
-                    _TipoMercaderiaId = value;
-                    NotifyPropertyChanged();
-                }
-            }
-        }
-
-        public string FamiliaMercaderiaId
-        {
-            get
-            {
-                return _FamiliaMercaderiaId;
-            }
-
-            set
-            {
-                if (value != _FamiliaMercaderiaId)
-                {
-                    _FamiliaMercaderiaId = value;
+                    _ReglaAlmacenajeId = value;
                     NotifyPropertyChanged();
                 }
             }
@@ -156,18 +122,52 @@ namespace AdmCostoProduccion.Common.ViewModels.Inventario
             }
         }
 
-        public string TipoMercaderia
+        public string AlmacenId
         {
             get
             {
-                return _TipoMercaderia;
+                return _AlmacenId;
             }
 
             set
             {
-                if (value != _TipoMercaderia)
+                if (value != _AlmacenId)
                 {
-                    _TipoMercaderia = value;
+                    _AlmacenId = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
+        public string FamiliaMercaderiaId
+        {
+            get
+            {
+                return _FamiliaMercaderiaId;
+            }
+
+            set
+            {
+                if (value != _FamiliaMercaderiaId)
+                {
+                    _FamiliaMercaderiaId = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
+        public string Almacen
+        {
+            get
+            {
+                return _Almacen;
+            }
+
+            set
+            {
+                if (value != _Almacen)
+                {
+                    _Almacen = value;
                     NotifyPropertyChanged();
                 }
             }
@@ -194,30 +194,30 @@ namespace AdmCostoProduccion.Common.ViewModels.Inventario
 
         #region Metodos Publicos
 
-        public void CopyOf(MercaderiaViewModel viewModel)
+        public void CopyOf(ReglaAlmacenajeViewModel viewModel)
         {
             _IsNew = viewModel.IsNew;
             _IsOld = viewModel.IsOld;
-            _MercaderiaId = viewModel.MercaderiaId;
-            _TipoMercaderiaId = viewModel.TipoMercaderiaId;
-            _FamiliaMercaderiaId = viewModel.FamiliaMercaderiaId;
+            _ReglaAlmacenajeId = viewModel.ReglaAlmacenajeId;
             _Codigo = viewModel.Codigo;
             _Nombre = viewModel.Nombre;
             _Descripcion = viewModel.Descripcion;
-            _TipoMercaderia = viewModel.TipoMercaderia;
+            _AlmacenId = viewModel.AlmacenId;
+            _FamiliaMercaderiaId = viewModel.FamiliaMercaderiaId;
+            _Almacen = viewModel.Almacen;
             _FamiliaMercaderia = viewModel.FamiliaMercaderia;
         }
 
-        public Mercaderia ToModel()
+        public ReglaAlmacenaje ToModel()
         {
-            Mercaderia model = new Mercaderia
+            ReglaAlmacenaje model = new ReglaAlmacenaje
             {
-                MercaderiaId = _MercaderiaId,
-                TipoMercaderiaId = _TipoMercaderiaId,
-                FamiliaMercaderiaId = _FamiliaMercaderiaId,
+                ReglaAlmacenajeId = _ReglaAlmacenajeId,
                 Codigo = _Codigo,
                 Nombre = _Nombre,
-                Descripcion = _Descripcion
+                Descripcion = _Descripcion,
+                AlmacenId = _AlmacenId,
+                FamiliaMercaderiaId = _FamiliaMercaderiaId
             };
 
             return model;
@@ -227,11 +227,11 @@ namespace AdmCostoProduccion.Common.ViewModels.Inventario
         {
             using (var context = new ApplicationDbContext())
             {
-                Mercaderia model = this.ToModel();
+                ReglaAlmacenaje model = this.ToModel();
 
                 if (IsNew)
                 {
-                    context.Mercaderias.Add(model);
+                    context.ReglaAlmacenajes.Add(model);
                 }
                 else
                 {
@@ -243,7 +243,7 @@ namespace AdmCostoProduccion.Common.ViewModels.Inventario
                 context.SaveChanges();
                 _IsNew = false;
                 _IsOld = false;
-                _MercaderiaId = model.MercaderiaId;
+                _ReglaAlmacenajeId = model.ReglaAlmacenajeId;
             }
         }
 
@@ -251,7 +251,7 @@ namespace AdmCostoProduccion.Common.ViewModels.Inventario
         {
             using (var context = new ApplicationDbContext())
             {
-                Mercaderia model = this.ToModel();
+                ReglaAlmacenaje model = this.ToModel();
                 context.Entry(model).State = EntityState.Deleted;
                 context.SaveChanges();
             }

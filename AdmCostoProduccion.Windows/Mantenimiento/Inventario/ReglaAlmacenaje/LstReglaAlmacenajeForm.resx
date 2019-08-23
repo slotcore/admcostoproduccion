@@ -117,87 +117,13 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="KardexMovimiento_Insert" xml:space="preserve">
-    <value>INSERT INTO KardexMovimientoes (KardexMovimientoId, Cantidad, KardexId, TipoMovimientoId, RecepcionDetalleId, DespachoDetalleId, MercaderiaId, UnidadMedidaId, UsuarioCreacion, FechaCreacion, Eliminado)
-VALUES (@KardexMovimientoId, @Cantidad, @KardexId, @TipoMovimientoId, @RecepcionDetalleId, @DespachoDetalleId, @MercaderiaId, @UnidadMedidaId, @UsuarioCreacion, @FechaCreacion, @Eliminado)</value>
-  </data>
-  <data name="KardexMovimiento_Update" xml:space="preserve">
-    <value>UPDATE KardexMovimientoes
-SET Cantidad = @Cantidad
-	, KardexId = @KardexId
-	, TipoMovimientoId = @TipoMovimientoId
-	, RecepcionDetalleId = @RecepcionDetalleId
-	, DespachoDetalleId = @DespachoDetalleId
-	, MercaderiaId = @MercaderiaId
-	, UnidadMedidaId = @UnidadMedidaId
-	, UsuarioUltimaActualizacion = @UsuarioUltimaActualizacion
-	, FechaUltimaActualizacion = @FechaUltimaActualizacion
-	, Eliminado = @Eliminado
-WHERE KardexMovimientoId = @KardexMovimientoId</value>
-  </data>
-  <data name="Kardex_Insert" xml:space="preserve">
-    <value>INSERT INTO Kardexes (KardexId, CantidadSaldo, CantidadEntrada, CantidadSalida, OrdenServicioId, AlmacenId, UsuarioCreacion, FechaCreacion, Eliminado)
-VALUES (@KardexId, @CantidadSaldo, @CantidadEntrada, @CantidadSalida, @OrdenServicioId, @AlmacenId, @UsuarioCreacion, @FechaCreacion, @Eliminado)</value>
-  </data>
-  <data name="Kardex_Update" xml:space="preserve">
-    <value>UPDATE Kardexes
-SET CantidadSaldo = @CantidadSaldo
-	, CantidadEntrada = @CantidadEntrada
-	, CantidadSalida = @CantidadSalida
-	, OrdenServicioId = @OrdenServicioId
-	, AlmacenId = @AlmacenId
-	, UsuarioUltimaActualizacion = @UsuarioUltimaActualizacion
-	, FechaUltimaActualizacion = @FechaUltimaActualizacion
-	, Eliminado = @Eliminado
-WHERE KardexId = @KardexId</value>
-  </data>
-  <data name="OrdenServicio_Insert" xml:space="preserve">
-    <value>INSERT INTO OrdenServicios (OrdenServicioId, CantidadSaldo, CantidadEntrada, CantidadSalida, MercaderiaId, UsuarioCreacion, FechaCreacion, Eliminado)
-VALUES (@OrdenServicioId, @CantidadSaldo, @CantidadEntrada, @CantidadSalida, @MercaderiaId, @UsuarioCreacion, @FechaCreacion, @Eliminado)</value>
-  </data>
-  <data name="OrdenServicio_Update" xml:space="preserve">
-    <value>UPDATE OrdenServicios
-SET CantidadSaldo = @CantidadSaldo
-	, CantidadEntrada = @CantidadEntrada
-	, CantidadSalida = @CantidadSalida
-	, MercaderiaId = @MercaderiaId
-	, UsuarioUltimaActualizacion = @UsuarioUltimaActualizacion
-	, FechaUltimaActualizacion = @FechaUltimaActualizacion
-	, Eliminado = @Eliminado
-WHERE OrdenServicioId = @OrdenServicioId</value>
-  </data>
-  <data name="RecepcionDetalle_Insert" xml:space="preserve">
-    <value>INSERT INTO RecepcionDetalles (RecepcionDetalleId, Cantidad, RecepcionId, MercaderiaId, UnidadMedidaId, OrdenProduccionInsumoId, CompraDetalleId, UsuarioCreacion, FechaCreacion, Eliminado)
-VALUES (@RecepcionDetalleId, @Cantidad, @RecepcionId, @MercaderiaId, @UnidadMedidaId, @OrdenProduccionInsumoId, @CompraDetalleId, @UsuarioCreacion, @FechaCreacion, @Eliminado)</value>
-  </data>
-  <data name="RecepcionDetalle_Update" xml:space="preserve">
-    <value>UPDATE RecepcionDetalles
-SET Cantidad = @Cantidad
-	, RecepcionId = @RecepcionId
-	, MercaderiaId = @MercaderiaId
-	, UnidadMedidaId = @UnidadMedidaId
-	, OrdenProduccionInsumoId = @OrdenProduccionInsumoId
-	, CompraDetalleId = @CompraDetalleId
-	, UsuarioUltimaActualizacion = @UsuarioUltimaActualizacion
-	, FechaUltimaActualizacion = @FechaUltimaActualizacion
-	, Eliminado = @Eliminado
-WHERE RecepcionDetalleId = @RecepcionDetalleId</value>
-  </data>
-  <data name="Recepcion_Insert" xml:space="preserve">
-    <value>INSERT INTO Recepcions (RecepcionId, Codigo, Observacion, TipoRecepcionId, AlmacenId, OrdenProduccionId, CompraId, UsuarioCreacion, FechaCreacion, Eliminado)
-VALUES (@RecepcionId, @Codigo, @Observacion, @TipoRecepcionId, @AlmacenId, @OrdenProduccionId, @CompraId, @UsuarioCreacion, @FechaCreacion, @Eliminado)</value>
-  </data>
-  <data name="Recepcion_Update" xml:space="preserve">
-    <value>UPDATE Recepcions
-SET Codigo = @Codigo
-	, Observacion = @Observacion
-	, TipoRecepcionId = @TipoRecepcionId
-	, AlmacenId = @AlmacenId
-	, OrdenProduccionId = @OrdenProduccionId
-	, CompraId = @CompraId
-	, UsuarioUltimaActualizacion = @UsuarioUltimaActualizacion
-	, FechaUltimaActualizacion = @FechaUltimaActualizacion
-	, Eliminado = @Eliminado
-WHERE RecepcionId = @RecepcionId</value>
-  </data>
+  <metadata name="reglaAlmacenajeViewModelBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>171, 17</value>
+  </metadata>
+  <metadata name="BaseFormToolStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="reglaAlmacenajeViewModelBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>171, 17</value>
+  </metadata>
 </root>

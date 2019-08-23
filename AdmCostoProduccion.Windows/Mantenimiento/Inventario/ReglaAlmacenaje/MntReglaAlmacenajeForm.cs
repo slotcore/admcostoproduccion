@@ -1,6 +1,7 @@
 ﻿using AdmCostoProduccion.Common.Classes;
 using AdmCostoProduccion.Common.Data;
 using AdmCostoProduccion.Common.ViewModels.Inventario;
+using AdmCostoProduccion.Common.ViewModels.Maestro;
 using ComponentFactory.Krypton.Toolkit;
 using System;
 using System.Collections.Generic;
@@ -13,35 +14,35 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace AdmCostoProduccion.Windows.Mantenimiento.Inventario.Mercaderia
+namespace AdmCostoProduccion.Windows.Mantenimiento.Inventario.ReglaAlmacenaje
 {
-    public partial class MntMercaderiaForm : KryptonForm
+    public partial class MntReglaAlmacenajeForm : KryptonForm
     {
         #region Propiedades
-        private MercaderiaViewModel ViewModel = new MercaderiaViewModel();
-        private ObservableListSource<MercaderiaViewModel> ViewModelList;
-        private List<TipoMercaderiaViewModel> tipoMercaderiaViewModels;
+        private ReglaAlmacenajeViewModel ViewModel = new ReglaAlmacenajeViewModel();
+        private ObservableListSource<ReglaAlmacenajeViewModel> ViewModelList;
+        private List<AlmacenViewModel> almacenViewModels;
         private List<FamiliaMercaderiaViewModel> familiaMercaderiaViewModels;
         #endregion
 
         #region Constructor
-        public MntMercaderiaForm(MercaderiaViewModel viewModel
-            , ObservableListSource<MercaderiaViewModel> viewModelList)
+        public MntReglaAlmacenajeForm(ReglaAlmacenajeViewModel viewModel
+            , ObservableListSource<ReglaAlmacenajeViewModel> viewModelList)
         {
             InitializeComponent();
             ViewModel.CopyOf(viewModel);
             ViewModelList = viewModelList;
             CargarCombos();
-            mercaderiaViewModelBindingSource.DataSource = ViewModel;
+            reglaAlmacenajeViewModelBindingSource.DataSource = ViewModel;
         }
 
-        public MntMercaderiaForm(ObservableListSource<MercaderiaViewModel> viewModelList)
+        public MntReglaAlmacenajeForm(ObservableListSource<ReglaAlmacenajeViewModel> viewModelList)
         {
             InitializeComponent();
-            ViewModel = new MercaderiaViewModel();
+            ViewModel = new ReglaAlmacenajeViewModel();
             ViewModelList = viewModelList;
             CargarCombos();
-            mercaderiaViewModelBindingSource.DataSource = ViewModel;
+            reglaAlmacenajeViewModelBindingSource.DataSource = ViewModel;
         }
         #endregion
 
@@ -53,7 +54,7 @@ namespace AdmCostoProduccion.Windows.Mantenimiento.Inventario.Mercaderia
 
         private void CancelarButton_Click(object sender, EventArgs e)
         {
-            mercaderiaViewModelBindingSource.CancelEdit();
+            reglaAlmacenajeViewModelBindingSource.CancelEdit();
             this.Close();
         }
         #endregion
@@ -66,13 +67,13 @@ namespace AdmCostoProduccion.Windows.Mantenimiento.Inventario.Mercaderia
             {
                 bool IsNew = ViewModel.IsNew;
                 Cursor = Cursors.WaitCursor;
-                mercaderiaViewModelBindingSource.EndEdit();
+                reglaAlmacenajeViewModelBindingSource.EndEdit();
                 ViewModel.Grabar();
                 if (IsNew) ViewModelList.Add(ViewModel);
                 else
                 {
                     var viewModel = ViewModelList
-                        .Where(o => o.MercaderiaId == ViewModel.MercaderiaId)
+                        .Where(o => o.ReglaAlmacenajeId == ViewModel.ReglaAlmacenajeId)
                         .FirstOrDefault();
                     viewModel.CopyOf(ViewModel);
                 }
@@ -94,20 +95,22 @@ namespace AdmCostoProduccion.Windows.Mantenimiento.Inventario.Mercaderia
         {
             using (var context = new ApplicationDbContext())
             {
-                var TipoMercaderias = context.TipoMercaderias.ToList();
-                tipoMercaderiaViewModels = new List<TipoMercaderiaViewModel>();
-                foreach (var model in TipoMercaderias)
-                {
-                    tipoMercaderiaViewModels.Add(new TipoMercaderiaViewModel(model));
-                }
-                tipoMercaderiaViewModelBindingSource.DataSource = tipoMercaderiaViewModels;
-
+                var almacens = context.Almacens.ToList();
                 var familiaMercaderias = context.FamiliaMercaderias.ToList();
+                almacenViewModels = new List<AlmacenViewModel>();
                 familiaMercaderiaViewModels = new List<FamiliaMercaderiaViewModel>();
+
+                foreach(var almacen in almacens)
+                {
+                    almacenViewModels.Add(new AlmacenViewModel(almacen));
+                }
+
                 foreach (var familiaMercaderia in familiaMercaderias)
                 {
                     familiaMercaderiaViewModels.Add(new FamiliaMercaderiaViewModel(familiaMercaderia));
                 }
+
+                almacenViewModelBindingSource.DataSource = almacenViewModels;
                 familiaMercaderiaViewModelBindingSource.DataSource = familiaMercaderiaViewModels;
             }
         }

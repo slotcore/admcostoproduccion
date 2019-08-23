@@ -1,4 +1,5 @@
 ﻿using AdmCostoProduccion.Common.Classes;
+using AdmCostoProduccion.Common.Commands.Inventario;
 using AdmCostoProduccion.Common.Data;
 using AdmCostoProduccion.Common.Models.CompraVenta;
 using System;
@@ -208,32 +209,54 @@ namespace AdmCostoProduccion.Common.ViewModels.CompraVenta
 
         public void Grabar()
         {
-            ApplicationDbContext Context = new ApplicationDbContext();
-            Compra model = this.ToModel();
-
-            if (IsNew)
+            using (var context = new ApplicationDbContext())
             {
-                Context.Compras.Add(model);
-            }
-            else
-            {
-                if (IsOld)
+                using (var dbContextTransaction = context.Database.BeginTransaction())
                 {
-                    Context.Entry(model).State = EntityState.Modified;
+                    Compra model = this.ToModel();
+
+                    if (IsNew)
+                    {
+                        context.Compras.Add(model);
+                    }
+                    else
+                    {
+                        if (IsOld)
+                        {
+                            context.Entry(model).State = EntityState.Modified;
+                        }
+                    }
+                    foreach (CompraDetalleViewModel viewModel in CompraDetalleViewModels)
+                    {
+                        viewModel.Grabar(context);
+                    }
+                    foreach (var viewModel in CompraDetalleViewModels.GetRemoveItems())
+                    {
+                        viewModel.Eliminar(context);
+                    }
+
+                    try
+                    {
+                        context.SaveChanges();
+                        var aplicacionConfiguracion = context.AplicacionConfiguracions.FirstOrDefault();
+                        if (aplicacionConfiguracion == null) throw new Exception("No existe registro de configuración¡¡");
+                        if (aplicacionConfiguracion.CompraGeneraMovimiento)
+                        {
+                            //Se genera el movimiento de Recepcion
+                            InventarioCommand.GenerarRecepcion(this, context);
+                        }
+                        dbContextTransaction.Commit();
+                        _IsNew = false;
+                        _IsOld = false;
+                        _CompraId = model.CompraId;
+                    }
+                    catch (Exception ex)
+                    {
+                        dbContextTransaction.Rollback();
+                        throw ex;
+                    }
                 }
             }
-            foreach (CompraDetalleViewModel viewModel in CompraDetalleViewModels)
-            {
-                viewModel.Grabar(Context);
-            }
-            foreach (var viewModel in CompraDetalleViewModels.GetRemoveItems())
-            {
-                viewModel.Eliminar(Context);
-            }
-            Context.SaveChanges();
-            _IsNew = false;
-            _IsOld = false;
-            _CompraId = model.CompraId;
         }
 
         public void Eliminar()
