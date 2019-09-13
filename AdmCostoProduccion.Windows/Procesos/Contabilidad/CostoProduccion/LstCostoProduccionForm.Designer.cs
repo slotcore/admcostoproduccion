@@ -38,12 +38,6 @@
             this.GridHeaderGroup = new ComponentFactory.Krypton.Toolkit.KryptonHeaderGroup();
             this.AlmacenDataGridView = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
             this.BaseFormToolStrip = new System.Windows.Forms.ToolStrip();
-            this.AgregarButton = new System.Windows.Forms.ToolStripButton();
-            this.ModificarButton = new System.Windows.Forms.ToolStripButton();
-            this.EliminarButton = new System.Windows.Forms.ToolStripButton();
-            this.ActualizarButton = new System.Windows.Forms.ToolStripButton();
-            this.CargarExcelButton = new System.Windows.Forms.ToolStripButton();
-            this.costoProduccionViewModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.plantaFabricacionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.codigoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nombreDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -53,6 +47,13 @@
             this.fechaFinDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.costoModDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.costoCifDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.costoProduccionViewModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.AgregarButton = new System.Windows.Forms.ToolStripButton();
+            this.ModificarButton = new System.Windows.Forms.ToolStripButton();
+            this.EliminarButton = new System.Windows.Forms.ToolStripButton();
+            this.ActualizarButton = new System.Windows.Forms.ToolStripButton();
+            this.CargarExcelButton = new System.Windows.Forms.ToolStripButton();
+            this.ProcesarButton = new System.Windows.Forms.ToolStripButton();
             ((System.ComponentModel.ISupportInitialize)(this.BaseFormHeaderGroup)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BaseFormHeaderGroup.Panel)).BeginInit();
             this.BaseFormHeaderGroup.Panel.SuspendLayout();
@@ -212,6 +213,7 @@
             this.BaseFormToolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.AgregarButton,
             this.ModificarButton,
+            this.ProcesarButton,
             this.EliminarButton,
             this.ActualizarButton,
             this.CargarExcelButton});
@@ -221,54 +223,6 @@
             this.BaseFormToolStrip.Size = new System.Drawing.Size(800, 29);
             this.BaseFormToolStrip.TabIndex = 19;
             this.BaseFormToolStrip.Text = "BaseFormToolStrip";
-            // 
-            // AgregarButton
-            // 
-            this.AgregarButton.Image = global::AdmCostoProduccion.Windows.Properties.Resources.add_16x16;
-            this.AgregarButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.AgregarButton.Name = "AgregarButton";
-            this.AgregarButton.Size = new System.Drawing.Size(73, 24);
-            this.AgregarButton.Text = "Agregar";
-            this.AgregarButton.Click += new System.EventHandler(this.AgregarButton_Click);
-            // 
-            // ModificarButton
-            // 
-            this.ModificarButton.Image = global::AdmCostoProduccion.Windows.Properties.Resources.edit_16x16;
-            this.ModificarButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.ModificarButton.Name = "ModificarButton";
-            this.ModificarButton.Size = new System.Drawing.Size(82, 24);
-            this.ModificarButton.Text = "Modificar";
-            this.ModificarButton.Click += new System.EventHandler(this.ModificarButton_Click);
-            // 
-            // EliminarButton
-            // 
-            this.EliminarButton.Image = global::AdmCostoProduccion.Windows.Properties.Resources.trash_16x16;
-            this.EliminarButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.EliminarButton.Name = "EliminarButton";
-            this.EliminarButton.Size = new System.Drawing.Size(74, 24);
-            this.EliminarButton.Text = "Eliminar";
-            this.EliminarButton.Click += new System.EventHandler(this.EliminarButton_Click);
-            // 
-            // ActualizarButton
-            // 
-            this.ActualizarButton.Image = global::AdmCostoProduccion.Windows.Properties.Resources.refresh2_16x16;
-            this.ActualizarButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.ActualizarButton.Name = "ActualizarButton";
-            this.ActualizarButton.Size = new System.Drawing.Size(83, 24);
-            this.ActualizarButton.Text = "Actualizar";
-            this.ActualizarButton.Click += new System.EventHandler(this.ActualizarButton_Click);
-            // 
-            // CargarExcelButton
-            // 
-            this.CargarExcelButton.Image = global::AdmCostoProduccion.Windows.Properties.Resources.exporttoxls_16x16;
-            this.CargarExcelButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.CargarExcelButton.Name = "CargarExcelButton";
-            this.CargarExcelButton.Size = new System.Drawing.Size(95, 24);
-            this.CargarExcelButton.Text = "Cargal Excel";
-            // 
-            // costoProduccionViewModelBindingSource
-            // 
-            this.costoProduccionViewModelBindingSource.DataSource = typeof(AdmCostoProduccion.Common.ViewModels.Contabilidad.CostoProduccionViewModel);
             // 
             // plantaFabricacionDataGridViewTextBoxColumn
             // 
@@ -342,6 +296,63 @@
             this.costoCifDataGridViewTextBoxColumn.ReadOnly = true;
             this.costoCifDataGridViewTextBoxColumn.Width = 82;
             // 
+            // costoProduccionViewModelBindingSource
+            // 
+            this.costoProduccionViewModelBindingSource.DataSource = typeof(AdmCostoProduccion.Common.ViewModels.Contabilidad.CostoProduccionViewModel);
+            // 
+            // AgregarButton
+            // 
+            this.AgregarButton.Image = global::AdmCostoProduccion.Windows.Properties.Resources.add_16x16;
+            this.AgregarButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.AgregarButton.Name = "AgregarButton";
+            this.AgregarButton.Size = new System.Drawing.Size(73, 24);
+            this.AgregarButton.Text = "Agregar";
+            this.AgregarButton.Click += new System.EventHandler(this.AgregarButton_Click);
+            // 
+            // ModificarButton
+            // 
+            this.ModificarButton.Image = global::AdmCostoProduccion.Windows.Properties.Resources.edit_16x16;
+            this.ModificarButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.ModificarButton.Name = "ModificarButton";
+            this.ModificarButton.Size = new System.Drawing.Size(82, 24);
+            this.ModificarButton.Text = "Modificar";
+            this.ModificarButton.Click += new System.EventHandler(this.ModificarButton_Click);
+            // 
+            // EliminarButton
+            // 
+            this.EliminarButton.Image = global::AdmCostoProduccion.Windows.Properties.Resources.trash_16x16;
+            this.EliminarButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.EliminarButton.Name = "EliminarButton";
+            this.EliminarButton.Size = new System.Drawing.Size(74, 24);
+            this.EliminarButton.Text = "Eliminar";
+            this.EliminarButton.Click += new System.EventHandler(this.EliminarButton_Click);
+            // 
+            // ActualizarButton
+            // 
+            this.ActualizarButton.Image = global::AdmCostoProduccion.Windows.Properties.Resources.refresh2_16x16;
+            this.ActualizarButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.ActualizarButton.Name = "ActualizarButton";
+            this.ActualizarButton.Size = new System.Drawing.Size(83, 24);
+            this.ActualizarButton.Text = "Actualizar";
+            this.ActualizarButton.Click += new System.EventHandler(this.ActualizarButton_Click);
+            // 
+            // CargarExcelButton
+            // 
+            this.CargarExcelButton.Image = global::AdmCostoProduccion.Windows.Properties.Resources.exporttoxls_16x16;
+            this.CargarExcelButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.CargarExcelButton.Name = "CargarExcelButton";
+            this.CargarExcelButton.Size = new System.Drawing.Size(95, 24);
+            this.CargarExcelButton.Text = "Cargal Excel";
+            // 
+            // ProcesarButton
+            // 
+            this.ProcesarButton.Image = global::AdmCostoProduccion.Windows.Properties.Resources.pagesetup_16x16;
+            this.ProcesarButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.ProcesarButton.Name = "ProcesarButton";
+            this.ProcesarButton.Size = new System.Drawing.Size(76, 24);
+            this.ProcesarButton.Text = "Procesar";
+            this.ProcesarButton.Click += new System.EventHandler(this.ProcesarButton_Click);
+            // 
             // LstCostoProduccionForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -401,5 +412,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn costoModDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn costoCifDataGridViewTextBoxColumn;
         private System.Windows.Forms.BindingSource costoProduccionViewModelBindingSource;
+        private System.Windows.Forms.ToolStripButton ProcesarButton;
     }
 }

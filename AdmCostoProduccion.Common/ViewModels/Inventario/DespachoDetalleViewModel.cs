@@ -12,6 +12,10 @@ namespace AdmCostoProduccion.Common.ViewModels.Inventario
     {
         #region Constructor
 
+        public DespachoDetalleViewModel()
+        {
+        }
+
         public DespachoDetalleViewModel(string despachoId)
         {
             _IsNew = true;
@@ -23,6 +27,7 @@ namespace AdmCostoProduccion.Common.ViewModels.Inventario
         {
             _DespachoDetalleId = model.DespachoDetalleId;
             _DespachoId = model.DespachoId;
+            _AjusteInventarioDetalleId = model.AjusteInventarioDetalleId;
             _OrdenProduccionInsumoId = model.OrdenProduccionInsumoId;
             _VentaDetalleId = model.VentaDetalleId;
             _MercaderiaId = model.MercaderiaId;
@@ -40,6 +45,8 @@ namespace AdmCostoProduccion.Common.ViewModels.Inventario
         private string _DespachoDetalleId;
 
         private string _DespachoId;
+
+        private string _AjusteInventarioDetalleId;
 
         private string _OrdenProduccionInsumoId;
 
@@ -90,6 +97,23 @@ namespace AdmCostoProduccion.Common.ViewModels.Inventario
                 if (value != _DespachoId)
                 {
                     _DespachoId = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
+        public string AjusteInventarioDetalleId
+        {
+            get
+            {
+                return _AjusteInventarioDetalleId;
+            }
+
+            set
+            {
+                if (value != _AjusteInventarioDetalleId)
+                {
+                    _AjusteInventarioDetalleId = value;
                     NotifyPropertyChanged();
                 }
             }
@@ -241,6 +265,7 @@ namespace AdmCostoProduccion.Common.ViewModels.Inventario
             _IsOld = viewModel.IsOld;
             _DespachoDetalleId = viewModel.DespachoDetalleId;
             _DespachoId = viewModel.DespachoId;
+            _AjusteInventarioDetalleId = viewModel.AjusteInventarioDetalleId;
             _OrdenProduccionInsumoId = viewModel.OrdenProduccionInsumoId;
             _VentaDetalleId = viewModel.VentaDetalleId;
             _MercaderiaId = viewModel.MercaderiaId;
@@ -257,6 +282,7 @@ namespace AdmCostoProduccion.Common.ViewModels.Inventario
             {
                 DespachoDetalleId = _DespachoDetalleId,
                 DespachoId = _DespachoId,
+                AjusteInventarioDetalleId = _AjusteInventarioDetalleId,
                 OrdenProduccionInsumoId = _OrdenProduccionInsumoId,
                 VentaDetalleId = _VentaDetalleId,
                 MercaderiaId = _MercaderiaId,

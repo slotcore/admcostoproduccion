@@ -28,7 +28,7 @@ namespace AdmCostoProduccion.Common.ViewModels.Contabilidad
             _FactorDistribucion = model.FactorDistribucion;
             _CostoMp = model.CostoMp;
             _CostoMod = model.CostoMod;
-            _CostoCif = model.CostoCif;
+            _CostoCif = model.CostoIf;
             _CodigoMercaderia = model.OrdenProduccion.Mercaderia.Codigo;
             _NombreMercaderia = model.OrdenProduccion.Mercaderia.Nombre;
             _ProcedimientoProduccion = model.OrdenProduccion.ProcedimientoProduccion.Nombre;
@@ -346,7 +346,7 @@ namespace AdmCostoProduccion.Common.ViewModels.Contabilidad
                 FactorDistribucion = _FactorDistribucion,
                 CostoMp = _CostoMp,
                 CostoMod = _CostoMod,
-                CostoCif = _CostoCif
+                CostoIf = _CostoCif
             };
 
             return model;

@@ -1,6 +1,8 @@
 ﻿using AdmCostoProduccion.Common.Classes;
+using AdmCostoProduccion.Common.Data;
 using AdmCostoProduccion.Common.Models.Maestro;
 using System;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 
@@ -12,6 +14,7 @@ namespace AdmCostoProduccion.Common.ViewModels.Maestro
 
         public AlmacenViewModel()
         {
+            _IsNew = true;
             _AlmacenId = Guid.NewGuid().ToString();
         }
 
@@ -151,13 +154,16 @@ namespace AdmCostoProduccion.Common.ViewModels.Maestro
 
         #region Metodos Publicos
 
-        public void CopyTo(ref AlmacenViewModel viewModel)
+        public void CopyOf(AlmacenViewModel viewModel)
         {
-            viewModel.AlmacenId = _AlmacenId;
-            viewModel.CentroLogisticoId = _CentroLogisticoId;
-            viewModel.Codigo = _Codigo;
-            viewModel.Nombre = _Nombre;
-            viewModel.Descripcion = _Descripcion;
+            _IsNew = viewModel.IsNew;
+            _IsOld = viewModel.IsOld;
+            _AlmacenId = viewModel.AlmacenId;
+            _CentroLogisticoId = viewModel.CentroLogisticoId;
+            _Codigo = viewModel.Codigo;
+            _Nombre = viewModel.Nombre;
+            _Descripcion = viewModel.Descripcion;
+            _CentroLogistico = viewModel.CentroLogistico;
         }
 
         public Almacen ToModel()
@@ -172,6 +178,61 @@ namespace AdmCostoProduccion.Common.ViewModels.Maestro
             };
 
             return model;
+        }
+
+        public void Grabar()
+        {
+            using (var context = new ApplicationDbContext())
+            {
+                Almacen model = this.ToModel();
+
+                if (IsNew)
+                {
+                    context.Almacens.Add(model);
+                }
+                else
+                {
+                    if (IsOld)
+                    {
+                        context.Entry(model).State = EntityState.Modified;
+                    }
+                }
+                context.SaveChanges();
+                _IsNew = false;
+                _IsOld = false;
+                _AlmacenId = model.AlmacenId;
+            }
+        }
+
+        public void Grabar(ApplicationDbContext context)
+        {
+            Almacen model = this.ToModel();
+
+            if (IsNew)
+            {
+                context.Almacens.Add(model);
+            }
+            else
+            {
+                if (IsOld)
+                {
+                    context.Entry(model).State = EntityState.Modified;
+                }
+            }
+            context.SaveChanges();
+            _IsNew = false;
+            _IsOld = false;
+            _AlmacenId = model.AlmacenId;
+        }
+
+        public void Eliminar()
+        {
+            using (var context = new ApplicationDbContext())
+            {
+                Almacen model = this.ToModel();
+                context.Entry(model).State = EntityState.Deleted;
+                context.SaveChanges();
+            }
         }
 
         #endregion

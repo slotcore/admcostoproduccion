@@ -13,39 +13,34 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace AdmCostoProduccion.Windows.Maestro.PlantaFabricacion
+namespace AdmCostoProduccion.Windows.Mantenimiento.Maestro.PlantaFabricacion
 {
     public partial class MntPlantaFabricacionForm : KryptonForm
     {
-        private readonly ApplicationDbContext Context = new ApplicationDbContext();
-        private PlantaFabricacionViewModel PlantaFabricacionViewModel = new PlantaFabricacionViewModel();
-
         #region Propiedades
-        public bool IsNew { get; set; }
-        public ObservableListSource<PlantaFabricacionViewModel> PlantaFabricacionViewModels { get; set; }
-        public List<Common.Models.Maestro.CentroLogistico> CentroLogisticos { get; set; }
+        private PlantaFabricacionViewModel ViewModel = new PlantaFabricacionViewModel();
+        private ObservableListSource<PlantaFabricacionViewModel> ViewModelList;
+        private List<CentroLogisticoViewModel> centroLogisticoViewModels;
         #endregion
 
         #region Constructor
-        public MntPlantaFabricacionForm(PlantaFabricacionViewModel PlantaFabricacionViewModel
-            , ObservableListSource<PlantaFabricacionViewModel> PlantaFabricacionViewModels)
+        public MntPlantaFabricacionForm(PlantaFabricacionViewModel viewModel
+            , ObservableListSource<PlantaFabricacionViewModel> viewModelList)
         {
             InitializeComponent();
-            IsNew = false;
-            PlantaFabricacionViewModel.CopyTo(ref this.PlantaFabricacionViewModel);
-            this.PlantaFabricacionViewModels = PlantaFabricacionViewModels;
-            plantaFabricacionViewModelBindingSource.DataSource = this.PlantaFabricacionViewModel;
-            //
+            ViewModel = new PlantaFabricacionViewModel();
+            ViewModel.CopyOf(viewModel);
+            ViewModelList = viewModelList;
+            plantaFabricacionViewModelBindingSource.DataSource = ViewModel;
             CargarCombos();
         }
 
-        public MntPlantaFabricacionForm(ObservableListSource<PlantaFabricacionViewModel> PlantaFabricacionViewModels)
+        public MntPlantaFabricacionForm(ObservableListSource<PlantaFabricacionViewModel> viewModelList)
         {
             InitializeComponent();
-            IsNew = true;
-            this.PlantaFabricacionViewModels = PlantaFabricacionViewModels;
-            plantaFabricacionViewModelBindingSource.DataSource = PlantaFabricacionViewModel;
-            //
+            ViewModel = new PlantaFabricacionViewModel();
+            ViewModelList = viewModelList;
+            plantaFabricacionViewModelBindingSource.DataSource = ViewModel;
             CargarCombos();
         }
         #endregion
@@ -65,40 +60,29 @@ namespace AdmCostoProduccion.Windows.Maestro.PlantaFabricacion
 
         #region Eventos Privados
 
-        private void CargarCombos()
-        {
-            CentroLogisticos = new ApplicationDbContext().CentroLogisticos.ToList();
-            centroLogisticoBindingSource.DataSource = CentroLogisticos;
-        }
-
         private void Grabar()
         {
             try
             {
+                bool IsNew = ViewModel.IsNew;
+                Cursor = Cursors.WaitCursor;
                 plantaFabricacionViewModelBindingSource.EndEdit();
-                var centroLogistico = (Common.Models.Maestro.CentroLogistico)centroLogisticoBindingSource.Current;
 
-                PlantaFabricacionViewModel.CentroLogisticoId = centroLogistico.CentroLogisticoId;
-                PlantaFabricacionViewModel.CentroLogistico = centroLogistico.Nombre;
+                CentroLogisticoViewModel centroLogisticoViewModel
+                    = (CentroLogisticoViewModel)centroLogisticoViewModelBindingSource.Current;
+                if (centroLogisticoViewModel == null)
+                    throw new Exception("Debe seleccionar un Centro Logistico");
+                ViewModel.CentroLogisticoId = centroLogisticoViewModel.CentroLogisticoId;
+                ViewModel.CentroLogistico = centroLogisticoViewModel.Nombre;
 
-                Common.Models.Maestro.PlantaFabricacion plantaFabricacion = PlantaFabricacionViewModel.ToModel();
-                if (IsNew)
-                {
-                    Context.PlantaFabricacions.Add(plantaFabricacion);
-                    Context.SaveChanges();
-                    //
-                    PlantaFabricacionViewModel.PlantaFabricacionId = plantaFabricacion.PlantaFabricacionId;
-                    PlantaFabricacionViewModels.Add(PlantaFabricacionViewModel);
-                }
+                ViewModel.Grabar();
+                if (IsNew) ViewModelList.Add(ViewModel);
                 else
                 {
-                    Context.Entry(plantaFabricacion).State = EntityState.Modified;
-                    Context.SaveChanges();
-                    //
-                    var _PlantaFabricacionViewModel = PlantaFabricacionViewModels
-                        .Where(o => o.PlantaFabricacionId == PlantaFabricacionViewModel.PlantaFabricacionId)
+                    var viewModel = ViewModelList
+                        .Where(o => o.PlantaFabricacionId == ViewModel.PlantaFabricacionId)
                         .FirstOrDefault();
-                    PlantaFabricacionViewModel.CopyTo(ref _PlantaFabricacionViewModel);
+                    viewModel.CopyOf(ViewModel);
                 }
                 this.Close();
 
@@ -107,6 +91,31 @@ namespace AdmCostoProduccion.Windows.Maestro.PlantaFabricacion
             {
                 MessageBox.Show(string.Format("Ocurrió un error al grabar, mensaje de error: {0}", ex.Message)
                     , "Grabar", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                Cursor = Cursors.Default;
+            }
+        }
+
+        private void CargarCombos()
+        {
+            using (var context = new ApplicationDbContext())
+            {
+                var centroLogisticos = context.CentroLogisticos.ToList();
+                centroLogisticoViewModels = new List<CentroLogisticoViewModel>();
+                foreach (var centroLogistico in centroLogisticos)
+                {
+                    centroLogisticoViewModels.Add(new CentroLogisticoViewModel(centroLogistico));
+                }
+                centroLogisticoViewModelBindingSource.DataSource = centroLogisticoViewModels;
+                if (!string.IsNullOrEmpty(ViewModel.CentroLogisticoId))
+                {
+                    CentroLogisticoViewModel centroLogisticoViewModel = centroLogisticoViewModels
+                        .Where(o => o.CentroLogisticoId == ViewModel.CentroLogisticoId)
+                        .FirstOrDefault();
+                    centroLogisticoIdComboBox.SelectedItem = centroLogisticoViewModel;
+                }
             }
         }
         #endregion

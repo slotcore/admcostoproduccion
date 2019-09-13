@@ -38,6 +38,11 @@ namespace AdmCostoProduccion.Windows.Procesos.Contabilidad.CostoProduccion
             Modificar();
         }
 
+        private void ProcesarButton_Click(object sender, EventArgs e)
+        {
+            Procesar();
+        }
+
         private void EliminarButton_Click(object sender, EventArgs e)
         {
             Eliminar();
@@ -88,6 +93,21 @@ namespace AdmCostoProduccion.Windows.Procesos.Contabilidad.CostoProduccion
             {
                 var viewModel = (CostoProduccionViewModel)costoProduccionViewModelBindingSource.Current;
                 var frm = new MntCostoProduccionForm(viewModel, ViewModelList);
+                frm.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(string.Format("Ocurrió un error al modificar, mensaje de error: {0}", ex.Message)
+                    , "Modificar", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void Procesar()
+        {
+            try
+            {
+                var viewModel = (CostoProduccionViewModel)costoProduccionViewModelBindingSource.Current;
+                var frm = new MntCostoProduccionProcesoForm(viewModel, ViewModelList);
                 frm.ShowDialog();
             }
             catch (Exception ex)

@@ -29,6 +29,12 @@ using AdmCostoProduccion.Windows.Mantenimiento.Aplicacion.AplicacionConfiguracio
 using AdmCostoProduccion.Windows.Mantenimiento.Aplicacion.AplicacionCorrelativo;
 using AdmCostoProduccion.Windows.Mantenimiento.Inventario.FamiliaMercaderia;
 using AdmCostoProduccion.Windows.Mantenimiento.Inventario.ReglaAlmacenaje;
+using AdmCostoProduccion.Windows.Mantenimiento.Contabilidad.MetodoValorizacion;
+using AdmCostoProduccion.Windows.Mantenimiento.Contabilidad.DistribucionValorizacion;
+using AdmCostoProduccion.Windows.Mantenimiento.Contabilidad.ConfiguracionValorizacion;
+using AdmCostoProduccion.Windows.Mantenimiento.Inventario.TipoAjusteInventario;
+using AdmCostoProduccion.Windows.Procesos.Inventario.InventarioInicial;
+using AdmCostoProduccion.Windows.Procesos.Inventario.AjusteInventario;
 
 namespace AdmCostoProduccion.Windows
 {
@@ -254,6 +260,60 @@ namespace AdmCostoProduccion.Windows
         private void ReglaAlmacenajeMenuItem_Click(object sender, EventArgs e)
         {
             var form = new LstReglaAlmacenajeForm
+            {
+                MdiParent = this
+            };
+            form.Show();
+        }
+
+        private void MetodoValorizaciónMenuItem_Click(object sender, EventArgs e)
+        {
+            var form = new LstMetodoValorizacionForm
+            {
+                MdiParent = this
+            };
+            form.Show();
+        }
+
+        private void DistribucionValorizacionMenuItem_Click(object sender, EventArgs e)
+        {
+            var form = new LstDistribucionValorizacionForm
+            {
+                MdiParent = this
+            };
+            form.Show();
+        }
+
+        private void ConfiguracionValorizacionMenuItem_Click(object sender, EventArgs e)
+        {
+            var form = new LstConfiguracionValorizacionForm
+            {
+                MdiParent = this
+            };
+            form.Show();
+        }
+
+        private void TipoAjusteInventarioMenuItem_Click(object sender, EventArgs e)
+        {
+            var form = new LstTipoAjusteInventarioForm
+            {
+                MdiParent = this
+            };
+            form.Show();
+        }
+
+        private void InventarioInicialMenuItem_Click(object sender, EventArgs e)
+        {
+            var form = new LstInventarioInicialForm
+            {
+                MdiParent = this
+            };
+            form.Show();
+        }
+
+        private void AjusteInventarioMenuItem_Click(object sender, EventArgs e)
+        {
+            var form = new LstAjusteInventarioForm
             {
                 MdiParent = this
             };

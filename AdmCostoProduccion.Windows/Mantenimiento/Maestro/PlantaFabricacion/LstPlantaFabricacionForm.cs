@@ -1,6 +1,7 @@
 ﻿using AdmCostoProduccion.Common.Classes;
 using AdmCostoProduccion.Common.Data;
 using AdmCostoProduccion.Common.ViewModels.Maestro;
+using AdmCostoProduccion.Windows.Mantenimiento.Maestro.PlantaFabricacion;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -176,5 +177,43 @@ namespace AdmCostoProduccion.Windows.Maestro.PlantaFabricacion
             }
         }
         #endregion
+
+        private void CargarExcelButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string m_ExcelFileName;
+                OpenFileDialog openFileDialog = new OpenFileDialog
+                {
+                    Filter = "Archivos Excel|*.xls",
+                    Title = "Seleccionar Archivo"
+                };
+                if ((openFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK))
+                {
+                    m_ExcelFileName = openFileDialog.FileName;
+                    if (string.IsNullOrEmpty(m_ExcelFileName))
+                    {
+                        throw new Exception("Se debe de seleccionar el archivo para comenzar el proceso.");
+                    }
+
+                    if ((MessageBox.Show("Se procesará el archivo seleccionado. ¿Seguro desea continuar?", "Procesar", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == System.Windows.Forms.DialogResult.Yes))
+                    {
+                        Cursor = Cursors.WaitCursor;
+                        
+                        MessageBox.Show("Se procesó correctamente al archivo seleccionado", "Cargar Excel", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message
+                    , "Cargar Excel", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                Cursor = Cursors.Default;
+            }
+        }
     }
 }

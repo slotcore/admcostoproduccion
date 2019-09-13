@@ -31,7 +31,7 @@ namespace AdmCostoProduccion.Common.Models.Contabilidad
 
         public double CostoMod { get; set; }
 
-        public double CostoCif { get; set; }
+        public double CostoIf { get; set; }
 
         #endregion
 
@@ -49,9 +49,10 @@ namespace AdmCostoProduccion.Common.Models.Contabilidad
         #endregion
 
         #region Relacionales
-
-        
+                
         public virtual ICollection<CostoOrdenProduccion> CostoOrdenProduccions { get; set; }
+
+        public virtual ICollection<CostoProduccionMovimiento> CostoProduccionMovimientos { get; set; }
 
         #endregion
     }

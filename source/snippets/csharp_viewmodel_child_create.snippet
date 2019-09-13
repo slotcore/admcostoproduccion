@@ -75,10 +75,17 @@ namespace $LibraryName$.ViewModels.$EsquemaName$
     {
         #region Constructor
         
-        public $Model$ViewModel(int parentId)
+        public $Model$ViewModel()
+        {
+            _IsNew = true;
+            _$Model$Id = Guid.NewGuid().ToString();
+        }
+        
+        public $Model$ViewModel(string parentId)
         {
             _IsNew = true;
             _$ModelParent$Id = parentId;
+            _$Model$Id = Guid.NewGuid().ToString();
         }
         
         public $Model$ViewModel($Model$ model)
@@ -94,9 +101,9 @@ namespace $LibraryName$.ViewModels.$EsquemaName$
 
         #region Propiedades privadas
 
-        private int _$Model$Id;
+        private string _$Model$Id;
 
-        private int _$ModelParent$Id;
+        private string _$ModelParent$Id;
 
         private $TipoDato1$ _$Propiedad1$;
 
@@ -108,7 +115,7 @@ namespace $LibraryName$.ViewModels.$EsquemaName$
 
         #region Propiedades publicas
 
-        public int $Model$Id
+        public string $Model$Id
         {
             get
             {
@@ -125,7 +132,7 @@ namespace $LibraryName$.ViewModels.$EsquemaName$
             }
         }
 
-        public int $ModelParent$Id
+        public string $ModelParent$Id
         {
             get
             {

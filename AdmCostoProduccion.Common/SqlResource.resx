@@ -117,13 +117,49 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="DespachoDetalle_Insert" xml:space="preserve">
+    <value>INSERT INTO DespachoDetalles (DespachoDetalleId, Cantidad, DespachoId, MercaderiaId, UnidadMedidaId, OrdenProduccionInsumoId, VentaDetalleId, UsuarioCreacion, FechaCreacion, Eliminado)
+VALUES (@DespachoDetalleId, @Cantidad, @DespachoId, @MercaderiaId, @UnidadMedidaId, @OrdenProduccionInsumoId, @VentaDetalleId, @UsuarioCreacion, @FechaCreacion, @Eliminado)</value>
+  </data>
+  <data name="DespachoDetalle_Update" xml:space="preserve">
+    <value>UPDATE DespachoDetalles
+SET Cantidad = @Cantidad
+	, DespachoId = @DespachoId
+	, MercaderiaId = @MercaderiaId
+	, UnidadMedidaId = @UnidadMedidaId
+	, OrdenProduccionInsumoId = @OrdenProduccionInsumoId
+	, VentaDetalleId = @VentaDetalleId
+	, UsuarioUltimaActualizacion = @UsuarioUltimaActualizacion
+	, FechaUltimaActualizacion = @FechaUltimaActualizacion
+	, Eliminado = @Eliminado
+WHERE DespachoDetalleId = @DespachoDetalleId</value>
+  </data>
+  <data name="Despacho_Insert" xml:space="preserve">
+    <value>INSERT INTO Despachoes (DespachoId, Codigo, Fecha, Observacion, TipoDespachoId, AlmacenId, OrdenProduccionId, VentaId, UsuarioCreacion, FechaCreacion, Eliminado)
+VALUES (@DespachoId, @Codigo, @Fecha, @Observacion, @TipoDespachoId, @AlmacenId, @OrdenProduccionId, @VentaId, @UsuarioCreacion, @FechaCreacion, @Eliminado)</value>
+  </data>
+  <data name="Despacho_Update" xml:space="preserve">
+    <value>UPDATE Despachoes
+SET Codigo = @Codigo
+	, Fecha = @Fecha
+	, Observacion = @Observacion
+	, TipoDespachoId = @TipoDespachoId
+	, AlmacenId = @AlmacenId
+	, OrdenProduccionId = @OrdenProduccionId
+	, VentaId = @VentaId
+	, UsuarioUltimaActualizacion = @UsuarioUltimaActualizacion
+	, FechaUltimaActualizacion = @FechaUltimaActualizacion
+	, Eliminado = @Eliminado
+WHERE DespachoId = @DespachoId</value>
+  </data>
   <data name="KardexMovimiento_Insert" xml:space="preserve">
-    <value>INSERT INTO KardexMovimientoes (KardexMovimientoId, Cantidad, KardexId, TipoMovimientoId, RecepcionDetalleId, DespachoDetalleId, MercaderiaId, UnidadMedidaId, UsuarioCreacion, FechaCreacion, Eliminado)
-VALUES (@KardexMovimientoId, @Cantidad, @KardexId, @TipoMovimientoId, @RecepcionDetalleId, @DespachoDetalleId, @MercaderiaId, @UnidadMedidaId, @UsuarioCreacion, @FechaCreacion, @Eliminado)</value>
+    <value>INSERT INTO KardexMovimientoes (KardexMovimientoId, Fecha, Cantidad, KardexId, TipoMovimientoId, RecepcionDetalleId, DespachoDetalleId, MercaderiaId, UnidadMedidaId, UsuarioCreacion, FechaCreacion, Eliminado)
+VALUES (@KardexMovimientoId, @Fecha, @Cantidad, @KardexId, @TipoMovimientoId, @RecepcionDetalleId, @DespachoDetalleId, @MercaderiaId, @UnidadMedidaId, @UsuarioCreacion, @FechaCreacion, @Eliminado)</value>
   </data>
   <data name="KardexMovimiento_Update" xml:space="preserve">
     <value>UPDATE KardexMovimientoes
-SET Cantidad = @Cantidad
+SET Fecha = @Fecha
+	, Cantidad = @Cantidad
 	, KardexId = @KardexId
 	, TipoMovimientoId = @TipoMovimientoId
 	, RecepcionDetalleId = @RecepcionDetalleId
@@ -184,13 +220,14 @@ SET Cantidad = @Cantidad
 WHERE RecepcionDetalleId = @RecepcionDetalleId</value>
   </data>
   <data name="Recepcion_Insert" xml:space="preserve">
-    <value>INSERT INTO Recepcions (RecepcionId, Codigo, Observacion, TipoRecepcionId, AlmacenId, OrdenProduccionId, CompraId, UsuarioCreacion, FechaCreacion, Eliminado)
-VALUES (@RecepcionId, @Codigo, @Observacion, @TipoRecepcionId, @AlmacenId, @OrdenProduccionId, @CompraId, @UsuarioCreacion, @FechaCreacion, @Eliminado)</value>
+    <value>INSERT INTO Recepcions (RecepcionId, Codigo, Fecha, Observacion, TipoRecepcionId, AlmacenId, OrdenProduccionId, CompraId, UsuarioCreacion, FechaCreacion, Eliminado)
+VALUES (@RecepcionId, @Codigo, @Fecha, @Observacion, @TipoRecepcionId, @AlmacenId, @OrdenProduccionId, @CompraId, @UsuarioCreacion, @FechaCreacion, @Eliminado)</value>
   </data>
   <data name="Recepcion_Update" xml:space="preserve">
     <value>UPDATE Recepcions
 SET Codigo = @Codigo
 	, Observacion = @Observacion
+	, Fecha = @Fecha
 	, TipoRecepcionId = @TipoRecepcionId
 	, AlmacenId = @AlmacenId
 	, OrdenProduccionId = @OrdenProduccionId

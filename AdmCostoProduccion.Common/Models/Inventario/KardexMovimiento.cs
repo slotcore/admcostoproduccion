@@ -21,6 +21,8 @@ namespace AdmCostoProduccion.Common.Models.Inventario
         [Key]
         public string KardexMovimientoId { get; set; }
 
+        public DateTime Fecha { get; set; }
+
         public double Cantidad { get; set; }
         #endregion
 
@@ -59,9 +61,10 @@ namespace AdmCostoProduccion.Common.Models.Inventario
         #endregion
 
         #region Relacionales
-
-        
+                
         public virtual ICollection<CostoOrdenProduccion> CostoOrdenProduccions { get; set; }
+
+        public virtual ICollection<CostoProduccionMovimiento> CostoProduccionMovimientos { get; set; }
 
         #endregion
     }

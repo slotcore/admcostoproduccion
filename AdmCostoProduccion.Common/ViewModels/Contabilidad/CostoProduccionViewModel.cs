@@ -29,9 +29,9 @@ namespace AdmCostoProduccion.Common.ViewModels.Contabilidad
             _FechaInicio = model.FechaInicio;
             _FechaFin = model.FechaFin;
             _CostoMod = model.CostoMod;
-            _CostoCif = model.CostoCif;
-            _PlantaFabricacion = model.PlantaFabricacion.Nombre;
-            _ConfiguracionValorizacion = model.ConfiguracionValorizacion.Nombre;
+            _CostoCif = model.CostoIf;
+            _PlantaFabricacion = model.PlantaFabricacion?.Nombre;
+            _ConfiguracionValorizacion = model.ConfiguracionValorizacion?.Nombre;
 
             foreach (var child in model.CostoOrdenProduccions)
             {
@@ -330,7 +330,7 @@ namespace AdmCostoProduccion.Common.ViewModels.Contabilidad
                 FechaInicio = _FechaInicio,
                 FechaFin = _FechaFin,
                 CostoMod = _CostoMod,
-                CostoCif = _CostoCif
+                CostoIf = _CostoCif
             };
 
             return model;

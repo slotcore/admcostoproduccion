@@ -12,6 +12,9 @@ namespace AdmCostoProduccion.Common.ViewModels.Produccion
     {
         #region Constructor
 
+        public OrdenProduccionInsumoViewModel()
+        {
+        }
         public OrdenProduccionInsumoViewModel(string parentId)
         {
             _IsNew = true;

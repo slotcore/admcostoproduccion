@@ -78,6 +78,7 @@ namespace $LibraryName$.ViewModels.$EsquemaName$
         public $Model$ViewModel()
         {
             _IsNew = true;
+            _$Model$Id = Guid.NewGuid().ToString();
         }
         
         public $Model$ViewModel($Model$ model)
@@ -97,7 +98,7 @@ namespace $LibraryName$.ViewModels.$EsquemaName$
 
         #region Propiedades privadas
 
-        private int _$Model$Id;
+        private string _$Model$Id;
 
         private $TipoDato1$ _$Propiedad1$;
 
@@ -112,7 +113,7 @@ namespace $LibraryName$.ViewModels.$EsquemaName$
 
         #region Propiedades publicas
 
-        public int $Model$Id
+        public string $Model$Id
         {
             get
             {

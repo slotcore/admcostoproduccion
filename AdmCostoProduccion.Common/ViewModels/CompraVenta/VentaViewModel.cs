@@ -1,7 +1,9 @@
 ﻿using AdmCostoProduccion.Common.Classes;
+using AdmCostoProduccion.Common.Commands.Inventario;
+using AdmCostoProduccion.Common.Data;
 using AdmCostoProduccion.Common.Models.CompraVenta;
 using System;
-using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 
@@ -13,22 +15,23 @@ namespace AdmCostoProduccion.Common.ViewModels.CompraVenta
 
         public VentaViewModel()
         {
+            _IsNew = true;
             _VentaId = Guid.NewGuid().ToString();
-            Fecha = DateTime.Now;
+            _Fecha = DateTime.Today;
         }
 
         public VentaViewModel(Venta model)
         {
-            VentaId = model.VentaId;
-            CentroLogisticoId = model.CentroLogisticoId;
-            NumeroDocumento = model.NumeroDocumento;
-            Fecha = model.Fecha;
-            Descripcion = model.Descripcion;
-            CentroLogistico = model.CentroLogistico.Nombre;
+            _VentaId = model.VentaId;
+            _CentroLogisticoId = model.CentroLogisticoId;
+            _NumeroDocumento = model.NumeroDocumento;
+            _Fecha = model.Fecha;
+            _Descripcion = model.Descripcion;
+            _CentroLogistico = model.CentroLogistico.Nombre;
 
-            foreach (var ventaDetalle in model.VentaDetalles)
+            foreach (var child in model.VentaDetalles)
             {
-                VentaDetalleViewModels.Add(new VentaDetalleViewModel(ventaDetalle));
+                VentaDetalleViewModels.Add(new VentaDetalleViewModel(child));
             }
         }
 
@@ -48,7 +51,7 @@ namespace AdmCostoProduccion.Common.ViewModels.CompraVenta
 
         private string _CentroLogistico;
 
-        private ObservableListSource<VentaDetalleViewModel> _VentaDetalleViewModels 
+        private ObservableListSource<VentaDetalleViewModel> _VentaDetalleViewModels
             = new ObservableListSource<VentaDetalleViewModel>();
 
         #endregion
@@ -157,7 +160,7 @@ namespace AdmCostoProduccion.Common.ViewModels.CompraVenta
             }
         }
 
-        public virtual ObservableListSource<VentaDetalleViewModel> VentaDetalleViewModels
+        public ObservableListSource<VentaDetalleViewModel> VentaDetalleViewModels
         {
             get
             {
@@ -177,15 +180,17 @@ namespace AdmCostoProduccion.Common.ViewModels.CompraVenta
 
         #region Metodos Publicos
 
-        public void CopyTo(ref VentaViewModel viewModel)
+        public void CopyOf(VentaViewModel viewModel)
         {
-            viewModel.VentaId = _VentaId;
-            viewModel.CentroLogisticoId = _CentroLogisticoId;
-            viewModel.NumeroDocumento = _NumeroDocumento;
-            viewModel.Fecha = _Fecha;
-            viewModel.Descripcion = _Descripcion;
-            viewModel.CentroLogistico = _CentroLogistico;
-            viewModel.VentaDetalleViewModels = _VentaDetalleViewModels;
+            _IsNew = viewModel.IsNew;
+            _IsOld = viewModel.IsOld;
+            _VentaId = viewModel.VentaId;
+            _CentroLogisticoId = viewModel.CentroLogisticoId;
+            _NumeroDocumento = viewModel.NumeroDocumento;
+            _Fecha = viewModel.Fecha;
+            _Descripcion = viewModel.Descripcion;
+            _CentroLogistico = viewModel.CentroLogistico;
+            _VentaDetalleViewModels = viewModel.VentaDetalleViewModels;
         }
 
         public Venta ToModel()
@@ -199,13 +204,75 @@ namespace AdmCostoProduccion.Common.ViewModels.CompraVenta
                 Descripcion = _Descripcion
             };
 
-            model.VentaDetalles = new List<VentaDetalle>();
-            foreach (var ventaDetalleViewModel in VentaDetalleViewModels)
-            {
-                model.VentaDetalles.Add(ventaDetalleViewModel.ToModel());
-            }
-
             return model;
+        }
+
+        public void Grabar()
+        {
+            using (ApplicationDbContext context = new ApplicationDbContext())
+            {
+                using (var dbContextTransaction = context.Database.BeginTransaction())
+                {
+                    Venta model = this.ToModel();
+
+                    if (IsNew)
+                    {
+                        context.Ventas.Add(model);
+                    }
+                    else
+                    {
+                        if (IsOld)
+                        {
+                            context.Entry(model).State = EntityState.Modified;
+                        }
+                    }
+                    //Childs
+                    foreach (VentaDetalleViewModel viewModel in VentaDetalleViewModels)
+                    {
+                        viewModel.Grabar(context);
+                    }
+                    //Childs deletes
+                    foreach (var viewModel in VentaDetalleViewModels.GetRemoveItems())
+                    {
+                        viewModel.Eliminar(context);
+                    }
+
+                    try
+                    {
+                        context.SaveChanges();
+                        var aplicacionConfiguracion = context.AplicacionConfiguracions.FirstOrDefault();
+                        if (aplicacionConfiguracion == null) throw new Exception("No existe registro de configuración¡¡");
+                        if (aplicacionConfiguracion.VentaGeneraDespacho)
+                        {
+                            //Se genera el despacho
+                            InventarioCommand.GenerarDespacho(this, context);
+                        }
+                        dbContextTransaction.Commit();
+
+                        _IsNew = false;
+                        _IsOld = false;
+                        _VentaId = model.VentaId;
+                    }
+                    catch (Exception ex)
+                    {
+                        dbContextTransaction.Rollback();
+                        throw ex;
+                    }
+                }
+            }
+        }
+
+        public void Eliminar()
+        {
+            ApplicationDbContext Context = new ApplicationDbContext();
+
+            Venta model = this.ToModel();
+            foreach (var viewModelChild in VentaDetalleViewModels)
+            {
+                viewModelChild.Eliminar(Context);
+            }
+            Context.Entry(model).State = EntityState.Deleted;
+            Context.SaveChanges();
         }
 
         #endregion

@@ -1,4 +1,5 @@
 ﻿using AdmCostoProduccion.Common.Classes;
+using AdmCostoProduccion.Common.Commands.Inventario;
 using AdmCostoProduccion.Common.Data;
 using AdmCostoProduccion.Common.Models.Produccion;
 using System;
@@ -16,6 +17,7 @@ namespace AdmCostoProduccion.Common.ViewModels.Produccion
         {
             _IsNew = true;
             _OrdenProduccionId = Guid.NewGuid().ToString();
+            _Fecha = DateTime.Today;
         }
 
         public OrdenProduccionViewModel(OrdenProduccion model)
@@ -379,34 +381,61 @@ namespace AdmCostoProduccion.Common.ViewModels.Produccion
 
         public void Grabar()
         {
-            ApplicationDbContext Context = new ApplicationDbContext();
-            OrdenProduccion model = this.ToModel();
-
-            if (IsNew)
+            using (ApplicationDbContext context = new ApplicationDbContext())
             {
-                Context.OrdenProduccions.Add(model);
-            }
-            else
-            {
-                if (IsOld)
+                using (var dbContextTransaction = context.Database.BeginTransaction())
                 {
-                    Context.Entry(model).State = EntityState.Modified;
+                    OrdenProduccion model = this.ToModel();
+
+                    if (IsNew)
+                    {
+                        context.OrdenProduccions.Add(model);
+                    }
+                    else
+                    {
+                        if (IsOld)
+                        {
+                            context.Entry(model).State = EntityState.Modified;
+                        }
+                    }
+                    //Childs
+                    foreach (OrdenProduccionInsumoViewModel viewModel in OrdenProduccionInsumoViewModels)
+                    {
+                        viewModel.Grabar(context);
+                    }
+                    //Childs deletes
+                    foreach (var viewModel in OrdenProduccionInsumoViewModels.GetRemoveItems())
+                    {
+                        viewModel.Eliminar(context);
+                    }
+                    try
+                    { 
+                        context.SaveChanges();
+                        var aplicacionConfiguracion = context.AplicacionConfiguracions.FirstOrDefault();
+                        if (aplicacionConfiguracion == null) throw new Exception("No existe registro de configuración¡¡");
+                        if (aplicacionConfiguracion.OrdenProduccionGeneraMovimiento)
+                        {
+                            //Se genera la recepcion
+                            InventarioCommand.GenerarRecepcion(this, context);
+                        }
+                        if (aplicacionConfiguracion.OrdenProduccionGeneraMovimientoInsumos)
+                        {
+                            //Se genera el despacho de los insumos
+                            InventarioCommand.GenerarDespacho(this, context);
+                        }
+                        dbContextTransaction.Commit();
+
+                        _IsNew = false;
+                        _IsOld = false;
+                        _OrdenProduccionId = model.OrdenProduccionId;
+                    }
+                    catch (Exception ex)
+                    {
+                        dbContextTransaction.Rollback();
+                        throw ex;
+                    }
                 }
             }
-            //Childs
-            foreach (OrdenProduccionInsumoViewModel viewModel in OrdenProduccionInsumoViewModels)
-            {
-                viewModel.Grabar(Context);
-            }
-            //Childs deletes
-            foreach (var viewModel in OrdenProduccionInsumoViewModels.GetRemoveItems())
-            {
-                viewModel.Eliminar(Context);
-            }
-            Context.SaveChanges();
-            _IsNew = false;
-            _IsOld = false;
-            _OrdenProduccionId = model.OrdenProduccionId;
         }
 
         public void Eliminar()

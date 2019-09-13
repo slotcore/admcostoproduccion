@@ -21,9 +21,13 @@ namespace AdmCostoProduccion.Common.ViewModels.Contabilidad
         public ConfiguracionValorizacionViewModel(ConfiguracionValorizacion model)
         {
             _ConfiguracionValorizacionId = model.ConfiguracionValorizacionId;
+            _MetodoValorizacionId = model.MetodoValorizacionId;
+            _DistribucionValorizacionId = model.DistribucionValorizacionId;
             _Codigo = model.Codigo;
             _Nombre = model.Nombre;
             _Descripcion = model.Descripcion;
+            _MetodoValorizacion = model.MetodoValorizacion.Nombre;
+            _DistribucionValorizacion = model.DistribucionValorizacion.Nombre;
         }
 
         #endregion
@@ -32,11 +36,19 @@ namespace AdmCostoProduccion.Common.ViewModels.Contabilidad
 
         private string _ConfiguracionValorizacionId;
 
+        private string _MetodoValorizacionId;
+
+        private string _DistribucionValorizacionId;
+
         private string _Codigo;
 
         private string _Nombre;
 
         private string _Descripcion;
+
+        private string _MetodoValorizacion;
+
+        private string _DistribucionValorizacion;
 
         #endregion
 
@@ -54,6 +66,40 @@ namespace AdmCostoProduccion.Common.ViewModels.Contabilidad
                 if (value != _ConfiguracionValorizacionId)
                 {
                     _ConfiguracionValorizacionId = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
+        public string MetodoValorizacionId
+        {
+            get
+            {
+                return _MetodoValorizacionId;
+            }
+
+            set
+            {
+                if (value != _MetodoValorizacionId)
+                {
+                    _MetodoValorizacionId = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
+        public string DistribucionValorizacionId
+        {
+            get
+            {
+                return _DistribucionValorizacionId;
+            }
+
+            set
+            {
+                if (value != _DistribucionValorizacionId)
+                {
+                    _DistribucionValorizacionId = value;
                     NotifyPropertyChanged();
                 }
             }
@@ -110,6 +156,40 @@ namespace AdmCostoProduccion.Common.ViewModels.Contabilidad
             }
         }
 
+        public string MetodoValorizacion
+        {
+            get
+            {
+                return _MetodoValorizacion;
+            }
+
+            set
+            {
+                if (value != _MetodoValorizacion)
+                {
+                    _MetodoValorizacion = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
+        public string DistribucionValorizacion
+        {
+            get
+            {
+                return _DistribucionValorizacion;
+            }
+
+            set
+            {
+                if (value != _DistribucionValorizacion)
+                {
+                    _DistribucionValorizacion = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
         #endregion
 
         #region Metodos Publicos
@@ -119,9 +199,13 @@ namespace AdmCostoProduccion.Common.ViewModels.Contabilidad
             _IsNew = viewModel.IsNew;
             _IsOld = viewModel.IsOld;
             _ConfiguracionValorizacionId = viewModel.ConfiguracionValorizacionId;
+            _MetodoValorizacionId = viewModel.MetodoValorizacionId;
+            _DistribucionValorizacionId = viewModel.DistribucionValorizacionId;
             _Codigo = viewModel.Codigo;
             _Nombre = viewModel.Nombre;
             _Descripcion = viewModel.Descripcion;
+            _MetodoValorizacion = viewModel.MetodoValorizacion;
+            _DistribucionValorizacion = viewModel.DistribucionValorizacion;
         }
 
         public ConfiguracionValorizacion ToModel()
@@ -129,6 +213,8 @@ namespace AdmCostoProduccion.Common.ViewModels.Contabilidad
             ConfiguracionValorizacion model = new ConfiguracionValorizacion
             {
                 ConfiguracionValorizacionId = _ConfiguracionValorizacionId,
+                MetodoValorizacionId = _MetodoValorizacionId,
+                DistribucionValorizacionId = _DistribucionValorizacionId,
                 Codigo = _Codigo,
                 Nombre = _Nombre,
                 Descripcion = _Descripcion
@@ -139,24 +225,36 @@ namespace AdmCostoProduccion.Common.ViewModels.Contabilidad
 
         public void Grabar()
         {
-            ApplicationDbContext Context = new ApplicationDbContext();
-            ConfiguracionValorizacion model = this.ToModel();
+            using (var context = new ApplicationDbContext())
+            {
+                ConfiguracionValorizacion model = this.ToModel();
 
-            if (IsNew)
-            {
-                Context.ConfiguracionValorizacions.Add(model);
-            }
-            else
-            {
-                if (IsOld)
+                if (IsNew)
                 {
-                    Context.Entry(model).State = EntityState.Modified;
+                    context.ConfiguracionValorizacions.Add(model);
                 }
+                else
+                {
+                    if (IsOld)
+                    {
+                        context.Entry(model).State = EntityState.Modified;
+                    }
+                }
+                context.SaveChanges();
+                _IsNew = false;
+                _IsOld = false;
+                _ConfiguracionValorizacionId = model.ConfiguracionValorizacionId;
             }
-            Context.SaveChanges();
-            _IsNew = false;
-            _IsOld = false;
-            _ConfiguracionValorizacionId = model.ConfiguracionValorizacionId;
+        }
+
+        public void Eliminar()
+        {
+            using (var context = new ApplicationDbContext())
+            {
+                ConfiguracionValorizacion model = this.ToModel();
+                context.Entry(model).State = EntityState.Deleted;
+                context.SaveChanges();
+            }
         }
 
         #endregion

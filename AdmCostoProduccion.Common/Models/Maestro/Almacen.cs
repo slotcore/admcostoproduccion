@@ -44,6 +44,10 @@ namespace AdmCostoProduccion.Common.Models.Maestro
                 
         public virtual ICollection<Despacho> Despachos { get; set; }
 
+        public virtual ICollection<InventarioInicial> InventarioInicials { get; set; }
+
+        public virtual ICollection<AjusteInventario> AjusteInventarios { get; set; }
+
         #endregion
     }
 }

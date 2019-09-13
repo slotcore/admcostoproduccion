@@ -19,12 +19,10 @@ namespace AdmCostoProduccion.Windows.Procesos.CompraVenta.Venta
 {
     public partial class MntVentaDetalleForm : KryptonForm
     {
-        private readonly ApplicationDbContext Context = new ApplicationDbContext();
-        private VentaDetalleViewModel ViewModel = new VentaDetalleViewModel();
-
         #region Propiedades
-        public bool IsNew { get; set; }
-        public ObservableListSource<VentaDetalleViewModel> ViewModelList { get; set; }
+        private VentaDetalleViewModel ViewModel;
+        private ObservableListSource<VentaDetalleViewModel> ViewModelList;
+        private List<UnidadMedidaViewModel> unidadMedidaViewModels;
         #endregion
 
         #region Constructor
@@ -32,18 +30,20 @@ namespace AdmCostoProduccion.Windows.Procesos.CompraVenta.Venta
             , ObservableListSource<VentaDetalleViewModel> viewModelList)
         {
             InitializeComponent();
-            IsNew = false;
-            viewModel.CopyTo(ref ViewModel);
+            ViewModel = new VentaDetalleViewModel();
+            ViewModel.CopyOf(viewModel);
             ViewModelList = viewModelList;
             ventaDetalleViewModelBindingSource.DataSource = ViewModel;
+            CargarCombos();
         }
 
-        public MntVentaDetalleForm(ObservableListSource<VentaDetalleViewModel> viewModelList)
+        public MntVentaDetalleForm(string parentId, ObservableListSource<VentaDetalleViewModel> viewModelList)
         {
             InitializeComponent();
-            IsNew = true;
+            ViewModel = new VentaDetalleViewModel(parentId);
             ViewModelList = viewModelList;
             ventaDetalleViewModelBindingSource.DataSource = ViewModel;
+            CargarCombos();
         }
         #endregion
 
@@ -73,30 +73,21 @@ namespace AdmCostoProduccion.Windows.Procesos.CompraVenta.Venta
             {
                 Cursor = Cursors.WaitCursor;
                 ventaDetalleViewModelBindingSource.EndEdit();
-                var mercaderiaViewModel = (MercaderiaViewModel)mercaderiaTextBox.Tag;
-                if (mercaderiaViewModel == null) throw new Exception("Debe se seleccionar una mercadería");
-                ViewModel.MercaderiaId = mercaderiaViewModel.MercaderiaId;
-                ViewModel.CodigoMercaderia = mercaderiaViewModel.Codigo;
-                ViewModel.NombreMercaderia = mercaderiaViewModel.Nombre;
 
-                var model = ViewModel.ToModel();
-                if (IsNew)
-                {
-                    //Context.VentaDetalles.Add(model);
-                    //Context.SaveChanges();
-                    //
-                    ViewModel.VentaDetalleId = model.VentaDetalleId;
-                    ViewModelList.Add(ViewModel);
-                }
+                UnidadMedidaViewModel unidadMedidaViewModel
+                    = (UnidadMedidaViewModel)unidadMedidaViewModelBindingSource.Current;
+                if (unidadMedidaViewModel == null)
+                    throw new Exception("Debe seleccionar una unidad");
+                ViewModel.UnidadMedidaId = unidadMedidaViewModel.UnidadMedidaId;
+                ViewModel.UnidadMedida = unidadMedidaViewModel.Nombre;
+
+                if (ViewModel.IsNew) ViewModelList.Add(ViewModel);
                 else
                 {
-                    //Context.Entry(model).State = EntityState.Modified;
-                    //Context.SaveChanges();
-                    //
                     var viewModel = ViewModelList
                         .Where(o => o.VentaDetalleId == ViewModel.VentaDetalleId)
                         .FirstOrDefault();
-                    ViewModel.CopyTo(ref viewModel);
+                    viewModel.CopyOf(ViewModel);
                 }
                 this.Close();
 
@@ -120,24 +111,37 @@ namespace AdmCostoProduccion.Windows.Procesos.CompraVenta.Venta
                 if (formprompt.ShowDialog() == DialogResult.OK)
                 {
                     var mercaderiaViewModel = formprompt.MercaderiaViewModel;
-                    mercaderiaTextBox.Tag = mercaderiaViewModel;
-                    mercaderiaTextBox.Text = mercaderiaViewModel.Nombre;
-                }
-                else
-                {
-                    mercaderiaTextBox.Tag = null;
-                    mercaderiaTextBox.Text = string.Empty;
+                    ViewModel.MercaderiaId = mercaderiaViewModel.MercaderiaId;
+                    ViewModel.CodigoMercaderia = mercaderiaViewModel.Codigo;
+                    ViewModel.NombreMercaderia = mercaderiaViewModel.Nombre;
                 }
 
             }
             catch (Exception ex)
             {
-                MessageBox.Show(string.Format("Ocurrió un error al grabar, mensaje de error: {0}", ex.Message)
-                    , "Grabar", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(string.Format("Ocurrió un error al buscar, mensaje de error: {0}", ex.Message)
+                    , "Buscar Mercadería", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            finally
+        }
+
+        private void CargarCombos()
+        {
+            using (var context = new ApplicationDbContext())
             {
-                Cursor = Cursors.Default;
+                var unidadMedidas = context.UnidadMedidas.ToList();
+                unidadMedidaViewModels = new List<UnidadMedidaViewModel>();
+                foreach (var unidadMedida in unidadMedidas)
+                {
+                    unidadMedidaViewModels.Add(new UnidadMedidaViewModel(unidadMedida));
+                }
+                unidadMedidaViewModelBindingSource.DataSource = unidadMedidaViewModels;
+                if (!string.IsNullOrEmpty(ViewModel.UnidadMedidaId))
+                {
+                    UnidadMedidaViewModel unidadMedidaViewModel = unidadMedidaViewModels
+                        .Where(o => o.UnidadMedidaId == ViewModel.UnidadMedidaId)
+                        .FirstOrDefault();
+                    unidadMedidaIdComboBox.SelectedItem = unidadMedidaViewModel;
+                }
             }
         }
         #endregion

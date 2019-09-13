@@ -1,6 +1,5 @@
 ﻿using AdmCostoProduccion.Common.Classes;
 using AdmCostoProduccion.Common.Data;
-using AdmCostoProduccion.Common.Forms;
 using AdmCostoProduccion.Common.ViewModels.Inventario;
 using AdmCostoProduccion.Common.ViewModels.Produccion;
 using AdmCostoProduccion.Windows.Prompt;
@@ -18,7 +17,7 @@ using System.Windows.Forms;
 
 namespace AdmCostoProduccion.Windows.Procesos.Produccion.OrdenProduccion
 {
-    public partial class MntOrdenProduccionInsumoForm : BaseForm
+    public partial class MntOrdenProduccionInsumoForm : KryptonForm
     {
         #region Propiedades
         private OrdenProduccionInsumoViewModel ViewModel;
@@ -28,9 +27,10 @@ namespace AdmCostoProduccion.Windows.Procesos.Produccion.OrdenProduccion
 
         #region Constructor
         public MntOrdenProduccionInsumoForm(OrdenProduccionInsumoViewModel viewModel
-            , ObservableListSource<OrdenProduccionInsumoViewModel> viewModelList):base(false)
+            , ObservableListSource<OrdenProduccionInsumoViewModel> viewModelList)
         {
             InitializeComponent();
+            ViewModel = new OrdenProduccionInsumoViewModel();
             ViewModel.CopyOf(viewModel);
             ViewModelList = viewModelList;
             ordenProduccionInsumoViewModelBindingSource.DataSource = ViewModel;
@@ -39,7 +39,7 @@ namespace AdmCostoProduccion.Windows.Procesos.Produccion.OrdenProduccion
         }
 
         public MntOrdenProduccionInsumoForm(string parentId
-            , ObservableListSource<OrdenProduccionInsumoViewModel> viewModelList):base(true)
+            , ObservableListSource<OrdenProduccionInsumoViewModel> viewModelList)
         {
             InitializeComponent();
             ViewModel = new OrdenProduccionInsumoViewModel(parentId);
@@ -74,6 +74,7 @@ namespace AdmCostoProduccion.Windows.Procesos.Produccion.OrdenProduccion
         {
             try
             {
+                bool IsNew = ViewModel.IsNew;
                 Cursor = Cursors.WaitCursor;
                 ordenProduccionInsumoViewModelBindingSource.EndEdit();
                 UnidadMedidaViewModel unidadMedidaView = (UnidadMedidaViewModel)unidadMedidaViewModelBindingSource.Current;

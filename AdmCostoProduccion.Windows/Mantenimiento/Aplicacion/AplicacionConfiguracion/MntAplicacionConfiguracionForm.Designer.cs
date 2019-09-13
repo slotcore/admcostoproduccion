@@ -63,9 +63,9 @@
             despachoGeneraMovimientoLabel.BackColor = System.Drawing.Color.Transparent;
             despachoGeneraMovimientoLabel.Location = new System.Drawing.Point(243, 144);
             despachoGeneraMovimientoLabel.Name = "despachoGeneraMovimientoLabel";
-            despachoGeneraMovimientoLabel.Size = new System.Drawing.Size(133, 13);
+            despachoGeneraMovimientoLabel.Size = new System.Drawing.Size(128, 13);
             despachoGeneraMovimientoLabel.TabIndex = 0;
-            despachoGeneraMovimientoLabel.Text = "Venta Genera Movimiento:";
+            despachoGeneraMovimientoLabel.Text = "Venta Genera Despacho:";
             // 
             // ordenProduccionGeneraMovimientoLabel
             // 
@@ -93,9 +93,9 @@
             recepcionGeneraMovimientoLabel.BackColor = System.Drawing.Color.Transparent;
             recepcionGeneraMovimientoLabel.Location = new System.Drawing.Point(243, 114);
             recepcionGeneraMovimientoLabel.Name = "recepcionGeneraMovimientoLabel";
-            recepcionGeneraMovimientoLabel.Size = new System.Drawing.Size(141, 13);
+            recepcionGeneraMovimientoLabel.Size = new System.Drawing.Size(139, 13);
             recepcionGeneraMovimientoLabel.TabIndex = 6;
-            recepcionGeneraMovimientoLabel.Text = "Compra Genera Movimiento:";
+            recepcionGeneraMovimientoLabel.Text = "Compra Genera Recepción:";
             // 
             // BaseFormHeaderGroup
             // 

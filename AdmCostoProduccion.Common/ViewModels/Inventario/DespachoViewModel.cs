@@ -26,22 +26,31 @@ namespace AdmCostoProduccion.Common.ViewModels.Inventario
             _DespachoId = model.DespachoId;
             _TipoDespachoId = model.TipoDespachoId;
             _AlmacenId = model.AlmacenId;
+            _AjusteInventarioId = model.AjusteInventarioId;
             _OrdenProduccionId = model.OrdenProduccionId;
             _VentaId = model.VentaId;
             _Codigo = model.Codigo;
+            _Fecha = model.Fecha;
             _Observacion = model.Observacion;
-            _TipoDespacho = model.TipoDespacho.Nombre;
+            _TipoDespacho = model.TipoDespacho?.Nombre;
             _Almacen = model.Almacen.Nombre;
+
+            if (model.AjusteInventario != null)
+            {
+                _TipoDocumentoRelacionado = TipoDocumentoEnum.AjusteInventario;
+                _NumeroDocumentoRelacionado = model.AjusteInventario.Codigo;
+            }
+
+            if (model.OrdenProduccion != null)
+            {
+                _TipoDocumentoRelacionado = TipoDocumentoEnum.OrdenProduccion;
+                _NumeroDocumentoRelacionado = model.OrdenProduccion.Codigo;
+            }
 
             if (model.Venta != null)
             {
                 _TipoDocumentoRelacionado = TipoDocumentoEnum.Venta;
                 _NumeroDocumentoRelacionado = model.Venta.NumeroDocumento;
-            }
-            if (model.OrdenProduccion != null)
-            {
-                _TipoDocumentoRelacionado = TipoDocumentoEnum.OrdenProduccion;
-                _NumeroDocumentoRelacionado = model.OrdenProduccion.Codigo;
             }
 
             foreach (var recepcionDetalle in model.DespachoDetalles)
@@ -60,11 +69,15 @@ namespace AdmCostoProduccion.Common.ViewModels.Inventario
 
         private string _AlmacenId;
 
+        private string _AjusteInventarioId;
+
         private string _OrdenProduccionId;
 
         private string _VentaId;
 
         private string _Codigo;
+
+        private DateTime _Fecha;
 
         private string _Observacion;
 
@@ -134,6 +147,23 @@ namespace AdmCostoProduccion.Common.ViewModels.Inventario
             }
         }
 
+        public string AjusteInventarioId
+        {
+            get
+            {
+                return _AjusteInventarioId;
+            }
+
+            set
+            {
+                if (value != _AjusteInventarioId)
+                {
+                    _AjusteInventarioId = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
         public string OrdenProduccionId
         {
             get
@@ -180,6 +210,23 @@ namespace AdmCostoProduccion.Common.ViewModels.Inventario
                 if (value != _Codigo)
                 {
                     _Codigo = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
+        public DateTime Fecha
+        {
+            get
+            {
+                return _Fecha;
+            }
+
+            set
+            {
+                if (value != _Fecha)
+                {
+                    _Fecha = value;
                     NotifyPropertyChanged();
                 }
             }
@@ -297,8 +344,10 @@ namespace AdmCostoProduccion.Common.ViewModels.Inventario
             _DespachoId = viewModel.DespachoId;
             _TipoDespachoId = viewModel.TipoDespachoId;
             _AlmacenId = viewModel.AlmacenId;
+            _AjusteInventarioId = viewModel.AjusteInventarioId;
             _OrdenProduccionId = viewModel.OrdenProduccionId;
             _VentaId = viewModel.VentaId;
+            _Fecha = viewModel.Fecha;
             _Codigo = viewModel.Codigo;
             _Observacion = viewModel.Observacion;
             _TipoDespacho = viewModel.TipoDespacho;
@@ -315,9 +364,11 @@ namespace AdmCostoProduccion.Common.ViewModels.Inventario
                 DespachoId = _DespachoId,
                 TipoDespachoId = _TipoDespachoId,
                 AlmacenId = _AlmacenId,
+                AjusteInventarioId = _AjusteInventarioId,
                 OrdenProduccionId = _OrdenProduccionId,
                 VentaId = _VentaId,
                 Codigo = _Codigo,
+                Fecha = _Fecha,
                 Observacion = _Observacion
             };
 

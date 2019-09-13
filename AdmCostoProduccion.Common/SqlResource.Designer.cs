@@ -61,6 +61,65 @@ namespace AdmCostoProduccion.Common {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a INSERT INTO Despachoes (DespachoId, Codigo, Fecha, Observacion, TipoDespachoId, AlmacenId, OrdenProduccionId, VentaId, UsuarioCreacion, FechaCreacion, Eliminado)
+        ///VALUES (@DespachoId, @Codigo, @Fecha, @Observacion, @TipoDespachoId, @AlmacenId, @OrdenProduccionId, @VentaId, @UsuarioCreacion, @FechaCreacion, @Eliminado).
+        /// </summary>
+        public static string Despacho_Insert {
+            get {
+                return ResourceManager.GetString("Despacho_Insert", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a UPDATE Despachoes
+        ///SET Codigo = @Codigo
+        ///	, Fecha = @Fecha
+        ///	, Observacion = @Observacion
+        ///	, TipoDespachoId = @TipoDespachoId
+        ///	, AlmacenId = @AlmacenId
+        ///	, OrdenProduccionId = @OrdenProduccionId
+        ///	, VentaId = @VentaId
+        ///	, UsuarioUltimaActualizacion = @UsuarioUltimaActualizacion
+        ///	, FechaUltimaActualizacion = @FechaUltimaActualizacion
+        ///	, Eliminado = @Eliminado
+        ///WHERE DespachoId = @DespachoId.
+        /// </summary>
+        public static string Despacho_Update {
+            get {
+                return ResourceManager.GetString("Despacho_Update", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a INSERT INTO DespachoDetalles (DespachoDetalleId, Cantidad, DespachoId, MercaderiaId, UnidadMedidaId, OrdenProduccionInsumoId, VentaDetalleId, UsuarioCreacion, FechaCreacion, Eliminado)
+        ///VALUES (@DespachoDetalleId, @Cantidad, @DespachoId, @MercaderiaId, @UnidadMedidaId, @OrdenProduccionInsumoId, @VentaDetalleId, @UsuarioCreacion, @FechaCreacion, @Eliminado).
+        /// </summary>
+        public static string DespachoDetalle_Insert {
+            get {
+                return ResourceManager.GetString("DespachoDetalle_Insert", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a UPDATE DespachoDetalles
+        ///SET Cantidad = @Cantidad
+        ///	, DespachoId = @DespachoId
+        ///	, MercaderiaId = @MercaderiaId
+        ///	, UnidadMedidaId = @UnidadMedidaId
+        ///	, OrdenProduccionInsumoId = @OrdenProduccionInsumoId
+        ///	, VentaDetalleId = @VentaDetalleId
+        ///	, UsuarioUltimaActualizacion = @UsuarioUltimaActualizacion
+        ///	, FechaUltimaActualizacion = @FechaUltimaActualizacion
+        ///	, Eliminado = @Eliminado
+        ///WHERE DespachoDetalleId = @DespachoDetalleId.
+        /// </summary>
+        public static string DespachoDetalle_Update {
+            get {
+                return ResourceManager.GetString("DespachoDetalle_Update", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a INSERT INTO Kardexes (KardexId, CantidadSaldo, CantidadEntrada, CantidadSalida, OrdenServicioId, AlmacenId, UsuarioCreacion, FechaCreacion, Eliminado)
         ///VALUES (@KardexId, @CantidadSaldo, @CantidadEntrada, @CantidadSalida, @OrdenServicioId, @AlmacenId, @UsuarioCreacion, @FechaCreacion, @Eliminado).
         /// </summary>
@@ -89,8 +148,8 @@ namespace AdmCostoProduccion.Common {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a INSERT INTO KardexMovimientoes (KardexMovimientoId, Cantidad, KardexId, TipoMovimientoId, RecepcionDetalleId, DespachoDetalleId, MercaderiaId, UnidadMedidaId, UsuarioCreacion, FechaCreacion, Eliminado)
-        ///VALUES (@KardexMovimientoId, @Cantidad, @KardexId, @TipoMovimientoId, @RecepcionDetalleId, @DespachoDetalleId, @MercaderiaId, @UnidadMedidaId, @UsuarioCreacion, @FechaCreacion, @Eliminado).
+        ///   Busca una cadena traducida similar a INSERT INTO KardexMovimientoes (KardexMovimientoId, Fecha, Cantidad, KardexId, TipoMovimientoId, RecepcionDetalleId, DespachoDetalleId, MercaderiaId, UnidadMedidaId, UsuarioCreacion, FechaCreacion, Eliminado)
+        ///VALUES (@KardexMovimientoId, @Fecha, @Cantidad, @KardexId, @TipoMovimientoId, @RecepcionDetalleId, @DespachoDetalleId, @MercaderiaId, @UnidadMedidaId, @UsuarioCreacion, @FechaCreacion, @Eliminado).
         /// </summary>
         public static string KardexMovimiento_Insert {
             get {
@@ -100,7 +159,8 @@ namespace AdmCostoProduccion.Common {
         
         /// <summary>
         ///   Busca una cadena traducida similar a UPDATE KardexMovimientoes
-        ///SET Cantidad = @Cantidad
+        ///SET Fecha = @Fecha
+        ///	, Cantidad = @Cantidad
         ///	, KardexId = @KardexId
         ///	, TipoMovimientoId = @TipoMovimientoId
         ///	, RecepcionDetalleId = @RecepcionDetalleId
@@ -146,8 +206,8 @@ namespace AdmCostoProduccion.Common {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a INSERT INTO Recepcions (RecepcionId, Codigo, Observacion, TipoRecepcionId, AlmacenId, OrdenProduccionId, CompraId, UsuarioCreacion, FechaCreacion, Eliminado)
-        ///VALUES (@RecepcionId, @Codigo, @Observacion, @TipoRecepcionId, @AlmacenId, @OrdenProduccionId, @CompraId, @UsuarioCreacion, @FechaCreacion, @Eliminado).
+        ///   Busca una cadena traducida similar a INSERT INTO Recepcions (RecepcionId, Codigo, Fecha, Observacion, TipoRecepcionId, AlmacenId, OrdenProduccionId, CompraId, UsuarioCreacion, FechaCreacion, Eliminado)
+        ///VALUES (@RecepcionId, @Codigo, @Fecha, @Observacion, @TipoRecepcionId, @AlmacenId, @OrdenProduccionId, @CompraId, @UsuarioCreacion, @FechaCreacion, @Eliminado).
         /// </summary>
         public static string Recepcion_Insert {
             get {
@@ -159,6 +219,7 @@ namespace AdmCostoProduccion.Common {
         ///   Busca una cadena traducida similar a UPDATE Recepcions
         ///SET Codigo = @Codigo
         ///	, Observacion = @Observacion
+        ///	, Fecha = @Fecha
         ///	, TipoRecepcionId = @TipoRecepcionId
         ///	, AlmacenId = @AlmacenId
         ///	, OrdenProduccionId = @OrdenProduccionId

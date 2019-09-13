@@ -33,11 +33,14 @@
             System.Windows.Forms.Label precioTotalLabel;
             System.Windows.Forms.Label precioUnitarioLabel;
             System.Windows.Forms.Label mercaderiaIdLabel;
+            System.Windows.Forms.Label unidadMedidaIdLabel;
             this.BaseFormHeaderGroup = new ComponentFactory.Krypton.Toolkit.KryptonHeaderGroup();
             this.kryptonPanel1 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
+            this.unidadMedidaIdComboBox = new System.Windows.Forms.ComboBox();
+            this.ventaDetalleViewModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.unidadMedidaViewModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.mercaderiaTextBox = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             this.BuscarMercaderiaButton = new ComponentFactory.Krypton.Toolkit.ButtonSpecAny();
-            this.ventaDetalleViewModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.cantidadTextBox = new System.Windows.Forms.TextBox();
             this.precioTotalTextBox = new System.Windows.Forms.TextBox();
             this.precioUnitarioTextBox = new System.Windows.Forms.TextBox();
@@ -48,6 +51,7 @@
             precioTotalLabel = new System.Windows.Forms.Label();
             precioUnitarioLabel = new System.Windows.Forms.Label();
             mercaderiaIdLabel = new System.Windows.Forms.Label();
+            unidadMedidaIdLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.BaseFormHeaderGroup)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BaseFormHeaderGroup.Panel)).BeginInit();
             this.BaseFormHeaderGroup.Panel.SuspendLayout();
@@ -55,6 +59,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ventaDetalleViewModelBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.unidadMedidaViewModelBindingSource)).BeginInit();
             this.BaseFormToolStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -62,9 +67,10 @@
             // 
             cantidadLabel.AutoSize = true;
             cantidadLabel.BackColor = System.Drawing.Color.Transparent;
-            cantidadLabel.Location = new System.Drawing.Point(236, 198);
+            cantidadLabel.Location = new System.Drawing.Point(177, 190);
+            cantidadLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             cantidadLabel.Name = "cantidadLabel";
-            cantidadLabel.Size = new System.Drawing.Size(68, 17);
+            cantidadLabel.Size = new System.Drawing.Size(52, 13);
             cantidadLabel.TabIndex = 2;
             cantidadLabel.Text = "Cantidad:";
             // 
@@ -72,9 +78,10 @@
             // 
             precioTotalLabel.AutoSize = true;
             precioTotalLabel.BackColor = System.Drawing.Color.Transparent;
-            precioTotalLabel.Location = new System.Drawing.Point(236, 226);
+            precioTotalLabel.Location = new System.Drawing.Point(177, 213);
+            precioTotalLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             precioTotalLabel.Name = "precioTotalLabel";
-            precioTotalLabel.Size = new System.Drawing.Size(88, 17);
+            precioTotalLabel.Size = new System.Drawing.Size(67, 13);
             precioTotalLabel.TabIndex = 4;
             precioTotalLabel.Text = "Precio Total:";
             // 
@@ -82,9 +89,10 @@
             // 
             precioUnitarioLabel.AutoSize = true;
             precioUnitarioLabel.BackColor = System.Drawing.Color.Transparent;
-            precioUnitarioLabel.Location = new System.Drawing.Point(236, 254);
+            precioUnitarioLabel.Location = new System.Drawing.Point(177, 235);
+            precioUnitarioLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             precioUnitarioLabel.Name = "precioUnitarioLabel";
-            precioUnitarioLabel.Size = new System.Drawing.Size(105, 17);
+            precioUnitarioLabel.Size = new System.Drawing.Size(79, 13);
             precioUnitarioLabel.TabIndex = 6;
             precioUnitarioLabel.Text = "Precio Unitario:";
             // 
@@ -92,12 +100,21 @@
             // 
             mercaderiaIdLabel.AutoSize = true;
             mercaderiaIdLabel.BackColor = System.Drawing.Color.Transparent;
-            mercaderiaIdLabel.Location = new System.Drawing.Point(236, 167);
-            mercaderiaIdLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            mercaderiaIdLabel.Location = new System.Drawing.Point(177, 136);
             mercaderiaIdLabel.Name = "mercaderiaIdLabel";
-            mercaderiaIdLabel.Size = new System.Drawing.Size(83, 17);
+            mercaderiaIdLabel.Size = new System.Drawing.Size(63, 13);
             mercaderiaIdLabel.TabIndex = 0;
             mercaderiaIdLabel.Text = "Mercaderia:";
+            // 
+            // unidadMedidaIdLabel
+            // 
+            unidadMedidaIdLabel.AutoSize = true;
+            unidadMedidaIdLabel.BackColor = System.Drawing.Color.Transparent;
+            unidadMedidaIdLabel.Location = new System.Drawing.Point(178, 164);
+            unidadMedidaIdLabel.Name = "unidadMedidaIdLabel";
+            unidadMedidaIdLabel.Size = new System.Drawing.Size(82, 13);
+            unidadMedidaIdLabel.TabIndex = 8;
+            unidadMedidaIdLabel.Text = "Unidad Medida:";
             // 
             // BaseFormHeaderGroup
             // 
@@ -106,17 +123,16 @@
             this.BaseFormHeaderGroup.HeaderStyleSecondary = ComponentFactory.Krypton.Toolkit.HeaderStyle.Form;
             this.BaseFormHeaderGroup.HeaderVisibleSecondary = false;
             this.BaseFormHeaderGroup.Location = new System.Drawing.Point(0, 31);
-            this.BaseFormHeaderGroup.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.BaseFormHeaderGroup.Margin = new System.Windows.Forms.Padding(2);
             this.BaseFormHeaderGroup.Name = "BaseFormHeaderGroup";
             // 
             // BaseFormHeaderGroup.Panel
             // 
             this.BaseFormHeaderGroup.Panel.Controls.Add(this.kryptonPanel1);
-            this.BaseFormHeaderGroup.Size = new System.Drawing.Size(1067, 523);
+            this.BaseFormHeaderGroup.Size = new System.Drawing.Size(800, 419);
             this.BaseFormHeaderGroup.StateNormal.HeaderPrimary.Border.Color1 = System.Drawing.SystemColors.ControlDarkDark;
             this.BaseFormHeaderGroup.StateNormal.HeaderPrimary.Border.Draw = ComponentFactory.Krypton.Toolkit.InheritBool.True;
             this.BaseFormHeaderGroup.StateNormal.HeaderPrimary.Border.DrawBorders = ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom;
-            this.BaseFormHeaderGroup.StateNormal.HeaderPrimary.Border.ImageStyle = ComponentFactory.Krypton.Toolkit.PaletteImageStyle.Inherit;
             this.BaseFormHeaderGroup.StateNormal.HeaderPrimary.Border.Width = 1;
             this.BaseFormHeaderGroup.TabIndex = 15;
             this.BaseFormHeaderGroup.ValuesPrimary.Heading = "Mantenimiento Venta Detalle";
@@ -124,6 +140,8 @@
             // 
             // kryptonPanel1
             // 
+            this.kryptonPanel1.Controls.Add(unidadMedidaIdLabel);
+            this.kryptonPanel1.Controls.Add(this.unidadMedidaIdComboBox);
             this.kryptonPanel1.Controls.Add(this.mercaderiaTextBox);
             this.kryptonPanel1.Controls.Add(mercaderiaIdLabel);
             this.kryptonPanel1.Controls.Add(cantidadLabel);
@@ -134,57 +152,74 @@
             this.kryptonPanel1.Controls.Add(this.precioUnitarioTextBox);
             this.kryptonPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonPanel1.Location = new System.Drawing.Point(0, 0);
-            this.kryptonPanel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.kryptonPanel1.Margin = new System.Windows.Forms.Padding(2);
             this.kryptonPanel1.Name = "kryptonPanel1";
-            this.kryptonPanel1.Size = new System.Drawing.Size(1065, 495);
+            this.kryptonPanel1.Size = new System.Drawing.Size(798, 395);
             this.kryptonPanel1.TabIndex = 0;
+            // 
+            // unidadMedidaIdComboBox
+            // 
+            this.unidadMedidaIdComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.ventaDetalleViewModelBindingSource, "UnidadMedidaId", true));
+            this.unidadMedidaIdComboBox.DataSource = this.unidadMedidaViewModelBindingSource;
+            this.unidadMedidaIdComboBox.DisplayMember = "Nombre";
+            this.unidadMedidaIdComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.unidadMedidaIdComboBox.FormattingEnabled = true;
+            this.unidadMedidaIdComboBox.Location = new System.Drawing.Point(278, 161);
+            this.unidadMedidaIdComboBox.Name = "unidadMedidaIdComboBox";
+            this.unidadMedidaIdComboBox.Size = new System.Drawing.Size(365, 21);
+            this.unidadMedidaIdComboBox.TabIndex = 9;
+            this.unidadMedidaIdComboBox.ValueMember = "UnidadMedidaId";
+            // 
+            // ventaDetalleViewModelBindingSource
+            // 
+            this.ventaDetalleViewModelBindingSource.DataSource = typeof(AdmCostoProduccion.Common.ViewModels.CompraVenta.VentaDetalleViewModel);
+            // 
+            // unidadMedidaViewModelBindingSource
+            // 
+            this.unidadMedidaViewModelBindingSource.DataSource = typeof(AdmCostoProduccion.Common.ViewModels.Inventario.UnidadMedidaViewModel);
             // 
             // mercaderiaTextBox
             // 
             this.mercaderiaTextBox.ButtonSpecs.AddRange(new ComponentFactory.Krypton.Toolkit.ButtonSpecAny[] {
             this.BuscarMercaderiaButton});
             this.mercaderiaTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.ventaDetalleViewModelBindingSource, "NombreMercaderia", true));
-            this.mercaderiaTextBox.Location = new System.Drawing.Point(370, 163);
-            this.mercaderiaTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.mercaderiaTextBox.Location = new System.Drawing.Point(278, 132);
+            this.mercaderiaTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.mercaderiaTextBox.Name = "mercaderiaTextBox";
-            this.mercaderiaTextBox.Size = new System.Drawing.Size(487, 27);
+            this.mercaderiaTextBox.Size = new System.Drawing.Size(365, 24);
             this.mercaderiaTextBox.TabIndex = 1;
             // 
             // BuscarMercaderiaButton
             // 
             this.BuscarMercaderiaButton.Image = global::AdmCostoProduccion.Windows.Properties.Resources.lookup_reference_16x16;
-            this.BuscarMercaderiaButton.Style = ComponentFactory.Krypton.Toolkit.PaletteButtonStyle.Inherit;
-            this.BuscarMercaderiaButton.ToolTipStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.ToolTip;
-            this.BuscarMercaderiaButton.Type = ComponentFactory.Krypton.Toolkit.PaletteButtonSpecStyle.Generic;
             this.BuscarMercaderiaButton.UniqueName = "020B794215794657138ECD623B884FE9";
             this.BuscarMercaderiaButton.Click += new System.EventHandler(this.BuscarMercaderiaButton_Click);
-            // 
-            // ventaDetalleViewModelBindingSource
-            // 
-            this.ventaDetalleViewModelBindingSource.DataSource = typeof(AdmCostoProduccion.Common.ViewModels.CompraVenta.VentaDetalleViewModel);
             // 
             // cantidadTextBox
             // 
             this.cantidadTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.ventaDetalleViewModelBindingSource, "Cantidad", true));
-            this.cantidadTextBox.Location = new System.Drawing.Point(370, 195);
+            this.cantidadTextBox.Location = new System.Drawing.Point(278, 187);
+            this.cantidadTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.cantidadTextBox.Name = "cantidadTextBox";
-            this.cantidadTextBox.Size = new System.Drawing.Size(487, 22);
+            this.cantidadTextBox.Size = new System.Drawing.Size(366, 20);
             this.cantidadTextBox.TabIndex = 3;
             // 
             // precioTotalTextBox
             // 
             this.precioTotalTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.ventaDetalleViewModelBindingSource, "PrecioTotal", true));
-            this.precioTotalTextBox.Location = new System.Drawing.Point(370, 223);
+            this.precioTotalTextBox.Location = new System.Drawing.Point(278, 210);
+            this.precioTotalTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.precioTotalTextBox.Name = "precioTotalTextBox";
-            this.precioTotalTextBox.Size = new System.Drawing.Size(487, 22);
+            this.precioTotalTextBox.Size = new System.Drawing.Size(366, 20);
             this.precioTotalTextBox.TabIndex = 5;
             // 
             // precioUnitarioTextBox
             // 
             this.precioUnitarioTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.ventaDetalleViewModelBindingSource, "PrecioUnitario", true));
-            this.precioUnitarioTextBox.Location = new System.Drawing.Point(370, 251);
+            this.precioUnitarioTextBox.Location = new System.Drawing.Point(278, 233);
+            this.precioUnitarioTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.precioUnitarioTextBox.Name = "precioUnitarioTextBox";
-            this.precioUnitarioTextBox.Size = new System.Drawing.Size(487, 22);
+            this.precioUnitarioTextBox.Size = new System.Drawing.Size(366, 20);
             this.precioUnitarioTextBox.TabIndex = 7;
             // 
             // BaseFormToolStrip
@@ -197,8 +232,8 @@
             this.CancelarButton});
             this.BaseFormToolStrip.Location = new System.Drawing.Point(0, 0);
             this.BaseFormToolStrip.Name = "BaseFormToolStrip";
-            this.BaseFormToolStrip.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.BaseFormToolStrip.Size = new System.Drawing.Size(1067, 31);
+            this.BaseFormToolStrip.Padding = new System.Windows.Forms.Padding(2);
+            this.BaseFormToolStrip.Size = new System.Drawing.Size(800, 31);
             this.BaseFormToolStrip.TabIndex = 14;
             this.BaseFormToolStrip.Text = "BaseFormToolStrip";
             // 
@@ -207,7 +242,7 @@
             this.GrabarButton.Image = global::AdmCostoProduccion.Windows.Properties.Resources.save_16x16;
             this.GrabarButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.GrabarButton.Name = "GrabarButton";
-            this.GrabarButton.Size = new System.Drawing.Size(78, 24);
+            this.GrabarButton.Size = new System.Drawing.Size(66, 24);
             this.GrabarButton.Text = "Grabar";
             this.GrabarButton.Click += new System.EventHandler(this.GrabarButton_Click);
             // 
@@ -216,17 +251,18 @@
             this.CancelarButton.Image = global::AdmCostoProduccion.Windows.Properties.Resources.cancel_16x16;
             this.CancelarButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.CancelarButton.Name = "CancelarButton";
-            this.CancelarButton.Size = new System.Drawing.Size(90, 24);
+            this.CancelarButton.Size = new System.Drawing.Size(77, 24);
             this.CancelarButton.Text = "Cancelar";
             this.CancelarButton.Click += new System.EventHandler(this.CancelarButton_Click);
             // 
             // MntVentaDetalleForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1067, 554);
+            this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.BaseFormHeaderGroup);
             this.Controls.Add(this.BaseFormToolStrip);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "MntVentaDetalleForm";
             this.Text = "Mantenimiento Venta Detalle";
             ((System.ComponentModel.ISupportInitialize)(this.BaseFormHeaderGroup.Panel)).EndInit();
@@ -237,6 +273,7 @@
             this.kryptonPanel1.ResumeLayout(false);
             this.kryptonPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ventaDetalleViewModelBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.unidadMedidaViewModelBindingSource)).EndInit();
             this.BaseFormToolStrip.ResumeLayout(false);
             this.BaseFormToolStrip.PerformLayout();
             this.ResumeLayout(false);
@@ -257,5 +294,7 @@
         private System.Windows.Forms.ToolStripButton CancelarButton;
         private ComponentFactory.Krypton.Toolkit.KryptonTextBox mercaderiaTextBox;
         private ComponentFactory.Krypton.Toolkit.ButtonSpecAny BuscarMercaderiaButton;
+        private System.Windows.Forms.ComboBox unidadMedidaIdComboBox;
+        private System.Windows.Forms.BindingSource unidadMedidaViewModelBindingSource;
     }
 }

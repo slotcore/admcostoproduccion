@@ -1,6 +1,8 @@
 ﻿using AdmCostoProduccion.Common.Classes;
+using AdmCostoProduccion.Common.Data;
 using AdmCostoProduccion.Common.Models.Maestro;
 using System;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 
@@ -12,16 +14,17 @@ namespace AdmCostoProduccion.Common.ViewModels.Maestro
 
         public PlantaFabricacionViewModel()
         {
+            _IsNew = true;
             _PlantaFabricacionId = Guid.NewGuid().ToString();
         }
 
         public PlantaFabricacionViewModel(PlantaFabricacion model)
         {
             _PlantaFabricacionId = model.PlantaFabricacionId;
+            _CentroLogisticoId = model.CentroLogisticoId;
             _Codigo = model.Codigo;
             _Nombre = model.Nombre;
             _Descripcion = model.Descripcion;
-            _CentroLogisticoId = model.CentroLogisticoId;
             _CentroLogistico = model.CentroLogistico.Nombre;
         }
 
@@ -151,14 +154,16 @@ namespace AdmCostoProduccion.Common.ViewModels.Maestro
 
         #region Metodos Publicos
 
-        public void CopyTo(ref PlantaFabricacionViewModel viewModel)
+        public void CopyOf(PlantaFabricacionViewModel viewModel)
         {
-            viewModel.PlantaFabricacionId = _PlantaFabricacionId;
-            viewModel.Codigo = _Codigo;
-            viewModel.Nombre = _Nombre;
-            viewModel.Descripcion = _Descripcion;
-            viewModel.CentroLogistico = _CentroLogistico;
-            viewModel.CentroLogisticoId = _CentroLogisticoId;
+            _IsNew = viewModel.IsNew;
+            _IsOld = viewModel.IsOld;
+            _PlantaFabricacionId = viewModel.PlantaFabricacionId;
+            _CentroLogisticoId = viewModel.CentroLogisticoId;
+            _Codigo = viewModel.Codigo;
+            _Nombre = viewModel.Nombre;
+            _Descripcion = viewModel.Descripcion;
+            _CentroLogistico = viewModel.CentroLogistico;
         }
 
         public PlantaFabricacion ToModel()
@@ -166,13 +171,47 @@ namespace AdmCostoProduccion.Common.ViewModels.Maestro
             PlantaFabricacion model = new PlantaFabricacion
             {
                 PlantaFabricacionId = _PlantaFabricacionId,
+                CentroLogisticoId = _CentroLogisticoId,
                 Codigo = _Codigo,
                 Nombre = _Nombre,
-                Descripcion = _Descripcion,
-                CentroLogisticoId = _CentroLogisticoId
+                Descripcion = _Descripcion
             };
 
             return model;
+        }
+
+        public void Grabar()
+        {
+            using (var context = new ApplicationDbContext())
+            {
+                PlantaFabricacion model = this.ToModel();
+
+                if (IsNew)
+                {
+                    context.PlantaFabricacions.Add(model);
+                }
+                else
+                {
+                    if (IsOld)
+                    {
+                        context.Entry(model).State = EntityState.Modified;
+                    }
+                }
+                context.SaveChanges();
+                _IsNew = false;
+                _IsOld = false;
+                _PlantaFabricacionId = model.PlantaFabricacionId;
+            }
+        }
+
+        public void Eliminar()
+        {
+            using (var context = new ApplicationDbContext())
+            {
+                PlantaFabricacion model = this.ToModel();
+                context.Entry(model).State = EntityState.Deleted;
+                context.SaveChanges();
+            }
         }
 
         #endregion

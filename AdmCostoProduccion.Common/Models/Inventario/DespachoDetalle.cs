@@ -43,6 +43,10 @@ namespace AdmCostoProduccion.Common.Models.Inventario
         
         public virtual UnidadMedida UnidadMedida { get; set; }
 
+        public string AjusteInventarioDetalleId { get; set; }
+
+        public virtual AjusteInventarioDetalle AjusteInventarioDetalle { get; set; }
+
         public string OrdenProduccionInsumoId { get; set; }
 
         public virtual OrdenProduccionInsumo OrdenProduccionInsumo { get; set; }

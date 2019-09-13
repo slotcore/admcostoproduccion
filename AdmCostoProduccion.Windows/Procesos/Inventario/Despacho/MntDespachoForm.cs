@@ -24,7 +24,7 @@ namespace AdmCostoProduccion.Windows.Procesos.Inventario.Despacho
     public partial class MntDespachoForm : KryptonForm
     {
         private readonly ApplicationDbContext Context = new ApplicationDbContext();
-        private DespachoViewModel ViewModel;
+        private DespachoViewModel ViewModel = new DespachoViewModel();
         private List<AlmacenViewModel> almacenViewModels = new List<AlmacenViewModel>();
 
         #region Propiedades
@@ -40,9 +40,8 @@ namespace AdmCostoProduccion.Windows.Procesos.Inventario.Despacho
             IsNew = false;
             ViewModel.CopyOf(viewModel);
             ViewModelList = viewModelList;
-            despachoViewModelBindingSource.DataSource = ViewModel;
-            //
             CargarCombos();
+            despachoViewModelBindingSource.DataSource = ViewModel;
         }
 
         public MntDespachoForm(ObservableListSource<DespachoViewModel> viewModelList)

@@ -27,21 +27,37 @@ namespace AdmCostoProduccion.Common.ViewModels.Inventario
             _TipoRecepcionId = model.TipoRecepcionId;
             _AlmacenId = model.AlmacenId;
             _OrdenProduccionId = model.OrdenProduccionId;
+            _InventarioInicialId = model.InventarioInicialId;
+            _AjusteInventarioId = model.AjusteInventarioId;
             _CompraId = model.CompraId;
             _Codigo = model.Codigo;
+            _Fecha = model.Fecha;
             _Observacion = model.Observacion;
             _TipoRecepcion = model.TipoRecepcion.Nombre;
             _Almacen = model.Almacen.Nombre;
+
+            if (model.InventarioInicial != null)
+            {
+                _TipoDocumentoRelacionado = TipoDocumentoEnum.InventarioInicial;
+                _NumeroDocumentoRelacionado = model.InventarioInicial.Codigo;
+            }
+
+            if (model.AjusteInventario != null)
+            {
+                _TipoDocumentoRelacionado = TipoDocumentoEnum.AjusteInventario;
+                _NumeroDocumentoRelacionado = model.AjusteInventario.Codigo;
+            }
+
+            if (model.OrdenProduccion != null)
+            {
+                _TipoDocumentoRelacionado = TipoDocumentoEnum.OrdenProduccion;
+                _NumeroDocumentoRelacionado = model.OrdenProduccion.Codigo;
+            }
 
             if (model.Compra != null)
             {
                 _TipoDocumentoRelacionado = TipoDocumentoEnum.Compra;
                 _NumeroDocumentoRelacionado = model.Compra.NumeroDocumento;
-            }
-            if (model.OrdenProduccion != null)
-            {
-                _TipoDocumentoRelacionado = TipoDocumentoEnum.OrdenProduccion;
-                _NumeroDocumentoRelacionado = model.OrdenProduccion.Codigo;
             }
 
             foreach (var child in model.RecepcionDetalles)
@@ -60,11 +76,17 @@ namespace AdmCostoProduccion.Common.ViewModels.Inventario
 
         private string _AlmacenId;
 
+        private string _InventarioInicialId;
+
+        private string _AjusteInventarioId;
+
         private string _OrdenProduccionId;
 
         private string _CompraId;
 
         private string _Codigo;
+
+        private DateTime _Fecha;
 
         private string _Observacion;
 
@@ -134,6 +156,40 @@ namespace AdmCostoProduccion.Common.ViewModels.Inventario
             }
         }
 
+        public string InventarioInicialId
+        {
+            get
+            {
+                return _InventarioInicialId;
+            }
+
+            set
+            {
+                if (value != _InventarioInicialId)
+                {
+                    _InventarioInicialId = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
+        public string AjusteInventarioId
+        {
+            get
+            {
+                return _AjusteInventarioId;
+            }
+
+            set
+            {
+                if (value != _AjusteInventarioId)
+                {
+                    _AjusteInventarioId = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
         public string OrdenProduccionId
         {
             get
@@ -180,6 +236,23 @@ namespace AdmCostoProduccion.Common.ViewModels.Inventario
                 if (value != _Codigo)
                 {
                     _Codigo = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
+        public DateTime Fecha
+        {
+            get
+            {
+                return _Fecha;
+            }
+
+            set
+            {
+                if (value != _Fecha)
+                {
+                    _Fecha = value;
                     NotifyPropertyChanged();
                 }
             }
@@ -297,9 +370,12 @@ namespace AdmCostoProduccion.Common.ViewModels.Inventario
             _RecepcionId = viewModel.RecepcionId;
             _TipoRecepcionId = viewModel.TipoRecepcionId;
             _AlmacenId = viewModel.AlmacenId;
+            _InventarioInicialId = viewModel.InventarioInicialId;
+            _AjusteInventarioId = viewModel.AjusteInventarioId;
             _OrdenProduccionId = viewModel.OrdenProduccionId;
             _CompraId = viewModel.CompraId;
             _Codigo = viewModel.Codigo;
+            _Fecha = viewModel.Fecha;
             _Observacion = viewModel.Observacion;
             _TipoRecepcion = viewModel.TipoRecepcion;
             _Almacen = viewModel.Almacen;
@@ -315,9 +391,12 @@ namespace AdmCostoProduccion.Common.ViewModels.Inventario
                 RecepcionId = _RecepcionId,
                 TipoRecepcionId = _TipoRecepcionId,
                 AlmacenId = _AlmacenId,
+                InventarioInicialId = _InventarioInicialId,
+                AjusteInventarioId = _AjusteInventarioId,
                 OrdenProduccionId = _OrdenProduccionId,
                 CompraId = _CompraId,
                 Codigo = _Codigo,
+                Fecha = _Fecha,
                 Observacion = _Observacion
             };
 
@@ -358,7 +437,7 @@ namespace AdmCostoProduccion.Common.ViewModels.Inventario
                     {
                         context.SaveChanges();
                         //Se genera el movimiento de Ingreso
-                        InventarioCommand.GenerarMovimientoRecepcion(this, context);
+                        InventarioCommand.GenerarMovimientoIngreso(this, context);
                         dbContextTransaction.Commit();
 
                         _IsNew = false;

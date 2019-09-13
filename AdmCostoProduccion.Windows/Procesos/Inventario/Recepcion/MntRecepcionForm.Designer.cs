@@ -34,6 +34,7 @@
             System.Windows.Forms.Label almacenIdLabel;
             System.Windows.Forms.Label codigoLabel;
             System.Windows.Forms.Label observacionLabel;
+            System.Windows.Forms.Label fechaLabel;
             this.BaseFormHeaderGroup = new ComponentFactory.Krypton.Toolkit.KryptonHeaderGroup();
             this.kryptonPanel1 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.codigoTextBox = new System.Windows.Forms.TextBox();
@@ -57,11 +58,13 @@
             this.BaseFormToolStrip = new System.Windows.Forms.ToolStrip();
             this.GrabarButton = new System.Windows.Forms.ToolStripButton();
             this.CancelarButton = new System.Windows.Forms.ToolStripButton();
+            this.fechaDateTimePicker = new System.Windows.Forms.DateTimePicker();
             label2 = new System.Windows.Forms.Label();
             label1 = new System.Windows.Forms.Label();
             almacenIdLabel = new System.Windows.Forms.Label();
             codigoLabel = new System.Windows.Forms.Label();
             observacionLabel = new System.Windows.Forms.Label();
+            fechaLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.BaseFormHeaderGroup)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BaseFormHeaderGroup.Panel)).BeginInit();
             this.BaseFormHeaderGroup.Panel.SuspendLayout();
@@ -119,17 +122,17 @@
             codigoLabel.Location = new System.Drawing.Point(428, 51);
             codigoLabel.Name = "codigoLabel";
             codigoLabel.Size = new System.Drawing.Size(43, 13);
-            codigoLabel.TabIndex = 12;
+            codigoLabel.TabIndex = 6;
             codigoLabel.Text = "Codigo:";
             // 
             // observacionLabel
             // 
             observacionLabel.AutoSize = true;
             observacionLabel.BackColor = System.Drawing.Color.Transparent;
-            observacionLabel.Location = new System.Drawing.Point(16, 77);
+            observacionLabel.Location = new System.Drawing.Point(428, 77);
             observacionLabel.Name = "observacionLabel";
             observacionLabel.Size = new System.Drawing.Size(70, 13);
-            observacionLabel.TabIndex = 14;
+            observacionLabel.TabIndex = 10;
             observacionLabel.Text = "Observacion:";
             // 
             // BaseFormHeaderGroup
@@ -157,6 +160,8 @@
             // kryptonPanel1
             // 
             this.kryptonPanel1.AutoScroll = true;
+            this.kryptonPanel1.Controls.Add(fechaLabel);
+            this.kryptonPanel1.Controls.Add(this.fechaDateTimePicker);
             this.kryptonPanel1.Controls.Add(codigoLabel);
             this.kryptonPanel1.Controls.Add(this.codigoTextBox);
             this.kryptonPanel1.Controls.Add(observacionLabel);
@@ -181,7 +186,7 @@
             this.codigoTextBox.Location = new System.Drawing.Point(538, 48);
             this.codigoTextBox.Name = "codigoTextBox";
             this.codigoTextBox.Size = new System.Drawing.Size(277, 20);
-            this.codigoTextBox.TabIndex = 13;
+            this.codigoTextBox.TabIndex = 7;
             // 
             // recepcionViewModelBindingSource
             // 
@@ -190,10 +195,10 @@
             // observacionTextBox
             // 
             this.observacionTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.recepcionViewModelBindingSource, "Observacion", true));
-            this.observacionTextBox.Location = new System.Drawing.Point(126, 74);
+            this.observacionTextBox.Location = new System.Drawing.Point(538, 74);
             this.observacionTextBox.Name = "observacionTextBox";
             this.observacionTextBox.Size = new System.Drawing.Size(277, 20);
-            this.observacionTextBox.TabIndex = 15;
+            this.observacionTextBox.TabIndex = 11;
             // 
             // tipoDocumentoComboBox
             // 
@@ -383,6 +388,25 @@
             this.CancelarButton.Text = "Cancelar";
             this.CancelarButton.Click += new System.EventHandler(this.CancelarButton_Click);
             // 
+            // fechaLabel
+            // 
+            fechaLabel.AutoSize = true;
+            fechaLabel.BackColor = System.Drawing.Color.Transparent;
+            fechaLabel.Location = new System.Drawing.Point(19, 77);
+            fechaLabel.Name = "fechaLabel";
+            fechaLabel.Size = new System.Drawing.Size(40, 13);
+            fechaLabel.TabIndex = 8;
+            fechaLabel.Text = "Fecha:";
+            // 
+            // fechaDateTimePicker
+            // 
+            this.fechaDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.recepcionViewModelBindingSource, "Fecha", true));
+            this.fechaDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.fechaDateTimePicker.Location = new System.Drawing.Point(126, 74);
+            this.fechaDateTimePicker.Name = "fechaDateTimePicker";
+            this.fechaDateTimePicker.Size = new System.Drawing.Size(122, 20);
+            this.fechaDateTimePicker.TabIndex = 9;
+            // 
             // MntRecepcionForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -440,5 +464,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn unidadMedidaDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn cantidadDataGridViewTextBoxColumn;
         private System.Windows.Forms.BindingSource recepcionDetalleViewModelsBindingSource;
+        private System.Windows.Forms.DateTimePicker fechaDateTimePicker;
     }
 }

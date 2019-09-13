@@ -83,9 +83,29 @@ namespace AdmCostoProduccion.Windows.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap bodepartment_16x16 {
+            get {
+                object obj = ResourceManager.GetObject("bodepartment_16x16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap boorderitem_16x16 {
             get {
                 object obj = ResourceManager.GetObject("boorderitem_16x16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap boproductgroup_16x16 {
+            get {
+                object obj = ResourceManager.GetObject("boproductgroup_16x16", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -136,6 +156,16 @@ namespace AdmCostoProduccion.Windows.Properties {
         internal static System.Drawing.Bitmap outbox_16x16 {
             get {
                 object obj = ResourceManager.GetObject("outbox_16x16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap pagesetup_16x16 {
+            get {
+                object obj = ResourceManager.GetObject("pagesetup_16x16", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

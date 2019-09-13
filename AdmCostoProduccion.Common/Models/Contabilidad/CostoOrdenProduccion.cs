@@ -26,7 +26,7 @@ namespace AdmCostoProduccion.Common.Models.Contabilidad
 
         public double CostoMod { get; set; }
 
-        public double CostoCif { get; set; }
+        public double CostoIf { get; set; }
 
         #endregion
 

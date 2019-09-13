@@ -17,9 +17,9 @@ namespace AdmCostoProduccion.Common.Models.Aplicacion
         [Key]
         public string AplicacionConfiguracionId { get; set; }
 
-        public bool CompraGeneraMovimiento { get; set; }
+        public bool CompraGeneraRecepcion { get; set; }
 
-        public bool VentaGeneraMovimiento { get; set; }
+        public bool VentaGeneraDespacho { get; set; }
 
         public bool OrdenProduccionGeneraMovimiento { get; set; }
 

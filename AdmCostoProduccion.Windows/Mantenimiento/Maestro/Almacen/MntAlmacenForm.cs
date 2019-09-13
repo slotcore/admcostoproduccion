@@ -13,40 +13,33 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace AdmCostoProduccion.Windows.Maestro.Almacen
+namespace AdmCostoProduccion.Windows.Mantenimiento.Maestro.Almacen
 {
     public partial class MntAlmacenForm : KryptonForm
     {
-        private readonly ApplicationDbContext Context = new ApplicationDbContext();
-        private AlmacenViewModel AlmacenViewModel = new AlmacenViewModel();
-
         #region Propiedades
-        public bool IsNew { get; set; }
-        public ObservableListSource<AlmacenViewModel> AlmacenViewModels { get; set; }
-        public List<CentroLogisticoViewModel> CentroLogisticoViewModels { get; set; }
+        private AlmacenViewModel ViewModel = new AlmacenViewModel();
+        private ObservableListSource<AlmacenViewModel> ViewModelList;
+        private List<CentroLogisticoViewModel> centroLogisticoViewModels;
         #endregion
 
         #region Constructor
-        public MntAlmacenForm(AlmacenViewModel AlmacenViewModel
-            , ObservableListSource<AlmacenViewModel> AlmacenViewModels)
+        public MntAlmacenForm(AlmacenViewModel viewModel
+            , ObservableListSource<AlmacenViewModel> viewModelList)
         {
             InitializeComponent();
-            IsNew = false;
-            AlmacenViewModel.CopyTo(ref this.AlmacenViewModel);
-            this.AlmacenViewModels = AlmacenViewModels;
-            almacenViewModelBindingSource.DataSource = this.AlmacenViewModel;
-            //
-            CargarCombos();
+            ViewModel = new AlmacenViewModel();
+            ViewModel.CopyOf(viewModel);
+            ViewModelList = viewModelList;
+            almacenViewModelBindingSource.DataSource = ViewModel;
         }
 
-        public MntAlmacenForm(ObservableListSource<AlmacenViewModel> AlmacenViewModels)
+        public MntAlmacenForm(ObservableListSource<AlmacenViewModel> viewModelList)
         {
             InitializeComponent();
-            IsNew = true;
-            this.AlmacenViewModels = AlmacenViewModels;
-            almacenViewModelBindingSource.DataSource = AlmacenViewModel;
-            //
-            CargarCombos();
+            ViewModel = new AlmacenViewModel();
+            ViewModelList = viewModelList;
+            almacenViewModelBindingSource.DataSource = ViewModel;
         }
         #endregion
 
@@ -65,49 +58,29 @@ namespace AdmCostoProduccion.Windows.Maestro.Almacen
 
         #region Eventos Privados
 
-        private void CargarCombos()
-        {
-            var centroLogisticos = new ApplicationDbContext().CentroLogisticos.ToList();
-            CentroLogisticoViewModels = new List<CentroLogisticoViewModel>();
-
-            foreach (var centroLogistico in centroLogisticos)
-            {
-                CentroLogisticoViewModels.Add(new CentroLogisticoViewModel(centroLogistico));
-            }
-
-            centroLogisticoViewModelBindingSource.DataSource = CentroLogisticoViewModels;
-            if (!string.IsNullOrEmpty(AlmacenViewModel.CentroLogisticoId))
-                centroLogisticoIdComboBox.SelectedValue = AlmacenViewModel.CentroLogisticoId;
-        }
-
         private void Grabar()
         {
             try
             {
+                bool IsNew = ViewModel.IsNew;
+                Cursor = Cursors.WaitCursor;
                 almacenViewModelBindingSource.EndEdit();
-                var centroLogisticoViewModel = (CentroLogisticoViewModel)centroLogisticoViewModelBindingSource.Current;
 
-                AlmacenViewModel.CentroLogisticoId = centroLogisticoViewModel.CentroLogisticoId;
-                AlmacenViewModel.CentroLogistico = centroLogisticoViewModel.Nombre;
+                CentroLogisticoViewModel centroLogisticoViewModel
+                    = (CentroLogisticoViewModel)centroLogisticoViewModelBindingSource.Current;
+                if (centroLogisticoViewModel == null)
+                    throw new Exception("Debe seleccionar un centro logístico");
+                ViewModel.CentroLogisticoId = centroLogisticoViewModel.CentroLogisticoId;
+                ViewModel.CentroLogistico = centroLogisticoViewModel.Nombre;
 
-                Common.Models.Maestro.Almacen almacen = AlmacenViewModel.ToModel();
-                if (IsNew)
-                {
-                    Context.Almacens.Add(almacen);
-                    Context.SaveChanges();
-                    //
-                    AlmacenViewModel.AlmacenId = almacen.AlmacenId;
-                    AlmacenViewModels.Add(AlmacenViewModel);
-                }
+                ViewModel.Grabar();
+                if (IsNew) ViewModelList.Add(ViewModel);
                 else
                 {
-                    Context.Entry(almacen).State = EntityState.Modified;
-                    Context.SaveChanges();
-                    //
-                    var _AlmacenViewModel = AlmacenViewModels
-                        .Where(o => o.AlmacenId == AlmacenViewModel.AlmacenId)
+                    var viewModel = ViewModelList
+                        .Where(o => o.AlmacenId == ViewModel.AlmacenId)
                         .FirstOrDefault();
-                    AlmacenViewModel.CopyTo(ref _AlmacenViewModel);
+                    viewModel.CopyOf(ViewModel);
                 }
                 this.Close();
 
@@ -116,6 +89,31 @@ namespace AdmCostoProduccion.Windows.Maestro.Almacen
             {
                 MessageBox.Show(string.Format("Ocurrió un error al grabar, mensaje de error: {0}", ex.Message)
                     , "Grabar", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                Cursor = Cursors.Default;
+            }
+        }
+
+        private void CargarCombos()
+        {
+            using (var context = new ApplicationDbContext())
+            {
+                var centroLogisticos = context.CentroLogisticos.ToList();
+                centroLogisticoViewModels = new List<CentroLogisticoViewModel>();
+                foreach (var centroLogistico in centroLogisticos)
+                {
+                    centroLogisticoViewModels.Add(new CentroLogisticoViewModel(centroLogistico));
+                }
+                centroLogisticoViewModelBindingSource.DataSource = centroLogisticoViewModels;
+                if (!string.IsNullOrEmpty(ViewModel.CentroLogisticoId))
+                {
+                    CentroLogisticoViewModel centroLogisticoViewModel = centroLogisticoViewModels
+                        .Where(o => o.CentroLogisticoId == ViewModel.CentroLogisticoId)
+                        .FirstOrDefault();
+                    centroLogisticoIdComboBox.SelectedItem = centroLogisticoViewModel;
+                }
             }
         }
         #endregion

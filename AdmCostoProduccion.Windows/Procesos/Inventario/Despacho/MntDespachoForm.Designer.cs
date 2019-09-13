@@ -34,13 +34,14 @@
             System.Windows.Forms.Label observacionLabel;
             System.Windows.Forms.Label label1;
             System.Windows.Forms.Label label2;
+            System.Windows.Forms.Label fechaLabel;
             this.BaseFormHeaderGroup = new ComponentFactory.Krypton.Toolkit.KryptonHeaderGroup();
             this.kryptonPanel1 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.tipoDocumentoComboBox = new System.Windows.Forms.ComboBox();
             this.documentoRelacionadoTextBox = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             this.BuscarDocumentoButton = new ComponentFactory.Krypton.Toolkit.ButtonSpecAny();
-            this.almacenIdComboBox = new System.Windows.Forms.ComboBox();
             this.despachoViewModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.almacenIdComboBox = new System.Windows.Forms.ComboBox();
             this.almacenViewModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.codigoTextBox = new System.Windows.Forms.TextBox();
             this.observacionTextBox = new System.Windows.Forms.TextBox();
@@ -57,11 +58,13 @@
             this.BaseFormToolStrip = new System.Windows.Forms.ToolStrip();
             this.GrabarButton = new System.Windows.Forms.ToolStripButton();
             this.CancelarButton = new System.Windows.Forms.ToolStripButton();
+            this.fechaDateTimePicker = new System.Windows.Forms.DateTimePicker();
             almacenIdLabel = new System.Windows.Forms.Label();
             codigoLabel = new System.Windows.Forms.Label();
             observacionLabel = new System.Windows.Forms.Label();
             label1 = new System.Windows.Forms.Label();
             label2 = new System.Windows.Forms.Label();
+            fechaLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.BaseFormHeaderGroup)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BaseFormHeaderGroup.Panel)).BeginInit();
             this.BaseFormHeaderGroup.Panel.SuspendLayout();
@@ -94,7 +97,7 @@
             // 
             codigoLabel.AutoSize = true;
             codigoLabel.BackColor = System.Drawing.Color.Transparent;
-            codigoLabel.Location = new System.Drawing.Point(428, 47);
+            codigoLabel.Location = new System.Drawing.Point(428, 50);
             codigoLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             codigoLabel.Name = "codigoLabel";
             codigoLabel.Size = new System.Drawing.Size(43, 13);
@@ -105,11 +108,11 @@
             // 
             observacionLabel.AutoSize = true;
             observacionLabel.BackColor = System.Drawing.Color.Transparent;
-            observacionLabel.Location = new System.Drawing.Point(16, 72);
+            observacionLabel.Location = new System.Drawing.Point(428, 74);
             observacionLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             observacionLabel.Name = "observacionLabel";
             observacionLabel.Size = new System.Drawing.Size(70, 13);
-            observacionLabel.TabIndex = 8;
+            observacionLabel.TabIndex = 10;
             observacionLabel.Text = "Observacion:";
             // 
             // label1
@@ -141,7 +144,7 @@
             this.BaseFormHeaderGroup.HeaderStyleSecondary = ComponentFactory.Krypton.Toolkit.HeaderStyle.Form;
             this.BaseFormHeaderGroup.HeaderVisibleSecondary = false;
             this.BaseFormHeaderGroup.Location = new System.Drawing.Point(0, 31);
-            this.BaseFormHeaderGroup.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.BaseFormHeaderGroup.Margin = new System.Windows.Forms.Padding(2);
             this.BaseFormHeaderGroup.Name = "BaseFormHeaderGroup";
             // 
             // BaseFormHeaderGroup.Panel
@@ -151,7 +154,6 @@
             this.BaseFormHeaderGroup.StateNormal.HeaderPrimary.Border.Color1 = System.Drawing.SystemColors.ControlDarkDark;
             this.BaseFormHeaderGroup.StateNormal.HeaderPrimary.Border.Draw = ComponentFactory.Krypton.Toolkit.InheritBool.True;
             this.BaseFormHeaderGroup.StateNormal.HeaderPrimary.Border.DrawBorders = ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom;
-            this.BaseFormHeaderGroup.StateNormal.HeaderPrimary.Border.ImageStyle = ComponentFactory.Krypton.Toolkit.PaletteImageStyle.Inherit;
             this.BaseFormHeaderGroup.StateNormal.HeaderPrimary.Border.Width = 1;
             this.BaseFormHeaderGroup.TabIndex = 23;
             this.BaseFormHeaderGroup.ValuesPrimary.Heading = "Mantenimiento Despacho";
@@ -160,6 +162,8 @@
             // kryptonPanel1
             // 
             this.kryptonPanel1.AutoScroll = true;
+            this.kryptonPanel1.Controls.Add(fechaLabel);
+            this.kryptonPanel1.Controls.Add(this.fechaDateTimePicker);
             this.kryptonPanel1.Controls.Add(label2);
             this.kryptonPanel1.Controls.Add(this.tipoDocumentoComboBox);
             this.kryptonPanel1.Controls.Add(this.documentoRelacionadoTextBox);
@@ -173,7 +177,7 @@
             this.kryptonPanel1.Controls.Add(this.GridHeaderGroup);
             this.kryptonPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonPanel1.Location = new System.Drawing.Point(0, 0);
-            this.kryptonPanel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.kryptonPanel1.Margin = new System.Windows.Forms.Padding(2);
             this.kryptonPanel1.Name = "kryptonPanel1";
             this.kryptonPanel1.Size = new System.Drawing.Size(834, 395);
             this.kryptonPanel1.TabIndex = 0;
@@ -183,7 +187,7 @@
             this.tipoDocumentoComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.tipoDocumentoComboBox.FormattingEnabled = true;
             this.tipoDocumentoComboBox.Location = new System.Drawing.Point(538, 22);
-            this.tipoDocumentoComboBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tipoDocumentoComboBox.Margin = new System.Windows.Forms.Padding(2);
             this.tipoDocumentoComboBox.Name = "tipoDocumentoComboBox";
             this.tipoDocumentoComboBox.Size = new System.Drawing.Size(277, 21);
             this.tipoDocumentoComboBox.TabIndex = 3;
@@ -195,7 +199,7 @@
             this.BuscarDocumentoButton});
             this.documentoRelacionadoTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.despachoViewModelBindingSource, "NumeroDocumentoRelacionado", true));
             this.documentoRelacionadoTextBox.Location = new System.Drawing.Point(126, 45);
-            this.documentoRelacionadoTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.documentoRelacionadoTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.documentoRelacionadoTextBox.Name = "documentoRelacionadoTextBox";
             this.documentoRelacionadoTextBox.Size = new System.Drawing.Size(276, 24);
             this.documentoRelacionadoTextBox.TabIndex = 5;
@@ -203,11 +207,12 @@
             // BuscarDocumentoButton
             // 
             this.BuscarDocumentoButton.Image = global::AdmCostoProduccion.Windows.Properties.Resources.lookup_reference_16x16;
-            this.BuscarDocumentoButton.Style = ComponentFactory.Krypton.Toolkit.PaletteButtonStyle.Inherit;
-            this.BuscarDocumentoButton.ToolTipStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.ToolTip;
-            this.BuscarDocumentoButton.Type = ComponentFactory.Krypton.Toolkit.PaletteButtonSpecStyle.Generic;
             this.BuscarDocumentoButton.UniqueName = "020B794215794657138ECD623B884FE9";
             this.BuscarDocumentoButton.Click += new System.EventHandler(this.BuscarDocumentoButton_Click);
+            // 
+            // despachoViewModelBindingSource
+            // 
+            this.despachoViewModelBindingSource.DataSource = typeof(AdmCostoProduccion.Common.ViewModels.Inventario.DespachoViewModel);
             // 
             // almacenIdComboBox
             // 
@@ -217,15 +222,11 @@
             this.almacenIdComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.almacenIdComboBox.FormattingEnabled = true;
             this.almacenIdComboBox.Location = new System.Drawing.Point(126, 22);
-            this.almacenIdComboBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.almacenIdComboBox.Margin = new System.Windows.Forms.Padding(2);
             this.almacenIdComboBox.Name = "almacenIdComboBox";
             this.almacenIdComboBox.Size = new System.Drawing.Size(277, 21);
             this.almacenIdComboBox.TabIndex = 1;
             this.almacenIdComboBox.ValueMember = "AlmacenId";
-            // 
-            // despachoViewModelBindingSource
-            // 
-            this.despachoViewModelBindingSource.DataSource = typeof(AdmCostoProduccion.Common.ViewModels.Inventario.DespachoViewModel);
             // 
             // almacenViewModelBindingSource
             // 
@@ -234,8 +235,8 @@
             // codigoTextBox
             // 
             this.codigoTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.despachoViewModelBindingSource, "Codigo", true));
-            this.codigoTextBox.Location = new System.Drawing.Point(538, 45);
-            this.codigoTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.codigoTextBox.Location = new System.Drawing.Point(538, 48);
+            this.codigoTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.codigoTextBox.Name = "codigoTextBox";
             this.codigoTextBox.Size = new System.Drawing.Size(277, 20);
             this.codigoTextBox.TabIndex = 7;
@@ -243,11 +244,11 @@
             // observacionTextBox
             // 
             this.observacionTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.despachoViewModelBindingSource, "Observacion", true));
-            this.observacionTextBox.Location = new System.Drawing.Point(126, 71);
-            this.observacionTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.observacionTextBox.Location = new System.Drawing.Point(538, 73);
+            this.observacionTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.observacionTextBox.Name = "observacionTextBox";
-            this.observacionTextBox.Size = new System.Drawing.Size(690, 20);
-            this.observacionTextBox.TabIndex = 9;
+            this.observacionTextBox.Size = new System.Drawing.Size(277, 20);
+            this.observacionTextBox.TabIndex = 11;
             // 
             // GridHeaderGroup
             // 
@@ -261,7 +262,7 @@
             this.GridHeaderGroup.HeaderStylePrimary = ComponentFactory.Krypton.Toolkit.HeaderStyle.DockActive;
             this.GridHeaderGroup.HeaderVisibleSecondary = false;
             this.GridHeaderGroup.Location = new System.Drawing.Point(2, 106);
-            this.GridHeaderGroup.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.GridHeaderGroup.Margin = new System.Windows.Forms.Padding(2);
             this.GridHeaderGroup.Name = "GridHeaderGroup";
             // 
             // GridHeaderGroup.Panel
@@ -275,30 +276,21 @@
             // AgregarDetalleButton
             // 
             this.AgregarDetalleButton.Image = global::AdmCostoProduccion.Windows.Properties.Resources.add_16x16;
-            this.AgregarDetalleButton.Style = ComponentFactory.Krypton.Toolkit.PaletteButtonStyle.Inherit;
             this.AgregarDetalleButton.Text = "Agregar";
-            this.AgregarDetalleButton.ToolTipStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.ToolTip;
-            this.AgregarDetalleButton.Type = ComponentFactory.Krypton.Toolkit.PaletteButtonSpecStyle.Generic;
             this.AgregarDetalleButton.UniqueName = "D267A9562B74495B63AE9A47F882F9F4";
             this.AgregarDetalleButton.Click += new System.EventHandler(this.AgregarDetalleButton_Click);
             // 
             // ModificarDetalleButton
             // 
             this.ModificarDetalleButton.Image = global::AdmCostoProduccion.Windows.Properties.Resources.edit_16x16;
-            this.ModificarDetalleButton.Style = ComponentFactory.Krypton.Toolkit.PaletteButtonStyle.Inherit;
             this.ModificarDetalleButton.Text = "Modificar";
-            this.ModificarDetalleButton.ToolTipStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.ToolTip;
-            this.ModificarDetalleButton.Type = ComponentFactory.Krypton.Toolkit.PaletteButtonSpecStyle.Generic;
             this.ModificarDetalleButton.UniqueName = "009B345D26464BC335B34D4F624BA8C4";
             this.ModificarDetalleButton.Click += new System.EventHandler(this.ModificarDetalleButton_Click);
             // 
             // EliminarDetalleButton
             // 
             this.EliminarDetalleButton.Image = global::AdmCostoProduccion.Windows.Properties.Resources.trash_16x16;
-            this.EliminarDetalleButton.Style = ComponentFactory.Krypton.Toolkit.PaletteButtonStyle.Inherit;
             this.EliminarDetalleButton.Text = "Eliminar";
-            this.EliminarDetalleButton.ToolTipStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.ToolTip;
-            this.EliminarDetalleButton.Type = ComponentFactory.Krypton.Toolkit.PaletteButtonSpecStyle.Generic;
             this.EliminarDetalleButton.UniqueName = "4177A44FBE3B48B414A2BA528F1EEA82";
             this.EliminarDetalleButton.Click += new System.EventHandler(this.EliminarDetalleButton_Click);
             // 
@@ -323,7 +315,7 @@
             this.DetalleDataGridView.GridStyles.StyleDataCells = ComponentFactory.Krypton.Toolkit.GridStyle.Sheet;
             this.DetalleDataGridView.GridStyles.StyleRow = ComponentFactory.Krypton.Toolkit.GridStyle.Sheet;
             this.DetalleDataGridView.Location = new System.Drawing.Point(0, 0);
-            this.DetalleDataGridView.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.DetalleDataGridView.Margin = new System.Windows.Forms.Padding(2);
             this.DetalleDataGridView.Name = "DetalleDataGridView";
             this.DetalleDataGridView.ReadOnly = true;
             this.DetalleDataGridView.RowHeadersVisible = false;
@@ -383,7 +375,7 @@
             this.CancelarButton});
             this.BaseFormToolStrip.Location = new System.Drawing.Point(0, 0);
             this.BaseFormToolStrip.Name = "BaseFormToolStrip";
-            this.BaseFormToolStrip.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.BaseFormToolStrip.Padding = new System.Windows.Forms.Padding(2);
             this.BaseFormToolStrip.Size = new System.Drawing.Size(836, 31);
             this.BaseFormToolStrip.TabIndex = 22;
             this.BaseFormToolStrip.Text = "BaseFormToolStrip";
@@ -406,6 +398,25 @@
             this.CancelarButton.Text = "Cancelar";
             this.CancelarButton.Click += new System.EventHandler(this.CancelarButton_Click);
             // 
+            // fechaLabel
+            // 
+            fechaLabel.AutoSize = true;
+            fechaLabel.BackColor = System.Drawing.Color.Transparent;
+            fechaLabel.Location = new System.Drawing.Point(16, 76);
+            fechaLabel.Name = "fechaLabel";
+            fechaLabel.Size = new System.Drawing.Size(40, 13);
+            fechaLabel.TabIndex = 8;
+            fechaLabel.Text = "Fecha:";
+            // 
+            // fechaDateTimePicker
+            // 
+            this.fechaDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.despachoViewModelBindingSource, "Fecha", true));
+            this.fechaDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.fechaDateTimePicker.Location = new System.Drawing.Point(126, 74);
+            this.fechaDateTimePicker.Name = "fechaDateTimePicker";
+            this.fechaDateTimePicker.Size = new System.Drawing.Size(112, 20);
+            this.fechaDateTimePicker.TabIndex = 9;
+            // 
             // MntDespachoForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -413,7 +424,7 @@
             this.ClientSize = new System.Drawing.Size(836, 450);
             this.Controls.Add(this.BaseFormHeaderGroup);
             this.Controls.Add(this.BaseFormToolStrip);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "MntDespachoForm";
             this.Text = "Mantenimiento Despacho";
             ((System.ComponentModel.ISupportInitialize)(this.BaseFormHeaderGroup.Panel)).EndInit();
@@ -463,5 +474,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn unidadMedidaDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn cantidadDataGridViewTextBoxColumn;
         private System.Windows.Forms.BindingSource despachoDetalleViewModelsBindingSource;
+        private System.Windows.Forms.DateTimePicker fechaDateTimePicker;
     }
 }

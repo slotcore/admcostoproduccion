@@ -37,14 +37,15 @@
             this.ClearButton = new ComponentFactory.Krypton.Toolkit.ButtonSpecAny();
             this.GridHeaderGroup = new ComponentFactory.Krypton.Toolkit.KryptonHeaderGroup();
             this.AlmacenDataGridView = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
+            this.recepcionViewModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.BaseFormToolStrip = new System.Windows.Forms.ToolStrip();
             this.AgregarButton = new System.Windows.Forms.ToolStripButton();
             this.ModificarButton = new System.Windows.Forms.ToolStripButton();
             this.EliminarButton = new System.Windows.Forms.ToolStripButton();
             this.ActualizarButton = new System.Windows.Forms.ToolStripButton();
             this.CargarExcelButton = new System.Windows.Forms.ToolStripButton();
-            this.recepcionViewModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.codigoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.observacionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tipoRecepcionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.almacenDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -65,8 +66,8 @@
             this.GridHeaderGroup.Panel.SuspendLayout();
             this.GridHeaderGroup.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AlmacenDataGridView)).BeginInit();
-            this.BaseFormToolStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.recepcionViewModelBindingSource)).BeginInit();
+            this.BaseFormToolStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // BaseFormHeaderGroup
@@ -176,6 +177,7 @@
             this.AlmacenDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.AlmacenDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.codigoDataGridViewTextBoxColumn,
+            this.Fecha,
             this.observacionDataGridViewTextBoxColumn,
             this.tipoRecepcionDataGridViewTextBoxColumn,
             this.almacenDataGridViewTextBoxColumn,
@@ -197,6 +199,10 @@
             this.AlmacenDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.AlmacenDataGridView.Size = new System.Drawing.Size(792, 252);
             this.AlmacenDataGridView.TabIndex = 0;
+            // 
+            // recepcionViewModelBindingSource
+            // 
+            this.recepcionViewModelBindingSource.DataSource = typeof(AdmCostoProduccion.Common.ViewModels.Inventario.RecepcionViewModel);
             // 
             // BaseFormToolStrip
             // 
@@ -260,10 +266,6 @@
             this.CargarExcelButton.Size = new System.Drawing.Size(95, 24);
             this.CargarExcelButton.Text = "Cargal Excel";
             // 
-            // recepcionViewModelBindingSource
-            // 
-            this.recepcionViewModelBindingSource.DataSource = typeof(AdmCostoProduccion.Common.ViewModels.Inventario.RecepcionViewModel);
-            // 
             // codigoDataGridViewTextBoxColumn
             // 
             this.codigoDataGridViewTextBoxColumn.DataPropertyName = "Codigo";
@@ -271,6 +273,14 @@
             this.codigoDataGridViewTextBoxColumn.Name = "codigoDataGridViewTextBoxColumn";
             this.codigoDataGridViewTextBoxColumn.ReadOnly = true;
             this.codigoDataGridViewTextBoxColumn.Width = 75;
+            // 
+            // Fecha
+            // 
+            this.Fecha.DataPropertyName = "Fecha";
+            this.Fecha.HeaderText = "Fecha";
+            this.Fecha.Name = "Fecha";
+            this.Fecha.ReadOnly = true;
+            this.Fecha.Width = 67;
             // 
             // observacionDataGridViewTextBoxColumn
             // 
@@ -338,9 +348,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.GridHeaderGroup)).EndInit();
             this.GridHeaderGroup.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.AlmacenDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.recepcionViewModelBindingSource)).EndInit();
             this.BaseFormToolStrip.ResumeLayout(false);
             this.BaseFormToolStrip.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.recepcionViewModelBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -362,12 +372,13 @@
         private System.Windows.Forms.ToolStripButton EliminarButton;
         private System.Windows.Forms.ToolStripButton ActualizarButton;
         private System.Windows.Forms.ToolStripButton CargarExcelButton;
+        private System.Windows.Forms.BindingSource recepcionViewModelBindingSource;
         private System.Windows.Forms.DataGridViewTextBoxColumn codigoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Fecha;
         private System.Windows.Forms.DataGridViewTextBoxColumn observacionDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn tipoRecepcionDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn almacenDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn tipoDocumentoRelacionadoDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn numeroDocumentoRelacionadoDataGridViewTextBoxColumn;
-        private System.Windows.Forms.BindingSource recepcionViewModelBindingSource;
     }
 }

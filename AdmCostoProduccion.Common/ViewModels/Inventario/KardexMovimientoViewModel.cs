@@ -28,6 +28,7 @@ namespace AdmCostoProduccion.Common.ViewModels.Inventario
             _DespachoDetalleId = model.DespachoDetalleId;
             _MercaderiaId = model.MercaderiaId;
             _UnidadMedidaId = model.UnidadMedidaId;
+            _Fecha = model.Fecha;
             _Cantidad = model.Cantidad;
         }
 
@@ -48,6 +49,8 @@ namespace AdmCostoProduccion.Common.ViewModels.Inventario
         private string _MercaderiaId;
 
         private string _UnidadMedidaId;
+
+        private DateTime _Fecha;
 
         private double _Cantidad;
 
@@ -174,6 +177,23 @@ namespace AdmCostoProduccion.Common.ViewModels.Inventario
             }
         }
 
+        public DateTime Fecha
+        {
+            get
+            {
+                return _Fecha;
+            }
+
+            set
+            {
+                if (value != _Fecha)
+                {
+                    _Fecha = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
         public double Cantidad
         {
             get
@@ -206,6 +226,7 @@ namespace AdmCostoProduccion.Common.ViewModels.Inventario
             _DespachoDetalleId = viewModel.DespachoDetalleId;
             _MercaderiaId = viewModel.MercaderiaId;
             _UnidadMedidaId = viewModel.UnidadMedidaId;
+            _Fecha = viewModel.Fecha;
             _Cantidad = viewModel.Cantidad;
         }
 
@@ -220,6 +241,7 @@ namespace AdmCostoProduccion.Common.ViewModels.Inventario
                 DespachoDetalleId = _DespachoDetalleId,
                 MercaderiaId = _MercaderiaId,
                 UnidadMedidaId = _UnidadMedidaId,
+                Fecha = _Fecha,
                 Cantidad = _Cantidad
             };
 

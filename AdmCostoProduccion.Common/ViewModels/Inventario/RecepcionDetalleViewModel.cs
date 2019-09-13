@@ -12,6 +12,10 @@ namespace AdmCostoProduccion.Common.ViewModels.Inventario
     {
         #region Constructor
 
+        public RecepcionDetalleViewModel()
+        {
+        }
+
         public RecepcionDetalleViewModel(string parentId)
         {
             _IsNew = true;
@@ -23,6 +27,8 @@ namespace AdmCostoProduccion.Common.ViewModels.Inventario
         {
             _RecepcionDetalleId = model.RecepcionDetalleId;
             _RecepcionId = model.RecepcionId;
+            _InventarioInicialDetalleId = model.InventarioInicialDetalleId;
+            _AjusteInventarioDetalleId = model.AjusteInventarioDetalleId;
             _OrdenProduccionInsumoId = model.OrdenProduccionInsumoId;
             _CompraDetalleId = model.CompraDetalleId;
             _MercaderiaId = model.MercaderiaId;
@@ -40,6 +46,10 @@ namespace AdmCostoProduccion.Common.ViewModels.Inventario
         private string _RecepcionDetalleId;
 
         private string _RecepcionId;
+
+        private string _InventarioInicialDetalleId;
+
+        private string _AjusteInventarioDetalleId;
 
         private string _OrdenProduccionInsumoId;
 
@@ -90,6 +100,40 @@ namespace AdmCostoProduccion.Common.ViewModels.Inventario
                 if (value != _RecepcionId)
                 {
                     _RecepcionId = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
+        public string InventarioInicialDetalleId
+        {
+            get
+            {
+                return _InventarioInicialDetalleId;
+            }
+
+            set
+            {
+                if (value != _InventarioInicialDetalleId)
+                {
+                    _InventarioInicialDetalleId = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
+        public string AjusteInventarioDetalleId
+        {
+            get
+            {
+                return _AjusteInventarioDetalleId;
+            }
+
+            set
+            {
+                if (value != _AjusteInventarioDetalleId)
+                {
+                    _AjusteInventarioDetalleId = value;
                     NotifyPropertyChanged();
                 }
             }
@@ -241,6 +285,8 @@ namespace AdmCostoProduccion.Common.ViewModels.Inventario
             _IsOld = viewModel.IsOld;
             _RecepcionDetalleId = viewModel.RecepcionDetalleId;
             _RecepcionId = viewModel.RecepcionId;
+            _InventarioInicialDetalleId = viewModel.InventarioInicialDetalleId;
+            _AjusteInventarioDetalleId = viewModel.AjusteInventarioDetalleId;
             _OrdenProduccionInsumoId = viewModel.OrdenProduccionInsumoId;
             _CompraDetalleId = viewModel.CompraDetalleId;
             _MercaderiaId = viewModel.MercaderiaId;
@@ -257,6 +303,8 @@ namespace AdmCostoProduccion.Common.ViewModels.Inventario
             {
                 RecepcionDetalleId = _RecepcionDetalleId,
                 RecepcionId = _RecepcionId,
+                InventarioInicialDetalleId = _InventarioInicialDetalleId,
+                AjusteInventarioDetalleId = _AjusteInventarioDetalleId,
                 OrdenProduccionInsumoId = _OrdenProduccionInsumoId,
                 CompraDetalleId = _CompraDetalleId,
                 MercaderiaId = _MercaderiaId,

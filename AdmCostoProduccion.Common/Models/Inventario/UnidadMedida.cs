@@ -54,6 +54,10 @@ namespace AdmCostoProduccion.Common.Models.Inventario
                 
         public virtual ICollection<KardexMovimiento> KardexMovimientos { get; set; }
 
+        public virtual ICollection<InventarioInicialDetalle> InventarioInicialDetalles { get; set; }
+
+        public virtual ICollection<AjusteInventarioDetalle> AjusteInventarioDetalles { get; set; }
+
         #endregion
     }
 }

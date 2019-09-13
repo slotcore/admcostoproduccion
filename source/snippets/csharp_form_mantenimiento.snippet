@@ -69,6 +69,7 @@ namespace $LibraryName$.$EsquemaName$.$FolderName$
             , ObservableListSource<$Model$ViewModel> viewModelList)
         {
             InitializeComponent();
+            ViewModel = new $Model$ViewModel();
             ViewModel.CopyOf(viewModel);
             ViewModelList = viewModelList;
             $DataSourceName$BindingSource.DataSource = ViewModel;

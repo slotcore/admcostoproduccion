@@ -46,12 +46,14 @@
             this.TipoMovimientoMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.TipoRecepcionMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.TipoDespachoMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ReglaAlmacenajeMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.TipoAjusteInventarioMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MntProducciónMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ProcedimientoProduccionMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MntContabilidadMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.métodoValorizaciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.distribuciónValorizaciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.configuraciónValorizaciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.metodoValorizaciónMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.distribucionValorizacionMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.configuracionValorizacionMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.SalirMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ProcesosMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.InventarioMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -71,7 +73,8 @@
             this.MainFormKryptonManager = new ComponentFactory.Krypton.Toolkit.KryptonManager(this.components);
             this.MainFormKryptonDockableNavigator = new ComponentFactory.Krypton.Docking.KryptonDockableNavigator();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.ReglaAlmacenajeMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.AjusteInventarioMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.InventarioInicialMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.PrincipalMenuStrip.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MainFormKryptonDockableNavigator)).BeginInit();
@@ -171,7 +174,8 @@
             this.TipoMovimientoMenuItem,
             this.TipoRecepcionMenuItem,
             this.TipoDespachoMenuItem,
-            this.ReglaAlmacenajeMenuItem});
+            this.ReglaAlmacenajeMenuItem,
+            this.TipoAjusteInventarioMenuItem});
             this.MntInventarioMenuItem.Name = "MntInventarioMenuItem";
             this.MntInventarioMenuItem.Size = new System.Drawing.Size(184, 26);
             this.MntInventarioMenuItem.Text = "Inventario";
@@ -179,51 +183,65 @@
             // UnidadMedidaMenuItem
             // 
             this.UnidadMedidaMenuItem.Name = "UnidadMedidaMenuItem";
-            this.UnidadMedidaMenuItem.Size = new System.Drawing.Size(184, 22);
+            this.UnidadMedidaMenuItem.Size = new System.Drawing.Size(205, 22);
             this.UnidadMedidaMenuItem.Text = "Unidad de Medida";
             this.UnidadMedidaMenuItem.Click += new System.EventHandler(this.UnidadMedidaMenuItem_Click);
             // 
             // TipoMercaderiaMenuItem
             // 
             this.TipoMercaderiaMenuItem.Name = "TipoMercaderiaMenuItem";
-            this.TipoMercaderiaMenuItem.Size = new System.Drawing.Size(184, 22);
+            this.TipoMercaderiaMenuItem.Size = new System.Drawing.Size(205, 22);
             this.TipoMercaderiaMenuItem.Text = "Tipo Mercadería";
             this.TipoMercaderiaMenuItem.Click += new System.EventHandler(this.TipoMercaderiaMenuItem_Click);
             // 
             // FamiliaMercaderiaMenuItem
             // 
             this.FamiliaMercaderiaMenuItem.Name = "FamiliaMercaderiaMenuItem";
-            this.FamiliaMercaderiaMenuItem.Size = new System.Drawing.Size(184, 22);
+            this.FamiliaMercaderiaMenuItem.Size = new System.Drawing.Size(205, 22);
             this.FamiliaMercaderiaMenuItem.Text = "Familia Mercadería";
             this.FamiliaMercaderiaMenuItem.Click += new System.EventHandler(this.FamiliaMercaderiaMenuItem_Click);
             // 
             // MercaderíaMenuItem
             // 
             this.MercaderíaMenuItem.Name = "MercaderíaMenuItem";
-            this.MercaderíaMenuItem.Size = new System.Drawing.Size(184, 22);
+            this.MercaderíaMenuItem.Size = new System.Drawing.Size(205, 22);
             this.MercaderíaMenuItem.Text = "Mercadería";
             this.MercaderíaMenuItem.Click += new System.EventHandler(this.MercaderíaMenuItem_Click);
             // 
             // TipoMovimientoMenuItem
             // 
             this.TipoMovimientoMenuItem.Name = "TipoMovimientoMenuItem";
-            this.TipoMovimientoMenuItem.Size = new System.Drawing.Size(184, 22);
+            this.TipoMovimientoMenuItem.Size = new System.Drawing.Size(205, 22);
             this.TipoMovimientoMenuItem.Text = "Tipo Movimiento";
             this.TipoMovimientoMenuItem.Click += new System.EventHandler(this.TipoMovimientoMenuItem_Click);
             // 
             // TipoRecepcionMenuItem
             // 
             this.TipoRecepcionMenuItem.Name = "TipoRecepcionMenuItem";
-            this.TipoRecepcionMenuItem.Size = new System.Drawing.Size(184, 22);
+            this.TipoRecepcionMenuItem.Size = new System.Drawing.Size(205, 22);
             this.TipoRecepcionMenuItem.Text = "Tipo Recepción";
             this.TipoRecepcionMenuItem.Click += new System.EventHandler(this.TipoRecepcionMenuItem_Click);
             // 
             // TipoDespachoMenuItem
             // 
             this.TipoDespachoMenuItem.Name = "TipoDespachoMenuItem";
-            this.TipoDespachoMenuItem.Size = new System.Drawing.Size(184, 22);
+            this.TipoDespachoMenuItem.Size = new System.Drawing.Size(205, 22);
             this.TipoDespachoMenuItem.Text = "Tipo Despacho";
             this.TipoDespachoMenuItem.Click += new System.EventHandler(this.TipoDespachoMenuItem_Click);
+            // 
+            // ReglaAlmacenajeMenuItem
+            // 
+            this.ReglaAlmacenajeMenuItem.Name = "ReglaAlmacenajeMenuItem";
+            this.ReglaAlmacenajeMenuItem.Size = new System.Drawing.Size(205, 22);
+            this.ReglaAlmacenajeMenuItem.Text = "Regla de Almacenaje";
+            this.ReglaAlmacenajeMenuItem.Click += new System.EventHandler(this.ReglaAlmacenajeMenuItem_Click);
+            // 
+            // TipoAjusteInventarioMenuItem
+            // 
+            this.TipoAjusteInventarioMenuItem.Name = "TipoAjusteInventarioMenuItem";
+            this.TipoAjusteInventarioMenuItem.Size = new System.Drawing.Size(205, 22);
+            this.TipoAjusteInventarioMenuItem.Text = "Tipo Ajuste de Inventario";
+            this.TipoAjusteInventarioMenuItem.Click += new System.EventHandler(this.TipoAjusteInventarioMenuItem_Click);
             // 
             // MntProducciónMenuItem
             // 
@@ -243,30 +261,33 @@
             // MntContabilidadMenuItem
             // 
             this.MntContabilidadMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.métodoValorizaciónToolStripMenuItem,
-            this.distribuciónValorizaciónToolStripMenuItem,
-            this.configuraciónValorizaciónToolStripMenuItem});
+            this.metodoValorizaciónMenuItem,
+            this.distribucionValorizacionMenuItem,
+            this.configuracionValorizacionMenuItem});
             this.MntContabilidadMenuItem.Name = "MntContabilidadMenuItem";
             this.MntContabilidadMenuItem.Size = new System.Drawing.Size(184, 26);
             this.MntContabilidadMenuItem.Text = "Contabilidad";
             // 
-            // métodoValorizaciónToolStripMenuItem
+            // metodoValorizaciónMenuItem
             // 
-            this.métodoValorizaciónToolStripMenuItem.Name = "métodoValorizaciónToolStripMenuItem";
-            this.métodoValorizaciónToolStripMenuItem.Size = new System.Drawing.Size(216, 22);
-            this.métodoValorizaciónToolStripMenuItem.Text = "Método Valorización";
+            this.metodoValorizaciónMenuItem.Name = "metodoValorizaciónMenuItem";
+            this.metodoValorizaciónMenuItem.Size = new System.Drawing.Size(216, 22);
+            this.metodoValorizaciónMenuItem.Text = "Método Valorización";
+            this.metodoValorizaciónMenuItem.Click += new System.EventHandler(this.MetodoValorizaciónMenuItem_Click);
             // 
-            // distribuciónValorizaciónToolStripMenuItem
+            // distribucionValorizacionMenuItem
             // 
-            this.distribuciónValorizaciónToolStripMenuItem.Name = "distribuciónValorizaciónToolStripMenuItem";
-            this.distribuciónValorizaciónToolStripMenuItem.Size = new System.Drawing.Size(216, 22);
-            this.distribuciónValorizaciónToolStripMenuItem.Text = "Distribución Valorización";
+            this.distribucionValorizacionMenuItem.Name = "distribucionValorizacionMenuItem";
+            this.distribucionValorizacionMenuItem.Size = new System.Drawing.Size(216, 22);
+            this.distribucionValorizacionMenuItem.Text = "Distribución Valorización";
+            this.distribucionValorizacionMenuItem.Click += new System.EventHandler(this.DistribucionValorizacionMenuItem_Click);
             // 
-            // configuraciónValorizaciónToolStripMenuItem
+            // configuracionValorizacionMenuItem
             // 
-            this.configuraciónValorizaciónToolStripMenuItem.Name = "configuraciónValorizaciónToolStripMenuItem";
-            this.configuraciónValorizaciónToolStripMenuItem.Size = new System.Drawing.Size(216, 22);
-            this.configuraciónValorizaciónToolStripMenuItem.Text = "Configuración Valorización";
+            this.configuracionValorizacionMenuItem.Name = "configuracionValorizacionMenuItem";
+            this.configuracionValorizacionMenuItem.Size = new System.Drawing.Size(216, 22);
+            this.configuracionValorizacionMenuItem.Text = "Configuración Valorización";
+            this.configuracionValorizacionMenuItem.Click += new System.EventHandler(this.ConfiguracionValorizacionMenuItem_Click);
             // 
             // SalirMenuItem
             // 
@@ -291,8 +312,10 @@
             // InventarioMenuItem
             // 
             this.InventarioMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.InventarioInicialMenuItem,
             this.RecepcionMenuItem,
-            this.DespachoMenuItem});
+            this.DespachoMenuItem,
+            this.AjusteInventarioMenuItem});
             this.InventarioMenuItem.Name = "InventarioMenuItem";
             this.InventarioMenuItem.Size = new System.Drawing.Size(180, 22);
             this.InventarioMenuItem.Text = "Inventario";
@@ -300,14 +323,14 @@
             // RecepcionMenuItem
             // 
             this.RecepcionMenuItem.Name = "RecepcionMenuItem";
-            this.RecepcionMenuItem.Size = new System.Drawing.Size(129, 22);
+            this.RecepcionMenuItem.Size = new System.Drawing.Size(180, 22);
             this.RecepcionMenuItem.Text = "Recepción";
             this.RecepcionMenuItem.Click += new System.EventHandler(this.RecepcionMenuItem_Click);
             // 
             // DespachoMenuItem
             // 
             this.DespachoMenuItem.Name = "DespachoMenuItem";
-            this.DespachoMenuItem.Size = new System.Drawing.Size(129, 22);
+            this.DespachoMenuItem.Size = new System.Drawing.Size(180, 22);
             this.DespachoMenuItem.Text = "Despacho";
             this.DespachoMenuItem.Click += new System.EventHandler(this.DespachoMenuItem_Click);
             // 
@@ -429,12 +452,19 @@
             this.statusStrip1.TabIndex = 13;
             this.statusStrip1.Text = "statusStrip1";
             // 
-            // ReglaAlmacenajeMenuItem
+            // AjusteInventarioMenuItem
             // 
-            this.ReglaAlmacenajeMenuItem.Name = "ReglaAlmacenajeMenuItem";
-            this.ReglaAlmacenajeMenuItem.Size = new System.Drawing.Size(184, 22);
-            this.ReglaAlmacenajeMenuItem.Text = "Regla de Almacenaje";
-            this.ReglaAlmacenajeMenuItem.Click += new System.EventHandler(this.ReglaAlmacenajeMenuItem_Click);
+            this.AjusteInventarioMenuItem.Name = "AjusteInventarioMenuItem";
+            this.AjusteInventarioMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.AjusteInventarioMenuItem.Text = "Ajuste de Inventario";
+            this.AjusteInventarioMenuItem.Click += new System.EventHandler(this.AjusteInventarioMenuItem_Click);
+            // 
+            // InventarioInicialMenuItem
+            // 
+            this.InventarioInicialMenuItem.Name = "InventarioInicialMenuItem";
+            this.InventarioInicialMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.InventarioInicialMenuItem.Text = "Inventario Inicial";
+            this.InventarioInicialMenuItem.Click += new System.EventHandler(this.InventarioInicialMenuItem_Click);
             // 
             // MainForm
             // 
@@ -496,9 +526,9 @@
         private System.Windows.Forms.ToolStripMenuItem TipoDespachoMenuItem;
         private System.Windows.Forms.ToolStripMenuItem TipoMovimientoMenuItem;
         private System.Windows.Forms.ToolStripMenuItem MntContabilidadMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem métodoValorizaciónToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem distribuciónValorizaciónToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem configuraciónValorizaciónToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem metodoValorizaciónMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem distribucionValorizacionMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem configuracionValorizacionMenuItem;
         private System.Windows.Forms.ToolStripMenuItem contabilidadToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem CostoProduccionMenuItem;
         private System.Windows.Forms.ToolStripMenuItem consultasToolStripMenuItem;
@@ -509,6 +539,9 @@
         private System.Windows.Forms.ToolStripMenuItem CorrelativoMenuItem;
         private System.Windows.Forms.ToolStripMenuItem FamiliaMercaderiaMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ReglaAlmacenajeMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem TipoAjusteInventarioMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem InventarioInicialMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem AjusteInventarioMenuItem;
     }
 }
 

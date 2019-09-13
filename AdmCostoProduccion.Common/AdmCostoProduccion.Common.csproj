@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>AdmCostoProduccion.Common</RootNamespace>
     <AssemblyName>AdmCostoProduccion.Common</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
     <TargetFrameworkProfile />
@@ -32,7 +32,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <SignAssembly>true</SignAssembly>
+    <SignAssembly>false</SignAssembly>
   </PropertyGroup>
   <PropertyGroup>
     <AssemblyOriginatorKeyFile>AdmCostoProduccion.Common.pfx</AssemblyOriginatorKeyFile>
@@ -48,11 +48,35 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=1.0.0.999, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpZipLib.1.0.0\lib\net45\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI, Version=1.2.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\DotNetCore.NPOI.Core.1.2.1\lib\net461\NPOI.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OOXML, Version=1.2.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\DotNetCore.NPOI.1.2.1\lib\net461\NPOI.OOXML.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OpenXml4Net, Version=1.2.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\DotNetCore.NPOI.OpenXml4Net.1.2.1\lib\net461\NPOI.OpenXml4Net.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OpenXmlFormats, Version=1.2.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\DotNetCore.NPOI.OpenXmlFormats.1.2.1\lib\net461\NPOI.OpenXmlFormats.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Design" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Drawing.Common, Version=4.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Drawing.Common.4.5.0\lib\net461\System.Drawing.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.0\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Encoding.CodePages, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Encoding.CodePages.4.5.0\lib\net461\System.Text.Encoding.CodePages.dll</HintPath>
+    </Reference>
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -67,39 +91,17 @@
     <Compile Include="Classes\ObservableListSource.cs" />
     <Compile Include="Commands\AplicacionCommand.cs" />
     <Compile Include="Commands\InventarioCommand.cs" />
+    <Compile Include="Commands\MaestroCommand.cs" />
     <Compile Include="Data\ApplicationDbContext.cs" />
     <Compile Include="Enum\DespachoDocumentoEnum.cs" />
-    <Compile Include="Forms\BaseForm.cs">
-      <SubType>Form</SubType>
+    <Compile Include="Helpers\FileHelper.cs" />
+    <Compile Include="Migrations\201909072347191_migracion_inicial_20190907_1.cs" />
+    <Compile Include="Migrations\201909072347191_migracion_inicial_20190907_1.Designer.cs">
+      <DependentUpon>201909072347191_migracion_inicial_20190907_1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\BaseForm.Designer.cs">
-      <DependentUpon>BaseForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\MntBaseForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\MntBaseForm.Designer.cs">
-      <DependentUpon>MntBaseForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201908180134177_Initial_20190817.cs" />
-    <Compile Include="Migrations\201908180134177_Initial_20190817.Designer.cs">
-      <DependentUpon>201908180134177_Initial_20190817.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201908181719503_update_20190818.cs" />
-    <Compile Include="Migrations\201908181719503_update_20190818.Designer.cs">
-      <DependentUpon>201908181719503_update_20190818.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201908182236300_update_20190818_2.cs" />
-    <Compile Include="Migrations\201908182236300_update_20190818_2.Designer.cs">
-      <DependentUpon>201908182236300_update_20190818_2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201908212223161_update_20190821.cs" />
-    <Compile Include="Migrations\201908212223161_update_20190821.Designer.cs">
-      <DependentUpon>201908212223161_update_20190821.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201908221822217_update_20190822_1.cs" />
-    <Compile Include="Migrations\201908221822217_update_20190822_1.Designer.cs">
-      <DependentUpon>201908221822217_update_20190822_1.cs</DependentUpon>
+    <Compile Include="Migrations\201909130255197_update_20190912_1.cs" />
+    <Compile Include="Migrations\201909130255197_update_20190912_1.Designer.cs">
+      <DependentUpon>201909130255197_update_20190912_1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Aplicacion\AplicacionConfiguracion.cs" />
@@ -108,15 +110,21 @@
     <Compile Include="Models\CompraVenta\CompraDetalle.cs" />
     <Compile Include="Models\CompraVenta\Venta.cs" />
     <Compile Include="Models\CompraVenta\VentaDetalle.cs" />
+    <Compile Include="Models\Contabilidad\CostoProduccionMovimiento.cs" />
+    <Compile Include="Models\Inventario\AjusteInventario.cs" />
+    <Compile Include="Models\Inventario\AjusteInventarioDetalle.cs" />
     <Compile Include="Models\Inventario\Despacho.cs" />
     <Compile Include="Models\Inventario\DespachoDetalle.cs" />
     <Compile Include="Models\Inventario\FamiliaMercaderia.cs" />
+    <Compile Include="Models\Inventario\InventarioInicial.cs" />
+    <Compile Include="Models\Inventario\InventarioInicialDetalle.cs" />
     <Compile Include="Models\Inventario\Kardex.cs" />
     <Compile Include="Models\Inventario\KardexMovimiento.cs" />
     <Compile Include="Models\Inventario\OrdenServicio.cs" />
     <Compile Include="Models\Inventario\Recepcion.cs" />
     <Compile Include="Models\Inventario\RecepcionDetalle.cs" />
     <Compile Include="Models\Inventario\ReglaAlmacenaje.cs" />
+    <Compile Include="Models\Inventario\TipoAjusteInventario.cs" />
     <Compile Include="Models\Inventario\TipoDespacho.cs" />
     <Compile Include="Models\Inventario\TipoMovimiento.cs" />
     <Compile Include="Models\Inventario\TipoRecepcion.cs" />
@@ -155,9 +163,16 @@
     <Compile Include="ViewModels\Contabilidad\ConfiguracionValorizacionViewModel.cs" />
     <Compile Include="ViewModels\Contabilidad\CostoOrdenProduccionViewModel.cs" />
     <Compile Include="ViewModels\Contabilidad\CostoProduccionViewModel.cs" />
+    <Compile Include="ViewModels\Contabilidad\DistribucionValorizacionViewModel.cs" />
+    <Compile Include="ViewModels\Contabilidad\MercaderiaMovimientoViewModel.cs" />
+    <Compile Include="ViewModels\Contabilidad\MetodoValorizacionViewModel.cs" />
+    <Compile Include="ViewModels\Inventario\AjusteInventarioDetalleViewModel.cs" />
+    <Compile Include="ViewModels\Inventario\AjusteInventarioViewModel.cs" />
     <Compile Include="ViewModels\Inventario\DespachoDetalleViewModel.cs" />
     <Compile Include="ViewModels\Inventario\DespachoViewModel.cs" />
     <Compile Include="ViewModels\Inventario\FamiliaMercaderiaViewModel.cs" />
+    <Compile Include="ViewModels\Inventario\InventarioInicialDetalleViewModel.cs" />
+    <Compile Include="ViewModels\Inventario\InventarioInicialViewModel.cs" />
     <Compile Include="ViewModels\Inventario\KardexMovimientoViewModel.cs" />
     <Compile Include="ViewModels\Inventario\KardexViewModel.cs" />
     <Compile Include="ViewModels\Inventario\MercaderiaViewModel.cs" />
@@ -165,6 +180,7 @@
     <Compile Include="ViewModels\Inventario\RecepcionDetalleViewModel.cs" />
     <Compile Include="ViewModels\Inventario\RecepcionViewModel.cs" />
     <Compile Include="ViewModels\Inventario\ReglaAlmacenajeViewModel.cs" />
+    <Compile Include="ViewModels\Inventario\TipoAjusteInventarioViewModel.cs" />
     <Compile Include="ViewModels\Inventario\TipoDespachoViewModel.cs" />
     <Compile Include="ViewModels\Inventario\TipoMercaderiaViewModel.cs" />
     <Compile Include="ViewModels\Inventario\TipoMovimientoViewModel.cs" />
@@ -187,26 +203,11 @@
     <Folder Include="Properties\DataSources\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Forms\BaseForm.resx">
-      <DependentUpon>BaseForm.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201909072347191_migracion_inicial_20190907_1.resx">
+      <DependentUpon>201909072347191_migracion_inicial_20190907_1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\MntBaseForm.resx">
-      <DependentUpon>MntBaseForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201908180134177_Initial_20190817.resx">
-      <DependentUpon>201908180134177_Initial_20190817.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201908181719503_update_20190818.resx">
-      <DependentUpon>201908181719503_update_20190818.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201908182236300_update_20190818_2.resx">
-      <DependentUpon>201908182236300_update_20190818_2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201908212223161_update_20190821.resx">
-      <DependentUpon>201908212223161_update_20190821.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201908221822217_update_20190822_1.resx">
-      <DependentUpon>201908221822217_update_20190822_1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201909130255197_update_20190912_1.resx">
+      <DependentUpon>201909130255197_update_20190912_1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

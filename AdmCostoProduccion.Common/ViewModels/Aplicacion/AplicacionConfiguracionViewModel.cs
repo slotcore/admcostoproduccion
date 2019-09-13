@@ -21,8 +21,8 @@ namespace AdmCostoProduccion.Common.ViewModels.Aplicacion
         public AplicacionConfiguracionViewModel(AplicacionConfiguracion model)
         {
             _AplicacionConfiguracionId = model.AplicacionConfiguracionId;
-            _RecepcionGeneraMovimiento = model.CompraGeneraMovimiento;
-            _DespachoGeneraMovimiento = model.VentaGeneraMovimiento;
+            _RecepcionGeneraMovimiento = model.CompraGeneraRecepcion;
+            _DespachoGeneraMovimiento = model.VentaGeneraDespacho;
             _OrdenProduccionGeneraMovimiento = model.OrdenProduccionGeneraMovimiento;
             _OrdenProduccionGeneraMovimientoInsumos = model.OrdenProduccionGeneraMovimientoInsumos;
         }
@@ -150,8 +150,8 @@ namespace AdmCostoProduccion.Common.ViewModels.Aplicacion
             AplicacionConfiguracion model = new AplicacionConfiguracion
             {
                 AplicacionConfiguracionId = _AplicacionConfiguracionId,
-                CompraGeneraMovimiento = _RecepcionGeneraMovimiento,
-                VentaGeneraMovimiento = _DespachoGeneraMovimiento,
+                CompraGeneraRecepcion = _RecepcionGeneraMovimiento,
+                VentaGeneraDespacho = _DespachoGeneraMovimiento,
                 OrdenProduccionGeneraMovimiento = _OrdenProduccionGeneraMovimiento,
                 OrdenProduccionGeneraMovimientoInsumos = _OrdenProduccionGeneraMovimientoInsumos
             };

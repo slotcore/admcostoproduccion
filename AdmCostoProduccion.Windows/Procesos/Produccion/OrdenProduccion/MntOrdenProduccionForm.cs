@@ -1,6 +1,5 @@
 ﻿using AdmCostoProduccion.Common.Classes;
 using AdmCostoProduccion.Common.Data;
-using AdmCostoProduccion.Common.Forms;
 using AdmCostoProduccion.Common.ViewModels.Inventario;
 using AdmCostoProduccion.Common.ViewModels.Maestro;
 using AdmCostoProduccion.Common.ViewModels.Produccion;
@@ -19,7 +18,7 @@ using System.Windows.Forms;
 
 namespace AdmCostoProduccion.Windows.Procesos.Produccion.OrdenProduccion
 {
-    public partial class MntOrdenProduccionForm : BaseForm
+    public partial class MntOrdenProduccionForm : KryptonForm
     {
         #region Propiedades
         private OrdenProduccionViewModel ViewModel = new OrdenProduccionViewModel();
@@ -32,24 +31,20 @@ namespace AdmCostoProduccion.Windows.Procesos.Produccion.OrdenProduccion
         #region Constructor
         public MntOrdenProduccionForm(OrdenProduccionViewModel viewModel
             , ObservableListSource<OrdenProduccionViewModel> viewModelList)
-            :base(false)
         {
             InitializeComponent();
             ViewModel.CopyOf(viewModel);
             ViewModelList = viewModelList;
             ordenProduccionViewModelBindingSource.DataSource = ViewModel;
-            //
             CargarCombos();
         }
 
         public MntOrdenProduccionForm(ObservableListSource<OrdenProduccionViewModel> viewModelList)
-            :base(true)
         {
             InitializeComponent();
             ViewModel = new OrdenProduccionViewModel();
             ViewModelList = viewModelList;
             ordenProduccionViewModelBindingSource.DataSource = ViewModel;
-            //
             CargarCombos();
         }
         #endregion
@@ -93,8 +88,10 @@ namespace AdmCostoProduccion.Windows.Procesos.Produccion.OrdenProduccion
         {
             try
             {
+                bool IsNew = ViewModel.IsNew;
                 Cursor = Cursors.WaitCursor;
                 ordenProduccionViewModelBindingSource.EndEdit();
+
                 var plantaFabricacion = (PlantaFabricacionViewModel)plantaFabricacionViewModelBindingSource.Current;
                 var unidadMedida = (UnidadMedidaViewModel)unidadMedidaViewModelBindingSource.Current;
                 var procedimientoProduccion = (ProcedimientoProduccionViewModel)procedimientoProduccionViewModelBindingSource.Current;
@@ -109,8 +106,8 @@ namespace AdmCostoProduccion.Windows.Procesos.Produccion.OrdenProduccion
                 ViewModel.UnidadMedida = unidadMedida.Nombre;
                 ViewModel.ProcedimientoProduccionId = procedimientoProduccion.ProcedimientoProduccionId;
                 ViewModel.ProcedimientoProduccion = procedimientoProduccion.Nombre;
-                ViewModel.Grabar();
 
+                ViewModel.Grabar();
                 if (IsNew) ViewModelList.Add(ViewModel);
                 else
                 {
@@ -180,6 +177,7 @@ namespace AdmCostoProduccion.Windows.Procesos.Produccion.OrdenProduccion
             }
         }
 
+
         private void BuscarMercaderia()
         {
             try
@@ -188,10 +186,10 @@ namespace AdmCostoProduccion.Windows.Procesos.Produccion.OrdenProduccion
                 if (formprompt.ShowDialog() == DialogResult.OK)
                 {
                     var mercaderiaViewModel = formprompt.MercaderiaViewModel;
+                    CargarProcedimientos(mercaderiaViewModel.MercaderiaId);
                     ViewModel.CodigoMercaderia = mercaderiaViewModel.Codigo;
                     ViewModel.NombreMercaderia = mercaderiaViewModel.Nombre;
                     ViewModel.MercaderiaId = mercaderiaViewModel.MercaderiaId;
-                    CargarProcedimientos();
                 }
 
             }
@@ -208,68 +206,71 @@ namespace AdmCostoProduccion.Windows.Procesos.Produccion.OrdenProduccion
 
         private void CargarCombos()
         {
-            ApplicationDbContext context = new ApplicationDbContext();
-            //
-            var plantaFabricacions = context.PlantaFabricacions.ToList();
-            plantaFabricacionViewModels = new List<PlantaFabricacionViewModel>();
-            foreach (var plantaFabricacion in plantaFabricacions)
+            using (var context = new ApplicationDbContext())
             {
-                plantaFabricacionViewModels.Add(new PlantaFabricacionViewModel(plantaFabricacion));
-            }
-            plantaFabricacionViewModelBindingSource.DataSource = plantaFabricacionViewModels;
-            if (!IsNew)
-            {
-                var plantaFabricacion = plantaFabricacions
-                    .Where(o => o.PlantaFabricacionId == ViewModel.PlantaFabricacionId)
-                    .FirstOrDefault();
-                plantaFabricacionIdComboBox.SelectedItem = plantaFabricacion;
-            }
-            //
-            var unidadMedidas = context.UnidadMedidas.ToList();
-            unidadMedidaViewModels = new List<UnidadMedidaViewModel>();
-            foreach (var unidadMedida in unidadMedidas)
-            {
-                unidadMedidaViewModels.Add(new UnidadMedidaViewModel(unidadMedida));
-            }
-            unidadMedidaViewModelBindingSource.DataSource = unidadMedidaViewModels;
-            if (!IsNew)
-            {
-                var unidadMedida = unidadMedidas
-                    .Where(o => o.UnidadMedidaId == ViewModel.UnidadMedidaId)
-                    .FirstOrDefault();
-                unidadMedidaIdComboBox.SelectedItem = unidadMedida;
-            }
-            //
-            if (!IsNew)
-            {
-                CargarProcedimientos();
+                var plantaFabricacions = context.PlantaFabricacions.ToList();
+                plantaFabricacionViewModels = new List<PlantaFabricacionViewModel>();
+                foreach (var plantaFabricacion in plantaFabricacions)
+                {
+                    plantaFabricacionViewModels.Add(new PlantaFabricacionViewModel(plantaFabricacion));
+                }
+                plantaFabricacionViewModelBindingSource.DataSource = plantaFabricacionViewModels;
+                if (!string.IsNullOrEmpty(ViewModel.PlantaFabricacionId))
+                {
+                    PlantaFabricacionViewModel plantaFabricacionViewModel = plantaFabricacionViewModels
+                        .Where(o => o.PlantaFabricacionId == ViewModel.PlantaFabricacionId)
+                        .FirstOrDefault();
+                    plantaFabricacionIdComboBox.SelectedItem = plantaFabricacionViewModel;
+                }
+                //
+                var unidadMedidas = context.UnidadMedidas.ToList();
+                unidadMedidaViewModels = new List<UnidadMedidaViewModel>();
+                foreach (var unidadMedida in unidadMedidas)
+                {
+                    unidadMedidaViewModels.Add(new UnidadMedidaViewModel(unidadMedida));
+                }
+                unidadMedidaViewModelBindingSource.DataSource = unidadMedidaViewModels;
+                if (!string.IsNullOrEmpty(ViewModel.UnidadMedidaId))
+                {
+                    var unidadMedida = unidadMedidas
+                        .Where(o => o.UnidadMedidaId == ViewModel.UnidadMedidaId)
+                        .FirstOrDefault();
+                    unidadMedidaIdComboBox.SelectedItem = unidadMedida;
+                }
+                //
+                if (!string.IsNullOrEmpty(ViewModel.ProcedimientoProduccionId))
+                {
+                    CargarProcedimientos(ViewModel.MercaderiaId);
+                }
             }
         }
 
-        private void CargarProcedimientos()
+        private void CargarProcedimientos(string mercaderiaId)
         {
-            ApplicationDbContext context = new ApplicationDbContext();
-
-            procedimientoProduccionViewModelBindingSource.DataSource = null;
-            var procedimientoProduccions = context.ProcedimientoProduccions
-                .Where(o => o.MercaderiaId == ViewModel.MercaderiaId)
-                .ToList();
-            if (procedimientoProduccions.Count == 0)
-                throw new Exception("La mercaderia no tiene procedimiento de producción");
-
-            procedimientoProduccionViewModels = new List<ProcedimientoProduccionViewModel>();
-            foreach (var procedimientoProduccion in procedimientoProduccions)
+            using (var context = new ApplicationDbContext())
             {
-                procedimientoProduccionViewModels.Add(new ProcedimientoProduccionViewModel(procedimientoProduccion));
+                procedimientoProduccionViewModelBindingSource.DataSource = null;
+                var procedimientoProduccions = context.ProcedimientoProduccions
+                    .Where(o => o.MercaderiaId == mercaderiaId)
+                    .ToList();
+                if (procedimientoProduccions.Count == 0)
+                    throw new Exception("La mercaderia no tiene procedimiento de producción");
+
+                procedimientoProduccionViewModels = new List<ProcedimientoProduccionViewModel>();
+                foreach (var procedimientoProduccion in procedimientoProduccions)
+                {
+                    procedimientoProduccionViewModels.Add(new ProcedimientoProduccionViewModel(procedimientoProduccion));
+                }
+                procedimientoProduccionViewModelBindingSource.DataSource = procedimientoProduccionViewModels;
+                if (!string.IsNullOrEmpty(ViewModel.ProcedimientoProduccionId))
+                {
+                    var procedimientoProduccion = procedimientoProduccions
+                        .Where(o => o.ProcedimientoProduccionId == ViewModel.ProcedimientoProduccionId)
+                        .FirstOrDefault();
+                    procedimientoProduccionIdComboBox.SelectedItem = procedimientoProduccion;
+                }
             }
-            procedimientoProduccionViewModelBindingSource.DataSource = procedimientoProduccionViewModels;            
-            if (!IsNew)
-            {
-                var procedimientoProduccion = procedimientoProduccions
-                    .Where(o => o.ProcedimientoProduccionId == ViewModel.ProcedimientoProduccionId)
-                    .FirstOrDefault();
-                procedimientoProduccionIdComboBox.SelectedItem = procedimientoProduccion;
-            }
+
         }
         #endregion
     }

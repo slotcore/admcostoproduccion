@@ -18,13 +18,10 @@ namespace AdmCostoProduccion.Windows.Procesos.CompraVenta.Venta
 {
     public partial class MntVentaForm : KryptonForm
     {
-        private readonly ApplicationDbContext Context = new ApplicationDbContext();
-        private VentaViewModel ViewModel = new VentaViewModel();
-        private List<CentroLogisticoViewModel> centroLogisticoViewModels = new List<CentroLogisticoViewModel>();
-
         #region Propiedades
-        public bool IsNew { get; set; }
-        public ObservableListSource<VentaViewModel> ViewModelList { get; set; }
+        private VentaViewModel ViewModel = new VentaViewModel();
+        private ObservableListSource<VentaViewModel> ViewModelList;
+        private List<CentroLogisticoViewModel> centroLogisticoViewModels;
         #endregion
 
         #region Constructor
@@ -32,21 +29,18 @@ namespace AdmCostoProduccion.Windows.Procesos.CompraVenta.Venta
             , ObservableListSource<VentaViewModel> viewModelList)
         {
             InitializeComponent();
-            IsNew = false;
-            viewModel.CopyTo(ref ViewModel);
+            ViewModel.CopyOf(viewModel);
             ViewModelList = viewModelList;
             ventaViewModelBindingSource.DataSource = ViewModel;
-            //
             CargarCombos();
         }
 
         public MntVentaForm(ObservableListSource<VentaViewModel> viewModelList)
         {
             InitializeComponent();
-            IsNew = true;
+            ViewModel = new VentaViewModel();
             ViewModelList = viewModelList;
             ventaViewModelBindingSource.DataSource = ViewModel;
-            //
             CargarCombos();
         }
         #endregion
@@ -75,7 +69,7 @@ namespace AdmCostoProduccion.Windows.Procesos.CompraVenta.Venta
 
         private void EliminarDetalleButton_Click(object sender, EventArgs e)
         {
-
+            EliminarDetalle();
         }
         #endregion
 
@@ -85,32 +79,25 @@ namespace AdmCostoProduccion.Windows.Procesos.CompraVenta.Venta
         {
             try
             {
+                bool IsNew = ViewModel.IsNew;
                 Cursor = Cursors.WaitCursor;
                 ventaViewModelBindingSource.EndEdit();
 
-                var centroLogisticoViewModel = (CentroLogisticoViewModel)centroLogisticoViewModelBindingSource.Current;
-
+                CentroLogisticoViewModel centroLogisticoViewModel 
+                    = (CentroLogisticoViewModel)centroLogisticoViewModelBindingSource.Current;
+                if (centroLogisticoViewModel == null)
+                    throw new Exception("Debe seleccionar un centro logístico");
                 ViewModel.CentroLogisticoId = centroLogisticoViewModel.CentroLogisticoId;
                 ViewModel.CentroLogistico = centroLogisticoViewModel.Nombre;
 
-                var model = ViewModel.ToModel();
-                if (IsNew)
-                {
-                    Context.Ventas.Add(model);
-                    Context.SaveChanges();
-                    //
-                    ViewModel.VentaId = model.VentaId;
-                    ViewModelList.Add(ViewModel);
-                }
+                ViewModel.Grabar();
+                if (IsNew) ViewModelList.Add(ViewModel);
                 else
                 {
-                    Context.Entry(model).State = EntityState.Modified;
-                    Context.SaveChanges();
-                    //
                     var viewModel = ViewModelList
                         .Where(o => o.VentaId == ViewModel.VentaId)
                         .FirstOrDefault();
-                    ViewModel.CopyTo(ref viewModel);
+                    viewModel.CopyOf(ViewModel);
                 }
                 this.Close();
 
@@ -130,7 +117,7 @@ namespace AdmCostoProduccion.Windows.Procesos.CompraVenta.Venta
         {
             try
             {
-                var frm = new MntVentaDetalleForm(ViewModel.VentaDetalleViewModels);
+                var frm = new MntVentaDetalleForm(ViewModel.VentaId, ViewModel.VentaDetalleViewModels);
                 frm.ShowDialog();
             }
             catch (Exception ex)
@@ -155,14 +142,44 @@ namespace AdmCostoProduccion.Windows.Procesos.CompraVenta.Venta
             }
         }
 
+        private void EliminarDetalle()
+        {
+            try
+            {
+                if (MessageBox.Show("¿Seguro desea eliminar el registro?", "Eliminar"
+                    , MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    var viewModelDetail = (VentaDetalleViewModel)ventaDetalleViewModelsBindingSource.Current;
+                    ViewModel.VentaDetalleViewModels.RemoveItem(viewModelDetail);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(string.Format("Ocurrió un error al eliminar el registro, mensaje de error: {0}", ex.Message)
+                    , "Modificar", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         private void CargarCombos()
         {
-            var centroLogisticos = Context.CentroLogisticos.ToList();
-            foreach (var centroLogistico in centroLogisticos)
+            using (var context = new ApplicationDbContext())
             {
-                centroLogisticoViewModels.Add(new CentroLogisticoViewModel(centroLogistico));
+                var centroLogisticos = context.CentroLogisticos.ToList();
+                centroLogisticoViewModels = new List<CentroLogisticoViewModel>();
+                foreach (var centroLogistico in centroLogisticos)
+                {
+                    centroLogisticoViewModels.Add(new CentroLogisticoViewModel(centroLogistico));
+                }
+                centroLogisticoViewModelBindingSource.DataSource = centroLogisticoViewModels;
+
+                if (!string.IsNullOrEmpty(ViewModel.CentroLogisticoId))
+                {
+                    CentroLogisticoViewModel centroLogisticoViewModel = centroLogisticoViewModels
+                        .Where(o => o.CentroLogisticoId == ViewModel.CentroLogisticoId)
+                        .FirstOrDefault();
+                    centroLogisticoComboBox.SelectedItem = centroLogisticoViewModel;
+                }
             }
-            centroLogisticoViewModelBindingSource.DataSource = centroLogisticoViewModels;
         }
         #endregion
     }

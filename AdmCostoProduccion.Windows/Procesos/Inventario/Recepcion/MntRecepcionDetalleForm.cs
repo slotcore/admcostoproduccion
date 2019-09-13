@@ -1,6 +1,5 @@
 ﻿using AdmCostoProduccion.Common.Classes;
 using AdmCostoProduccion.Common.Data;
-using AdmCostoProduccion.Common.Forms;
 using AdmCostoProduccion.Common.ViewModels.Inventario;
 using AdmCostoProduccion.Windows.Prompt;
 using ComponentFactory.Krypton.Toolkit;
@@ -17,7 +16,7 @@ using System.Windows.Forms;
 
 namespace AdmCostoProduccion.Windows.Procesos.Inventario.Recepcion
 {
-    public partial class MntRecepcionDetalleForm : BaseForm
+    public partial class MntRecepcionDetalleForm : KryptonForm
     {
         #region Propiedades
         private RecepcionDetalleViewModel ViewModel;
@@ -27,7 +26,7 @@ namespace AdmCostoProduccion.Windows.Procesos.Inventario.Recepcion
 
         #region Constructor
         public MntRecepcionDetalleForm(RecepcionDetalleViewModel viewModel
-            , ObservableListSource<RecepcionDetalleViewModel> viewModelList):base(false)
+            , ObservableListSource<RecepcionDetalleViewModel> viewModelList)
         {
             InitializeComponent();
             ViewModel.CopyOf(viewModel);
@@ -38,7 +37,7 @@ namespace AdmCostoProduccion.Windows.Procesos.Inventario.Recepcion
         }
 
         public MntRecepcionDetalleForm(string parentId
-            , ObservableListSource<RecepcionDetalleViewModel> viewModelList):base(true)
+            , ObservableListSource<RecepcionDetalleViewModel> viewModelList)
         {
             InitializeComponent();
             ViewModel = new RecepcionDetalleViewModel(parentId);
@@ -73,6 +72,7 @@ namespace AdmCostoProduccion.Windows.Procesos.Inventario.Recepcion
         {
             try
             {
+                bool IsNew = ViewModel.IsNew;
                 Cursor = Cursors.WaitCursor;
                 recepcionDetalleViewModelBindingSource.EndEdit();
                 UnidadMedidaViewModel unidadMedida = (UnidadMedidaViewModel)unidadMedidaViewModelBindingSource.Current;

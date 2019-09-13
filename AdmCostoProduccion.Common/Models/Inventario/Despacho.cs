@@ -23,6 +23,8 @@ namespace AdmCostoProduccion.Common.Models.Inventario
 
         public string Codigo { get; set; }
 
+        public DateTime Fecha { get; set; }
+
         public string Observacion { get; set; }
 
         #endregion
@@ -36,6 +38,10 @@ namespace AdmCostoProduccion.Common.Models.Inventario
         public string AlmacenId { get; set; }
 
         public virtual Maestro.Almacen Almacen { get; set; }
+
+        public string AjusteInventarioId { get; set; }
+
+        public virtual AjusteInventario AjusteInventario { get; set; }
 
         public string OrdenProduccionId { get; set; }
 

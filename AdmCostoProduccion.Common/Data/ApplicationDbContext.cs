@@ -60,11 +60,19 @@ namespace AdmCostoProduccion.Common.Data
         public DbSet<OrdenProduccionInsumo> OrdenProduccionInsumos { get; set; }
         public DbSet<CostoProduccion> CostoProduccions { get; set; }
         public DbSet<CostoOrdenProduccion> CostoOrdenProduccions { get; set; }
+        public DbSet<CostoProduccionMovimiento> CostoProduccionMovimientos { get; set; }
         public DbSet<ConfiguracionValorizacion> ConfiguracionValorizacions { get; set; }
         public DbSet<OrdenServicio> OrdenServicios { get; set; }
         public DbSet<Kardex> Kardexs { get; set; }
         public DbSet<KardexMovimiento> KardexMovimientos { get; set; }
         public DbSet<FamiliaMercaderia> FamiliaMercaderias { get; set; }
         public DbSet<ReglaAlmacenaje> ReglaAlmacenajes { get; set; }
+        public DbSet<MetodoValorizacion> MetodoValorizacions { get; set; }
+        public DbSet<DistribucionValorizacion> DistribucionValorizacions { get; set; }
+        public DbSet<TipoAjusteInventario> TipoAjusteInventarios { get; set; }
+        public DbSet<AjusteInventario> AjusteInventarios { get; set; }
+        public DbSet<AjusteInventarioDetalle> AjusteInventarioDetalles { get; set; }
+        public DbSet<InventarioInicial> InventarioInicials { get; set; }
+        public DbSet<InventarioInicialDetalle> InventarioInicialDetalles { get; set; }
     }
 }

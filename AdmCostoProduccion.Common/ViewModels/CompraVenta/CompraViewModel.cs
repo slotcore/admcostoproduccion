@@ -17,7 +17,7 @@ namespace AdmCostoProduccion.Common.ViewModels.CompraVenta
         {
             _IsNew = true;
             _CompraId = Guid.NewGuid().ToString();
-            _Fecha = DateTime.Now;
+            _Fecha = DateTime.Today;
         }
 
         public CompraViewModel(Compra model)
@@ -240,7 +240,7 @@ namespace AdmCostoProduccion.Common.ViewModels.CompraVenta
                         context.SaveChanges();
                         var aplicacionConfiguracion = context.AplicacionConfiguracions.FirstOrDefault();
                         if (aplicacionConfiguracion == null) throw new Exception("No existe registro de configuración¡¡");
-                        if (aplicacionConfiguracion.CompraGeneraMovimiento)
+                        if (aplicacionConfiguracion.CompraGeneraRecepcion)
                         {
                             //Se genera el movimiento de Recepcion
                             InventarioCommand.GenerarRecepcion(this, context);

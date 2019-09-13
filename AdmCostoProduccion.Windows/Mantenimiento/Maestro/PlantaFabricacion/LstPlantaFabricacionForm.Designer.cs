@@ -83,7 +83,6 @@
             this.BaseFormHeaderGroup.Size = new System.Drawing.Size(1067, 525);
             this.BaseFormHeaderGroup.StateNormal.HeaderPrimary.Border.Color1 = System.Drawing.SystemColors.ControlDarkDark;
             this.BaseFormHeaderGroup.StateNormal.HeaderPrimary.Border.DrawBorders = ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom;
-            this.BaseFormHeaderGroup.StateNormal.HeaderPrimary.Border.ImageStyle = ComponentFactory.Krypton.Toolkit.PaletteImageStyle.Inherit;
             this.BaseFormHeaderGroup.StateNormal.HeaderPrimary.Border.Width = 1;
             this.BaseFormHeaderGroup.TabIndex = 6;
             this.BaseFormHeaderGroup.ValuesPrimary.Heading = "Planta Fabricación";
@@ -104,9 +103,6 @@
             // 
             this.BusquedaGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.BusquedaGroupBox.CaptionStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.GroupBoxCaption;
-            this.BusquedaGroupBox.GroupBackStyle = ComponentFactory.Krypton.Toolkit.PaletteBackStyle.ControlGroupBox;
-            this.BusquedaGroupBox.GroupBorderStyle = ComponentFactory.Krypton.Toolkit.PaletteBorderStyle.ControlGroupBox;
             this.BusquedaGroupBox.Location = new System.Drawing.Point(4, 2);
             this.BusquedaGroupBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.BusquedaGroupBox.Name = "BusquedaGroupBox";
@@ -144,8 +140,6 @@
             // 
             // ClearButton
             // 
-            this.ClearButton.Style = ComponentFactory.Krypton.Toolkit.PaletteButtonStyle.Inherit;
-            this.ClearButton.ToolTipStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.ToolTip;
             this.ClearButton.Type = ComponentFactory.Krypton.Toolkit.PaletteButtonSpecStyle.Close;
             this.ClearButton.UniqueName = "1108868230D14A995A9EC71B7814ACBA";
             // 
@@ -299,6 +293,7 @@
             this.CargarExcelButton.Name = "CargarExcelButton";
             this.CargarExcelButton.Size = new System.Drawing.Size(114, 24);
             this.CargarExcelButton.Text = "Cargal Excel";
+            this.CargarExcelButton.Click += new System.EventHandler(this.CargarExcelButton_Click);
             // 
             // LstPlantaFabricacionForm
             // 
@@ -307,7 +302,7 @@
             this.ClientSize = new System.Drawing.Size(1067, 554);
             this.Controls.Add(this.BaseFormHeaderGroup);
             this.Controls.Add(this.BaseFormToolStrip);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "LstPlantaFabricacionForm";
             this.Text = "Planta Fabricación";
             ((System.ComponentModel.ISupportInitialize)(this.BaseFormHeaderGroup.Panel)).EndInit();
